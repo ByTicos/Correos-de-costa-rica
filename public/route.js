@@ -50,6 +50,42 @@
         controller: 'controladorEditarClientes',
         controllerAs: 'vm'
       })
+
+      .state('encargadoSucursal', {
+        url: '/encargadoSucursal',
+        templateUrl: './components/encargadoSucursal/registroEncargadoSucursal.view.html',
+        data:{
+          pageTitle: 'Registro Encargado de Sucursal'
+        },
+        params: {
+          objClienteTemp: ''
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/encargadoSucursal/registroEncargadoSucursal.controller.js')
+          }]
+        },
+        controller: 'controladorEncargadoSucursal',
+        controllerAs: 'vm'
+      })
+
+      .state('editarEncargadoSucursal', {
+        url: '/editarEncargadoSucursal',
+        templateUrl: './components/encargadoSucursal/editarEncargadoSucursal.view.html',
+        data:{
+          pageTitle: 'Editar Encargado de Sucursal'
+        },
+        params: {
+          objClienteTemp: ''
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/encargadoSucursal/editarEncargadoSucursal.controller.js')
+          }]
+        },
+        controller: 'controladorEditarEncargadoSucursal',
+        controllerAs: 'vm'
+      })
 /*
       .state('admin', {
         url: '/admin',
