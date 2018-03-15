@@ -50,6 +50,7 @@
         controller: 'controladorEditarClientes',
         controllerAs: 'vm'
       })
+<<<<<<< HEAD
 
       .state('encargadoSucursal', {
         url: '/encargadoSucursal',
@@ -84,6 +85,42 @@
           }]
         },
         controller: 'controladorEditarEncargadoSucursal',
+=======
+      
+      .state('entidades', {
+        url: '/entidades',
+        templateUrl: './components/entidades/entidades.view.html',
+        data:{
+          pageTitle: 'Registrar entidad'
+        },
+        params: {
+          objEntidadTemp: ''
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/entidades/entidades.controller.js')
+          }]
+        },
+        controller: 'controladorEntidades',
+        controllerAs: 'vm'
+      })
+
+      .state('convenio', {
+        url: '/convenio',
+        templateUrl: './components/convenios/convenios.view.html',
+        data:{
+          pageTitle: 'Registrar convenio'
+        },
+        params: {
+          objEntidadTemp: ''
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/convenios/convenios.controller.js')
+          }]
+        },
+        controller: 'controladorConvenios',
+>>>>>>> origin/Luisk
         controllerAs: 'vm'
       })
 /*
@@ -107,17 +144,16 @@
 */
      
 
-    
-/*
+  
       .state('logIn', {
         url: '/logIn',
-        templateUrl: './components/logIn/logIn.view.html',
+        templateUrl: './components/inicioSesion/inicioSesion.view.html',
         data:{
           pageTitle: 'Iniciar sesión'
         },
         resolve: {
           load: ['$ocLazyLoad', ($ocLazyLoad) => {
-            return $ocLazyLoad.load('./components/logIn/logIn.controller.js')
+            return $ocLazyLoad.load('./components/inicioSesion/inicioSesion.controller.js')
           }]
         },
         controller: 'controladorLogin',
@@ -125,7 +161,7 @@
       })
 
 
-*/
+
      
       
 

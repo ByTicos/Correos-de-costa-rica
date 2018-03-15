@@ -17,4 +17,24 @@ class Usuario{
         this.sucursalAsignada = pSucursalAsignada;
     } 
       
+          
+}
+
+class Entidad{
+    constructor(pNombre, pCedulaJuridica){
+        this.nombre = pNombre;
+        this.cedulaJuridica = pCedulaJuridica;
+        this.convenios = [];
+    }
+
+    registrarConvenio(pConvenio){
+        this.convenios.push(pConvenio);
+    }
+}
+
+class Convenio{
+    constructor(pNombreEntidad, pTipoTramite){
+        this.nombreEntidad = pNombreEntidad;
+        this.tipoTramite = pTipoTramite;
+    }
 }
