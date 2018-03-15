@@ -21,8 +21,10 @@
         let publicAPI = {
             addUsuario: _addUsuario,
             getUsuarios: _getUsuarios,
-            actualizarUsuario:_actualizarUsuario
-        }
+            actualizarUsuario:_actualizarUsuario,
+            addPaquete: _addPaquete,
+            getPaquete: _getPaquete
+                }
         return publicAPI
 
         function _addUsuario(pNuevoUsuario) {
@@ -52,6 +54,7 @@
             }
             return listaUsuarios;
         };
+        
         function _actualizarUsuario(pUsuario) {
             let listaUsuarios = _getUsuarios();
 
@@ -61,6 +64,35 @@
                 }
             }
             actualizarLocal(listaUsuarios);
+        }
+
+        function _addPaquete(pNuevoPaquete) {
+            let listaPaquetes = _getPaquete();
+            let respuesta = true;
+            
+            listaPaquetes.push(pNuevoPaquete);
+
+            asyncLocalStorage.setItem('paquetesLS', listaPaquetes).then((response) => {
+                respuesta = response;
+            });
+
+        }
+
+        function _getPaquete() {
+            let listaPaquetes = [];
+            let listaPaquetesLocal = JSON.parse(localStorage.getItem('paquetesLS'));
+
+            if(listaPaquetesLocal == null){
+               listaPaquetes = [];
+ 
+            }else{
+                listaPaquetesLocal.forEach(objPaquete => {
+                    let objPaqueteTemp = new Paquete(objPaquete.traking, objPaquete.distribuidor, objPaquete.precio, objPaquete.peso, objPaquete.tipoArticulo, objPaquete.descripcion );
+
+                    listaPaquetes.push(objPaqueteTemp);
+                });
+            }
+            return listaPaquetes;
         }
 
         function actualizarLocal(plistaActualizada) {

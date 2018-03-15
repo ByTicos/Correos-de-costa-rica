@@ -14,6 +14,20 @@ class Usuario{
         this.distrito = pDistrito;
         this.direccionExacta = pDireccionExacta;
         this.tipo = pTipo;
+
+        this.listaPaquetes = [];
     } 
       
+}
+
+class Paquete{
+    constructor(pNumeroTraking, pDistribuidor, pPrecio, pPeso, pTipoArticulo, pDescripcion){
+        this.traking = pNumeroTraking;
+        this.distribuidor = pDistribuidor;
+        this.precio = pPrecio;
+        this.peso = pPeso;
+        this.tipoArticulo = pTipoArticulo;
+        this.descripcion = pDescripcion;
+
+    }
 }

@@ -50,6 +50,24 @@
         controller: 'controladorEditarClientes',
         controllerAs: 'vm'
       })
+
+      .state('paquete',{
+        url: '/paquete',
+        templateUrl: './components/paquetes/registroPaquete.view.html',
+        data: {
+          pageTitle: 'Registro pre alerta'
+        },
+         params: {
+          objPaqueteTemp: ''
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/paquetes/registroPaquete.controller.js')
+          }]
+        },
+        controller: 'controladorPaquetes',
+        controllerAs: 'vm'
+      })
 /*
       .state('admin', {
         url: '/admin',
