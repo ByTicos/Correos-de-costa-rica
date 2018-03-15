@@ -107,17 +107,16 @@
 */
      
 
-    
-/*
+  
       .state('logIn', {
         url: '/logIn',
-        templateUrl: './components/logIn/logIn.view.html',
+        templateUrl: './components/inicioSesion/inicioSesion.view.html',
         data:{
           pageTitle: 'Iniciar sesión'
         },
         resolve: {
           load: ['$ocLazyLoad', ($ocLazyLoad) => {
-            return $ocLazyLoad.load('./components/logIn/logIn.controller.js')
+            return $ocLazyLoad.load('./components/inicioSesion/inicioSesion.controller.js')
           }]
         },
         controller: 'controladorLogin',
@@ -125,7 +124,7 @@
       })
 
 
-*/
+
      
       
 
