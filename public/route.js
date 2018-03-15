@@ -15,6 +15,41 @@
           pageTitle: 'Correos de Costa Rica'
         }
       })
+      .state('cliente', {
+        url: '/cliente',
+        templateUrl: './components/clientes/registroCliente.view.html',
+        data:{
+          pageTitle: 'Registro cliente'
+        },
+        params: {
+          objClienteTemp: ''
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/clientes/registroCliente.controller.js')
+          }]
+        },
+        controller: 'controladorClientes',
+        controllerAs: 'vm'
+      })
+
+      .state('editarCliente', {
+        url: '/editarCliente',
+        templateUrl: './components/clientes/editarClientes.view.html',
+        data:{
+          pageTitle: 'Editar cliente'
+        },
+        params: {
+          objClienteTemp: ''
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/clientes/editarClientes.controller.js')
+          }]
+        },
+        controller: 'controladorEditarClientes',
+        controllerAs: 'vm'
+      })
 /*
       .state('admin', {
         url: '/admin',
