@@ -1,0 +1,24 @@
+<section class="container">
+  <form action="" ng-submit="vm.registrarConvenio(vm.nuevoConvenio)">
+    <div class="form-group">
+      <label for="">Tipo de convenio</label>
+      <input type="text" class="form-control" ng-model="vm.nuevoConvenio.tipoTramite">
+    </div>
+    <button type="submit">Registrar</button>
+  </form>
+</section>
+<section class="container pt-5">
+  <table class="table table-responsive">
+    <legend>Convenios registrados</legend>
+    <thead>
+      <tr>
+        <th>Tipo de convenio</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="convenio in vm.listaConvenios">
+        <td>{{convenio.tipoTramite}}</td>
+      </tr>
+    </tbody>
+  </table>
+</section>

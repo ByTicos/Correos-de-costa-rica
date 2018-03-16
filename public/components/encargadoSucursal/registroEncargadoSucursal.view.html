@@ -1,0 +1,101 @@
+<section class="container">
+  <form action="" class="form-horizontal" ng-submit="vm.registrarEncargadoSucursal(vm.nuevoEncargadoSucursal)">
+      <div class="form-group">
+          <label for="">Cédula</label>
+          <input type="text" class="form-control" ng-model="vm.nuevoEncargadoSucursal.cedula">
+      </div>
+      <div class="form-group">
+          <label for="">Foto</label>
+          <input type="text" class="form-control" ng-model="vm.nuevoEncargadoSucursal.foto">
+      </div>
+      <div class="form-group">
+          <label for="">Primer nombre</label>
+          <input type="text" class="form-control" ng-model="vm.nuevoEncargadoSucursal.primerNombre">
+      </div>
+      <div class="form-group">
+          <label for="">Segundo nombre</label>
+          <input type="text" class="form-control" ng-model="vm.nuevoEncargadoSucursal.segundoNombre">
+      </div>
+      <div class="form-group">
+          <label for="">Primer apellido</label>
+          <input type="text" class="form-control" ng-model="vm.nuevoEncargadoSucursal.primerApellido">
+      </div>
+      <div class="form-group">
+          <label for="">Segundo apellido</label>
+          <input type="text" class="form-control" ng-model="vm.nuevoEncargadoSucursal.segundoApellido">
+      </div>
+      <div class="form-group">
+          <label for="">Correo electrónico</label>
+          <input type="text" class="form-control" ng-model="vm.nuevoEncargadoSucursal.correo">
+      </div>
+      <div class="form-group">
+          <label for="">Teléfono</label>
+          <input type="text" class="form-control" ng-model="vm.nuevoEncargadoSucursal.telefono">
+      </div>
+      <div class="form-group">
+          <label for="">Fecha de nacimiento</label>
+          <input type="date" class="form-control" ng-model="vm.nuevoEncargadoSucursal.fechaNacimiento">
+      </div>
+      <div class="form-group">
+          <label for="">Provincia</label>
+          <input type="text" class="form-control" ng-model="vm.nuevoEncargadoSucursal.provincia">
+      </div>
+      <div class="form-group">
+          <label for="">Cantón</label>
+          <input type="text" class="form-control" ng-model="vm.nuevoEncargadoSucursal.canton">
+      </div>
+      <div class="form-group">
+          <label for="">Distrito</label>
+          <input type="text" class="form-control" ng-model="vm.nnuevoEncargadoSucursal.distrito">
+      </div>
+      <div class="form-group">
+          <label for="">Dirección exacta</label>
+          <input type="text" class="form-control" ng-model="vm.nuevoEncargadoSucursal.direccionExacta">
+      </div>
+      <div class="form-group">
+        <label for="">Sucursal Asignada</label>
+        <input type="text" class="form-control" ng-model="vm.nuevoEncargadoSucursal.sucursalAsignada">
+    </div>
+      <button type="submit">Registrar</button>
+  </form>
+
+  <table class="table table-responsive">
+      <thead>
+          <tr>
+              <th>Cédula</th>
+              <th>Foto</th>
+              <th>Primer nombre</th>
+              <th>Segundo nombre</th>
+              <th>Primer apellido</th>
+              <th>Segundo apellido</th>
+              <th>Correo electrónico</th>
+              <th>Teléfono</th>
+              <th>Fecha de nacimiento</th>
+              <th>Provincia</th>
+              <th>Cantón</th>
+              <th>Distrito</th>
+              <th>Dirección exacta</th>
+              <th>Sucursal Asignada</th>
+              <th>Editar</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr ng-repeat="usuario in vm.listaEncargadoSucursal">
+              <td>{{usuario.cedula}}</td>
+              <td>{{usuario.foto}}</td>
+              <td>{{usuario.primerNombre}}</td>
+              <td>{{usuario.segundoNombre}}</td>
+              <td>{{usuario.primerApellido}}</td>
+              <td>{{usuario.segundoApellido}}</td>
+              <td>{{usuario.correo}}</td>
+              <td>{{usuario.telefono}}</td>
+              <td>{{usuario.fechaNacimiento | date}}</td>
+              <td>{{usuario.provincia}}</td>
+              <td>{{usuario.canton}}</td>
+              <td>{{usuario.distrito}}</td>
+              <td>{{usuario.direccionExacta}}</td>
+              <td>{{usuario.sucursalAsignada}}</td>
+          </tr>
+      </tbody>
+  </table>
+</section>

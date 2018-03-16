@@ -1,5 +1,5 @@
 class Usuario{
-    constructor(pCedula, pFoto, pPrimerNombre, pSegundoNombre, pPrimerApellido, pSegundoApellido, pEmail, pTelefono, pfechaNacimiento, pProvincia, pCanton, pDistrito, pDireccionExacta, pTipo){
+    constructor(pCedula, pFoto, pPrimerNombre, pSegundoNombre, pPrimerApellido, pSegundoApellido, pEmail, pTelefono, pfechaNacimiento, pProvincia, pCanton, pDistrito, pDireccionExacta, pTipo,pSucursalAsignada){
         this.cedula = pCedula;
         this.foto = pFoto;
         this.primerNombre = pPrimerNombre;
@@ -14,6 +14,7 @@ class Usuario{
         this.distrito = pDistrito;
         this.direccionExacta = pDireccionExacta;
         this.tipo = pTipo;
+<<<<<<< HEAD
 
         this.listaPaquetes = [];
     } 
@@ -29,5 +30,29 @@ class Paquete{
         this.tipoArticulo = pTipoArticulo;
         this.descripcion = pDescripcion;
 
+=======
+        this.sucursalAsignada = pSucursalAsignada;
+    } 
+      
+          
+}
+
+class Entidad{
+    constructor(pNombre, pCedulaJuridica){
+        this.nombre = pNombre;
+        this.cedulaJuridica = pCedulaJuridica;
+        this.convenios = [];
+    }
+
+    registrarConvenio(pConvenio){
+        this.convenios.push(pConvenio);
+    }
+}
+
+class Convenio{
+    constructor(pNombreEntidad, pTipoTramite){
+        this.nombreEntidad = pNombreEntidad;
+        this.tipoTramite = pTipoTramite;
+>>>>>>> Dev
     }
 }
