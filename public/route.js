@@ -200,7 +200,23 @@
 
 
 
-     
+      .state('repartidor', {
+        url: '/repartidor',
+        templateUrl: './components/repartidores/registroRepartidor.view.html',
+        data:{
+          pageTitle: 'Registro repartidor'
+        },
+        params: {
+          objClienteTemp: ''
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/repartidores/registroRepartidor.controller.js')
+          }]
+        },
+        controller: 'controladorRepartidores',
+        controllerAs: 'vm'
+      })
       
 
     
