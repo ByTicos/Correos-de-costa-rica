@@ -198,6 +198,21 @@
         controllerAs: 'vm'
       })
 
+      .state('tarjetas', {
+        url: '/tarjetas',
+        templateUrl: './components/tarjetas/tarjetas.view.html',
+        data:{
+          pageTitle: 'Registrar Tarjetas'
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/tarjetas/cards.controller.js')
+          }]
+        },
+        controller: 'controladorTarjetas',
+        controllerAs: 'vm'
+      });
+
 
 
      
