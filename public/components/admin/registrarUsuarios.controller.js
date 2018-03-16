@@ -12,6 +12,11 @@
     vm.listaUsuarios = listarUsuarios();
     vm.nuevoUsuario = {};
 
+    vm.editUsuarios = (pUsuario) =>{
+      $state.go('editarUsuarios', {objUsuarioTemp : JSON.stringify(pUsuario)});
+
+    };
+
     vm.registrarUsuario = (pNuevoUsuario) => {
 
       let objNuevoUsuario = new Usuario(pNuevoUsuario.cedula, pNuevoUsuario.foto, pNuevoUsuario.primerNombre, pNuevoUsuario.segundoNombre, pNuevoUsuario.primerApellido, pNuevoUsuario.segundoApellido, pNuevoUsuario.correo, pNuevoUsuario.telefono, pNuevoUsuario.fechaNacimiento, pNuevoUsuario.provincia, pNuevoUsuario.canton, pNuevoUsuario.distrito,pNuevoUsuario.direccionExacta, pNuevoUsuario.tipo,pNuevoUsuario.sucursalAsignada);
