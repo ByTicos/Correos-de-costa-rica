@@ -10,6 +10,7 @@
   function controladorPaquetes($stateParams, $state,$location, servicioUsuarios){
    let vm = this;
    vm.nuevoPaquete = {};
+   
    vm.listaPaquetes = listarPaquetes();
 
    listarPaquetes();
