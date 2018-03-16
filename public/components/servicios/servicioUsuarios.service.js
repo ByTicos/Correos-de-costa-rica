@@ -21,9 +21,11 @@
         let publicAPI = {
             addUsuario: _addUsuario,
             getUsuarios: _getUsuarios,
-            actualizarUsuario:_actualizarUsuario,
+            actualizarUsuario: _actualizarUsuario,
             addPaquete: _addPaquete,
-            getPaquete: _getPaquete
+            getPaquete: _getPaquete,
+            actualizarPaquete: _actualizarPaquete
+
                 }
         return publicAPI
 
@@ -76,7 +78,9 @@
                 respuesta = response;
             });
 
-        }
+           return respuesta;
+        };
+
 
         function _getPaquete() {
             let listaPaquetes = [];
@@ -93,10 +97,25 @@
                 });
             }
             return listaPaquetes;
+        };
+
+        function _actualizarPaquete(pObjpaquete) {
+            let listaPaquetes = _getPaquete();
+
+            for (let i = 0; i < listaPaquetes.length; i++) {
+                if (listaPaquetes[i].traking == pObjpaquete.traking ) {
+                   
+                    listaPaquetes[i] = pObjpaquete;
+                }
+            }
+            actualizarPaqueteLocal (listaPaquetes);
         }
 
         function actualizarLocal(plistaActualizada) {
             localStorage.setItem('usuariosLS', JSON.stringify(plistaActualizada));
+        }
+        function actualizarPaqueteLocal(plistaPaqueteActualizada){
+            localStorage.setItem('paquetesLS', JSON.stringify(plistaPaqueteActualizada));
         }
     }
 })();

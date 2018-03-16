@@ -9,30 +9,40 @@
 
   function controladorPaquetes($stateParams, $state,$location, servicioUsuarios){
    let vm = this;
-
-  vm.listaPaquetes = listarPaquetes();
    vm.nuevoPaquete = {};
+   vm.listaPaquetes = listarPaquetes();
 
-   listarPaquetes ();
+   listarPaquetes();
 
-
+   vm.editPrealerta = (pPaquete)=>{
+   $state.go('editarPaquete', {objPaqueteTemp : JSON.stringify(pPaquete)});
+   };
 
    vm.registrarPaquete = (pnuevoPaquete) => {
 
      let objNuevoPaquete = new Paquete(pnuevoPaquete.traking, pnuevoPaquete.distribuidor, pnuevoPaquete.precio, pnuevoPaquete.peso, pnuevoPaquete.tipoArticulo, pnuevoPaquete.descripcion );
 
-     console.log(objNuevoPaquete);
+     //console.log(objNuevoPaquete);
      
-     servicioUsuarios.addPaquete(objNuevoPaquete);
+     let registro = servicioUsuarios.addPaquete(objNuevoPaquete);
 
+     if (registro == true) {
+        swal("Registro exitoso", "El paquete ha sido registrado correctamente", "success", {
+          button: "Aceptar",
+        });
+
+      }
+      else {
+        swal("Registro fallido", "Ha ocurrido un error, intente nuevamente", "error", {
+          button: "Aceptar",
+        });
+      }
      vm.nuevoPaquete = null;
-
-     listarPaquetes();
-
-   
+     listarPaquetes ();
+     
    }
 
-    function listarPaquetes () {
+    function listarPaquetes() {
       vm.listaPaquetes = servicioUsuarios.getPaquete();
     }
 

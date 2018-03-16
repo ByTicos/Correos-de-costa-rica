@@ -14,9 +14,11 @@ class Usuario{
         this.distrito = pDistrito;
         this.direccionExacta = pDireccionExacta;
         this.tipo = pTipo;
-<<<<<<< HEAD
-
         this.listaPaquetes = [];
+        this.sucursalAsignada = pSucursalAsignada;
+        
+
+
     } 
       
 }
@@ -30,8 +32,6 @@ class Paquete{
         this.tipoArticulo = pTipoArticulo;
         this.descripcion = pDescripcion;
 
-=======
-        this.sucursalAsignada = pSucursalAsignada;
     } 
       
           
@@ -53,6 +53,5 @@ class Convenio{
     constructor(pNombreEntidad, pTipoTramite){
         this.nombreEntidad = pNombreEntidad;
         this.tipoTramite = pTipoTramite;
->>>>>>> Dev
     }
 }

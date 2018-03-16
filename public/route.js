@@ -50,7 +50,6 @@
         controller: 'controladorEditarClientes',
         controllerAs: 'vm'
       })
-<<<<<<< HEAD
 
       .state('paquete',{
         url: '/paquete',
@@ -67,8 +66,26 @@
           }]
         },
         controller: 'controladorPaquetes',
-=======
-<<<<<<< HEAD
+        controllerAs: 'vm'
+      })
+
+      .state('editarPaquete', {
+        url: '/editarPaquete',
+        templateUrl: './components/paquetes/editPaquete.view.html',
+        data:{
+          pageTitle: 'Editar Paquete'
+        },
+        params: {
+          objPaqueteTemp: ''
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/paquetes/editPaquete.controller.js')
+          }]
+        },
+        controller: 'controladorEditarPaquetes',
+        controllerAs: 'vm'
+      })
 
       .state('encargadoSucursal', {
         url: '/encargadoSucursal',
@@ -103,8 +120,7 @@
           }]
         },
         controller: 'controladorEditarEncargadoSucursal',
-=======
-      
+      })      
       .state('entidades', {
         url: '/entidades',
         templateUrl: './components/entidades/entidades.view.html',
@@ -138,8 +154,6 @@
           }]
         },
         controller: 'controladorConvenios',
->>>>>>> origin/Luisk
->>>>>>> Dev
         controllerAs: 'vm'
       })
 /*
