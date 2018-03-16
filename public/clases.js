@@ -34,8 +34,16 @@ class Paquete{
 
     } 
       
-          
 }
+
+// class Encargado extends Usuario{
+//     constructor(pCedula, pFoto, pPrimerNombre, pSegundoNombre, pPrimerApellido, pSegundoApellido, pEmail, pTelefono, pfechaNacimiento, pProvincia, pCanton, pDistrito, pDireccionExacta, pTipo,pSucursalAsignada){
+//         super(pCedula, pFoto, pPrimerNombre, pSegundoNombre, pPrimerApellido, pSegundoApellido, pEmail, pTelefono, pfechaNacimiento, pProvincia, pCanton, pDistrito, pDireccionExacta, pTipo);
+//         this.sucursalAsignada = pSucursalAsignada;
+//     }
+// }
+          
+
 
 class Entidad{
     constructor(pNombre, pCedulaJuridica){

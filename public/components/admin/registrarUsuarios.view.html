@@ -1,60 +1,72 @@
 <section class="container">
-  <form action="" class="form-horizontal" ng-submit="vm.registrarEncargadoSucursal(vm.nuevoEncargadoSucursal)">
+  <form action="" class="form-horizontal" ng-submit="vm.registrarUsuario(vm.nuevoUsuario)">
+     
+    <h3>Seleccione el rol</h3>
+    <div class="form-group">
+        <select ng-model = 'vm.nuevoUsuario.tipo'>
+            <option value="">Seleccione el usuario a registrar</option>
+            <option value="1">Cliente</option>
+            <option value="2">Encargado de Sucursal</option>
+            <option value="3">Repartidores</option>
+            <option value="4">Encargado de Aduana</option>
+          </select>
+     </div>
+
       <div class="form-group">
           <label for="">Cédula</label>
-          <input type="text" class="form-control" ng-model="vm.nuevoEncargadoSucursal.cedula">
+          <input type="text" class="form-control" ng-model="vm.nuevoUsuario.cedula">
       </div>
       <div class="form-group">
           <label for="">Foto</label>
-          <input type="text" class="form-control" ng-model="vm.nuevoEncargadoSucursal.foto">
+          <input type="text" class="form-control" ng-model="vm.nuevoUsuario.foto">
       </div>
       <div class="form-group">
           <label for="">Primer nombre</label>
-          <input type="text" class="form-control" ng-model="vm.nuevoEncargadoSucursal.primerNombre">
+          <input type="text" class="form-control" ng-model="vm.nuevoUsuario.primerNombre">
       </div>
       <div class="form-group">
           <label for="">Segundo nombre</label>
-          <input type="text" class="form-control" ng-model="vm.nuevoEncargadoSucursal.segundoNombre">
+          <input type="text" class="form-control" ng-model="vm.nuevoUsuario.segundoNombre">
       </div>
       <div class="form-group">
           <label for="">Primer apellido</label>
-          <input type="text" class="form-control" ng-model="vm.nuevoEncargadoSucursal.primerApellido">
+          <input type="text" class="form-control" ng-model="vm.nuevoUsuario.primerApellido">
       </div>
       <div class="form-group">
           <label for="">Segundo apellido</label>
-          <input type="text" class="form-control" ng-model="vm.nuevoEncargadoSucursal.segundoApellido">
+          <input type="text" class="form-control" ng-model="vm.nuevoUsuario.segundoApellido">
       </div>
       <div class="form-group">
           <label for="">Correo electrónico</label>
-          <input type="text" class="form-control" ng-model="vm.nuevoEncargadoSucursal.correo">
+          <input type="text" class="form-control" ng-model="vm.nuevoUsuario.correo">
       </div>
       <div class="form-group">
           <label for="">Teléfono</label>
-          <input type="text" class="form-control" ng-model="vm.nuevoEncargadoSucursal.telefono">
+          <input type="text" class="form-control" ng-model="vm.nuevoUsuario.telefono">
       </div>
       <div class="form-group">
           <label for="">Fecha de nacimiento</label>
-          <input type="date" class="form-control" ng-model="vm.nuevoEncargadoSucursal.fechaNacimiento">
+          <input type="date" class="form-control" ng-model="vm.nuevoUsuario.fechaNacimiento">
       </div>
-      <div class="form-group">
+      <div class="form-group" ng-show = 'vm.nuevoUsuario.tipo == 1'>
           <label for="">Provincia</label>
-          <input type="text" class="form-control" ng-model="vm.nuevoEncargadoSucursal.provincia">
+          <input type="text" class="form-control" ng-model="vm.nuevoUsuario.provincia">
       </div>
-      <div class="form-group">
+      <div class="form-group" ng-show = 'vm.nuevoUsuario.tipo == 1'>
           <label for="">Cantón</label>
-          <input type="text" class="form-control" ng-model="vm.nuevoEncargadoSucursal.canton">
+          <input type="text" class="form-control" ng-model="vm.nuevoUsuario.canton">
       </div>
-      <div class="form-group">
+      <div class="form-group" ng-show = 'vm.nuevoUsuario.tipo == 1'>
           <label for="">Distrito</label>
-          <input type="text" class="form-control" ng-model="vm.nnuevoEncargadoSucursal.distrito">
+          <input type="text" class="form-control" ng-model="vm.nuevoUsuario.distrito">
       </div>
-      <div class="form-group">
+      <div class="form-group" ng-show = 'vm.nuevoUsuario.tipo == 1'>
           <label for="">Dirección exacta</label>
-          <input type="text" class="form-control" ng-model="vm.nuevoEncargadoSucursal.direccionExacta">
+          <input type="text" class="form-control" ng-model="vm.nuevoUsuario.direccionExacta">
       </div>
-      <div class="form-group">
+      <div class="form-group" ng-show = 'vm.nuevoUsuario.tipo == 2'>
         <label for="">Sucursal Asignada</label>
-        <input type="text" class="form-control" ng-model="vm.nuevoEncargadoSucursal.sucursalAsignada">
+        <input type="text" class="form-control" ng-model="vm.nuevoUsuario.sucursalAsignada">
     </div>
       <button type="submit">Registrar</button>
   </form>
