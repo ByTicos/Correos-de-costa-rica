@@ -51,39 +51,39 @@
         controllerAs: 'vm'
       })
 
-      .state('encargadoSucursal', {
-        url: '/encargadoSucursal',
-        templateUrl: './components/encargadoSucursal/registroEncargadoSucursal.view.html',
+      .state('registrarUsuarios', {
+        url: '/registrarUsuarios',
+        templateUrl: './components/admin/registrarUsuarios.view.html',
         data:{
-          pageTitle: 'Registro Encargado de Sucursal'
+          pageTitle: 'Registro Usuarios'
         },
         params: {
           objClienteTemp: ''
         },
         resolve: {
           load: ['$ocLazyLoad', ($ocLazyLoad) => {
-            return $ocLazyLoad.load('./components/encargadoSucursal/registroEncargadoSucursal.controller.js')
+            return $ocLazyLoad.load('./components/admin/registrarUsuarios.controller.js')
           }]
         },
-        controller: 'controladorEncargadoSucursal',
+        controller: 'controladorRegistrarUsuarios',
         controllerAs: 'vm'
       })
 
-      .state('editarEncargadoSucursal', {
-        url: '/editarEncargadoSucursal',
-        templateUrl: './components/encargadoSucursal/editarEncargadoSucursal.view.html',
+      .state('editarUsuarios', {
+        url: '/editarUsuarios',
+        templateUrl: './components/admin/editarUsuarios.view.html',
         data:{
-          pageTitle: 'Editar Encargado de Sucursal'
+          pageTitle: 'Editar Usuarios'
         },
         params: {
           objClienteTemp: ''
         },
         resolve: {
           load: ['$ocLazyLoad', ($ocLazyLoad) => {
-            return $ocLazyLoad.load('./components/encargadoSucursal/editarEncargadoSucursal.controller.js')
+            return $ocLazyLoad.load('./components/admin/editarUsuarios.controller.js')
           }]
         },
-        controller: 'controladorEditarEncargadoSucursal',
+        controller: 'controladorEditarUsuarios',
         controllerAs: 'vm'
       })
 /*
