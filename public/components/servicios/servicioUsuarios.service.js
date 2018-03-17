@@ -50,7 +50,7 @@
             else {
                 listaUsuariosLocal.forEach(objUsuario => {
                     let objUsuarioTemp = new Usuario(objUsuario.cedula, objUsuario.foto, objUsuario.primerNombre, objUsuario.segundoNombre, objUsuario.primerApellido, objUsuario.segundoApellido, objUsuario.correo, objUsuario.telefono, objUsuario.fechaNacimiento, objUsuario.provincia, objUsuario.canton, objUsuario.distrito, objUsuario.direccionExacta, objUsuario.tipo,objUsuario.sucursalAsignada);
-
+                    objUsuarioTemp.cambiarEstado(objUsuario.estado);
                     listaUsuarios.push(objUsuarioTemp);
                 });
             }

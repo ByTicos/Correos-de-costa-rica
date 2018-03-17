@@ -39,13 +39,14 @@
     vm.eliminarUsuario = (pEstado) =>{
       let listaUsuarios = servicioUsuarios.getUsuarios();
       listaUsuarios.forEach(objUsuario => {
-        if(objUsuario.correo = objNuevoUsuario.correo){
+        if(objUsuario.correo == objNuevoUsuario.correo){
           objUsuario.cambiarEstado(pEstado);
         }
         servicioUsuarios.actualizarUsuario(objUsuario);
       });
       $state.go('registrarUsuarios');
     }
+    
 
     vm.editUsuarios = (pUsuario) => {
       let listaUsuarios = servicioUsuarios.getUsuarios();
@@ -57,7 +58,6 @@
           objUsuario.segundoNombre = pUsuario.segundoNombre;
           objUsuario.primerApellido = pUsuario.primerApellido;
           objUsuario.segundoApellido = pUsuario.segundoApellido;
-          objUsuario.correo = pUsuario.correo;
           objUsuario.telefono = pUsuario.telefono;
           objUsuario.fechaNacimiento = pUsuario.fechaNacimiento;
           objUsuario.provincia = pUsuario.provincia;
@@ -66,7 +66,6 @@
           objUsuario.direccionExacta = pUsuario.direccionExacta;
           objUsuario.tipo = pUsuario.tipo;
           objUsuario.sucursalAsignada = pUsuario.sucursalAsignada;
-          objUsuario.contrasenna = pUsuario.contrasenna;
 
           servicioUsuarios.actualizarUsuario(objUsuario);
 
