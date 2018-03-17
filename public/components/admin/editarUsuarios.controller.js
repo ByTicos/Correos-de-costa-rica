@@ -36,7 +36,18 @@
     vm.editarUsuarios.tipo = objNuevoUsuario.tipo;
     vm.editarUsuarios.sucursalAsignada = objNuevoUsuario.sucursalAsignada;
 
-    vm.editUsuario = (pUsuario) => {
+    vm.eliminarUsuario = (pEstado) =>{
+      let listaUsuarios = servicioUsuarios.getUsuarios();
+      listaUsuarios.forEach(objUsuario => {
+        if(objUsuario.correo = objNuevoUsuario.correo){
+          objUsuario.cambiarEstado(pEstado);
+        }
+        servicioUsuarios.actualizarUsuario(objUsuario);
+      });
+      $state.go('registrarUsuarios');
+    }
+
+    vm.editUsuarios = (pUsuario) => {
       let listaUsuarios = servicioUsuarios.getUsuarios();
 
       listaUsuarios.forEach(objUsuario => {
@@ -64,7 +75,7 @@
       swal("Edición exitosa", "Usuario editado correctamente", "success", {
         button: "Aceptar",
       });
-      $state.go('registrarUsuarios')
+      $state.go('registrarUsuarios');
     }
   }
 
