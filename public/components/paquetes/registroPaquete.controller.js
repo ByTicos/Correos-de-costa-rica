@@ -21,7 +21,7 @@
 
    vm.registrarPaquete = (pnuevoPaquete) => {
 
-     let objNuevoPaquete = new Paquete(pnuevoPaquete.traking, pnuevoPaquete.distribuidor, pnuevoPaquete.precio, pnuevoPaquete.peso, pnuevoPaquete.tipoArticulo, pnuevoPaquete.descripcion );
+     let objNuevoPaquete = new Paquete(pnuevoPaquete.tracking, pnuevoPaquete.distribuidor, pnuevoPaquete.precio, pnuevoPaquete.peso, pnuevoPaquete.tipoArticulo, pnuevoPaquete.descripcion );
 
      //console.log(objNuevoPaquete);
      
@@ -38,13 +38,15 @@
           button: "Aceptar",
         });
       }
+      
      vm.nuevoPaquete = null;
      listarPaquetes ();
      
    }
 
     function listarPaquetes() {
-      vm.listaPaquetes = servicioUsuarios.getPaquete();
+      let listaPaquetes = servicioUsuarios.getPaquete();
+      return listaPaquetes;
     }
 
 

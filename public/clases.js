@@ -26,15 +26,20 @@ class Usuario{
 }
 
 class Paquete{
-    constructor(pNumeroTraking, pDistribuidor, pPrecio, pPeso, pTipoArticulo, pDescripcion){
-        this.traking = pNumeroTraking;
+    constructor(pNumeroTracking, pDistribuidor, pPrecio, pPeso, pTipoArticulo, pDescripcion){
+        this.tracking = pNumeroTracking;
         this.distribuidor = pDistribuidor;
         this.precio = pPrecio;
         this.peso = pPeso;
         this.tipoArticulo = pTipoArticulo;
         this.descripcion = pDescripcion;
+        this.estado = 'activo';
 
     } 
+
+    cambiarEstadoDeActividad(pEstado){
+        this.estado = pEstado;
+    }
       
 }
 

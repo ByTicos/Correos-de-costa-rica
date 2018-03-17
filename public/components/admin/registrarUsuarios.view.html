@@ -68,6 +68,10 @@
             <label for="">Sucursal Asignada</label>
             <input type="text" class="form-control" ng-model="vm.nuevoUsuario.sucursalAsignada">
         </div>
+        <div class="form-group" ng-show = 'vm.nuevoUsuario.tipo == 4'>
+            <label for="">Puesto</label>
+            <input type="text" class="form-control" ng-model="vm.nuevoUsuario.puesto">
+          </div>
         <button type="submit">Registrar</button>
     </form>
 
@@ -127,6 +131,9 @@
                 <td>{{usuario.correo}}</td>
                 <td>{{usuario.telefono}}</td>
                 <td>{{usuario.tipo}}</td>
+                <td>
+                    <button class="btn " type="button" ng-click="vm.editUsuarios(usuario)">Editar</button>
+                </td>
             </tr>
         </tbody>
     </table>

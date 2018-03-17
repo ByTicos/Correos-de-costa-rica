@@ -19,7 +19,7 @@
 
     vm.registrarUsuario = (pNuevoUsuario) => {
 
-      let objNuevoUsuario = new Usuario(pNuevoUsuario.cedula, pNuevoUsuario.foto, pNuevoUsuario.primerNombre, pNuevoUsuario.segundoNombre, pNuevoUsuario.primerApellido, pNuevoUsuario.segundoApellido, pNuevoUsuario.correo, pNuevoUsuario.telefono, pNuevoUsuario.fechaNacimiento, pNuevoUsuario.provincia, pNuevoUsuario.canton, pNuevoUsuario.distrito,pNuevoUsuario.direccionExacta, pNuevoUsuario.tipo,pNuevoUsuario.sucursalAsignada);
+      let objNuevoUsuario = new Usuario(pNuevoUsuario.cedula, pNuevoUsuario.foto, pNuevoUsuario.primerNombre, pNuevoUsuario.segundoNombre, pNuevoUsuario.primerApellido, pNuevoUsuario.segundoApellido, pNuevoUsuario.correo, pNuevoUsuario.telefono, pNuevoUsuario.fechaNacimiento, pNuevoUsuario.provincia, pNuevoUsuario.canton, pNuevoUsuario.distrito,pNuevoUsuario.direccionExacta, pNuevoUsuario.tipo,pNuevoUsuario.sucursalAsignada, pNuevoUsuario.puesto);
 
       let registro = servicioUsuarios.addUsuario(objNuevoUsuario);
 
