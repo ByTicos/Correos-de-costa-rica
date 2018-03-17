@@ -17,9 +17,11 @@ class Usuario{
         this.listaPaquetes = [];
         this.sucursalAsignada = pSucursalAsignada;
         this.puesto = pPuesto;
-
-
+        this.estado = 'activo';
     } 
+    cambiarEstado(pEstado){
+        this.estado = pEstado;
+    }
       
 }
 
