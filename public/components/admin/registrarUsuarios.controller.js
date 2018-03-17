@@ -9,8 +9,13 @@
   function controladorRegistrarUsuarios($state, $stateParams, $location, servicioUsuarios) {
     let vm = this;
 
-    vm.listaEncargadoSucursal = listarEncargadoSucursal();
+    vm.listaUsuarios = listarUsuarios();
     vm.nuevoUsuario = {};
+
+    vm.editUsuarios = (pUsuario) =>{
+      $state.go('editarUsuarios', {objUsuarioTemp : JSON.stringify(pUsuario)});
+
+    };
 
     vm.registrarUsuario = (pNuevoUsuario) => {
 
@@ -32,15 +37,20 @@
 
     }
 
-    function listarEncargadoSucursal(){
+    function listarUsuarios(){
       let listaUsuarios = servicioUsuarios.getUsuarios();
-      let listaEncargadoSucursal = [];
-      listaUsuarios.forEach(usuario => {
-        if (usuario.tipo == '2') {
-          listaEncargadoSucursal.push(usuario);
-        }
-      });
-      return listaEncargadoSucursal;
+      return listaUsuarios;
     }
   }
 })();
+
+// function listarEncargadoSucursal(){
+//   let listaUsuarios = servicioUsuarios.getUsuarios();
+//   let listaEncargadoSucursal = [];
+//   listaUsuarios.forEach(usuario => {
+//     if (usuario.tipo == '2') {
+//       listaEncargadoSucursal.push(usuario);
+//     }
+//   });
+//   return listaEncargadoSucursal;
+// }

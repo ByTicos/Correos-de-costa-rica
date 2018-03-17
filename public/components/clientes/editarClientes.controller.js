@@ -51,7 +51,7 @@
           objUsuario.canton = pUsuario.canton;
           objUsuario.distrito = pUsuario.distrito;
           objUsuario.direccionExacta = pUsuario.direccionExacta;
-          objUsuario.contrasenna = pUsuario.contrasenna;
+    
 
           servicioUsuarios.actualizarUsuario(objUsuario);
 

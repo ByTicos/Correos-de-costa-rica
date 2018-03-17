@@ -14,7 +14,7 @@
 
       <div class="form-group">
           <label for="">Cédula</label>
-          <input type="text" class="form-control" ng-model="vm.nuevoUsuario.cedula">
+          <input type="text" class="form-control" ng-model="vm.nuevoUsuario.cedula" required>
       </div>
       <div class="form-group">
           <label for="">Foto</label>
@@ -22,7 +22,7 @@
       </div>
       <div class="form-group">
           <label for="">Primer nombre</label>
-          <input type="text" class="form-control" ng-model="vm.nuevoUsuario.primerNombre">
+          <input type="text" class="form-control" ng-model="vm.nuevoUsuario.primerNombre" required>
       </div>
       <div class="form-group">
           <label for="">Segundo nombre</label>
@@ -30,7 +30,7 @@
       </div>
       <div class="form-group">
           <label for="">Primer apellido</label>
-          <input type="text" class="form-control" ng-model="vm.nuevoUsuario.primerApellido">
+          <input type="text" class="form-control" ng-model="vm.nuevoUsuario.primerApellido" required>
       </div>
       <div class="form-group">
           <label for="">Segundo apellido</label>
@@ -38,7 +38,7 @@
       </div>
       <div class="form-group">
           <label for="">Correo electrónico</label>
-          <input type="text" class="form-control" ng-model="vm.nuevoUsuario.correo">
+          <input type="text" class="form-control" ng-model="vm.nuevoUsuario.correo" required>
       </div>
       <div class="form-group">
           <label for="">Teléfono</label>
@@ -77,36 +77,27 @@
               <th>Cédula</th>
               <th>Foto</th>
               <th>Primer nombre</th>
-              <th>Segundo nombre</th>
               <th>Primer apellido</th>
               <th>Segundo apellido</th>
               <th>Correo electrónico</th>
               <th>Teléfono</th>
-              <th>Fecha de nacimiento</th>
-              <th>Provincia</th>
-              <th>Cantón</th>
-              <th>Distrito</th>
-              <th>Dirección exacta</th>
-              <th>Sucursal Asignada</th>
+              <th>Tipo de Usuario</th>
               <th>Editar</th>
           </tr>
       </thead>
       <tbody>
-          <tr ng-repeat="usuario in vm.listaEncargadoSucursal">
+          <tr ng-repeat="usuario in vm.listaUsuarios">
               <td>{{usuario.cedula}}</td>
               <td>{{usuario.foto}}</td>
               <td>{{usuario.primerNombre}}</td>
-              <td>{{usuario.segundoNombre}}</td>
               <td>{{usuario.primerApellido}}</td>
               <td>{{usuario.segundoApellido}}</td>
               <td>{{usuario.correo}}</td>
               <td>{{usuario.telefono}}</td>
-              <td>{{usuario.fechaNacimiento | date}}</td>
-              <td>{{usuario.provincia}}</td>
-              <td>{{usuario.canton}}</td>
-              <td>{{usuario.distrito}}</td>
-              <td>{{usuario.direccionExacta}}</td>
-              <td>{{usuario.sucursalAsignada}}</td>
+              <td>{{usuario.tipo}}</td>
+              <td>
+                <button class="btn " type="button" ng-click="vm.editUsuario(usuario)">Editar</button>
+              </td>
           </tr>
       </tbody>
   </table>

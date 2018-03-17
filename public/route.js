@@ -94,7 +94,7 @@
           pageTitle: 'Registro Usuarios'
         },
         params: {
-          objClienteTemp: ''
+          objUsuarioTemp: ''
         },
         resolve: {
           load: ['$ocLazyLoad', ($ocLazyLoad) => {
@@ -112,15 +112,13 @@
           pageTitle: 'Editar Usuarios'
         },
         params: {
-          objClienteTemp: ''
+          objUsuarioTemp: ''
         },
         resolve: {
           load: ['$ocLazyLoad', ($ocLazyLoad) => {
             return $ocLazyLoad.load('./components/admin/editarUsuarios.controller.js')
           }]
-        },
-        controller: 'controladorEditarEncargadoSucursal',
-           
+        }, 
         controller: 'controladorEditarUsuarios',
         controllerAs: 'vm',
       })
@@ -197,6 +195,21 @@
         controller: 'controladorLogin',
         controllerAs: 'vm'
       })
+
+      .state('tarjetas', {
+        url: '/tarjetas',
+        templateUrl: './components/tarjetas/tarjetas.view.html',
+        data:{
+          pageTitle: 'Registrar Tarjetas'
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/tarjetas/cards.controller.js')
+          }]
+        },
+        controller: 'controladorTarjetas',
+        controllerAs: 'vm'
+      });
 
 
 
