@@ -17,7 +17,7 @@
 
     let objUsuarioAEditar = JSON.parse($stateParams.objUsuarioTemp);
 
-    let objNuevoUsuario = new Usuario(objUsuarioAEditar.cedula, objUsuarioAEditar.foto, objUsuarioAEditar.primerNombre, objUsuarioAEditar.segundoNombre, objUsuarioAEditar.primerApellido, objUsuarioAEditar.segundoApellido, objUsuarioAEditar.correo, objUsuarioAEditar.telefono, objUsuarioAEditar.fechaNacimiento, objUsuarioAEditar.provincia, objUsuarioAEditar.canton, objUsuarioAEditar.distrito, objUsuarioAEditar.direccionExacta, objUsuarioAEditar.tipo, objUsuarioAEditar.sucursalAsignada);
+    let objNuevoUsuario = new Usuario(objUsuarioAEditar.cedula, objUsuarioAEditar.foto, objUsuarioAEditar.primerNombre, objUsuarioAEditar.segundoNombre, objUsuarioAEditar.primerApellido, objUsuarioAEditar.segundoApellido, objUsuarioAEditar.correo, objUsuarioAEditar.telefono, objUsuarioAEditar.fechaNacimiento, objUsuarioAEditar.provincia, objUsuarioAEditar.canton, objUsuarioAEditar.distrito, objUsuarioAEditar.direccionExacta, objUsuarioAEditar.tipo, objUsuarioAEditar.sucursalAsignada, objUsuarioAEditar.puesto);
 
 
     vm.editarUsuarios.cedula = objNuevoUsuario.cedula;
@@ -34,6 +34,8 @@
     vm.editarUsuarios.direccionExacta = objNuevoUsuario.direccionExacta;
     vm.editarUsuarios.tipo = objNuevoUsuario.tipo;
     vm.editarUsuarios.sucursalAsignada = objNuevoUsuario.sucursalAsignada;
+    vm.editarUsuarios.puesto = objNuevoUsuario.puesto;
+
 
     vm.eliminarUsuario = (pEstado) =>{
       let listaUsuarios = servicioUsuarios.getUsuarios();
@@ -65,6 +67,9 @@
           objUsuario.direccionExacta = pUsuario.direccionExacta;
           objUsuario.tipo = pUsuario.tipo;
           objUsuario.sucursalAsignada = pUsuario.sucursalAsignada;
+          objUsuario.contrasenna = pUsuario.contrasenna;
+          objUsuario.puesto = pUsuario.puesto;
+
 
           servicioUsuarios.actualizarUsuario(objUsuario);
 
