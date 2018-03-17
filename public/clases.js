@@ -63,3 +63,14 @@ class Convenio{
         this.tipoTramite = pTipoTramite;
     }
 }
+
+
+class Sucursal {
+    constructor(pId, pNombre, pprovincia, pcanton, pdistrito){
+       this.id = pId;
+       this.nombre = pNombre;
+       this.provincia = pprovincia;
+       this.canton = pcanton;
+       this.distrito = pdistrito;
+    }
+}

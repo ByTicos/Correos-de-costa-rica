@@ -211,6 +211,21 @@
         },
         controller: 'controladorTarjetas',
         controllerAs: 'vm'
+      })
+
+      .state('sucursales', {
+        url: '/sucursales',
+        templateUrl: './components/sucursal/sucursal.view.html',
+        data:{
+          pageTitle: 'Registrar Sucursal'
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/sucursal/sucursal.controller.js')
+          }]
+        },
+        controller: 'controladorSucursal',
+        controllerAs: 'vm'
       });
 
 
