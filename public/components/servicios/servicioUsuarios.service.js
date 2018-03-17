@@ -50,7 +50,7 @@
             else {
                 listaUsuariosLocal.forEach(objUsuario => {
                     let objUsuarioTemp = new Usuario(objUsuario.cedula, objUsuario.foto, objUsuario.primerNombre, objUsuario.segundoNombre, objUsuario.primerApellido, objUsuario.segundoApellido, objUsuario.correo, objUsuario.telefono, objUsuario.fechaNacimiento, objUsuario.provincia, objUsuario.canton, objUsuario.distrito, objUsuario.direccionExacta, objUsuario.tipo,objUsuario.sucursalAsignada, objUsuario.puesto);
-
+                    objUsuarioTemp.cambiarEstado(objUsuario.estado);
                     listaUsuarios.push(objUsuarioTemp);
                 });
             }
@@ -91,8 +91,8 @@
  
             }else{
                 listaPaquetesLocal.forEach(objPaquete => {
-                    let objPaqueteTemp = new Paquete(objPaquete.traking, objPaquete.distribuidor, objPaquete.precio, objPaquete.peso, objPaquete.tipoArticulo, objPaquete.descripcion );
-
+                    let objPaqueteTemp = new Paquete(objPaquete.tracking, objPaquete.distribuidor, objPaquete.precio, objPaquete.peso, objPaquete.tipoArticulo, objPaquete.descripcion );
+                    objPaqueteTemp.cambiarEstadoDeActividad(objPaquete.estado);
                     listaPaquetes.push(objPaqueteTemp);
                 });
             }
@@ -103,7 +103,7 @@
             let listaPaquetes = _getPaquete();
 
             for (let i = 0; i < listaPaquetes.length; i++) {
-                if (listaPaquetes[i].traking == pObjpaquete.traking ) {
+                if (listaPaquetes[i].tracking == pObjpaquete.tracking ) {
                    
                     listaPaquetes[i] = pObjpaquete;
                 }

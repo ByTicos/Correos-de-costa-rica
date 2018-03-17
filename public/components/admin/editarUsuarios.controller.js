@@ -26,7 +26,6 @@
     vm.editarUsuarios.segundoNombre = objNuevoUsuario.segundoNombre;
     vm.editarUsuarios.primerApellido = objNuevoUsuario.primerApellido;
     vm.editarUsuarios.segundoApellido = objNuevoUsuario.segundoApellido;
-    vm.editarUsuarios.correo = objNuevoUsuario.correo;
     vm.editarUsuarios.telefono = objNuevoUsuario.telefono;
     vm.editarUsuarios.fechaNacimiento = new Date(objNuevoUsuario.fechaNacimiento);
     vm.editarUsuarios.provincia = objNuevoUsuario.provincia;
@@ -41,13 +40,14 @@
     vm.eliminarUsuario = (pEstado) =>{
       let listaUsuarios = servicioUsuarios.getUsuarios();
       listaUsuarios.forEach(objUsuario => {
-        if(objUsuario.correo = objNuevoUsuario.correo){
+        if(objUsuario.correo == objNuevoUsuario.correo){
           objUsuario.cambiarEstado(pEstado);
         }
         servicioUsuarios.actualizarUsuario(objUsuario);
       });
       $state.go('registrarUsuarios');
     }
+    
 
     vm.editUsuarios = (pUsuario) => {
       let listaUsuarios = servicioUsuarios.getUsuarios();
@@ -59,7 +59,6 @@
           objUsuario.segundoNombre = pUsuario.segundoNombre;
           objUsuario.primerApellido = pUsuario.primerApellido;
           objUsuario.segundoApellido = pUsuario.segundoApellido;
-          objUsuario.correo = pUsuario.correo;
           objUsuario.telefono = pUsuario.telefono;
           objUsuario.fechaNacimiento = pUsuario.fechaNacimiento;
           objUsuario.provincia = pUsuario.provincia;

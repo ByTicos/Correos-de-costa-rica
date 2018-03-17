@@ -7,7 +7,7 @@
 
         <div class="form-group">
           <label for="">Número de traking</label>
-          <input type="text" class="form-control" ng-model="vm.editarPaquete.traking" disabled>
+          <input type="text" class="form-control" ng-model="vm.editarPaquete.tracking" disabled>
         </div>
         <div class="form-group">
           <label for="">Distribuidor</label>
@@ -31,5 +31,11 @@
         </div>
 
         <button type="submit">Editar</button>
+        <div class="col-md-6">
+          <button type="button" ng-click="vm.cambiarEstadoPaquete('inactivo')">Desactivar</button>
+        </div>
+        <div class="col-md-6">
+          <button type="button" ng-click="vm.cambiarEstadoPaquete('activo')">Activar</button>
+        </div>
 
       </form>
