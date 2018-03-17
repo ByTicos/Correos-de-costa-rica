@@ -92,7 +92,20 @@
             }else{
                 listaPaquetesLocal.forEach(objPaquete => {
                     let objPaqueteTemp = new Paquete(objPaquete.tracking, objPaquete.distribuidor, objPaquete.precio, objPaquete.peso, objPaquete.tipoArticulo, objPaquete.descripcion );
+
+                    let listaEstados =  objPaquete.listaEstados;
+
+                    listaEstados.forEach(objEstado => {
+                        let fecha = new Date (objEstado.fecha);
+                        let estadoTemp = new Estado(objEstado.usuario, fecha, objEstado.estado);
+
+                      objPaqueteTemp.agregarEstado(estadoTemp);
+                    });
+
+                   
                     objPaqueteTemp.cambiarEstadoDeActividad(objPaquete.estado);
+                    objPaqueteTemp.mostrarEstadoTraslado (objPaquete.estadoTraslado);
+                    
                     listaPaquetes.push(objPaqueteTemp);
                 });
             }
