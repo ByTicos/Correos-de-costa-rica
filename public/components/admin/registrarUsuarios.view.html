@@ -3,7 +3,7 @@
      
     <h3>Seleccione el rol</h3>
     <div class="form-group">
-        <select ng-model = 'vm.nuevoUsuario.tipo'>
+        <select ng-model = 'vm.nuevoUsuario.tipo' required>
             <option value="">Seleccione el usuario a registrar</option>
             <option value="1">Cliente</option>
             <option value="2">Encargado de Sucursal</option>
@@ -96,7 +96,7 @@
               <td>{{usuario.telefono}}</td>
               <td>{{usuario.tipo}}</td>
               <td>
-                <button class="btn " type="button" ng-click="vm.editUsuario(usuario)">Editar</button>
+                <button class="btn " type="button" ng-click="vm.editUsuarios(usuario)">Editar</button>
               </td>
           </tr>
       </tbody>
