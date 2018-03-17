@@ -15,21 +15,35 @@ function controladorEditarPaquetes($stateParams, $state, $location, servicioUsua
   let objPaqueteAEditar = JSON.parse ($stateParams.objPaqueteTemp);
   
 
-  let objNuevoPaquete = new Paquete(objPaqueteAEditar.traking, objPaqueteAEditar.distribuidor, objPaqueteAEditar.precio, objPaqueteAEditar.peso, objPaqueteAEditar.tipoArticulo, objPaqueteAEditar.descripcion );
+  let objNuevoPaquete = new Paquete(objPaqueteAEditar.tracking, objPaqueteAEditar.distribuidor, objPaqueteAEditar.precio, objPaqueteAEditar.peso, objPaqueteAEditar.tipoArticulo, objPaqueteAEditar.descripcion );
 
-  vm.editarPaquete.traking = objNuevoPaquete.traking;
+  vm.editarPaquete.tracking = objNuevoPaquete.tracking;
   vm.editarPaquete.distribuidor = objNuevoPaquete.distribuidor;
   vm.editarPaquete.precio = objNuevoPaquete.precio;
   vm.editarPaquete.peso = objNuevoPaquete.peso;
   vm.editarPaquete.tipoArticulo = objNuevoPaquete.tipoArticulo;
   vm.editarPaquete.descripcion = objNuevoPaquete.descripcion;
-  
+
+  vm.cambiarEstadoPaquete = (pEstado) =>{
+    let listaPaquetes = servicioUsuarios.getPaquete();
+
+    listaPaquetes.forEach(objPaquetes =>{
+      if (objPaquetes.tracking == objNuevoPaquete.tracking) {
+        objPaquetes.cambiarEstadoDeActividad(pEstado);
+      }
+      servicioUsuarios.actualizarPaquete(objPaquetes);
+    });
+    $state.go('paquete');
+  };
+
+
+
  vm.editPrealerta = (pPrealerta)=>{
   let listaPaquetes = servicioUsuarios.getPaquete();
 
   listaPaquetes.forEach(objPaquete =>{
   if(objPaquete.traking == objNuevoPaquete.traking){
-   objPaquete.traking = pPrealerta.traking;
+   objPaquete.tracking = pPrealerta.tracking;
    objPaquete.distribuidor = pPrealerta.distribuidor;
    objPaquete.precio = pPrealerta.precio;
    objPaquete.peso = pPrealerta.peso;

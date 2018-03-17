@@ -26,16 +26,43 @@ class Usuario{
 }
 
 class Paquete{
-    constructor(pNumeroTraking, pDistribuidor, pPrecio, pPeso, pTipoArticulo, pDescripcion){
-        this.traking = pNumeroTraking;
+    constructor(pNumeroTracking, pDistribuidor, pPrecio, pPeso, pTipoArticulo, pDescripcion){
+        this.tracking = pNumeroTracking;
         this.distribuidor = pDistribuidor;
         this.precio = pPrecio;
         this.peso = pPeso;
         this.tipoArticulo = pTipoArticulo;
         this.descripcion = pDescripcion;
+        this.estado = 'activo';
+        this.estadoTraslado = '';
+        this.listaEstados = [];
 
     } 
-      
+
+    cambiarEstadoDeActividad(pEstado){
+        this.estado = pEstado;
+    }
+
+      agregarEstado(pEstado){
+        this.listaEstados.push(pEstado); 
+    }
+
+    
+    mostrarEstadoTraslado(pEstado){
+        this.estadoTraslado = pEstado;
+    }
+
+
+}
+
+class Estado{
+    constructor(pUsuario, pFecha, pEstado){
+        this.usuario = pUsuario;
+        this.fecha = pFecha;
+        this.estado = pEstado;
+    }
+
+    
 }
 
 // class Encargado extends Usuario{
