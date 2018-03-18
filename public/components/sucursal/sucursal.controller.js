@@ -5,13 +5,14 @@
     .module('correos')
     .controller('controladorSucursal', controladorSucursal);
 
-    controladorSucursal.$inject = ['$http', '$state','$scope']
+    controladorSucursal.$inject = ['$http', '$state','$scope','servicioSucursales']
 
-  function controladorSucursal($http, $state, $scope) {
+  function controladorSucursal($http, $state, $scope, servicioSucursales) {
     let vm = this;
     
     vm.nuevaSucursal = {};
-
+    vm.listaSucursales = listarSucursales();
+    
     vm.provincias = $http({
       method: 'GET',
       url: './sources/data/provincias.json'
@@ -56,31 +57,25 @@
       });
     }
 
+    listarSucursales();
+
     vm.registrarSucursal = (pnuevaSucursal) => {
 
-      let objNuevaSucursal = new Sucursal(pnuevaSucursal.id, pnuevaSucursal.nombre, pnuevaSucursal.provincia.name, pnuevaSucursal.canton.name, pnuevaSucursal.distrito.name);
+      let objnuevaSucursal = new Sucursal(pnuevaSucursal.Id, pnuevaSucursal.nombre, pnuevaSucursal.provincia.name, pnuevaSucursal.canton.name, pnuevaSucursal.distrito.name, pnuevaSucursal.telefono, pnuevaSucursal.horario);
 
-      let registroExitoso = servicioUsuarios.addSucursal(objNuevaSucursal);
+      servicioSucursales.addSucursal(objnuevaSucursal);
 
-      if (registroExitoso == true){
-        swal({
-          title: 'Registro Exitoso',
-          text: "Sucursal registrada exitosamente",
-          icon: "sucess",
-          button: "Aceptar"
-        });
-        vm.nuevaSucursal = null;
-      }else{
-        swal({
-          title: "Hubo un error",
-          text: "Ha ocurrido un error, inténtelo por favor intente de nuevo",
-          icon: "error",
-          button: "Aceptar",
-        });
-      }
+      swal("Registro exitoso", "El usuario ha sido registrado correctamente", "success", {
+        button: "Aceptar",
+      });
 
+      vm.nuevaSucursal = null;
+      listarSucursales();
     }
 
+    function listarSucursales() {
+      vm.listaSucursales = servicioSucursales.getSucursal();
+    }
 
   }
 })();

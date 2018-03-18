@@ -67,7 +67,7 @@
                 }
             }
             actualizarLocal(listaUsuarios);
-        }
+        };
 
         function _addPaquete(pNuevoPaquete) {
             let listaPaquetes = _getPaquete();
@@ -123,35 +123,8 @@
                 }
             }
             actualizarPaqueteLocal (listaPaquetes);
-        }
+        };
 
-        function addSucursal (pNuevaSucursal){
-            let listaSucursal = _getSucursal(),
-            registroExitoso = false;
-
-            listaSucursal.push(pNuevaSucursal);
-
-            registroExitoso = localStorageFactory.setItem(sucursalLocal, listaSucursal);
-
-            return registroExitoso;
-        }
-
-        function _getSucursal(){
-            let listaSucursal = [];
-            let listaSucursalLocal = localStorageFactory.getItem(sucursalLocal);
-
-            if(listaSucursalLocal == null){
-                listaSucursal = [];
-            }else{
-                listaSucursalLocal.forEach(obj => {
-                    let objSucursal = new Sucursal (obj.id, obj.nombre, obj.provincia,obj.canton,obj.distrito);
-                })
-
-                listaSucursal.push(objSucursal);
-            }
-
-            return listaSucursal;
-        }
 
         function actualizarLocal(plistaActualizada) {
             localStorage.setItem('usuariosLS', JSON.stringify(plistaActualizada));

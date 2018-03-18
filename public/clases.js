@@ -95,11 +95,13 @@ class Convenio{
 
 
 class Sucursal {
-    constructor(pId, pNombre, pprovincia, pcanton, pdistrito){
+    constructor(pId, pNombre, pprovincia, pcanton, pdistrito, ptelefono, phorario){
        this.id = pId;
        this.nombre = pNombre;
        this.provincia = pprovincia;
        this.canton = pcanton;
        this.distrito = pdistrito;
+       this.telefono = ptelefono;
+       this.horario = phorario;
     }
 }

@@ -1,5 +1,5 @@
 <div class="container">
- <form ng-submit="vm.registrarSucursal(vm.nuevaSucursal)" name="formRegistroSucursal" novalidate autocomplete="off"></form>
+ <form ng-submit="vm.registrarSucursal(vm.nuevaSucursal)" name="formRegistroSucursal" novalidate autocomplete="off">
 
 
 <div class="form-group">
@@ -52,6 +52,23 @@
      
     </div>
 </div>
+
+
+<label for="nTelefono">Numero de Telefono</label>
+<input type="tel" id="nTelefono" class="form-control" name="nTelefono" ng-model="vm.nuevaSucursal.id" pattern="[0-9]+" maxlength="11" minlength="8" required>
+<div ng-message="required">
+    <small class="form-text text-muted">Este campo es requerido</small>
+</div>
+
+<label for="txtHorario">Horarios de Atencion</label>
+<textarea type="text" id="txtHorario" class="form-control" name="txtHorario" ng-model="vm.nuevaSucursal.id" style="height:100px" required></textarea>
+
+<div ng-message="required">
+    <small class="form-text text-muted">Este campo es requerido</small>
+</div>
+
+
+
 <button type="submit" class="btn btn-success">Registrar Sucursal</button>
 
 </form>
