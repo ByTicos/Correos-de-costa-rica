@@ -61,7 +61,7 @@
 
     vm.registrarSucursal = (pnuevaSucursal) => {
 
-      let objnuevaSucursal = new Sucursal(pnuevaSucursal.Id, pnuevaSucursal.nombre, pnuevaSucursal.provincia.name, pnuevaSucursal.canton.name, pnuevaSucursal.distrito.name, pnuevaSucursal.telefono, pnuevaSucursal.horario);
+      let objnuevaSucursal = new Sucursal(pnuevaSucursal.id, pnuevaSucursal.nombre, pnuevaSucursal.provincia.name, pnuevaSucursal.canton.name, pnuevaSucursal.distrito.name, pnuevaSucursal.telefono, pnuevaSucursalhorario);
 
       servicioSucursales.addSucursal(objnuevaSucursal);
 

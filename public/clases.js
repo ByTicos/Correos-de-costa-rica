@@ -95,13 +95,22 @@ class Convenio{
 
 
 class Sucursal {
-    constructor(pId, pNombre, pprovincia, pcanton, pdistrito, ptelefono, phorario){
+    constructor(pId, pNombre, pProvincia, pCanton, pDistrito, pTelefono, pHorario){
        this.id = pId;
        this.nombre = pNombre;
-       this.provincia = pprovincia;
-       this.canton = pcanton;
-       this.distrito = pdistrito;
-       this.telefono = ptelefono;
-       this.horario = phorario;
+       this.provincia = pProvincia;
+       this.canton = pCanton;
+       this.distrito = pDistrito;
+       this.telefono = pTelefono;
+       this.horario = pHorario;
+    }
+}
+
+class Tarjeta {
+    constructor(pNombre, pNumero, pExpiracion, pCvv){
+       this.nombre = pNombre;
+       this.numero = pNumero;
+       this.expiracion = pExpiracion;
+       this.cvv = pCvv; 
     }
 }

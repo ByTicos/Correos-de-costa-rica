@@ -24,10 +24,10 @@
             }
     return publicAPI
 
-      function _addSucursal (pNuevaSucursal){
+      function _addSucursal (pnuevaSucursal){
         let listaSucursal = _getSucursal();
         let respuesta = true;
-        listaSucursal.push(pNuevaSucursal);
+        listaSucursal.push(pnuevaSucursal);
 
         asyncLocalStorage.setItem('sucursalLS', listaSucursal).then((response) =>{
             respuesta = response;
@@ -44,7 +44,7 @@
             listaSucursal = [];
         }else{
             listaSucursalLocal.forEach(obj => {
-                let objSucursal = new Sucursal (obj.Id, obj.nombre, obj.provincia,obj.canton, obj.distrito, obj.telefono, obj.horario);
+                let objSucursal = new Sucursal (obj.Id, obj.Nombre, obj.Provincia,obj.Canton, obj.Distrito, obj.Telefono, obj.Horario);
 
                 listaSucursal.push(objSucursal);
             });
@@ -58,13 +58,13 @@
     let listaSucursalCompleta = [];
 
     listaSucursalCompleta = new Sucursal (
-      [1234, 1234],
-      [],
-      [],
-      [],
-      [],
-      [],
-      []
+      [1500, 1000],
+      ["Acosta", "(Administracion Central)"],
+      ["San Jose","San Jose" ],
+      ["Acosta", "San Jose"],
+      ["San Ignacio", "Merced"],
+      ["2410-0095", "2223-9766"]
+      ["(Lunes a Viernes 8:00am-5:00pm)","(Lunes a Viernes de 7:30am-6:00pm)"]
       
     );
 

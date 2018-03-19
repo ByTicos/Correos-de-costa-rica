@@ -204,7 +204,7 @@
         },
         resolve: {
           load: ['$ocLazyLoad', ($ocLazyLoad) => {
-            return $ocLazyLoad.load('./components/tarjetas/cards.controller.js')
+            return $ocLazyLoad.load('./components/tarjetas/tarjetas.controller.js')
           }]
         },
         controller: 'controladorTarjetas',
