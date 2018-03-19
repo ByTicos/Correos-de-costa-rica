@@ -209,7 +209,7 @@
         },
         controller: 'controladorTarjetas',
         controllerAs: 'vm'
-      });
+      })
 
 
 
