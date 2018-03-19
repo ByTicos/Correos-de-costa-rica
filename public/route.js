@@ -159,7 +159,7 @@
         controller: 'controladorConvenios',
         controllerAs: 'vm'
       })
-/*
+
       .state('admin', {
         url: '/admin',
         templateUrl: './components/admin/admin.view.html',
@@ -174,10 +174,10 @@
             return $ocLazyLoad.load('./components/admin/admin.controller.js')
           }]
         },
-        controller: 'controladorAdministrador',
+        controller: 'controladorAdmin',
         controllerAs: 'vm'
       })
-*/
+
      
 
   

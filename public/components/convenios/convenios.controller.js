@@ -10,6 +10,11 @@
     vm.nuevoConvenio = {};
     vm.listaConvenios = objEntidad.convenios;
     vm.listaEntidades = servicioEntidades.getEntidades();
+    
+    vm.regresar = () => {
+      $state.go('entidades');
+    }
+
     vm.registrarConvenio = (pNuevoConvenio) => {
       
       let objNuevoConvenio = new Convenio(objEntidad.nombre, vm.nuevoConvenio.tipoTramite);

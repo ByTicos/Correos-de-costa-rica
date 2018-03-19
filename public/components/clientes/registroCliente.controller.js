@@ -3,17 +3,71 @@
   angular
     .module('correos')
     .controller('controladorClientes', controladorClientes);
-    
-    controladorClientes.$inject = ['$state', '$stateParams', '$location', 'servicioUsuarios'];
 
-  function controladorClientes($state, $stateParams, $location, servicioUsuarios) {
+  controladorClientes.$inject = ['$http','$state', '$stateParams', '$location', 'servicioUsuarios'];
+
+  function controladorClientes($http ,$state, $stateParams, $location, servicioUsuarios) {
     let vm = this;
 
     vm.listaClientes = listarClientes();
     vm.nuevoCliente = {};
     
-    vm.editCliente = (pUsuario) =>{
-      $state.go('editarCliente', {objClienteTemp : JSON.stringify(pUsuario)});
+    /*let map;
+    function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+        center: { lat: -34.397, lng: 150.644 },
+        zoom: 8
+      });
+    }*/
+
+
+    vm.provincias = $http({
+      method: 'GET',
+      url: './sources/data/provincias.json'
+    }).then((success) => {
+      vm.provincias = success.data;
+    }, (error) => {
+      console.log("Ocurrió un error " + error.data);
+    });
+
+    vm.rellenarCantones = (pidProvincia) => {
+      vm.cantones = $http({
+        method: 'GET',
+        url: './sources/data/cantones.json'
+      }).then((success) => {
+        let cantones = [];
+        for (let i = 0; i < success.data.length; i++) {
+          if (pidProvincia == success.data[i].idProvincia) {
+            cantones.push(success.data[i]);
+          }
+        }
+        vm.cantones = cantones;
+      }, (error) => {
+        console.log("Ocurrió un error " + error.data)
+      });
+    }
+
+    vm.rellenarDistrito = (pidCanton) => {
+      console.log(pidCanton);
+      vm.distritos = $http({
+        method: 'GET',
+        url: './sources/data/distritos.json'
+      }).then((success) => {
+        let distritos = [];
+        for (let i = 0; i < success.data.length; i++) {
+          if (pidCanton == success.data[i].idCanton) {
+            distritos.push(success.data[i]);
+          }
+        }
+        vm.distritos = distritos;
+      }, (error) => {
+        console.log("Ocurrió un error " + error.data)
+      });
+    }
+
+
+    vm.editCliente = (pUsuario) => {
+      $state.go('editarCliente', { objClienteTemp: JSON.stringify(pUsuario) });
 
     };
 
@@ -37,11 +91,11 @@
       }
 
     }
-    function listarClientes(){
+    function listarClientes() {
       let listaUsuarios = servicioUsuarios.getUsuarios();
       let listaClientes = [];
       listaUsuarios.forEach(usuario => {
-        if (usuario.tipo == 'cliente') {
+        if (usuario.tipo == '1') {
           listaClientes.push(usuario);
         }
       });
