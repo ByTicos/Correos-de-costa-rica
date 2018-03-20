@@ -18,8 +18,7 @@ class Usuario{
         this.sucursalAsignada = pSucursalAsignada;
         this.puesto = pPuesto;
         this.vehiculo = pVehiculo;
-        this.licencia = pLicencia;
-        this.vencimientoLicencia = pVencimientoLicencia;
+        this.listaLicencias = [];
         this.estado = 'activo';
     } 
     cambiarEstado(pEstado){
@@ -94,4 +93,13 @@ class Convenio{
         this.nombreEntidad = pNombreEntidad;
         this.tipoTramite = pTipoTramite;
     }
+}
+
+
+class Licencia{
+    constructor(pNumLicencia, pTipoLicencia, pVencimientoLicencia){
+        this.numLicencia = pNumLicencia;
+        this.tipoLicencia = pTipoLicencia;
+        this.vencimiento = pVencimientoLicencia;
+    } 
 }

@@ -24,7 +24,10 @@
             actualizarUsuario: _actualizarUsuario,
             addPaquete: _addPaquete,
             getPaquete: _getPaquete,
-            actualizarPaquete: _actualizarPaquete
+            actualizarPaquete: _actualizarPaquete,
+            addLicencia: _addLicencia,
+            getLicencia: _getLicencia,
+            actualizarLocal: _actualizarLicencia
 
                 }
         return publicAPI
@@ -131,5 +134,49 @@
         function actualizarPaqueteLocal(plistaPaqueteActualizada){
             localStorage.setItem('paquetesLS', JSON.stringify(plistaPaqueteActualizada));
         }
+
+        function _addLicencia(pNuevaLicencia) {
+            let listaLicencia = _getLicencia;
+                let respuesta = true;
+                
+                listaLicencia.push(pNuevaLicencia);
+    
+                asyncLocalStorage.setItem('licenciasLS', listaLicencia).then((response) => {
+                    respuesta = response;
+                });
+    
+               return respuesta;
+            };
+
+            function _getLicencia() {
+                let listaLicencia = [];
+                let listaLicenciaLocal = JSON.parse(localStorage.getItem('licenciasLS'));
+    
+                if(listaLicenciaLocal == null){
+                   listaLicencia = [];
+     
+                }else{
+                    listaLicenciaLocal.forEach(objLicencia => {
+                        let objLicenciaTemp = new Licencia(objLicencia.numLicencia, objLicencia.tipoLicencia, objLicencia.pVencimientoLicencia );
+    
+                        listaLicencia.push(objLicenciaTemp);
+                    });
+                }
+                return listaLicencia;
+            };
+    
+            function _actualizarLicencia(pObjlicencia) {
+                let listaLicencia = _getLicencia();
+    
+                for (let i = 0; i < listaLicencia.length; i++) {
+                    if (listaLicencia[i].traking == pObjlicencia.traking ) {
+                       
+                        listaLicencia[i] = pObjlicencia;
+                    }
+                }
+                actualizarLicenciaLocal (listaLicencia);
+            }
+
+
     }
 })();
