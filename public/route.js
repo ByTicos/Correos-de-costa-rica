@@ -122,6 +122,23 @@
         controller: 'controladorEditarUsuarios',
         controllerAs: 'vm',
       })
+       .state('calculadora', {
+        url: '/calculadora',
+        templateUrl: './components/paquetes/calculadora.view.html',
+        data:{
+          pageTitle: 'calculadora'
+        },
+        params: {
+          objcalculoTemp: ''
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/paquetes/calculadora.controller.js')
+          }]
+        },
+        controller: 'controladorCalculadora',
+        controllerAs: 'vm'
+      })
 
 
       .state('entidades', {
@@ -159,25 +176,7 @@
         controller: 'controladorConvenios',
         controllerAs: 'vm'
       })
-/*
-      .state('admin', {
-        url: '/admin',
-        templateUrl: './components/admin/admin.view.html',
-        data:{
-          pageTitle: 'Registro admin'
-        },
-        params: {
-          objUsuarioTemp:''
-        },
-        resolve: {
-          load: ['$ocLazyLoad', ($ocLazyLoad) => {
-            return $ocLazyLoad.load('./components/admin/admin.controller.js')
-          }]
-        },
-        controller: 'controladorAdministrador',
-        controllerAs: 'vm'
-      })
-*/
+
      
 
   
@@ -209,7 +208,26 @@
         },
         controller: 'controladorTarjetas',
         controllerAs: 'vm'
-      });
+      })
+      
+       .state('filtrarPaquete', {
+        url: '/filtrarPaquete',
+        templateUrl: './components/admin/listaPaquetes.view.html',
+        data:{
+          pageTitle: 'Filtrar paquetes'
+        },
+        params: {
+          objEstadoTemp: ''
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/admin/listaPaquetes.controller.js')
+          }]
+        },
+        controller: 'controladorListaPaquetes',
+        controllerAs: 'vm'
+      })
+    
 
 
 
