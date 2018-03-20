@@ -1,0 +1,94 @@
+          
+<div navegacion-Principal></div>
+<div menu-Lateral></div>
+  
+<div id="dashboard">
+<section  class="container">
+  <form action="" class="form-horizontal" ng-submit="vm.editRepartidor(vm.editarRepartidor)" >
+      <div class="col-sm-6 center">
+          <div class="form-group">
+              <label for="">Foto</label>
+              <input type="file" class="form-control" ng-model="vm.editarRepartidor.foto" required>
+          </div>
+      </div>
+
+      <div class="col-sm-6">    
+          <div class="form-group">
+              <label for="">Cédula</label>
+              <input type="text" class="form-control" ng-model="vm.editarRepartidor.cedula" required>
+          </div>
+      
+          <div class="form-group">
+              <label for="">Primer nombre</label>
+              <input type="text" class="form-control" ng-model="vm.editarRepartidor.primerNombre" required>
+          </div>
+      
+          <div class="form-group">
+              <label for="">Segundo Nombre</label>
+              <input type="text" class="form-control" ng-model="vm.editarRepartidor.segundoNombre">
+          </div>
+      
+          <div class="form-group">
+              <label for="">Primer apellido</label>
+              <input type="text" class="form-control" ng-model="vm.editarRepartidor.primerApellido" required>
+          </div>
+      
+          <div class="form-group">
+              <label for="">Segundo apellido</label>
+              <input type="text" class="form-control" ng-model="vm.editarRepartidor.segundoApellido" required>
+          </div>
+      
+          <div class="form-group">
+              <label for="">Correo electrónico</label>
+              <input type="text" class="form-control" ng-model="vm.editarRepartidor.correo" required >
+          </div>
+      </div>
+
+      <div class="col-sm-6">    
+              <div class="form-group">
+              <label for="">Teléfono</label>
+              <input type="number" class="form-control" ng-model="vm.editarRepartidor.telefono" required>
+          </div>
+      
+          <div class="form-group">
+              <label for="">Fecha de nacimiento</label>
+              <input type="date" class="form-control" ng-model="vm.editarRepartidor.fechaNacimiento" required>
+          </div>
+      
+          <div class="form-group">
+              <label for="">Vehiculo</label>
+              <select  class="form-control" required>
+                  <option value="">seleccione el vehiculo</option>
+                  <option  ng-model="vm.editarRepartidor.vehiculo" value="moto">Motocicleta</option>
+                  <option  ng-model="vm.editarRepartidor.vehiculo" value="camion">Camión</option>
+                  <option  ng-model="vm.editarRepartidor.vehiculo" value="trailer">Trailer</option>
+                  <option  ng-model="vm.editarRepartidor.vehiculo" value="ban">Ban</option>
+              </select>
+          </div>
+      
+          <div class="form-group">
+              <label for="">Licencia</label>
+              
+              <select  class="form-control" required>
+              <option value="">seleccione el tipo de licencia</option>
+              <option  ng-model="vm.editarRepartidor.licencia" value="a3">A</option>
+              <option  ng-model="vm.editarRepartidor.licencia" value="b">B</option>
+              <option  ng-model="vm.editarRepartidor.licencia" value="c">C</option>
+              </select>
+          </div>
+          
+          <div class="form-group">
+              <label for="">Vencimiento de la licencia</label>
+              <input type="date" class="form-control" ng-model="vm.editarRepartidor.vencimientoLicencia" required>
+          </div>
+      
+          <div class="form-group">
+              <label for="">Sucursal asignada</label>
+              <input type="text" class="form-control" ng-model="vm.editarRepartidor.sucursalAsignada" required>
+          </div>
+      </div>
+    <button type="submit">Aceptar edición</button>
+
+  </form>
+  </section>
+  </div>

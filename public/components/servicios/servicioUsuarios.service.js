@@ -30,6 +30,8 @@
             actualizarLocal: _actualizarLicencia,
             addTarjeta: _addTarjeta,
             getTarjeta: _getTarjeta,
+            getLicencia: _getLicencia,
+        
                 }
         return publicAPI
 

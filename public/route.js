@@ -302,7 +302,23 @@
 
     
 
-      
+      .state('editarRepartidor', {
+        url:'/editarRepartidor',
+        templateUrl: './components/repartidores/editarRepartidor.view.html',
+        data:{
+          pageTitle: 'Editar Repartidor'
+        },
+        params: {
+          objRepartidorTemp:''
+        },
+        resolve: {
+          load: [ '$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/repartidores/editarRepartidor.controller.js')
+          }]
+        },
+        controller: 'controladorEditarRepartidor',
+        controllerAs: 'vm'
+      })
 
     $urlRouterProvider.otherwise('/');
   };

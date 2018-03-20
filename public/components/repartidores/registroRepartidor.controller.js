@@ -12,6 +12,7 @@
     vm.listaRepartidores = listarRepartidores();
     vm.nuevoRepartidor = {};
     vm.agregarLicencia = agregarLicencia();
+    vm.listarLicencias = listaLicencia();
     
     vm.editRepartidor = (pUsuario) =>{
       $state.go('editRepartidor', {objRepartidorTemp : JSON.stringify(pUsuario)});
@@ -39,7 +40,8 @@
 
       vm.agregarLicencia = (pNuevaLicencia) => {
 
-        let objNuevaLicencia = new Licencia(pNuevaLicencia.numLicencia, pNuevaLicencia.tipoLicencia, pNuevaLicencia.vencimiento)
+        let objNuevaLicencia = new Licencia(pNuevaLicencia.numLicencia, pNuevaLicencia.tipoLicencia, pNuevaLicencia.vencimiento);
+        let listaRepartidores = servicioUsuarios.getRepartidores()
       }
     }
     function listarRepartidores(){
@@ -51,6 +53,15 @@
         }
       });
       return listaRepartidores;
+    }
+
+    function listaLicencia(){
+      let listaRepartidores = servicioUsuarios.getLicencias();
+      
+    }
+
+    if (           ){
+
     }
   }
 })();
