@@ -1,0 +1,35 @@
+<div navegacion-Principal></div>
+<div menu-Lateral></div>
+
+<div id="dashboard">
+
+    <h1>Dashboard Sucursal</h1>
+
+    <table class="table table-responsive">
+        <legend>Listado de Repartidores</legend>
+        <thead>
+            <tr>
+                <th>Cédula</th>
+                <th>Foto</th>
+                <th>Primer nombre</th>
+                <th>Primer apellido</th>
+                <th>Segundo apellido</th>
+                <th>Correo electrónico</th>
+                <th>Teléfono</th>
+                <th>Sucursal Asignada</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="usuario in vm.listaUsuarios" ng-if="usuario.tipo === '3'">
+                <td>{{usuario.cedula}}</td>
+                <td>{{usuario.foto}}</td>
+                <td>{{usuario.primerNombre}}</td>
+                <td>{{usuario.primerApellido}}</td>
+                <td>{{usuario.segundoApellido}}</td>
+                <td>{{usuario.correo}}</td>
+                <td>{{usuario.telefono}}</td>
+                <td>{{usuario.sucursalAsignada}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

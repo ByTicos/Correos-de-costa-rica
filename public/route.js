@@ -196,7 +196,23 @@
         controllerAs: 'vm'
       })
 
-     
+      .state('encargadoSucursal', {
+        url: '/encargadoSucursal',
+        templateUrl: './components/encargadoSucursal/encargadoSucursal.view.html',
+        data:{
+          pageTitle: 'Dashboard de Encargado de Sucursal'
+        },
+        params: {
+          objUsuarioTemp:''
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/encargadoSucursal/encargadoSucursal.controller.js')
+          }]
+        },
+        controller: 'controladorencargadoSucursal',
+        controllerAs: 'vm'
+      })
 
   
       .state('logIn', {
