@@ -44,9 +44,14 @@ class Paquete{
     cambiarEstadoDeActividad(pEstado){
         this.estado = pEstado;
     }
+    
 
-      agregarEstado(pEstado){
+      addEstado(pEstado){
         this.listaEstados.push(pEstado); 
+    }
+
+    getListaEstados(){
+        return this.listaEstados;
     }
 
     
@@ -58,12 +63,13 @@ class Paquete{
 }
 
 class Estado{
-    constructor(pUsuario, pFecha, pEstado){
+    constructor(pUsuario, pFecha, pHora, pEstado){
         this.usuario = pUsuario;
         this.fecha = pFecha;
+        this.hora = pHora;
         this.estado = pEstado;
     }
-
+ 
     
 }
 

@@ -26,11 +26,13 @@
      let session = JSON.parse(sessionStorage.getItem('sesion'));
      let usuario = session.nombre;
      console.log(usuario);
+     
      let fecha = new Date();
-     let objEstado = new Estado(usuario, fecha, 'En tránsito a aduana');
+     let hora = fecha;
+     let objEstado = new Estado(usuario, fecha,hora, 'En tránsito a aduana');
      
      objNuevoPaquete.mostrarEstadoTraslado('En tránsito a aduana');
-     objNuevoPaquete.agregarEstado(objEstado);
+     objNuevoPaquete.addEstado(objEstado);
      
 
      //console.log(objNuevoPaquete);
