@@ -222,12 +222,13 @@
         },
         resolve: {
           load: ['$ocLazyLoad', ($ocLazyLoad) => {
-            return $ocLazyLoad.load('./components/tarjetas/cards.controller.js')
+            return $ocLazyLoad.load('./components/tarjetas/tarjetas.controller.js')
           }]
         },
         controller: 'controladorTarjetas',
         controllerAs: 'vm'
       })
+<<<<<<< HEAD
       
        .state('filtrarPaquete', {
         url: '/filtrarPaquete',
@@ -247,6 +248,23 @@
         controllerAs: 'vm'
       })
     
+=======
+
+      .state('sucursales', {
+        url: '/sucursales',
+        templateUrl: './components/sucursal/sucursal.view.html',
+        data:{
+          pageTitle: 'Registrar Sucursal'
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/sucursal/sucursal.controller.js')
+          }]
+        },
+        controller: 'controladorSucursal',
+        controllerAs: 'vm'
+      });
+>>>>>>> origin/Esteban
 
 
 
