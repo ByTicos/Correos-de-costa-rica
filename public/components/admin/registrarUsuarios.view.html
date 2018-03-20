@@ -1,3 +1,5 @@
+
+          
 <div navegacion-Principal></div>
 <div menu-Lateral></div>
 
@@ -76,6 +78,35 @@
                         <label for="">Puesto</label>
                         <input type="text" class="form-control" ng-model="vm.nuevoUsuario.puesto">
                       </div>
+
+                      <div class="form-group" ng-show = 'vm.nuevoUsuario.tipo == 3'>
+                        <label for="">Vehiculo</label>
+                        <select  class="form-control" required>
+                            <option value="">seleccione el vehiculo</option>
+                            <option  ng-model="vm.nuevoRepartidor.vehiculo" value="moto">Motocicleta</option>
+                            <option  ng-model="vm.nuevoRepartidor.vehiculo" value="camion">Camión</option>
+                            <option  ng-model="vm.nuevoRepartidor.vehiculo" value="trailer">Trailer</option>
+                            <option  ng-model="vm.nuevoRepartidor.vehiculo" value="van">Van</option>
+                        </select>
+                    </div>
+                
+                    <div class="form-group" ng-show = 'vm.nuevoUsuario.tipo == 3'>
+                        <label for="">Licencia</label>
+                        
+                        <select  class="form-control" required>
+                        <option value="">seleccione el tipo de licencia</option>
+                        <option  ng-model="vm.nuevoRepartidor.licencia" value="a3">A</option>
+                        <option  ng-model="vm.nuevoRepartidor.licencia" value="b">B</option>
+                        <option  ng-model="vm.nuevoRepartidor.licencia" value="c">C</option>
+                        </select>
+                    </div>
+                
+                    <div class="form-group" ng-show = 'vm.nuevoUsuario.tipo == 3'>
+                        <label for="">Vencimiento de la licencia</label>
+                        <input type="date" class="form-control" ng-model="vm.nuevoRepartidor.vencimientoLicencia" min=2018- required>
+                    </div>
+
+                
                     <button type="submit">Registrar</button>
                 </form>
             
@@ -173,5 +204,6 @@
                 </table>
                 <h1>Dashboard Cliente</h1>
             </section>
+
 
 </div>

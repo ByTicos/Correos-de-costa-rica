@@ -1,5 +1,5 @@
 class Usuario{
-    constructor(pCedula, pFoto, pPrimerNombre, pSegundoNombre, pPrimerApellido, pSegundoApellido, pEmail, pTelefono, pfechaNacimiento, pProvincia, pCanton, pDistrito, pDireccionExacta, pTipo,pSucursalAsignada, pPuesto){
+    constructor(pCedula, pFoto, pPrimerNombre, pSegundoNombre, pPrimerApellido, pSegundoApellido, pEmail, pTelefono, pfechaNacimiento, pProvincia, pCanton, pDistrito, pDireccionExacta, pTipo,pSucursalAsignada, pPuesto, pVehiculo,pLicencia, pVencimientoLicencia){
         this.cedula = pCedula;
         this.foto = pFoto;
         this.primerNombre = pPrimerNombre;
@@ -17,6 +17,8 @@ class Usuario{
         this.listaPaquetes = [];
         this.sucursalAsignada = pSucursalAsignada;
         this.puesto = pPuesto;
+        this.vehiculo = pVehiculo;
+        this.listaLicencias = [];
         this.estado = 'activo';
     } 
     cambiarEstado(pEstado){
@@ -100,6 +102,13 @@ class Convenio{
 }
 
 
+class Licencia{
+    constructor(pNumLicencia, pTipoLicencia, pVencimientoLicencia){
+        this.numLicencia = pNumLicencia;
+        this.tipoLicencia = pTipoLicencia;
+        this.vencimiento = pVencimientoLicencia;
+    } 
+}
 class Sucursal {
     constructor(pId, pNombre, pProvincia, pCanton, pDistrito, pTelefono, pHorario){
        this.id = pId;
