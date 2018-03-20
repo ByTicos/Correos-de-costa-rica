@@ -81,7 +81,7 @@
 
                       <div class="form-group" ng-show = 'vm.nuevoUsuario.tipo == 3'>
                         <label for="">Vehiculo</label>
-                        <select  class="form-control" required>
+                        <select  class="form-control">
                             <option value="">seleccione el vehiculo</option>
                             <option  ng-model="vm.nuevoRepartidor.vehiculo" value="moto">Motocicleta</option>
                             <option  ng-model="vm.nuevoRepartidor.vehiculo" value="camion">Camión</option>
@@ -93,7 +93,7 @@
                     <div class="form-group" ng-show = 'vm.nuevoUsuario.tipo == 3'>
                         <label for="">Licencia</label>
                         
-                        <select  class="form-control" required>
+                        <select  class="form-control">
                         <option value="">seleccione el tipo de licencia</option>
                         <option  ng-model="vm.nuevoRepartidor.licencia" value="a3">A</option>
                         <option  ng-model="vm.nuevoRepartidor.licencia" value="b">B</option>
@@ -103,7 +103,7 @@
                 
                     <div class="form-group" ng-show = 'vm.nuevoUsuario.tipo == 3'>
                         <label for="">Vencimiento de la licencia</label>
-                        <input type="date" class="form-control" ng-model="vm.nuevoRepartidor.vencimientoLicencia" min=2018- required>
+                        <input type="date" class="form-control" ng-model="vm.nuevoRepartidor.vencimientoLicencia" min=2018->
                     </div>
 
                 
