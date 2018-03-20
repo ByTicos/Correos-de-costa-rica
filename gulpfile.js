@@ -2,9 +2,19 @@
 
 const gulp = require('gulp'),
       connect = require('gulp-connect'),
+      sass = require('gulp-sass'),
+      cssnano = require('gulp-cssnano'),
+      rename = require('gulp-rename'),
       nodemon = require('gulp-nodemon'),
       todo = require('gulp-todo'),
-      browserSync = require('browser-sync');
+      browserSync = require('browser-sync'),
+      paths = {
+        views : './public/components/**/**/*.html',
+        styles: './public/sources/styles/**/*.scss',
+        impSass : './public/sources/styles/style.scss',
+        js: './public/components/**/**/*.js',
+        excss: './public/*.css'
+      };
 
 gulp.task('connect', () => {
   connect.server({
@@ -54,31 +64,22 @@ gulp.task('dependencies', () => {
 });
 
 gulp.task('reload', () => {
-  gulp.src([
-    './public/components/**/*.html',
-    './public/components/**/*.css',
-    './public/components/**/*.js'
-  ])
+  gulp.src([paths.views, paths.styles, paths.js])
     .pipe(connect.reload())
     .pipe(browserSync.stream());
 });
 
+gulp.task('styles', () => {
+  gulp.src(paths.impSass)
+  .pipe(sass().on('error', sass.logError))
+  .pipe(cssnano())
+  .pipe(rename('styles.min.css'))
+  .pipe(gulp.dest('./public/sources'));
+});
+
 gulp.task('watch', () => {
-  gulp.watch([
-    './public/*.html',
-    './public/components/*.html',
-    './public/components/**/*.html',
-    './public/components/**/**/*.html',
-    './public/*.css',
-    './public/components/*.css',
-    './public/components/**/*.css',
-    './public/components/**/**/*.css',
-    './public/*.js',
-    './public/components/*.js',
-    './public/components/**/*.js',
-    './public/components/**/**/*.js'
-  ], ['reload', 'to-do'])
+  gulp.watch([paths.views, paths.styles, paths.js], ['reload', 'to-do', 'styles'])
     .on('change', browserSync.reload);
 });
 
-gulp.task('default', ['connect', 'to-do', 'dependencies', 'reload', 'watch']);
+gulp.task('default', ['connect', 'to-do', 'dependencies', 'reload', 'styles', 'watch']);

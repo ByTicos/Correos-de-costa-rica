@@ -15,6 +15,7 @@
           pageTitle: 'Correos de Costa Rica'
         }
       })
+
       .state('cliente', {
         url: '/cliente',
         templateUrl: './components/clientes/registroCliente.view.html',
