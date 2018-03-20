@@ -9,7 +9,8 @@
   function servicioLogin($log, $http, servicioUsuarios, servicioSesion){
 
     let publicAPI = {
-      inicioSesion : _inicioSesion
+      inicioSesion : _inicioSesion,
+      cerrarSesion: _cerrarSesion
     }
     return publicAPI
     
@@ -31,6 +32,9 @@
       }
 
       return incioExitoso;
+    }
+    function _cerrarSesion(){
+      servicioSesion.destruir();
     }
   }
 

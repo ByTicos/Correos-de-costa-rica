@@ -12,6 +12,10 @@
     vm.listaUsuarios = listarUsuarios();
     vm.nuevoUsuario = {};
 
+    vm.regresar = () => {
+      $state.go('admin');
+    }
+
     vm.editUsuarios = (pUsuario) =>{
       $state.go('editarUsuarios', {objUsuarioTemp : JSON.stringify(pUsuario)});
 
