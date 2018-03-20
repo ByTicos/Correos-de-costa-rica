@@ -2,14 +2,20 @@
   'use strict'
   angular
     .module('correos')
-    .controller('controladorencargadoSucursal', controladorencargadoSucursal);
+    .controller('controladorListarEncargadoSucursal', controladorListarEncargadoSucursal);
     
-    controladorencargadoSucursal.$inject = ['$state', '$stateParams', '$location', 'servicioUsuarios'];
+    controladorListarEncargadoSucursal.$inject = ['$state', '$stateParams', '$location', 'servicioUsuarios'];
 
-  function controladorencargadoSucursal($state, $stateParams, $location, servicioUsuarios) {
+  function controladorListarEncargadoSucursal($state, $stateParams, $location, servicioUsuarios) {
     let vm = this;
 
     vm.listaUsuarios = listarUsuarios();
+  
+
+    vm.editUsuarios = (pUsuario) =>{
+      $state.go('modificarEncargadoSucursal', {objUsuarioTemp : JSON.stringify(pUsuario)});
+
+    };
 
     function listarUsuarios(){
       let listaUsuarios = servicioUsuarios.getUsuarios();
