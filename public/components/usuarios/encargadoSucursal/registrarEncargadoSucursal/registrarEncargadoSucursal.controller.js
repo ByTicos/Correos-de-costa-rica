@@ -4,12 +4,13 @@
     .module('correos')
     .controller('controladorRegistrarEncargadoSucursal', controladorRegistrarEncargadoSucursal);
     
-    controladorRegistrarEncargadoSucursal.$inject = ['$state', '$stateParams', '$location', 'servicioUsuarios'];
+    controladorRegistrarEncargadoSucursal.$inject = ['$state', '$stateParams', '$location', 'servicioUsuarios', 'servicioSucursales'];
 
-  function controladorRegistrarEncargadoSucursal($state, $stateParams, $location, servicioUsuarios) {
+  function controladorRegistrarEncargadoSucursal($state, $stateParams, $location, servicioUsuarios, servicioSucursales) {
     let vm = this;
 
     vm.nuevoUsuario = {};
+    vm.listaSucursales = servicioSucursales.getSucursal();
 
     vm.registrarUsuario = (pNuevoUsuario) => {
 
@@ -28,7 +29,6 @@
           button: "Aceptar",
         });
       }
-
     }
   }
 })();
