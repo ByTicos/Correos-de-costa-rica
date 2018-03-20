@@ -24,8 +24,9 @@
             actualizarUsuario: _actualizarUsuario,
             addPaquete: _addPaquete,
             getPaquete: _getPaquete,
-            actualizarPaquete: _actualizarPaquete
-
+            actualizarPaquete: _actualizarPaquete,
+            addTarjeta: _addTarjeta,
+            getTarjeta: _getTarjeta,
                 }
         return publicAPI
 
@@ -66,7 +67,7 @@
                 }
             }
             actualizarLocal(listaUsuarios);
-        }
+        };
 
         function _addPaquete(pNuevoPaquete) {
             let listaPaquetes = _getPaquete();
@@ -122,7 +123,8 @@
                 }
             }
             actualizarPaqueteLocal (listaPaquetes);
-        }
+        };
+
 
         function actualizarLocal(plistaActualizada) {
             localStorage.setItem('usuariosLS', JSON.stringify(plistaActualizada));
@@ -130,5 +132,38 @@
         function actualizarPaqueteLocal(plistaPaqueteActualizada){
             localStorage.setItem('paquetesLS', JSON.stringify(plistaPaqueteActualizada));
         }
+
+
+        function _addTarjeta(pnuevaTarjeta){
+            let listaTarjeta = _getTarjeta();
+            let respuesta = true;
+            listaTarjeta.push(pnuevaTarjeta);
+
+            asyncLocalStorage.setItem('tarjetaLS', listaTarjeta).then((response) =>{
+                respuesta = response;
+            });
+
+            return respuesta;
+        }
+
+        function _getTarjeta(){
+            let listaTarjeta = [];
+            let listaTarjetaLocal = JSON.parse(localStorage.getItem("tarjetaLS"));
+
+            if(listaTarjetaLocal == null){
+                listaTarjeta = [];
+            }else{
+                listaTarjetaLocal.forEach(obj => {
+                    let objTarjeta = new Tarjeta (obj.nombre, obj.numero, obj.expiracion,obj.cvc);
+
+                    listaTarjeta.push(objTarjeta);
+                });
+    
+                
+            }
+    
+            return listaTarjeta;
+        }
+
     }
 })();
