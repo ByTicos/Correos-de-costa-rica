@@ -27,8 +27,9 @@
             actualizarPaquete: _actualizarPaquete,
             addLicencia: _addLicencia,
             getLicencia: _getLicencia,
-            actualizarLocal: _actualizarLicencia
-
+            actualizarLocal: _actualizarLicencia,
+            addTarjeta: _addTarjeta,
+            getTarjeta: _getTarjeta,
                 }
         return publicAPI
 
@@ -70,7 +71,7 @@
                 }
             }
             actualizarLocal(listaUsuarios);
-        }
+        };
 
         function _addPaquete(pNuevoPaquete) {
             let listaPaquetes = _getPaquete();
@@ -126,7 +127,8 @@
                 }
             }
             actualizarPaqueteLocal (listaPaquetes);
-        }
+        };
+
 
         function actualizarLocal(plistaActualizada) {
             localStorage.setItem('usuariosLS', JSON.stringify(plistaActualizada));
@@ -177,6 +179,37 @@
                 actualizarLicenciaLocal (listaLicencia);
             }
 
+
+        function _addTarjeta(pnuevaTarjeta){
+            let listaTarjeta = _getTarjeta();
+            let respuesta = true;
+            listaTarjeta.push(pnuevaTarjeta);
+
+            asyncLocalStorage.setItem('tarjetaLS', listaTarjeta).then((response) =>{
+                respuesta = response;
+            });
+
+            return respuesta;
+        }
+
+        function _getTarjeta(){
+            let listaTarjeta = [];
+            let listaTarjetaLocal = JSON.parse(localStorage.getItem("tarjetaLS"));
+
+            if(listaTarjetaLocal == null){
+                listaTarjeta = [];
+            }else{
+                listaTarjetaLocal.forEach(obj => {
+                    let objTarjeta = new Tarjeta (obj.nombre, obj.numero, obj.expiracion,obj.cvc);
+
+                    listaTarjeta.push(objTarjeta);
+                });
+    
+                
+            }
+    
+            return listaTarjeta;
+        }
 
     }
 })();
