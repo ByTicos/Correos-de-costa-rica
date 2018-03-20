@@ -98,9 +98,10 @@
 
                     listaEstados.forEach(objEstado => {
                         let fecha = new Date (objEstado.fecha);
-                        let estadoTemp = new Estado(objEstado.usuario, fecha, objEstado.estado);
+                        let hora = fecha;
+                        let estadoTemp = new Estado(objEstado.usuario, fecha,hora, objEstado.estado);
 
-                      objPaqueteTemp.agregarEstado(estadoTemp);
+                      objPaqueteTemp.addEstado(estadoTemp);
                     });
 
                    
