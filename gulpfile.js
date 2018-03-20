@@ -1,20 +1,20 @@
 'use strict';
 
 const gulp = require('gulp'),
-      connect = require('gulp-connect'),
-      sass = require('gulp-sass'),
-      cssnano = require('gulp-cssnano'),
-      rename = require('gulp-rename'),
-      nodemon = require('gulp-nodemon'),
-      todo = require('gulp-todo'),
-      browserSync = require('browser-sync'),
-      paths = {
-        views : './public/components/**/**/*.html',
-        styles: './public/sources/styles/**/*.scss',
-        impSass : './public/sources/styles/style.scss',
-        js: './public/components/**/**/*.js',
-        excss: './public/*.css'
-      };
+  connect = require('gulp-connect'),
+  sass = require('gulp-sass'),
+  cssnano = require('gulp-cssnano'),
+  rename = require('gulp-rename'),
+  nodemon = require('gulp-nodemon'),
+  todo = require('gulp-todo'),
+  browserSync = require('browser-sync'),  
+  paths = {
+    views: './public/components/**/**/*.html',
+    styles: './public/sources/styles/**/*.scss',
+    impSass: './public/sources/styles/style.scss',
+    js: './public/components/**/**/*.js',
+    excss: './public/*.css'
+  };
 
 gulp.task('connect', () => {
   connect.server({
@@ -29,38 +29,43 @@ gulp.task('connect', () => {
 
 gulp.task('to-do', () => {
   gulp.src(['./public/**/**/**/**/*.js'])
-  .pipe(todo())
-  .pipe(gulp.dest('./'));
+    .pipe(todo())
+    .pipe(gulp.dest('./'));
 });
 
 gulp.task('dependencies', () => {
   gulp.src([
-    './node_modules/angular/angular.min.js'
-  ])
+      './node_modules/angular/angular.min.js'
+    ])
     .pipe(gulp.dest('./public/lib/angular'));
 
   gulp.src([
-    './node_modules/@uirouter/angularjs/release/angular-ui-router.min.js',
-    './node_modules/oclazyload/dist/ocLazyLoad.min.js',
-    './node_modules/ui-router-page-title/page-title.min.js',
-    './node_modules/payform/dist/payform.js'
-    
-  
-  ])
+      './node_modules/@uirouter/angularjs/release/angular-ui-router.min.js',
+      './node_modules/oclazyload/dist/ocLazyLoad.min.js',
+      './node_modules/ui-router-page-title/page-title.min.js',
+      './node_modules/payform/dist/payform.js'
+
+
+    ])
     .pipe(gulp.dest('./public/lib/angular/routing'));
 
   gulp.src([
-    './node_modules/bootstrap/dist/js/bootstrap.min.js',
-    './node_modules/bootstrap/dist/css/bootstrap.min.css',
-    './node_modules/jquery/dist/jquery.min.js',
-    './node_modules/popper.js/dist/popper.min.js'
-  ])
+      './node_modules/bootstrap/dist/js/bootstrap.min.js',
+      './node_modules/bootstrap/dist/css/bootstrap.min.css',
+      './node_modules/jquery/dist/jquery.min.js',
+      './node_modules/popper.js/dist/umd/popper.min.js'
+    ])
     .pipe(gulp.dest('./public/lib/bootstrap'));
 
   gulp.src([
-    './node_modules/sweetalert/dist/sweetalert.min.js',
-  ])
+      './node_modules/sweetalert/dist/sweetalert.min.js',
+    ])
     .pipe(gulp.dest('./public/lib/sweetalert'));
+
+  gulp.src([
+      './node_modules/ng-file-upload/dist/ng-file-upload-all.min.js',
+    ])
+    .pipe(gulp.dest('./public/lib/ng-file-upload'));
 });
 
 gulp.task('reload', () => {
@@ -71,10 +76,10 @@ gulp.task('reload', () => {
 
 gulp.task('styles', () => {
   gulp.src(paths.impSass)
-  .pipe(sass().on('error', sass.logError))
-  .pipe(cssnano())
-  .pipe(rename('styles.min.css'))
-  .pipe(gulp.dest('./public/sources'));
+    .pipe(sass().on('error', sass.logError))
+    .pipe(cssnano())
+    .pipe(rename('styles.min.css'))
+    .pipe(gulp.dest('./public/sources'));
 });
 
 gulp.task('watch', () => {
