@@ -228,12 +228,12 @@
         controller: 'controladorTarjetas',
         controllerAs: 'vm'
       })
-      
-       .state('filtrarPaquete', {
-        url: '/filtrarPaquete',
+
+      .state('PaquetesAdmin', {
+        url: '/PaquetesAdmin',
         templateUrl: './components/admin/listaPaquetes.view.html',
         data:{
-          pageTitle: 'Filtrar paquetes'
+          pageTitle: 'Filtrar Paquetes'
         },
         params: {
           objEstadoTemp: ''
@@ -243,7 +243,25 @@
             return $ocLazyLoad.load('./components/admin/listaPaquetes.controller.js')
           }]
         },
-        controller: 'controladorListaPaquetes',
+        controller: 'controladorListaPaquetesAdmin',
+        controllerAs: 'vm'
+      })
+
+       .state('listaEstados', {
+        url: '/listaEstados',
+        templateUrl: './components/admin/listaEstadosPaquetes.view.html',
+        data:{
+          pageTitle: 'Filtrar Estados'
+        },
+        params: {
+          objEstadoTemp: ''
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/admin/listaEstadosPaquetes.controller.js')
+          }]
+        },
+        controller: 'controladorListaEstados',
         controllerAs: 'vm'
       })
     
