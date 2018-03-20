@@ -22,6 +22,16 @@
    vm.registrarPaquete = (pnuevoPaquete) => {
 
      let objNuevoPaquete = new Paquete(pnuevoPaquete.tracking, pnuevoPaquete.distribuidor, pnuevoPaquete.precio, pnuevoPaquete.peso, pnuevoPaquete.tipoArticulo, pnuevoPaquete.descripcion );
+    
+     let session = JSON.parse(sessionStorage.getItem('sesion'));
+     let usuario = session.nombre;
+     console.log(usuario);
+     let fecha = new Date();
+     let objEstado = new Estado(usuario, fecha, 'En tránsito a aduana');
+     
+     objNuevoPaquete.mostrarEstadoTraslado('En tránsito a aduana');
+     objNuevoPaquete.agregarEstado(objEstado);
+     
 
      //console.log(objNuevoPaquete);
      
