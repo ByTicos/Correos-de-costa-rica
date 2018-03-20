@@ -127,8 +127,6 @@
         };
 
 
-            
-
         function actualizarLocal(plistaActualizada) {
             localStorage.setItem('usuariosLS', JSON.stringify(plistaActualizada));
         }

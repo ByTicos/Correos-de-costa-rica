@@ -228,7 +228,6 @@
         controller: 'controladorTarjetas',
         controllerAs: 'vm'
       })
-<<<<<<< HEAD
       
        .state('filtrarPaquete', {
         url: '/filtrarPaquete',
@@ -248,7 +247,6 @@
         controllerAs: 'vm'
       })
     
-=======
 
       .state('sucursales', {
         url: '/sucursales',
@@ -264,7 +262,6 @@
         controller: 'controladorSucursal',
         controllerAs: 'vm'
       });
->>>>>>> origin/Esteban
 
 
 

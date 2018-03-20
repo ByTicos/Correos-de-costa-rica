@@ -98,3 +98,25 @@ class Convenio{
         this.tipoTramite = pTipoTramite;
     }
 }
+
+
+class Sucursal {
+    constructor(pId, pNombre, pProvincia, pCanton, pDistrito, pTelefono, pHorario){
+       this.id = pId;
+       this.nombre = pNombre;
+       this.provincia = pProvincia;
+       this.canton = pCanton;
+       this.distrito = pDistrito;
+       this.telefono = pTelefono;
+       this.horario = pHorario;
+    }
+}
+
+class Tarjeta {
+    constructor(pNombre, pNumero, pExpiracion, pCvv){
+       this.nombre = pNombre;
+       this.numero = pNumero;
+       this.expiracion = pExpiracion;
+       this.cvv = pCvv; 
+    }
+}
