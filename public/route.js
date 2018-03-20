@@ -178,6 +178,24 @@
         controllerAs: 'vm'
       })
 
+      .state('admin', {
+        url: '/admin',
+        templateUrl: './components/admin/admin.view.html',
+        data:{
+          pageTitle: 'Registro admin'
+        },
+        params: {
+          objUsuarioTemp:''
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/admin/admin.controller.js')
+          }]
+        },
+        controller: 'controladorAdmin',
+        controllerAs: 'vm'
+      })
+
      
 
   
