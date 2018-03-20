@@ -1,17 +1,91 @@
-<form action="/charge" method="post" id="payment-form">
-    <div class="form-row">
-      <label for="card-element">
-        Credit or debit card
-      </label>
-      <div id="card-element">
-        <!-- A Stripe Element will be inserted here. -->
-      </div>
-  
-      <!-- Used to display form errors. -->
-      <div id="card-errors" role="alert"></div>
-    </div>
-  
-    <button>Submit Payment</button>
-  </form>
+     <div class="container-fluid">
+        <div class="creditCardForm">
+            <div class="heading">
+                <h1>Ingrese su tarjeta</h1>
+            </div>
+            <div class="payment">
+                <form ng-submit="vm.registrarTarjeta(vm.nuevaTarjeta)">
+                    <div class="form-group owner">
+                        <label for="owner">Nombre en la Tarjeta</label>
+                        <input type="text" class="form-control" id="owner" ng-model="vm.nuevaTarjeta.nombre">
+                    </div>
+                    <div class="form-group CVV">
+                        <label for="cvv">CVV</label>
+                        <input type="text" class="form-control" id="cvv" ng-model="vm.nuevaTarjeta.cvv">
+                    </div>
+                    <div class="form-group" id="card-number-field">
+                        <label for="cardNumber">Numero de Tarjeta</label>
+                        <input type="text" class="form-control" id="cardNumber" ng-model="vm.nuevaTarjeta.numero">
+                    </div>
+                    <div class="form-group" id="expiration-date">
+                        <label>Valido Hasta</label>
+                        <select id="month">
+                            <option value="01">January</option>
+                            <option value="02">February </option>
+                            <option value="03">March</option>
+                            <option value="04">April</option>
+                            <option value="05">May</option>
+                            <option value="06">June</option>
+                            <option value="07">July</option>
+                            <option value="08">August</option>
+                            <option value="09">September</option>
+                            <option value="10">October</option>
+                            <option value="11">November</option>
+                            <option value="12">December</option>
+                        </select>
+                        <select id="year">
+                            <option value="16"> 2016</option>
+                            <option value="17"> 2017</option>
+                            <option value="18"> 2018</option>
+                            <option value="19"> 2019</option>
+                            <option value="20"> 2020</option>
+                            <option value="21"> 2021</option>
+                        </select>
+                       
+                    </div>
+                    <div class="form-group" id="credit_cards">
+                        <img src="../../sources/images/visa.jpg" id="visa">
+                        <img src="../../sources/images/mastercard.jpg" id="mastercard">
+                        <img src="../../sources/images/amex.jpg" id="amex">
+                        <img src="../../sources/images/discover.jpg" id="discover">
+                    </div>
+                    <div class="form-group" id="pay-now">
+                        <button type="submit" class="btn btn-default" id="confirm-purchase">Registrar Tarjeta</button>
+                    </div>
+                </form>
+            </div>
+        </div>
 
-  
+        <p class="examples-note">Here are some dummy credit card numbers and CVV codes so you can test out the form:</p>
+
+        <div class="examples">
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Type</th>
+                            <th>Card Number</th>
+                            <th>Security Code</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Visa</td>
+                            <td>4716108999716531</td>
+                            <td>257</td>
+                        </tr>
+                        <tr>
+                            <td>Master Card</td>
+                            <td>5281037048916168</td>
+                            <td>043</td>
+                        </tr>
+                        <tr>
+                            <td>American Express</td>
+                            <td>342498818630298</td>
+                            <td>3156</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
