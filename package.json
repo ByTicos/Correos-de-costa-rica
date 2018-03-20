@@ -24,6 +24,7 @@
     "gulp-rename": "^1.2.2",
     "gulp-sass": "^3.1.0",
     "jquery": "^3.3.1",
+    "ng-file-upload": "^12.2.13",
     "oclazyload": "^1.1.0",
     "payform": "^1.2.2",
     "popper.js": "^1.12.9",
