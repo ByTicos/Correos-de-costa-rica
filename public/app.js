@@ -1,5 +1,5 @@
 (() => {
   'use strict';
   angular
-  .module('correos', ['appRoutes', 'ngFileUpload']);
+  .module('correos', ['appRoutes']);
 })();

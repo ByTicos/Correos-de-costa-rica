@@ -39,6 +39,8 @@
         <legend>Paquetes activos</legend>
         
         <thead>
+          <th>Nº usuario</th>
+          
           <th>Nº Tracking</th>
           <th>Distribuidor</th>
           <th>Precio</th>
@@ -50,6 +52,8 @@
         </thead>
         <tbody>
           <tr ng-repeat="paquete in vm.listaPaquetes" ng-if="paquete.estado === 'activo'">
+            <td>{{paquete.usuario}}</td>
+           
             <td>{{paquete.tracking}}</td>
             <td>{{paquete.distribuidor}}</td>
             <td>{{paquete.precio}}</td>

@@ -20,12 +20,12 @@
    };
 
    vm.registrarPaquete = (pnuevoPaquete) => {
-
-     let objNuevoPaquete = new Paquete(pnuevoPaquete.tracking, pnuevoPaquete.distribuidor, pnuevoPaquete.precio, pnuevoPaquete.peso, pnuevoPaquete.tipoArticulo, pnuevoPaquete.descripcion );
-    
      let session = JSON.parse(sessionStorage.getItem('sesion'));
      let usuario = session.nombre;
-     console.log(usuario);
+
+     let objNuevoPaquete = new Paquete(usuario, pnuevoPaquete.tracking, pnuevoPaquete.distribuidor, pnuevoPaquete.precio, pnuevoPaquete.peso, pnuevoPaquete.tipoArticulo, pnuevoPaquete.descripcion );
+    
+     
      
      let fecha = new Date();
      let hora = fecha;

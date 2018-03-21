@@ -56,6 +56,26 @@
                     let objUsuarioTemp = new Usuario(objUsuario.cedula, objUsuario.foto, objUsuario.primerNombre, objUsuario.segundoNombre, objUsuario.primerApellido, objUsuario.segundoApellido, objUsuario.correo, objUsuario.telefono, objUsuario.fechaNacimiento, objUsuario.provincia, objUsuario.canton, objUsuario.distrito, objUsuario.direccionExacta, objUsuario.tipo,objUsuario.sucursalAsignada, objUsuario.puesto);
                     objUsuarioTemp.cambiarEstado(objUsuario.estado);
 
+                     objUsuario.listaPaquetes.forEach(objPaquete => {
+                    let objPaqueteTemp = new Paquete(objPaquete.usuario,objPaquete.tracking, objPaquete.distribuidor, objPaquete.precio, objPaquete.peso, objPaquete.tipoArticulo, objPaquete.descripcion );
+
+                    let listaEstados =  objPaquete.listaEstados;
+
+                    listaEstados.forEach(objEstado => {
+                        let fecha = new Date (objEstado.fecha);
+                        let hora = fecha;
+                        let estadoTemp = new Estado(objEstado.usuario, fecha,hora, objEstado.estado);
+
+                      objPaqueteTemp.addEstado(estadoTemp);
+                    });
+
+                   
+                    objPaqueteTemp.cambiarEstadoDeActividad(objPaquete.estado);
+                    objPaqueteTemp.mostrarEstadoTraslado (objPaquete.estadoTraslado);
+                    
+                   objUsuarioTemp.agregarPquete(objPaqueteTemp);
+                });
+
                     listaUsuarios.push(objUsuarioTemp);
                 });
             }
@@ -88,36 +108,23 @@
 
 
         function _getPaquete() {
+            let ListaUsuarios = _getUsuarios();
             let listaPaquetes = [];
-            let listaPaquetesLocal = JSON.parse(localStorage.getItem('paquetesLS'));
+            let session = JSON.parse (sessionStorage.getItem ('sesion'));
 
-            if(listaPaquetesLocal == null){
-               listaPaquetes = [];
- 
-            }else{
-                listaPaquetesLocal.forEach(objPaquete => {
-                    let objPaqueteTemp = new Paquete(objPaquete.tracking, objPaquete.distribuidor, objPaquete.precio, objPaquete.peso, objPaquete.tipoArticulo, objPaquete.descripcion );
-
-                    let listaEstados =  objPaquete.listaEstados;
-
-                    listaEstados.forEach(objEstado => {
-                        let fecha = new Date (objEstado.fecha);
-                        let hora = fecha;
-                        let estadoTemp = new Estado(objEstado.usuario, fecha,hora, objEstado.estado);
-
-                      objPaqueteTemp.addEstado(estadoTemp);
-                    });
-
-                   
-                    objPaqueteTemp.cambiarEstadoDeActividad(objPaquete.estado);
-                    objPaqueteTemp.mostrarEstadoTraslado (objPaquete.estadoTraslado);
-                    
-                    listaPaquetes.push(objPaqueteTemp);
-                });
+            for (let i = 0; i < ListaUsuarios.length; i++) {
+                if (session.nombre == ListaUsuarios[i].primerNombre ) {
+                    if (ListaUsuarios[i].listaPaquetes != null) {
+                       listaPaquetes =  ListaUsuarios[i].listaPaquetes;
+                    }
+                }
+                
             }
+            
             return listaPaquetes;
         };
 
+        
         function _actualizarPaquete(pObjpaquete) {
             let listaPaquetes = _getPaquete();
 
