@@ -3,21 +3,18 @@
   'use strict';
   angular
   .module('correos')
-  .controller('controladorPaquetes', controladorPaquetes);
+  .controller('controladorPreAlerta', controladorPreAlerta);
 
-  controladorPaquetes.$inject = ['$stateParams', '$state','$location', 'servicioUsuarios'];
-
-  function controladorPaquetes($stateParams, $state,$location, servicioUsuarios){
+  controladorPreAlerta.$inject = ['$state', '$stateParams','$location', 'servicioUsuarios'];
+  function controladorPreAlerta($state, $stateParams,$location, servicioUsuarios){
    let vm = this;
    vm.nuevoPaquete = {};
    
-   vm.listaPaquetes = listarPaquetes();
 
-   listarPaquetes();
-
-   vm.editPrealerta = (pPaquete)=>{
-   $state.go('editarPaquete', {objPaqueteTemp : JSON.stringify(pPaquete)});
-   };
+   vm.listaPreAlerta = ()=>{
+     $state.go('listaPreAlerta');
+   }
+   
 
    vm.registrarPaquete = (pnuevoPaquete) => {
      let session = JSON.parse(sessionStorage.getItem('sesion'));
@@ -55,14 +52,10 @@
       }
       
      vm.nuevoPaquete = null;
-     listarPaquetes ();
      
    }
 
-    function listarPaquetes() {
-      let listaPaquetes = servicioUsuarios.getPaquete();
-      return listaPaquetes;
-    }
+    
 
 
 
