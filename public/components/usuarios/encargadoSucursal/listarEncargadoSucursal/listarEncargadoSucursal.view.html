@@ -50,7 +50,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="usuario in vm.listaUsuarios" ng-if="usuario.estado === 'inactivo'">
+            <tr ng-repeat="usuario in vm.listaUsuarios" ng-if="usuario.estado === 'inactivo' && usuario.tipo === '2'">
                 <td>{{usuario.cedula}}</td>
                 <td>{{usuario.foto}}</td>
                 <td>{{usuario.primerNombre}}</td>
