@@ -2,11 +2,11 @@
   'use strict'
   angular
     .module('correos')
-    .controller('controladorClientes', controladorClientes);
+    .controller('controladorRegistrarClientes', controladorRegistrarClientes);
 
-  controladorClientes.$inject = ['$http','$state', '$stateParams', '$location', 'servicioUsuarios'/*, 'imageService'*/];
+  controladorRegistrarClientes.$inject = ['$http','$state', '$stateParams', '$location', 'servicioUsuarios'/*, 'imageService'*/];
 
-  function controladorClientes($http ,$state, $stateParams, $location, servicioUsuarios/*, imageService*/) {
+  function controladorRegistrarClientes($http ,$state, $stateParams, $location, servicioUsuarios/*, imageService*/) {
     let vm = this;
 
     vm.listaClientes = listarClientes();

@@ -16,9 +16,9 @@
         }
       })
 
-      .state('cliente', {
-        url: '/cliente',
-        templateUrl: './components/clientes/registroCliente.view.html',
+      .state('registrarCliente', {
+        url: '/registrarCliente',
+        templateUrl: './components/usuarios/cliente/registrarCliente/registrarCliente.view.html',
         data:{
           pageTitle: 'Registro cliente'
         },
@@ -27,28 +27,45 @@
         },
         resolve: {
           load: ['$ocLazyLoad', ($ocLazyLoad) => {
-            return $ocLazyLoad.load('./components/clientes/registroCliente.controller.js')
+            return $ocLazyLoad.load('./components/usuarios/cliente/registrarCliente/registrarCliente.controller.js')
           }]
         },
-        controller: 'controladorClientes',
+        controller: 'controladorRegistrarClientes',
         controllerAs: 'vm'
       })
-
-      .state('editarCliente', {
-        url: '/editarCliente',
-        templateUrl: './components/clientes/editarClientes.view.html',
+      
+      .state('listarCliente', {
+        url: '/listarCliente',
+        templateUrl: './components/usuarios/cliente/listarCliente/listarCliente.view.html',
         data:{
-          pageTitle: 'Editar cliente'
+          pageTitle: 'Registro cliente'
         },
         params: {
           objClienteTemp: ''
         },
         resolve: {
           load: ['$ocLazyLoad', ($ocLazyLoad) => {
-            return $ocLazyLoad.load('./components/clientes/editarClientes.controller.js')
+            return $ocLazyLoad.load('./components/usuarios/cliente/listarCliente/listarCliente.controller.js')
           }]
         },
-        controller: 'controladorEditarClientes',
+        controller: 'controladorListarCliente',
+        controllerAs: 'vm'
+      })
+      .state('modificarCliente', {
+        url: '/modificarCliente',
+        templateUrl: './components/usuarios/cliente/modificarCliente/modificarCliente.view.html',
+        data:{
+          pageTitle: 'Registro cliente'
+        },
+        params: {
+          objClienteTemp: ''
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/usuarios/cliente/modificarCliente/modificarCliente.controller.js')
+          }]
+        },
+        controller: 'controladorModificarCliente',
         controllerAs: 'vm'
       })
 
