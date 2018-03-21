@@ -3,16 +3,16 @@
 'use strict';
 angular
 .module('correos')
-.controller('controladorEditarPaquetes', controladorEditarPaquetes);
+.controller('controladorEditarPreAlerta', controladorEditarPreAlerta);
 
-controladorEditarPaquetes.$inject = ['$stateParams', '$state', '$location', 'servicioUsuarios'];
+controladorEditarPreAlerta.$inject = ['$state', '$stateParams', '$location', 'servicioUsuarios'];
 
-function controladorEditarPaquetes($stateParams, $state, $location, servicioUsuarios) {
+function controladorEditarPreAlerta($state, $stateParams, $location, servicioUsuarios) {
   let vm = this;
 
   vm.editarPaquete = {};
 
-  let objPaqueteAEditar = JSON.parse ($stateParams.objPaqueteTemp);
+  let objPaqueteAEditar = JSON.parse($stateParams.objPaqueteTemp);
   
 
   let objNuevoPaquete = new Paquete(objPaqueteAEditar.tracking, objPaqueteAEditar.distribuidor, objPaqueteAEditar.precio, objPaqueteAEditar.peso, objPaqueteAEditar.tipoArticulo, objPaqueteAEditar.descripcion );

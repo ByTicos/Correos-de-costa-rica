@@ -25,11 +25,19 @@ class Usuario{
     cambiarEstado(pEstado){
         this.estado = pEstado;
     }
+
+    getListaPaquetes(){
+        return this.listaPaquetes;
+    }
+    agregarPaquete(pPaquete){
+    this.listaPaquetes.push(pPaquete);
+  }
       
 }
 
 class Paquete{
-    constructor(pNumeroTracking, pDistribuidor, pPrecio, pPeso, pTipoArticulo, pDescripcion){
+    constructor(pUsuario,pNumeroTracking, pDistribuidor, pPrecio, pPeso, pTipoArticulo, pDescripcion){
+        this.usuario = pUsuario;
         this.tracking = pNumeroTracking;
         this.distribuidor = pDistribuidor;
         this.precio = pPrecio;
@@ -45,6 +53,7 @@ class Paquete{
     cambiarEstadoDeActividad(pEstado){
         this.estado = pEstado;
     }
+    
     
 
       addEstado(pEstado){
