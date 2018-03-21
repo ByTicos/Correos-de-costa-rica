@@ -28,6 +28,9 @@ class Usuario{
     getListaPaquetes(){
         return this.listaPaquetes;
     }
+    agregarPaquete(pPaquete){
+    this.listaPaquetes.push(pPaquete);
+  }
       
 }
 

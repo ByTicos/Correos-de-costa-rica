@@ -30,6 +30,7 @@
             actualizarLocal: _actualizarLicencia,
             addTarjeta: _addTarjeta,
             getTarjeta: _getTarjeta,
+            getAllPaquetes: _getAllPaquetes
                 }
         return publicAPI
 
@@ -73,7 +74,7 @@
                     objPaqueteTemp.cambiarEstadoDeActividad(objPaquete.estado);
                     objPaqueteTemp.mostrarEstadoTraslado (objPaquete.estadoTraslado);
                     
-                   objUsuarioTemp.agregarPquete(objPaqueteTemp);
+                   objUsuarioTemp.agregarPaquete(objPaqueteTemp);
                 });
 
                     listaUsuarios.push(objUsuarioTemp);
@@ -93,18 +94,21 @@
             actualizarLocal(listaUsuarios);
         };
 
-        function _addPaquete(pNuevoPaquete) {
-            let listaPaquetes = _getPaquete();
-            let respuesta = true;
-            
-            listaPaquetes.push(pNuevoPaquete);
+           function _addPaquete (pNuevoPaquete) {
+                let listaUsuarios = _getUsuarios();
+                let sesion = JSON.parse(sessionStorage.getItem('sesion'));
+                let respuesta = true;
 
-            asyncLocalStorage.setItem('paquetesLS', listaPaquetes).then((response) => {
-                respuesta = response;
-            });
+                for(let i = 0; i < listaUsuarios.length; i++){
+                    if (sesion.nombre == listaUsuarios[i].primerNombre){
+                    listaUsuarios[i].agregarPaquete(pNuevoPaquete);
+                    }
+                }
 
-           return respuesta;
-        };
+                actualizarLocal(listaUsuarios);
+                return respuesta;
+                
+            };
 
 
         function _getPaquete() {
@@ -124,7 +128,23 @@
             return listaPaquetes;
         };
 
-        
+        function _getAllPaquetes(){
+        let listaUsuarios = _getUsuarios();
+        let listaPaquetes = [];
+        for (let i = 0; i < listaUsuarios.length; i++){
+            let listaPaquetesTemp = listaUsuarios[i].listaPaquetes;
+            if(listaPaquetesTemp != []){
+            let paqueteTemp = {};
+            for(let j = 0; j < listaPaquetesTemp.length; j++){
+                paqueteTemp = listaPaquetesTemp[j];
+                listaPaquetes.push(paqueteTemp);
+            }
+            }
+        }
+        return listaPaquetes;
+        }
+
+
         function _actualizarPaquete(pObjpaquete) {
             let listaPaquetes = _getPaquete();
 
