@@ -52,27 +52,27 @@
         controllerAs: 'vm'
       })
 
-      .state('paquete',{
-        url: '/paquete',
-        templateUrl: './components/paquetes/registroPaquete.view.html',
+      .state('registrarPreAlerta',{
+        url: '/registrarPreAlerta',
+        templateUrl: './components/paquetes/registrarPreAlerta/registroPreAlerta.view.html',
         data: {
-          pageTitle: 'Registro pre alerta'
+          pageTitle: 'Registro pre-alerta'
         },
          params: {
           objPaqueteTemp: ''
         },
         resolve: {
           load: ['$ocLazyLoad', ($ocLazyLoad) => {
-            return $ocLazyLoad.load('./components/paquetes/registroPaquete.controller.js')
+            return $ocLazyLoad.load('./components/paquetes/registrarPreAlerta/registroPreAlerta.controller.js')
           }]
         },
-        controller: 'controladorPaquetes',
+        controller: 'controladorPreAlerta',
         controllerAs: 'vm'
       })
 
-      .state('editarPaquete', {
-        url: '/editarPaquete',
-        templateUrl: './components/paquetes/editPaquete.view.html',
+      .state('editarPreAlerta', {
+        url: '/editarPreAlerta',
+        templateUrl: './components/paquetes/editarPreAlerta/editarPreAlerta.view.html',
         data:{
           pageTitle: 'Editar Paquete'
         },
@@ -81,10 +81,10 @@
         },
         resolve: {
           load: ['$ocLazyLoad', ($ocLazyLoad) => {
-            return $ocLazyLoad.load('./components/paquetes/editPaquete.controller.js')
+            return $ocLazyLoad.load('./components/paquetes/editarPreAlerta/editarPreAlerta.controller.js')
           }]
         },
-        controller: 'controladorEditarPaquetes',
+        controller: 'controladorEditarPreAlerta',
         controllerAs: 'vm'
       })
 
@@ -124,24 +124,26 @@
         controllerAs: 'vm',
       })
 
-
-       .state('calculadora', {
-        url: '/calculadora',
-        templateUrl: './components/paquetes/calculadora.view.html',
+      
+       .state('listaPreAlerta', {
+        url: '/listaPreAlerta',
+        templateUrl: './components/paquetes/listarPreAlerta/listaPreAlerta.view.html',
         data:{
-          pageTitle: 'calculadora'
+          pageTitle: 'lista de pedidos'
         },
         params: {
-          objcalculoTemp: ''
+          objPedidoTemp: ''
         },
         resolve: {
           load: ['$ocLazyLoad', ($ocLazyLoad) => {
-            return $ocLazyLoad.load('./components/paquetes/calculadora.controller.js')
+            return $ocLazyLoad.load('./components/paquetes/listarPreAlerta/listaPreAlerta.controller.js')
           }]
         },
-        controller: 'controladorCalculadora',
+        controller: 'controladorListaPreAlerta',
         controllerAs: 'vm'
       })
+
+
 
 
       .state('entidades', {
