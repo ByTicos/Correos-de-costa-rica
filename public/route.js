@@ -303,7 +303,7 @@
 
       .state('repartidor', {
         url: '/repartidor',
-        templateUrl: './components/repartidores/registroRepartidor.view.html',
+        templateUrl: './components/usuarios/repartidores/registroRepartidor.view.html',
         data:{
           pageTitle: 'Registro repartidor'
         },
@@ -312,7 +312,7 @@
         },
         resolve: {
           load: ['$ocLazyLoad', ($ocLazyLoad) => {
-            return $ocLazyLoad.load('./components/repartidores/registroRepartidor.controller.js')
+            return $ocLazyLoad.load('./components/usuarios/repartidores/registroRepartidor.controller.js')
           }]
         },
         controller: 'controladorRepartidores',
@@ -376,7 +376,7 @@
 
       .state('editarRepartidor', {
         url:'/editarRepartidor',
-        templateUrl: './components/repartidores/editarRepartidor.view.html',
+        templateUrl: './components/usuarios/repartidores/editarRepartidor.view.html',
         data:{
           pageTitle: 'Editar Repartidor'
         },
@@ -385,7 +385,7 @@
         },
         resolve: {
           load: [ '$ocLazyLoad', ($ocLazyLoad) => {
-            return $ocLazyLoad.load('./components/repartidores/editarRepartidor.controller.js')
+            return $ocLazyLoad.load('./components/usuarios/repartidores/editarRepartidor.controller.js')
           }]
         },
         controller: 'controladorEditarRepartidor',

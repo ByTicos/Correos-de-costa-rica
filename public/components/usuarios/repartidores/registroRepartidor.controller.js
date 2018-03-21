@@ -39,11 +39,11 @@
         });
       }
 
-    //   vm.agregarLicencia = (pNuevaLicencia) => {
+      vm.agregarLicencia = (pNuevaLicencia) => {
 
-    //     let objNuevaLicencia = new Licencia(pNuevaLicencia.numLicencia, pNuevaLicencia.tipoLicencia, pNuevaLicencia.vencimiento);
-    //     let listaRepartidores = servicioUsuarios.getRepartidores()
-    //   }
+        let objNuevaLicencia = new Licencia(pNuevaLicencia.numLicencia, pNuevaLicencia.tipoLicencia, pNuevaLicencia.vencimiento);
+        let listaRepartidores = servicioUsuarios.getRepartidores()
+      }
     }
     function listarRepartidores(){
       let listaUsuarios = servicioUsuarios.getUsuarios();

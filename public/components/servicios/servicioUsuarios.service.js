@@ -30,12 +30,9 @@
             actualizarLocal: _actualizarLicencia,
             addTarjeta: _addTarjeta,
             getTarjeta: _getTarjeta,
-<<<<<<< HEAD
             getLicencia: _getLicencia,
         
-=======
             getAllPaquetes: _getAllPaquetes
->>>>>>> Dev
                 }
         return publicAPI
 
