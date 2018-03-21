@@ -60,6 +60,7 @@ class Paquete{
         this.estadoTraslado = pEstado;
     }
 
+    listaLicencias()
 
 }
 

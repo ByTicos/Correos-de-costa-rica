@@ -21,6 +21,7 @@
 
 
     vm.registrarRepartidor = (pNuevoUsuario) => {
+      
 
       let objNuevoRepartidor = new Usuario(pNuevoUsuario.cedula, pNuevoUsuario.foto, pNuevoUsuario.primerNombre, pNuevoUsuario.segundoNombre, pNuevoUsuario.primerApellido, pNuevoUsuario.segundoApellido, pNuevoUsuario.correo, pNuevoUsuario.telefono, pNuevoUsuario.fechaNacimiento, pNuevoUsuario.provincia, pNuevoUsuario.canton, pNuevoUsuario.distrito, pNuevoUsuario.direccionExacta, 'repartidor', pNuevoUsuario.sucursalAsignada,pNuevoUsuario.vehiculo, pNuevoUsuario.licencias);
 
@@ -38,11 +39,11 @@
         });
       }
 
-      vm.agregarLicencia = (pNuevaLicencia) => {
+    //   vm.agregarLicencia = (pNuevaLicencia) => {
 
-        let objNuevaLicencia = new Licencia(pNuevaLicencia.numLicencia, pNuevaLicencia.tipoLicencia, pNuevaLicencia.vencimiento);
-        let listaRepartidores = servicioUsuarios.getRepartidores()
-      }
+    //     let objNuevaLicencia = new Licencia(pNuevaLicencia.numLicencia, pNuevaLicencia.tipoLicencia, pNuevaLicencia.vencimiento);
+    //     let listaRepartidores = servicioUsuarios.getRepartidores()
+    //   }
     }
     function listarRepartidores(){
       let listaUsuarios = servicioUsuarios.getUsuarios();
@@ -55,14 +56,12 @@
       return listaRepartidores;
     }
 
-    function listaLicencia(){
-      let listaRepartidores = servicioUsuarios.getLicencias();
+    // function listaLicencia(){
+    //   let listaRepartidores = servicioUsuarios.getLicencias();
       
-    }
+    // }
 
-    if (           ){
-
-    }
+    
   }
 })();
 
