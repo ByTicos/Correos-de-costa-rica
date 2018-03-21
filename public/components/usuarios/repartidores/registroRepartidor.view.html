@@ -1,9 +1,15 @@
+
+<div navegacion-Principal></div>
+<div menu-Lateral></div>
+
+
+<div id="dashboard">
 <section  class="container">
     <form action="" class="form-horizontal" ng-submit="vm.registrarRepartidor(vm.nuevoRepartidor)" >
         <div class="col-sm-6 center">
             <div class="form-group">
                 <label for="">Foto</label>
-                <input type="file" class="form-control" ng-model="vm.nuevoRepartidor.foto" required>
+                <input type="file" class="form-control" ng-model="vm.nuevoRepartidor.foto" >
             </div>
         </div>
 
@@ -52,30 +58,28 @@
         
             <div class="form-group">
                 <label for="">Vehiculo</label>
-                <select  class="form-control" required>
-                    <option value="">seleccione el vehiculo</option>
-                    <option  ng-model="vm.nuevoRepartidor.vehiculo" value="moto">Motocicleta</option>
-                    <option  ng-model="vm.nuevoRepartidor.vehiculo" value="camion">Camión</option>
-                    <option  ng-model="vm.nuevoRepartidor.vehiculo" value="trailer">Trailer</option>
-                    <option  ng-model="vm.nuevoRepartidor.vehiculo" value="ban">Ban</option>
-                </select>
+                <select  ng-model="vm.nuevoRepartidor.vehiculo" class="form-control" >
+                        <option value="">seleccione el vehiculo</option>
+                        <option  value="moto">Motocicleta</option>
+                        <option  value="camion">Camión</option>
+                        <option  value="trailer">Trailer</option>
+                        <option  value="ban">Ban</option>
+                    </select>
             </div>
         
             <div class="form-group">
 
                 <label for="">Numero de licencia</label>
-                <input type="text" class="form-control" ng-model="vm.nuevoRepartior.numLicencia">
+                <input type="text" class="form-control" ng-model="vm.nuevoRepartidor.numLicencia">
 
                 
                 <label for="">Licencia</label>
                 
-                <select  class="form-control" required>
+                <select  class="form-control" ng-model="vm.nuevoRepartidor.licencia" >
                 <option value="">seleccione el tipo de licencia</option>
-                <option  ng-model="vm.nuevoRepartidor.licencia" value="a3">A3</option>
-                <option  ng-model="vm.nuevoRepartidor.licencia" value="a4">A4</option>
-                <option  ng-model="vm.nuevoRepartidor.licencia" value="a5">A5</option>
-                <option  ng-model="vm.nuevoRepartidor.licencia" value="b">B</option>
-                <option  ng-model="vm.nuevoRepartidor.licencia" value="c">C</option>
+                <option   value="A">A</option>
+                <option   value="B">B</option>
+                <option   value="C">C</option>
                 </select>
             </div>
             
@@ -94,43 +98,43 @@
     </form>
   
   
-    <!-- <table class="table table-responsive">
+    <table class="table table-responsive">
       <thead>
         <tr>
           <th>Foto</th>
           <th>Cédula</th>
-          <th>Nombre completo</th>
-          <th>Apellidos </th>
+          <th>Nombre completo </th>
+          <th>apellidos</th>
           <th>Correo electrónico</th>
           <th>Teléfono</th>
           <th>Fecha de Nacimiento</th>
           <th>Vehículo</th>
+          <!-- <th>Numero de licencia</th> -->
           <th>Licencia</th>
           <th>Vencimiento de licencia</th>
-          <th>Sucursal asignada</th>
           
   
         </tr>
       </thead>
   
       <tbody>
-        <tr ng-repeat="usuario in vm.listaRepartidores">
-          <td>{{usuario.foto}}</td>
-          <td>{{usuario.cedula}}</td>
-          <td>{{usuario.primerNombre}} </td>
-          <td>{{usuario.segundoNombre}} </td>
-          <td>{{usuario.primerApellido}}</td>
-          <td>{{usuario.segundoApellido}}</td>
-          <td>{{usuario.correo}}</td>
-          <td>{{usuario.telefono}}</td>
-          <td>{{usuario.fechaNacimiento}}</td>
-          <td>{{usuario.vehiculo}}</td>
-          <td>{{usuario.licencia}}</td>
-          <td>{{usuario.vencimientoLicencia}}</td>
-          <td>{{usuario.sucursalAsignada}}</td>
+        <tr ng-repeat="repartidor in vm.listaRepartidores">
+          <td>{{repartidor.foto}}</td>
+          <td>{{repartidor.cedula}}</td>
+          <td>{{repartidor.primerNombre}} {{repartidor.segundoNombre}}</td>
+          <td>{{repartidor.primerApellido}} {{repartidor.segundoApellido}}</td>
+          <td>{{repartidor.correo}}</td>
+          <td>{{repartidor.telefono}}</td>
+          <td>{{repartidor.fechaNacimiento}}</td>
+          <td>{{repartidor.vehiculo}}</td>
+          <td>{{repartidor.listaLicencias.tipoLicencia}}</td>
+          <td>{{repartidor.listaLicencias.vencimiento}}</td>
+         
         </tr>
       </tbody>
-    </table> -->
+    </table>
   
   </section>
+
+</div>
   

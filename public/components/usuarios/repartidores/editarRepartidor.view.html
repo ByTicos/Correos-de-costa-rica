@@ -8,7 +8,7 @@
       <div class="col-sm-6 center">
           <div class="form-group">
               <label for="">Foto</label>
-              <input type="file" class="form-control" ng-model="vm.editarRepartidor.foto" required>
+              <input type="file" class="form-control" ng-model="vm.editarRepartidor.foto" >
           </div>
       </div>
 
@@ -57,24 +57,24 @@
       
           <div class="form-group">
               <label for="">Vehiculo</label>
-              <select  class="form-control" required>
-                  <option value="">seleccione el vehiculo</option>
-                  <option  ng-model="vm.editarRepartidor.vehiculo" value="moto">Motocicleta</option>
-                  <option  ng-model="vm.editarRepartidor.vehiculo" value="camion">Camión</option>
-                  <option  ng-model="vm.editarRepartidor.vehiculo" value="trailer">Trailer</option>
-                  <option  ng-model="vm.editarRepartidor.vehiculo" value="ban">Ban</option>
-              </select>
+              <select  ng-model="vm.nuevoRepartidor.vehiculo" class="form-control" required>
+                    <option value="">seleccione el vehiculo</option>
+                    <option  value="moto">Motocicleta</option>
+                    <option  value="camion">Camión</option>
+                    <option  value="trailer">Trailer</option>
+                    <option  value="ban">Ban</option>
+                </select>
           </div>
       
           <div class="form-group">
               <label for="">Licencia</label>
               
-              <select  class="form-control" required>
-              <option value="">seleccione el tipo de licencia</option>
-              <option  ng-model="vm.editarRepartidor.licencia" value="a3">A</option>
-              <option  ng-model="vm.editarRepartidor.licencia" value="b">B</option>
-              <option  ng-model="vm.editarRepartidor.licencia" value="c">C</option>
-              </select>
+              <select  class="form-control" ng-model="vm.nuevoRepartidor.licencia" required>
+                    <option value="">seleccione el tipo de licencia</option>
+                    <option   value="A">A</option>
+                    <option   value="B">B</option>
+                    <option   value="C">C</option>
+                </select>
           </div>
           
           <div class="form-group">
