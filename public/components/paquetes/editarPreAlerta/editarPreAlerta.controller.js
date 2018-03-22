@@ -15,7 +15,7 @@ function controladorEditarPreAlerta($state, $stateParams, $location, servicioUsu
   let objPaqueteAEditar = JSON.parse($stateParams.objPaqueteTemp);
   
 
-  let objNuevoPaquete = new Paquete(objPaqueteAEditar.tracking, objPaqueteAEditar.distribuidor, objPaqueteAEditar.precio, objPaqueteAEditar.peso, objPaqueteAEditar.tipoArticulo, objPaqueteAEditar.descripcion );
+  let objNuevoPaquete = new Paquete(objPaqueteAEditar.usuario,objPaqueteAEditar.tracking, objPaqueteAEditar.distribuidor, objPaqueteAEditar.precio, objPaqueteAEditar.peso, objPaqueteAEditar.tipoArticulo, objPaqueteAEditar.descripcion );
 
   vm.editarPaquete.tracking = objNuevoPaquete.tracking;
   vm.editarPaquete.distribuidor = objNuevoPaquete.distribuidor;
@@ -42,7 +42,7 @@ function controladorEditarPreAlerta($state, $stateParams, $location, servicioUsu
   let listaPaquetes = servicioUsuarios.getPaquete();
 
   listaPaquetes.forEach(objPaquete =>{
-  if(objPaquete.traking == objNuevoPaquete.traking){
+  if(objPaquete.tracking == objNuevoPaquete.tracking){
    objPaquete.tracking = pPrealerta.tracking;
    objPaquete.distribuidor = pPrealerta.distribuidor;
    objPaquete.precio = pPrealerta.precio;
