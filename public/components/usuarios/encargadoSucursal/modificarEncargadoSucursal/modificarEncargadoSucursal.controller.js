@@ -10,7 +10,7 @@
     let vm = this;
 
     vm.regresar = () => {
-      $state.go('listarEncargadoSucursal');
+      $state.go('main.listarEncargadoSucursal');
     }
 
     vm.editarUsuarios = {};
@@ -45,7 +45,7 @@
         }
         servicioUsuarios.actualizarUsuario(objUsuario);
       });
-      $state.go('listarEncargadoSucursal');
+      $state.go('main.listarEncargadoSucursal');
     }
     
 
@@ -78,7 +78,7 @@
       swal("Edición exitosa", "Usuario editado correctamente", "success", {
         button: "Aceptar",
       });
-      $state.go('listarEncargadoSucursal');
+      $state.go('main.listarEncargadoSucursal');
     }
   }
 
