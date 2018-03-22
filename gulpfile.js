@@ -58,12 +58,13 @@ gulp.task('dependencies', () => {
     .pipe(gulp.dest('./public/lib/bootstrap'));
 
   gulp.src([
-      './node_modules/sweetalert/dist/sweetalert.min.js',
+      './node_modules/sweetalert/dist/sweetalert.min.js'
     ])
     .pipe(gulp.dest('./public/lib/sweetalert'));
 
   gulp.src([
-      './node_modules/ng-file-upload/dist/ng-file-upload-all.min.js',
+      './node_modules/ng-file-upload/dist/ng-file-upload.min.js',
+      './node_modules/ng-file-upload/dist/ng-file-upload-shim.min.js'
     ])
     .pipe(gulp.dest('./public/lib/ng-file-upload'));
 });
