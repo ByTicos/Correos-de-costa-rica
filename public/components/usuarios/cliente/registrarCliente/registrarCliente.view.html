@@ -1,0 +1,95 @@
+<div navegacion-Principal></div>
+<div menu-Lateral></div>
+<section id="dashboard">
+  <form action="" class="form-horizontal" ng-submit="vm.registrarCliente(vm.nuevoCliente)">
+    <div class="form-group">
+      <label for="">Cédula</label>
+      <input type="text" class="form-control" ng-model="vm.nuevoCliente.cedula" required>
+    </div>
+    <div class="form-group">
+      <label for="">Foto</label>
+      <input 
+     img-upload type="file" class="form-control" ng-model="vm.nuevoCliente.foto" required>
+    </div>
+
+    <div ng-repeat="foto in vm.nuevoCliente.foto">
+      <div>{{foto.name}}</div>
+      <div>{{foto.lastModified | date}}</div>
+      <div>{{foto.size}}</div>
+      <div>{{foto.type}}</div>
+    </div>
+    <div class="form-group">
+      <label for="">Primer nombre</label>
+      <input type="text" class="form-control" ng-model="vm.nuevoCliente.primerNombre" required>
+    </div>
+    <div class="form-group">
+      <label for="">Segundo nombre</label>
+      <input type="text" class="form-control" ng-model="vm.nuevoCliente.segundoNombre">
+    </div>
+    <div class="form-group">
+      <label for="">Primer apellido</label>
+      <input type="text" class="form-control" ng-model="vm.nuevoCliente.primerApellido" required>
+    </div>
+    <div class="form-group">
+      <label for="">Segundo apellido</label>
+      <input type="text" class="form-control" ng-model="vm.nuevoCliente.segundoApellido">
+    </div>
+    <div class="form-group">
+      <label for="">Correo electrónico</label>
+      <input type="text" class="form-control" ng-model="vm.nuevoCliente.correo" required>
+    </div>
+    <div class="form-group">
+      <label for="">Teléfono</label>
+      <input type="text" class="form-control" ng-model="vm.nuevoCliente.telefono" required>
+    </div>
+    <div class="form-group">
+      <label for="">Fecha de nacimiento</label>
+      <input type="date" class="form-control" ng-model="vm.nuevoCliente.fechaNacimiento" required>
+    </div>
+    <!--<div class="form-group">
+          <label for="">Provincia</label>
+          <input type="text" class="form-control" ng-model="vm.nuevoCliente.provincia" required>
+      </div>
+      <div class="form-group">
+          <label for="">Cantón</label>
+          <input type="text" class="form-control" ng-model="vm.nuevoCliente.canton" required>
+      </div>
+      <div class="form-group">
+          <label for="">Distrito</label>
+          <input type="text" class="form-control" ng-model="vm.nuevoCliente.distrito" required>
+      </div>-->
+
+    <div class="form-group">
+      <label for="sltProvincia">Provincia</label>
+      <select id="sltProvincia" class="form-control" name="sltProvincias" ng-change="vm.rellenarCantones(vm.nuevoCliente.provincia._id)"
+        ng-options="provincia as provincia.name for provincia in vm.provincias track by provincia._id" ng-model="vm.nuevoCliente.provincia"
+        required>
+        <option value="">-- Seleccione una Provincia --</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="sltCanton">Cantón</label>
+      <select id="sltCanton" class="form-control" name="sltCantones" ng-change="vm.rellenarDistrito(vm.nuevoCliente.canton._id)"
+        ng-options="canton as canton.name for canton in vm.cantones track by canton._id" ng-model="vm.nuevoCliente.canton"
+        required>
+        <option value="">-- Seleccione un Cantón --</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="sltDistrito">Distrito</label>
+      <select id="sltDistrito" class="form-control" name="sltDistritos" ng-options="distrito as distrito.name for distrito in vm.distritos track by distrito._id"
+        ng-model="vm.nuevoCliente.distrito" required>
+        <option value="">-- Seleccione un Distrito --</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="">Dirección exacta</label>
+      <input type="text" class="form-control" ng-model="vm.nuevoCliente.direccionExacta" required>
+    </div>
+
+    <button type="submit">Registrar</button>
+  </form>
+</section>

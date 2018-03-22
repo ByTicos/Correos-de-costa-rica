@@ -1,0 +1,64 @@
+<div navegacion-Principal></div>
+<div menu-Lateral></div>
+<section id="dashboard">
+  <form action="" class="form-horizontal" ng-submit="vm.modifCliente(vm.modificarCliente)">
+    <div class="form-group">
+      <label for="">Cédula</label>
+      <input type="text" class="form-control" ng-model="vm.modificarCliente.cedula" disabled>
+    </div>
+    <div class="form-group">
+      <label for="">Foto</label>
+      <input type="text" class="form-control" ng-model="vm.modificarCliente.foto" required>
+    </div>
+    <div class="form-group">
+      <label for="">Primer nombre</label>
+      <input type="text" class="form-control" ng-model="vm.modificarCliente.primerNombre" required>
+    </div>
+    <div class="form-group">
+      <label for="">Segundo nombre</label>
+      <input type="text" class="form-control" ng-model="vm.modificarCliente.segundoNombre">
+    </div>
+    <div class="form-group">
+      <label for="">Primer apellido</label>
+      <input type="text" class="form-control" ng-model="vm.modificarCliente.primerApellido" required>
+    </div>
+    <div class="form-group">
+      <label for="">Segundo apellido</label>
+      <input type="text" class="form-control" ng-model="vm.modificarCliente.segundoApellido">
+    </div>
+    <div class="form-group">
+      <label for="">Correo electrónico</label>
+      <input type="text" class="form-control" ng-model="vm.modificarCliente.correo" required>
+    </div>
+    <div class="form-group">
+      <label for="">Teléfono</label>
+      <input type="text" class="form-control" ng-model="vm.modificarCliente.telefono" required>
+    </div>
+    <div class="form-group">
+      <label for="">Fecha de nacimiento</label>
+      <input type="date" class="form-control" ng-model="vm.modificarCliente.fechaNacimiento" required>
+    </div>
+    <div class="form-group">
+      <label for="">Provincia</label>
+      <input type="text" class="form-control" ng-model="vm.modificarCliente.provincia" required>
+    </div>
+    <div class="form-group">
+      <label for="">Cantón</label>
+      <input type="text" class="form-control" ng-model="vm.modificarCliente.canton" required>
+    </div>
+    <div class="form-group">
+      <label for="">Distrito</label>
+      <input type="text" class="form-control" ng-model="vm.modificarCliente.distrito" required>
+    </div>
+    <div class="form-group">
+      <label for="">Dirección exacta</label>
+      <input type="text" class="form-control" ng-model="vm.modificarCliente.direccionExacta" required>
+    </div>
+      <div class="col-md-6">
+        <button class="btn buttonall" type="submit">Modificar</button>
+      </div>
+  </form>
+  <div class="col-md-6 pt-2">
+      <button class="btn buttonall" type="button" ng-click="vm.regresar()">Regresar</button>
+    </div>
+</section>

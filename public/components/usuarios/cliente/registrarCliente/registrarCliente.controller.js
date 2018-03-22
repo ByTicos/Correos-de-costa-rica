@@ -2,23 +2,34 @@
   'use strict'
   angular
     .module('correos')
-    .controller('controladorClientes', controladorClientes);
+    .controller('controladorRegistrarClientes', controladorRegistrarClientes);
 
-  controladorClientes.$inject = ['$http','$state', '$stateParams', '$location', 'servicioUsuarios'];
+  controladorRegistrarClientes.$inject = ['$http','$state', '$stateParams', '$location', 'servicioUsuarios', 'imageService','Upload'];
 
-  function controladorClientes($http ,$state, $stateParams, $location, servicioUsuarios) {
+  function controladorRegistrarClientes($http ,$state, $stateParams, $location, servicioUsuarios, imageService, Upload) {
     let vm = this;
 
     vm.listaClientes = listarClientes();
     vm.nuevoCliente = {};
     
-    /*let map;
+    vm.cloudObj = imageService.getConfiguration();
+  /*
+    vm.preSave = () =>{
+      vm.cloudObj.data.file = vm.nuevoCliente.foto;
+      Upload.upload(vm.cloudObj)
+        .success((data) => { 
+          vm.registrarCliente(data.url);
+        });
+    }
+
+    var map;
     function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
         center: { lat: -34.397, lng: 150.644 },
         zoom: 8
       });
     }*/
+    
 
 
     vm.provincias = $http({
@@ -74,7 +85,19 @@
 
     vm.registrarCliente = (pNuevoUsuario) => {
 
-      let objNuevoCliente = new Usuario(pNuevoUsuario.cedula, pNuevoUsuario.foto, pNuevoUsuario.primerNombre, pNuevoUsuario.segundoNombre, pNuevoUsuario.primerApellido, pNuevoUsuario.segundoApellido, pNuevoUsuario.correo, pNuevoUsuario.telefono, pNuevoUsuario.fechaNacimiento, pNuevoUsuario.provincia, pNuevoUsuario.canton, pNuevoUsuario.distrito, pNuevoUsuario.direccionExacta, 'cliente');
+
+    let urlImage;
+      
+    if(vm.cloudObj.data.file){
+      Upload.upload(vm.cloudObj).success((data) => { 
+        urlImage = data.url;
+      });
+    }
+      
+      
+
+
+      let objNuevoCliente = new Usuario(pNuevoUsuario.cedula, pNuevoUsuario.foto, pNuevoUsuario.primerNombre, pNuevoUsuario.segundoNombre, pNuevoUsuario.primerApellido, pNuevoUsuario.segundoApellido, pNuevoUsuario.correo, pNuevoUsuario.telefono, pNuevoUsuario.fechaNacimiento, pNuevoUsuario.provincia, pNuevoUsuario.canton, pNuevoUsuario.distrito, pNuevoUsuario.direccionExacta, '1');
 
       let registro = servicioUsuarios.addUsuario(objNuevoCliente);
 

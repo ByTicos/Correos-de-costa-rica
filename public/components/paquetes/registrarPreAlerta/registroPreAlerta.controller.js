@@ -3,29 +3,29 @@
   'use strict';
   angular
   .module('correos')
-  .controller('controladorPaquetes', controladorPaquetes);
+  .controller('controladorPreAlerta', controladorPreAlerta);
 
-  controladorPaquetes.$inject = ['$stateParams', '$state','$location', 'servicioUsuarios'];
-
-  function controladorPaquetes($stateParams, $state,$location, servicioUsuarios){
+  controladorPreAlerta.$inject = ['$state', '$stateParams','$location', 'servicioUsuarios'];
+  function controladorPreAlerta($state, $stateParams,$location, servicioUsuarios){
    let vm = this;
    vm.nuevoPaquete = {};
    
-   vm.listaPaquetes = listarPaquetes();
 
-   listarPaquetes();
-
-   vm.editPrealerta = (pPaquete)=>{
-   $state.go('editarPaquete', {objPaqueteTemp : JSON.stringify(pPaquete)});
-   };
+   vm.listaPreAlerta = ()=>{
+     $state.go('listaPreAlerta');
+   }
+   
 
    vm.registrarPaquete = (pnuevoPaquete) => {
-
-     let objNuevoPaquete = new Paquete(pnuevoPaquete.tracking, pnuevoPaquete.distribuidor, pnuevoPaquete.precio, pnuevoPaquete.peso, pnuevoPaquete.tipoArticulo, pnuevoPaquete.descripcion );
-    
      let session = JSON.parse(sessionStorage.getItem('sesion'));
      let usuario = session.nombre;
-     console.log(usuario);
+     
+     let articulo = pnuevoPaquete.tipoArticulo;
+     console.log(articulo);
+
+     let objNuevoPaquete = new Paquete(usuario, pnuevoPaquete.tracking, pnuevoPaquete.distribuidor, pnuevoPaquete.precio, pnuevoPaquete.peso, pnuevoPaquete.tipoArticulo, pnuevoPaquete.descripcion );
+    
+     
      
      let fecha = new Date();
      let hora = fecha;
@@ -52,14 +52,10 @@
       }
       
      vm.nuevoPaquete = null;
-     listarPaquetes ();
      
    }
 
-    function listarPaquetes() {
-      let listaPaquetes = servicioUsuarios.getPaquete();
-      return listaPaquetes;
-    }
+    
 
 
 

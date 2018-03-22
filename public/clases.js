@@ -26,14 +26,24 @@ class Usuario{
         this.estado = pEstado;
     }
 
+<<<<<<< HEAD
     registarTarjeta(pTarjeta){
         return this.tarjeta;
     }
+=======
+    getListaPaquetes(){
+        return this.listaPaquetes;
+    }
+    agregarPaquete(pPaquete){
+    this.listaPaquetes.push(pPaquete);
+  }
+>>>>>>> Dev
       
 }
 
 class Paquete{
-    constructor(pNumeroTracking, pDistribuidor, pPrecio, pPeso, pTipoArticulo, pDescripcion){
+    constructor(pUsuario,pNumeroTracking, pDistribuidor, pPrecio, pPeso, pTipoArticulo, pDescripcion){
+        this.usuario = pUsuario;
         this.tracking = pNumeroTracking;
         this.distribuidor = pDistribuidor;
         this.precio = pPrecio;
@@ -49,6 +59,7 @@ class Paquete{
     cambiarEstadoDeActividad(pEstado){
         this.estado = pEstado;
     }
+    
     
 
       addEstado(pEstado){
