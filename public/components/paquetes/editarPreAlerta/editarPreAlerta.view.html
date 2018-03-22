@@ -5,10 +5,7 @@
     <div>
       <form ng-submit="vm.editPrealerta(vm.editarPaquete)">
 
-        <div class="form-group">
-          <label for="">Número de traking</label>
-          <input type="text" class="form-control" ng-model="vm.editarPaquete.tracking" disabled>
-        </div>
+        
         <div class="form-group">
           <label for="">Distribuidor</label>
           <input type="text" class="form-control" ng-model="vm.editarPaquete.distribuidor" required>
@@ -22,7 +19,7 @@
           <input type="text" class="form-control" ng-model="vm.editarPaquete.peso" required>
         </div>
         <div class="form-group">
-          <label for="">Articulo</label>
+          <label for="29.95">Articulo</label>
           <select ng-model='vm.editarPaquete.tipoArticulo'>
 
             <option value="{monto: 29.95, articulo:Acoustic}">Acoustic Guitar - (29.95%)</option>
