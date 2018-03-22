@@ -183,14 +183,9 @@
 
         function _addTarjeta(pnuevaTarjeta){
             let listaTarjeta = _getTarjeta();
-            let respuesta = true;
             listaTarjeta.push(pnuevaTarjeta);
 
-            asyncLocalStorage.setItem('tarjetaLS', listaTarjeta).then((response) =>{
-                respuesta = response;
-            });
-
-            return respuesta;
+           localStorage.setItem('tarjetaLS', JSON.stringify(listaTarjeta));
         }
 
         function _getTarjeta(){
@@ -201,7 +196,7 @@
                 listaTarjeta = [];
             }else{
                 listaTarjetaLocal.forEach(obj => {
-                    let objTarjeta = new Tarjeta (obj.nombre, obj.numero, obj.expiracion,obj.cvc);
+                    let objTarjeta = new Tarjeta (obj.id, obj.nombre, obj.numero, obj.expiracion,obj.cvc);
 
                     listaTarjeta.push(objTarjeta);
                 });

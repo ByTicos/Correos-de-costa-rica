@@ -1,5 +1,5 @@
 class Usuario{
-    constructor(pCedula, pFoto, pPrimerNombre, pSegundoNombre, pPrimerApellido, pSegundoApellido, pEmail, pTelefono, pfechaNacimiento, pProvincia, pCanton, pDistrito, pDireccionExacta, pTipo,pSucursalAsignada, pPuesto, pVehiculo,pLicencia, pVencimientoLicencia){
+    constructor(pCedula, pFoto, pPrimerNombre, pSegundoNombre, pPrimerApellido, pSegundoApellido, pEmail, pTelefono, pfechaNacimiento, pProvincia, pCanton, pDistrito, pDireccionExacta, pTipo,pSucursalAsignada, pPuesto, pVehiculo,pLicencia, pVencimientoLicencia, pTarjeta){
         this.cedula = pCedula;
         this.foto = pFoto;
         this.primerNombre = pPrimerNombre;
@@ -20,9 +20,14 @@ class Usuario{
         this.vehiculo = pVehiculo;
         this.listaLicencias = [];
         this.estado = 'activo';
+        this.tarjeta = pTarjeta || [];
     } 
     cambiarEstado(pEstado){
         this.estado = pEstado;
+    }
+
+    registarTarjeta(pTarjeta){
+        return this.tarjeta;
     }
       
 }
@@ -122,7 +127,8 @@ class Sucursal {
 }
 
 class Tarjeta {
-    constructor(pNombre, pNumero, pExpiracion, pCvv){
+    constructor(pId, pNombre, pNumero, pExpiracion, pCvv){
+       this.id = pId;
        this.nombre = pNombre;
        this.numero = pNumero;
        this.expiracion = pExpiracion;

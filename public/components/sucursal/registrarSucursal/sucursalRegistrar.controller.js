@@ -13,16 +13,21 @@
     vm.nuevaSucursal = {};
     vm.listaSucursales = listarSucursales();
     
+    servicioSucursales.listarSucursalesJson();
+
     vm.provincias = $http({
       method: 'GET',
       url: './sources/data/provincias.json'
     }).then( (success) => {
       vm.provincias = success.data;
+      console.log(' vm.provincias',  vm.provincias);
+
     }, (error) => {
       console.log("Ocurrió un error " + error.data);
     });
 
     vm.rellenarCantones = (pidProvincia) => {
+      console.log('pidProvincia', pidProvincia);
       vm.cantones = $http({
         method: 'GET',
         url: './sources/data/cantones.json'
@@ -61,11 +66,11 @@
 
     vm.registrarSucursal = (pnuevaSucursal) => {
 
-      let objnuevaSucursal = new Sucursal(pnuevaSucursal.id, pnuevaSucursal.nombre, pnuevaSucursal.provincia.name, pnuevaSucursal.canton.name, pnuevaSucursal.distrito.name, pnuevaSucursal.telefono, pnuevaSucursalhorario);
+      let objnuevaSucursal = new Sucursal(pnuevaSucursal.id, pnuevaSucursal.nombre, pnuevaSucursal.provincia.name, pnuevaSucursal.canton.name, pnuevaSucursal.distrito.name, pnuevaSucursal.telefono, pnuevaSucursal.horario);
 
       servicioSucursales.addSucursal(objnuevaSucursal);
 
-      swal("Registro exitoso", "El usuario ha sido registrado correctamente", "success", {
+      swal("Registro exitoso", "La sucursal ha sido registrada correctamente", "success", {
         button: "Aceptar",
       });
 
@@ -77,6 +82,7 @@
       vm.listaSucursales = servicioSucursales.getSucursal();
     }
 
+    
   }
 })();
 
