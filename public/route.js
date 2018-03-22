@@ -199,25 +199,6 @@
         controller: 'controladorAdmin',
         controllerAs: 'vm'
       })
-
-      .state('encargadoSucursal', {
-        url: '/encargadoSucursal',
-        templateUrl: './components/encargadoSucursal/encargadoSucursal.view.html',
-        data:{
-          pageTitle: 'Dashboard de Encargado de Sucursal'
-        },
-        params: {
-          objUsuarioTemp:''
-        },
-        resolve: {
-          load: ['$ocLazyLoad', ($ocLazyLoad) => {
-            return $ocLazyLoad.load('./components/encargadoSucursal/encargadoSucursal.controller.js')
-          }]
-        },
-        controller: 'controladorencargadoSucursal',
-        controllerAs: 'vm'
-      })
-
   
       .state('logIn', {
         url: '/logIn',
@@ -394,6 +375,7 @@
         controllerAs: 'vm',
       })
 
+<<<<<<< HEAD
       .state('editarRepartidor', {
         url:'/editarRepartidor',
         templateUrl: './components/usuarios/repartidores/editarRepartidor.view.html',
@@ -411,6 +393,27 @@
         controller: 'controladorEditarRepartidor',
         controllerAs: 'vm'
       })
+=======
+      .state('paquetesEncargadoSucursal', {
+        url: '/paquetesEncargadoSucursal',
+        templateUrl: './components/usuarios/encargadoSucursal/paquetesEncargadoSucursal/paquetesEncargadoSucursal.view.html',
+        data:{
+          pageTitle: 'Paquetes Encargado de Sucursal'
+        },
+        params: {
+          objUsuarioTemp: ''
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/usuarios/encargadoSucursal/paquetesEncargadoSucursal/paquetesEncargadoSucursal.controller.js')
+          }]
+        }, 
+        controller: 'controladorPaquetesEncargadoSucursal',
+        controllerAs: 'vm',
+      })
+
+      
+>>>>>>> Dev
 
     $urlRouterProvider.otherwise('/');
   };

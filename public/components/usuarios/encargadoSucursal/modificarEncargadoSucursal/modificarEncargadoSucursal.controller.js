@@ -4,9 +4,9 @@
     .module('correos')
     .controller('controladorModificarEncargadoSucursal', controladorModificarEncargadoSucursal);
 
-    controladorModificarEncargadoSucursal.$inject = ['$stateParams', '$state', '$location', 'servicioUsuarios'];
+    controladorModificarEncargadoSucursal.$inject = ['$stateParams', '$state', '$location', 'servicioUsuarios', 'servicioSucursales'];
 
-  function controladorModificarEncargadoSucursal($stateParams, $state, $location, servicioUsuarios) {
+  function controladorModificarEncargadoSucursal($stateParams, $state, $location, servicioUsuarios, servicioSucursales) {
     let vm = this;
 
     vm.regresar = () => {

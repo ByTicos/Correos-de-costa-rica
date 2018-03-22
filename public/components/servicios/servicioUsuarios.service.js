@@ -25,6 +25,7 @@
             addPaquete: _addPaquete,
             getPaquete: _getPaquete,
             actualizarPaquete: _actualizarPaquete,
+            actualizarEstadoPaquete: _actualizarEstadoPaquete,
             addLicencia: _addLicencia,
             getLicencia: _getLicencia,
             actualizarLocal: _actualizarLicencia,
@@ -149,6 +150,18 @@
 
         function _actualizarPaquete(pObjpaquete) {
             let listaPaquetes = _getPaquete();
+
+            for (let i = 0; i < listaPaquetes.length; i++) {
+                if (listaPaquetes[i].tracking == pObjpaquete.tracking ) {
+                   
+                    listaPaquetes[i] = pObjpaquete;
+                }
+            }
+            actualizarPaqueteLocal (listaPaquetes);
+        };
+
+        function _actualizarEstadoPaquete(pObjpaquete) {
+            let listaPaquetes = _getAllPaquetes();
 
             for (let i = 0; i < listaPaquetes.length; i++) {
                 if (listaPaquetes[i].tracking == pObjpaquete.tracking ) {
