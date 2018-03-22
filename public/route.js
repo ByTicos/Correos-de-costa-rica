@@ -16,7 +16,37 @@
         }
       })
 
-      .state('registrarCliente', {
+      .state('logIn', {
+        url: '/logIn',
+        templateUrl: './components/inicioSesion/inicioSesion.view.html',
+        data:{
+          pageTitle: 'Iniciar sesión'
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/inicioSesion/inicioSesion.controller.js')
+          }]
+        },
+        controller: 'controladorLogin',
+        controllerAs: 'vm'
+      })
+
+      .state('main', {
+        url: '/main',
+        templateUrl: './components/main/main.view.html',
+        data:{
+          pageTitle: 'Iniciar sesión'
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/main/main.controller.js')
+          }]
+        },
+        controller: 'controladorMain',
+        controllerAs: 'vm'
+      })
+
+      .state('main.registrarCliente', {
         url: '/registrarCliente',
         templateUrl: './components/usuarios/cliente/registrarCliente/registrarCliente.view.html',
         data:{
@@ -217,20 +247,7 @@
         controllerAs: 'vm'
       })
   
-      .state('logIn', {
-        url: '/logIn',
-        templateUrl: './components/inicioSesion/inicioSesion.view.html',
-        data:{
-          pageTitle: 'Iniciar sesión'
-        },
-        resolve: {
-          load: ['$ocLazyLoad', ($ocLazyLoad) => {
-            return $ocLazyLoad.load('./components/inicioSesion/inicioSesion.controller.js')
-          }]
-        },
-        controller: 'controladorLogin',
-        controllerAs: 'vm'
-      })
+      
 
       .state('tarjetas', {
         url: '/tarjetas',
@@ -338,7 +355,7 @@
       })
       
 
-      .state('registrarEncargadoSucursal', {
+      .state('main.registrarEncargadoSucursal', {
         url: '/registrarEncargadoSucursal',
         templateUrl: './components/usuarios/encargadoSucursal/registrarEncargadoSucursal/registrarEncargadoSucursal.view.html',
         data:{
