@@ -9,9 +9,9 @@
   function imageService($http){
 
     let cloudObj = {
-      url:'',
+      url:'https://api.cloudinary.com/v1_1/ldelvalleu/image/upload',
       data:{
-        upload_preset: '',
+        upload_preset: 'cnmu8ucf',
         tags:'Any',
         context:'photo=test'
       }

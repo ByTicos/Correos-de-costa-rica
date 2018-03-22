@@ -16,9 +16,39 @@
         }
       })
 
-      .state('cliente', {
-        url: '/cliente',
-        templateUrl: './components/clientes/registroCliente.view.html',
+      .state('logIn', {
+        url: '/logIn',
+        templateUrl: './components/inicioSesion/inicioSesion.view.html',
+        data:{
+          pageTitle: 'Iniciar sesión'
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/inicioSesion/inicioSesion.controller.js')
+          }]
+        },
+        controller: 'controladorLogin',
+        controllerAs: 'vm'
+      })
+
+      .state('main', {
+        url: '/main',
+        templateUrl: './components/main/main.view.html',
+        data:{
+          pageTitle: 'Iniciar sesión'
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/main/main.controller.js')
+          }]
+        },
+        controller: 'controladorMain',
+        controllerAs: 'vm'
+      })
+
+      .state('main.registrarCliente', {
+        url: '/registrarCliente',
+        templateUrl: './components/usuarios/cliente/registrarCliente/registrarCliente.view.html',
         data:{
           pageTitle: 'Registro cliente'
         },
@@ -27,28 +57,45 @@
         },
         resolve: {
           load: ['$ocLazyLoad', ($ocLazyLoad) => {
-            return $ocLazyLoad.load('./components/clientes/registroCliente.controller.js')
+            return $ocLazyLoad.load('./components/usuarios/cliente/registrarCliente/registrarCliente.controller.js')
           }]
         },
-        controller: 'controladorClientes',
+        controller: 'controladorRegistrarClientes',
         controllerAs: 'vm'
       })
-
-      .state('editarCliente', {
-        url: '/editarCliente',
-        templateUrl: './components/clientes/editarClientes.view.html',
+      
+      .state('listarCliente', {
+        url: '/listarCliente',
+        templateUrl: './components/usuarios/cliente/listarCliente/listarCliente.view.html',
         data:{
-          pageTitle: 'Editar cliente'
+          pageTitle: 'Registro cliente'
         },
         params: {
           objClienteTemp: ''
         },
         resolve: {
           load: ['$ocLazyLoad', ($ocLazyLoad) => {
-            return $ocLazyLoad.load('./components/clientes/editarClientes.controller.js')
+            return $ocLazyLoad.load('./components/usuarios/cliente/listarCliente/listarCliente.controller.js')
           }]
         },
-        controller: 'controladorEditarClientes',
+        controller: 'controladorListarCliente',
+        controllerAs: 'vm'
+      })
+      .state('modificarCliente', {
+        url: '/modificarCliente',
+        templateUrl: './components/usuarios/cliente/modificarCliente/modificarCliente.view.html',
+        data:{
+          pageTitle: 'Registro cliente'
+        },
+        params: {
+          objClienteTemp: ''
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/usuarios/cliente/modificarCliente/modificarCliente.controller.js')
+          }]
+        },
+        controller: 'controladorModificarCliente',
         controllerAs: 'vm'
       })
 
@@ -200,20 +247,7 @@
         controllerAs: 'vm'
       })
   
-      .state('logIn', {
-        url: '/logIn',
-        templateUrl: './components/inicioSesion/inicioSesion.view.html',
-        data:{
-          pageTitle: 'Iniciar sesión'
-        },
-        resolve: {
-          load: ['$ocLazyLoad', ($ocLazyLoad) => {
-            return $ocLazyLoad.load('./components/inicioSesion/inicioSesion.controller.js')
-          }]
-        },
-        controller: 'controladorLogin',
-        controllerAs: 'vm'
-      })
+      
 
       .state('tarjetas', {
         url: '/tarjetas',
@@ -321,7 +355,7 @@
       })
       
 
-      .state('registrarEncargadoSucursal', {
+      .state('main.registrarEncargadoSucursal', {
         url: '/registrarEncargadoSucursal',
         templateUrl: './components/usuarios/encargadoSucursal/registrarEncargadoSucursal/registrarEncargadoSucursal.view.html',
         data:{
