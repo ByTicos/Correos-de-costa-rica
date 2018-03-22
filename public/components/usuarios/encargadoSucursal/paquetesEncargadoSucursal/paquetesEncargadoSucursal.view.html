@@ -1,29 +1,67 @@
-<table class="table table-responsive">
+<div ng-include="'./components/includes/_header.html'"></div>
+<div ng-include="'./components/includes/_sidebar.html'"></div>
 
-  <thead>
-    <th>Usuario</th>
-    <th>Distribuidor</th>
-    <th>Precio</th>
-    <th>Peso</th>
-    <th>Tipo de articulo</th>
-    <th>Descripción</th>
-    <th>Estado</th>
+<div id="dashboard">
 
-  </thead>
-  <tbody>
-    <tr ng-repeat="paquete in vm.listaPaquetes" >
-      <td>{{paquete.usuario}}</td>
-      <td>{{paquete.distribuidor}}</td>
-      <td>{{paquete.precio}}</td>
-      <td>{{paquete.peso}}</td>
-      <td>{{paquete.tipoArticulo}}</td>
-      <td>{{paquete.descripcion}}</td>
-      <td>{{paquete.estadoTraslado}}</td>
+  <legend>Paquetes en tránsito a sucursal</legend>
 
-      <td>
-        <button type="button" class="btn" > Editar</button>
-      </td>
-    </tr>
-  </tbody>
+  <table class="table table-responsive">
 
-</table>
+    <thead>
+      <th>Usuario</th>
+      <th>Distribuidor</th>
+      <th>Precio</th>
+      <th>Peso</th>
+      <th>Tipo de articulo</th>
+      <th>Descripción</th>
+      <th>Estado</th>
+      <th>Pasar Estado</th>
+  
+    </thead>
+    <tbody>
+      <tr ng-repeat="paquete in vm.listaPaquetes" ng-if="paquete.estadoTraslado === 'En tránsito a aduana'">
+        <td>{{paquete.usuario}}</td>
+        <td>{{paquete.distribuidor}}</td>
+        <td>{{paquete.precio}}</td>
+        <td>{{paquete.peso}}</td>
+        <td>{{paquete.tipoArticulo}}</td>
+        <td>{{paquete.descripcion}}</td>
+        <td>{{paquete.estadoTraslado}}</td>
+        <td><button class="btn " type="button" ng-click="vm.cambiarEstadoTraslado(paquete)">Recibido En Sucursal</button></td>
+      </tr>
+    </tbody>
+  
+  </table>
+
+
+  <legend>Paquetes recibidos en sucursal</legend>
+
+  <table class="table table-responsive">
+
+    <thead>
+      <th>Usuario</th>
+      <th>Distribuidor</th>
+      <th>Precio</th>
+      <th>Peso</th>
+      <th>Tipo de articulo</th>
+      <th>Descripción</th>
+      <th>Estado</th>
+      <th>Pasar Estado</th>
+  
+    </thead>
+    <tbody>
+      <tr ng-repeat="paquete in vm.listaPaquetes" ng-if="paquete.estadoTraslado === 'Recibido en Sucursal'">
+        <td>{{paquete.usuario}}</td>
+        <td>{{paquete.distribuidor}}</td>
+        <td>{{paquete.precio}}</td>
+        <td>{{paquete.peso}}</td>
+        <td>{{paquete.tipoArticulo}}</td>
+        <td>{{paquete.descripcion}}</td>
+        <td>{{paquete.estadoTraslado}}</td>
+      </tr>
+    </tbody>
+  
+  </table>
+
+</div>
+
