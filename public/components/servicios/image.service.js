@@ -11,18 +11,18 @@
     let cloudObj = {
       url:'https://api.cloudinary.com/v1_1/ldelvalleu/image/upload',
       data:{
-        upload_preset: 'correos',
+        upload_preset: 'cnmu8ucf',
         tags:'Any',
         context:'photo=test'
       }
     };
 
-    let publicAPI = {
-      getConfiguration: _getConfiguration
+    let public_api = {
+      getConfiguration:getConfiguration
     }
-    return publicAPI;
+    return public_api;
 
-    function _getConfiguration(){
+    function getConfiguration(){
       return cloudObj;
     }
   }
