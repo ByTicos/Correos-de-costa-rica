@@ -46,6 +46,15 @@
         controllerAs: 'vm'
       })
 
+      $stateProvider
+      .state('main.dashboard', {
+        url: 'dashboard',
+        templateUrl: './components/main/dashboard/mainDashboard.view.html',
+        data:{
+          pageTitle: 'Dashboard'
+        }
+      })
+
       .state('main.registrarCliente', {
         url: '/registrarCliente',
         templateUrl: './components/usuarios/cliente/registrarCliente/registrarCliente.view.html',
@@ -64,7 +73,7 @@
         controllerAs: 'vm'
       })
       
-      .state('listarCliente', {
+      .state('main.listarCliente', {
         url: '/listarCliente',
         templateUrl: './components/usuarios/cliente/listarCliente/listarCliente.view.html',
         data:{
@@ -81,7 +90,7 @@
         controller: 'controladorListarCliente',
         controllerAs: 'vm'
       })
-      .state('modificarCliente', {
+      .state('main.modificarCliente', {
         url: '/modificarCliente',
         templateUrl: './components/usuarios/cliente/modificarCliente/modificarCliente.view.html',
         data:{
@@ -356,7 +365,7 @@
       
 
       .state('main.registrarEncargadoSucursal', {
-        url: '/registrarEncargadoSucursal',
+        url: 'registrarEncargadoSucursal',
         templateUrl: './components/usuarios/encargadoSucursal/registrarEncargadoSucursal/registrarEncargadoSucursal.view.html',
         data:{
           pageTitle: 'Registro Encargado Sucursal'
@@ -373,8 +382,8 @@
         controllerAs: 'vm'
       })
 
-      .state('listarEncargadoSucursal', {
-        url: '/listarEncargadoSucursal',
+      .state('main.listarEncargadoSucursal', {
+        url: 'listarEncargadoSucursal',
         templateUrl: './components/usuarios/encargadoSucursal/listarEncargadoSucursal/listarEncargadoSucursal.view.html',
         data:{
           pageTitle: 'Listar Encargado de Sucursal'
@@ -391,8 +400,8 @@
         controllerAs: 'vm',
       })
 
-      .state('modificarEncargadoSucursal', {
-        url: '/modificarEncargadoSucursal',
+      .state('main.modificarEncargadoSucursal', {
+        url: 'registrarEncargadoSucursal',
         templateUrl: './components/usuarios/encargadoSucursal/modificarEncargadoSucursal/modificarEncargadoSucursal.view.html',
         data:{
           pageTitle: 'Editar Encargado de Sucursal'
@@ -409,7 +418,7 @@
         controllerAs: 'vm',
       })
 
-      .state('paquetesEncargadoSucursal', {
+      .state('main.paquetesEncargadoSucursal', {
         url: '/paquetesEncargadoSucursal',
         templateUrl: './components/usuarios/encargadoSucursal/paquetesEncargadoSucursal/paquetesEncargadoSucursal.view.html',
         data:{
