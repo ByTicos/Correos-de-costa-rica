@@ -55,8 +55,26 @@
         }
       })
 
-      .state('main.registrarCliente', {
+      .state('registrarCliente', {
         url: '/registrarCliente',
+        templateUrl: './components/usuarios/cliente/registrarCliente/registrarCliente.view.html',
+        data:{
+          pageTitle: 'Registro cliente'
+        },
+        params: {
+          objClienteTemp: ''
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/usuarios/cliente/registrarCliente/registrarCliente.controller.js')
+          }]
+        },
+        controller: 'controladorRegistrarClientes',
+        controllerAs: 'vm'
+      })
+
+      .state('main.registrarClienteAdmin', {
+        url: '/registrarClienteAdmin',
         templateUrl: './components/usuarios/cliente/registrarCliente/registrarCliente.view.html',
         data:{
           pageTitle: 'Registro cliente'
@@ -77,7 +95,7 @@
         url: '/listarCliente',
         templateUrl: './components/usuarios/cliente/listarCliente/listarCliente.view.html',
         data:{
-          pageTitle: 'Registro cliente'
+          pageTitle: 'Lista de clientes'
         },
         params: {
           objClienteTemp: ''
@@ -94,7 +112,7 @@
         url: '/modificarCliente',
         templateUrl: './components/usuarios/cliente/modificarCliente/modificarCliente.view.html',
         data:{
-          pageTitle: 'Registro cliente'
+          pageTitle: 'Modificar cliente'
         },
         params: {
           objClienteTemp: ''
@@ -456,7 +474,7 @@
       
        .state('editarRepartidor', {
         url:'/editarRepartidor',
-        templateUrl: './components/usuarios/repartidores/editarRepartidor.view.html',
+        templateUrl: './components/usuarios/repartidores/editarRepartidores/editarRepartidor.view.html',
         data:{
           pageTitle: 'Editar Repartidor'
         },
@@ -465,7 +483,7 @@
         },
         resolve: {
           load: [ '$ocLazyLoad', ($ocLazyLoad) => {
-            return $ocLazyLoad.load('./components/usuarios/repartidores/editarRepartidor.controller.js')
+            return $ocLazyLoad.load('./components/usuarios/repartidores/editarRepartidores/editarRepartidor.controller.js')
           }]
         },
         controller: 'controladorEditarRepartidor',
