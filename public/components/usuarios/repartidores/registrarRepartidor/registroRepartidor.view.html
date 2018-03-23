@@ -109,9 +109,10 @@
           <th>Teléfono</th>
           <th>Fecha de Nacimiento</th>
           <th>Vehículo</th>
-          <!-- <th>Numero de licencia</th> -->
+          <th>Numero de licencia</th>
           <th>Licencia</th>
           <th>Vencimiento de licencia</th>
+          <th>Sucursal Asignada</th>
           
   
         </tr>
@@ -127,12 +128,17 @@
           <td>{{repartidor.telefono}}</td>
           <td>{{repartidor.fechaNacimiento}}</td>
           <td>{{repartidor.vehiculo}}</td>
+          <td>{{repartidor.listaLicencias.numLicencia}}</td>
           <td>{{repartidor.listaLicencias.tipoLicencia}}</td>
           <td>{{repartidor.listaLicencias.vencimiento}}</td>
+          <td>{{repartidor.sucursalAsignada}}</td>
          
         </tr>
       </tbody>
     </table>
+
+
+ 
   
   </section>
 

@@ -24,9 +24,9 @@
       let objLicencia = new Licencia(pNuevoUsuario.numLicencia,
         pNuevoUsuario.licencia, pNuevoUsuario.vencimientoLicencia)
 
-      // pNuevoUsuario.licencias = new Array(objLicencia);
-      // console.log(pNuevoUsuario.licencias[0].numLicencia + ' Num Licencia');
-      // console.log(pNuevoUsuario.licencias[0].tipoLicencia + ' tipo Licencia');
+      pNuevoUsuario.licencias = new Array(objLicencia);
+      console.log(pNuevoUsuario.licencias[0].numLicencia + ' Num Licencia');
+      console.log(pNuevoUsuario.licencias[0].tipoLicencia + ' tipo Licencia');
       
 
       let objNuevoRepartidor = new Usuario(pNuevoUsuario.cedula, pNuevoUsuario.foto, pNuevoUsuario.primerNombre, pNuevoUsuario.segundoNombre, pNuevoUsuario.primerApellido, pNuevoUsuario.segundoApellido, pNuevoUsuario.correo, pNuevoUsuario.telefono, pNuevoUsuario.fechaNacimiento, pNuevoUsuario.provincia, pNuevoUsuario.canton, pNuevoUsuario.distrito, pNuevoUsuario.direccionExacta, 'repartidor', pNuevoUsuario.sucursalAsignada, ' ',pNuevoUsuario.vehiculo, objLicencia);

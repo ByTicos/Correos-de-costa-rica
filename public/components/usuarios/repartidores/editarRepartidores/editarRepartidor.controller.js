@@ -33,7 +33,9 @@
     vm.editarRepartidor.canton = objRepartidor.canton;
     vm.editarRepartidor.distrito = objRepartidor.distrito;
     vm.editarRepartidor.direccionExacta = objRepartidor.direccionExacta;
-    vm.editarRepartidor.vehiculo = objRepartidor.
+    vm.editarRepartidor.tipo = '';
+    vm.editarRepartidor.sucursalAsignada = objRepartidor.sucursalAsignada;
+    vm.editarRepartidor.vehiculo = objRepartidor.vehiculo;
 
     vm.editRepartidor = (pUsuario) => {
       let listaUsuarios = servicioUsuarios.getUsuarios();
@@ -54,6 +56,7 @@
           objUsuario.direccionExacta = pUsuario.direccionExacta;
           objUsuario.vehiculo = pUsuario.vehiculo;
           objUsuario.licencias = pUsuario.licencias;
+          objUsuario.sucursalAsignada = pUsuario.sucursalAsignada;
     
 
           servicioUsuarios.actualizarUsuario(objUsuario);

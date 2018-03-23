@@ -18,7 +18,7 @@ class Usuario{
         this.sucursalAsignada = pSucursalAsignada;
         this.puesto = pPuesto;
         this.vehiculo = pVehiculo;
-        this.listaLicencias = pLicencia;
+        this.listaLicencias = [];
         this.estado = 'activo';
         // this.paqueteAsignado = 
     } 
@@ -33,6 +33,13 @@ class Usuario{
     this.listaPaquetes.push(pPaquete);
   }
       
+  agregarLicencias(pnuevaLicencia) {
+    this.listaLicencias.push(pnuevaLicencia);
+  }
+
+  getLicencias(){
+      return this.listaLicencias
+  }
 }
 
 class Paquete{
@@ -137,3 +144,13 @@ class Tarjeta {
        this.cvv = pCvv; 
     }
 }
+
+
+
+// class Repartidor extends Usuario{
+//         constructor(pCedula, pFoto, pPrimerNombre, pSegundoNombre, pPrimerApellido, pSegundoApellido, pEmail, pTelefono, pfechaNacimiento, pProvincia, pCanton, pDistrito, pDireccionExacta, pTipo,plistaPaquetes,pEstado,pSucursalAsignada,pLicencias){
+//             super(pCedula, pFoto, pPrimerNombre, pSegundoNombre, pPrimerApellido, pSegundoApellido, pEmail, pTelefono, pfechaNacimiento, pProvincia, pCanton, pDistrito, pDireccionExacta, pTipo, pTipo,plistaPaquetes,pEstado);
+//             this.sucursalAsignada = pSucursalAsignada;
+//             this.listaLicencias = pLicencias;
+//         }
+//     }

@@ -338,7 +338,7 @@
 
       .state('repartidor', {
         url: '/repartidor',
-        templateUrl: './components/usuarios/repartidores/registroRepartidor.view.html',
+        templateUrl: './components/usuarios/repartidores/registrarRepartidor/registroRepartidor.view.html',
         data:{
           pageTitle: 'Registro repartidor'
         },
@@ -347,7 +347,7 @@
         },
         resolve: {
           load: ['$ocLazyLoad', ($ocLazyLoad) => {
-            return $ocLazyLoad.load('./components/usuarios/repartidores/registroRepartidor.controller.js')
+            return $ocLazyLoad.load('./components/usuarios/repartidores/registrarRepartidor/registroRepartidor.controller.js')
           }]
         },
         controller: 'controladorRepartidores',
@@ -409,7 +409,6 @@
         controllerAs: 'vm',
       })
 
-<<<<<<< HEAD
       .state('editarRepartidor', {
         url:'/editarRepartidor',
         templateUrl: './components/usuarios/repartidores/editarRepartidor.view.html',
@@ -427,7 +426,6 @@
         controller: 'controladorEditarRepartidor',
         controllerAs: 'vm'
       })
-=======
       .state('paquetesEncargadoSucursal', {
         url: '/paquetesEncargadoSucursal',
         templateUrl: './components/usuarios/encargadoSucursal/paquetesEncargadoSucursal/paquetesEncargadoSucursal.view.html',
@@ -446,8 +444,23 @@
         controllerAs: 'vm',
       })
 
-      
->>>>>>> Dev
+      .state('perfilRepartidor', {
+        url:'/perfilRepartidor',
+        templateUrl: './components/usuarios/repartidores/perfilRepartidores/perfilRepartidores.view.html',
+        data:{
+          pageTitle: 'Perfil de Repartidor'
+        },
+        params: {
+          objRepartidorTemp:''
+        },
+        resolve: {
+          load: [ '$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/usuarios/repartidores/perfilRepartidores/perfilRepartidores.view.html')
+          }]
+        },
+        controller: 'controladorPerfilRepartidor',
+        controllerAs: 'vm'
+      })
 
     $urlRouterProvider.otherwise('/');
   };
