@@ -17,7 +17,7 @@
 
       if (inicioCorrecto == true) {
         swal("Datos correctos", "Sesion iniciada correctamente", "success");
-          $location.path('/entidades');
+          $location.path('main/dashboard');
       }
       else {
         swal("Datos erroneos", "asfasf", "error");
