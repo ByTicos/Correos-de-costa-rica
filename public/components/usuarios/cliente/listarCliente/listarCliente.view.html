@@ -1,0 +1,44 @@
+<div navegacion-Principal></div>
+<div menu-Lateral></div>
+<section id="dashboard">
+    <table class="table table-responsive">
+        <thead>
+            <tr>
+                <th>Cédula</th>
+                <th>Foto</th>
+                <th>Primer nombre</th>
+                <th>Segundo nombre</th>
+                <th>Primer apellido</th>
+                <th>Segundo apellido</th>
+                <th>Correo electrónico</th>
+                <th>Teléfono</th>
+                <th>Fecha de nacimiento</th>
+                <th>Provincia</th>
+                <th>Cantón</th>
+                <th>Distrito</th>
+                <th>Dirección exacta</th>
+                <th>Editar</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="usuario in vm.listaClientes">
+                <td>{{usuario.cedula}}</td>
+                <td>{{usuario.foto}}</td>
+                <td>{{usuario.primerNombre}}</td>
+                <td>{{usuario.segundoNombre}}</td>
+                <td>{{usuario.primerApellido}}</td>
+                <td>{{usuario.segundoApellido}}</td>
+                <td>{{usuario.correo}}</td>
+                <td>{{usuario.telefono}}</td>
+                <td>{{usuario.fechaNacimiento | date}}</td>
+                <td>{{usuario.provincia.name}}</td>
+                <td>{{usuario.canton.name}}</td>
+                <td>{{usuario.distrito.name}}</td>
+                <td>{{usuario.direccionExacta}}</td>
+                <td>
+                    <button class="btn " type="button" ng-click="vm.modificar(usuario)">Modificar</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>

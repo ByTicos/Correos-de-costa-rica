@@ -4,13 +4,13 @@
     .module('correos')
     .controller('controladorModificarEncargadoSucursal', controladorModificarEncargadoSucursal);
 
-    controladorModificarEncargadoSucursal.$inject = ['$stateParams', '$state', '$location', 'servicioUsuarios'];
+    controladorModificarEncargadoSucursal.$inject = ['$stateParams', '$state', '$location', 'servicioUsuarios', 'servicioSucursales'];
 
-  function controladorModificarEncargadoSucursal($stateParams, $state, $location, servicioUsuarios) {
+  function controladorModificarEncargadoSucursal($stateParams, $state, $location, servicioUsuarios, servicioSucursales) {
     let vm = this;
 
     vm.regresar = () => {
-      $state.go('listarEncargadoSucursal');
+      $state.go('main.listarEncargadoSucursal');
     }
 
     vm.editarUsuarios = {};
@@ -45,7 +45,7 @@
         }
         servicioUsuarios.actualizarUsuario(objUsuario);
       });
-      $state.go('listarEncargadoSucursal');
+      $state.go('main.listarEncargadoSucursal');
     }
     
 
@@ -78,7 +78,7 @@
       swal("Edición exitosa", "Usuario editado correctamente", "success", {
         button: "Aceptar",
       });
-      $state.go('listarEncargadoSucursal');
+      $state.go('main.listarEncargadoSucursal');
     }
   }
 

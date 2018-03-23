@@ -16,9 +16,48 @@
         }
       })
 
-      .state('cliente', {
-        url: '/cliente',
-        templateUrl: './components/clientes/registroCliente.view.html',
+      .state('logIn', {
+        url: '/logIn',
+        templateUrl: './components/inicioSesion/inicioSesion.view.html',
+        data:{
+          pageTitle: 'Iniciar sesión'
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/inicioSesion/inicioSesion.controller.js')
+          }]
+        },
+        controller: 'controladorLogin',
+        controllerAs: 'vm'
+      })
+
+      .state('main', {
+        url: '/main',
+        templateUrl: './components/main/main.view.html',
+        data:{
+          pageTitle: 'Iniciar sesión'
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/main/main.controller.js')
+          }]
+        },
+        controller: 'controladorMain',
+        controllerAs: 'vm'
+      })
+
+      $stateProvider
+      .state('main.dashboard', {
+        url: '/dashboard',
+        templateUrl: './components/main/dashboard/mainDashboard.view.html',
+        data:{
+          pageTitle: 'Dashboard'
+        }
+      })
+
+      .state('main.registrarCliente', {
+        url: '/registrarCliente',
+        templateUrl: './components/usuarios/cliente/registrarCliente/registrarCliente.view.html',
         data:{
           pageTitle: 'Registro cliente'
         },
@@ -27,28 +66,45 @@
         },
         resolve: {
           load: ['$ocLazyLoad', ($ocLazyLoad) => {
-            return $ocLazyLoad.load('./components/clientes/registroCliente.controller.js')
+            return $ocLazyLoad.load('./components/usuarios/cliente/registrarCliente/registrarCliente.controller.js')
           }]
         },
-        controller: 'controladorClientes',
+        controller: 'controladorRegistrarClientes',
         controllerAs: 'vm'
       })
-
-      .state('editarCliente', {
-        url: '/editarCliente',
-        templateUrl: './components/clientes/editarClientes.view.html',
+      
+      .state('main.listarCliente', {
+        url: '/listarCliente',
+        templateUrl: './components/usuarios/cliente/listarCliente/listarCliente.view.html',
         data:{
-          pageTitle: 'Editar cliente'
+          pageTitle: 'Registro cliente'
         },
         params: {
           objClienteTemp: ''
         },
         resolve: {
           load: ['$ocLazyLoad', ($ocLazyLoad) => {
-            return $ocLazyLoad.load('./components/clientes/editarClientes.controller.js')
+            return $ocLazyLoad.load('./components/usuarios/cliente/listarCliente/listarCliente.controller.js')
           }]
         },
-        controller: 'controladorEditarClientes',
+        controller: 'controladorListarCliente',
+        controllerAs: 'vm'
+      })
+      .state('main.modificarCliente', {
+        url: '/modificarCliente',
+        templateUrl: './components/usuarios/cliente/modificarCliente/modificarCliente.view.html',
+        data:{
+          pageTitle: 'Registro cliente'
+        },
+        params: {
+          objClienteTemp: ''
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/usuarios/cliente/modificarCliente/modificarCliente.controller.js')
+          }]
+        },
+        controller: 'controladorModificarCliente',
         controllerAs: 'vm'
       })
 
@@ -199,50 +255,18 @@
         controller: 'controladorAdmin',
         controllerAs: 'vm'
       })
-
-      .state('encargadoSucursal', {
-        url: '/encargadoSucursal',
-        templateUrl: './components/encargadoSucursal/encargadoSucursal.view.html',
-        data:{
-          pageTitle: 'Dashboard de Encargado de Sucursal'
-        },
-        params: {
-          objUsuarioTemp:''
-        },
-        resolve: {
-          load: ['$ocLazyLoad', ($ocLazyLoad) => {
-            return $ocLazyLoad.load('./components/encargadoSucursal/encargadoSucursal.controller.js')
-          }]
-        },
-        controller: 'controladorencargadoSucursal',
-        controllerAs: 'vm'
-      })
-
   
-      .state('logIn', {
-        url: '/logIn',
-        templateUrl: './components/inicioSesion/inicioSesion.view.html',
-        data:{
-          pageTitle: 'Iniciar sesión'
-        },
-        resolve: {
-          load: ['$ocLazyLoad', ($ocLazyLoad) => {
-            return $ocLazyLoad.load('./components/inicioSesion/inicioSesion.controller.js')
-          }]
-        },
-        controller: 'controladorLogin',
-        controllerAs: 'vm'
-      })
+      
 
       .state('tarjetas', {
         url: '/tarjetas',
-        templateUrl: './components/tarjetas/tarjetas.view.html',
+        templateUrl: './components/tarjetas/registrarTarjeta/tarjetas.view.html',
         data:{
           pageTitle: 'Registrar Tarjetas'
         },
         resolve: {
           load: ['$ocLazyLoad', ($ocLazyLoad) => {
-            return $ocLazyLoad.load('./components/tarjetas/tarjetas.controller.js')
+            return $ocLazyLoad.load('./components/tarjetas/registrarTarjeta/tarjetas.controller.js')
           }]
         },
         controller: 'controladorTarjetas',
@@ -289,13 +313,16 @@
 
       .state('sucursales', {
         url: '/sucursales',
-        templateUrl: './components/sucursal/sucursal.view.html',
+        templateUrl: './components/sucursal/registrarSucursal/sucursalRegistrar.view.html',
         data:{
           pageTitle: 'Registrar Sucursal'
         },
+        params: {
+          objSucursalTemp: ''
+        },
         resolve: {
           load: ['$ocLazyLoad', ($ocLazyLoad) => {
-            return $ocLazyLoad.load('./components/sucursal/sucursal.controller.js')
+            return $ocLazyLoad.load('./components/sucursal/registrarSucursal/sucursalRegistrar.controller.js')
           }]
         },
         controller: 'controladorSucursal',
@@ -306,25 +333,59 @@
 
       .state('repartidor', {
         url: '/repartidor',
-        templateUrl: './components/repartidores/registroRepartidor.view.html',
+        templateUrl: './components/usuarios/repartidores/registrarRepartidor/registroRepartidor.view.html',
         data:{
           pageTitle: 'Registro repartidor'
         },
         params: {
-          objClienteTemp: ''
+          objSucursalTemp: ''
         },
         resolve: {
           load: ['$ocLazyLoad', ($ocLazyLoad) => {
-            return $ocLazyLoad.load('./components/repartidores/registroRepartidor.controller.js')
+            return $ocLazyLoad.load('./components/usuarios/repartidores/registrarRepartidor/registroRepartidor.controller.js')
           }]
         },
         controller: 'controladorRepartidores',
         controllerAs: 'vm'
       })
       
+      .state('listarsucursales', {
+        url: '/listarsucursales',
+        templateUrl: './components/sucursal/listarSucursal/sucursalListar.view.html',
+        data:{
+          pageTitle: 'Listar Sucursal'
+        },
+        params: {
+          objSucursalTemp: ''
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/sucursal/listarSucursal/sucursalListar.controller.js')
+          }]
+        },
+        controller: 'controladorSucursalListar',
+        controllerAs: 'vm'
+      })
 
-      .state('registrarEncargadoSucursal', {
-        url: '/registrarEncargadoSucursal',
+      .state('editarsucursales', {
+        url: '/editarsucursales',
+        templateUrl: './components/sucursal/editarSucursal/sucursalEditar.view.html',
+        data:{
+          pageTitle: 'Editar Sucursal'
+        },
+        params: {
+          objSucursalTemp: ''
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/sucursal/editarSucursal/sucursalEditar.controller.js')
+          }]
+        },
+        controller: 'controladorSucursalEditar',
+        controllerAs: 'vm'
+      })
+      .state('main.registrarEncargadoSucursal', {
+        url: 'registrarEncargadoSucursal',
         templateUrl: './components/usuarios/encargadoSucursal/registrarEncargadoSucursal/registrarEncargadoSucursal.view.html',
         data:{
           pageTitle: 'Registro Encargado Sucursal'
@@ -341,8 +402,8 @@
         controllerAs: 'vm'
       })
 
-      .state('listarEncargadoSucursal', {
-        url: '/listarEncargadoSucursal',
+      .state('main.listarEncargadoSucursal', {
+        url: 'listarEncargadoSucursal',
         templateUrl: './components/usuarios/encargadoSucursal/listarEncargadoSucursal/listarEncargadoSucursal.view.html',
         data:{
           pageTitle: 'Listar Encargado de Sucursal'
@@ -359,8 +420,8 @@
         controllerAs: 'vm',
       })
 
-      .state('modificarEncargadoSucursal', {
-        url: '/modificarEncargadoSucursal',
+      .state('main.modificarEncargadoSucursal', {
+        url: 'registrarEncargadoSucursal',
         templateUrl: './components/usuarios/encargadoSucursal/modificarEncargadoSucursal/modificarEncargadoSucursal.view.html',
         data:{
           pageTitle: 'Editar Encargado de Sucursal'
@@ -377,17 +438,26 @@
         controllerAs: 'vm',
       })
 
+<<<<<<< HEAD
       .state('registrarEncargadoAduana', {
         url: '/registrarEncargadoAduana',
         templateUrl: './components/usuarios/encargadoAduana/registrarEncargadoAduana/registrarEncargadoAduana.view.html',
         data:{
           pageTitle: 'Registro Encargado Aduana'
+=======
+      .state('main.paquetesEncargadoSucursal', {
+        url: '/paquetesEncargadoSucursal',
+        templateUrl: './components/usuarios/encargadoSucursal/paquetesEncargadoSucursal/paquetesEncargadoSucursal.view.html',
+        data:{
+          pageTitle: 'Paquetes Encargado de Sucursal'
+>>>>>>> origin/Dev
         },
         params: {
           objUsuarioTemp: ''
         },
         resolve: {
           load: ['$ocLazyLoad', ($ocLazyLoad) => {
+<<<<<<< HEAD
             return $ocLazyLoad.load('./components/usuarios/encargadoAduana/registrarEncargadoAduana/registrarEncargadoAduana.controller.js')
           }]
         },
@@ -400,12 +470,62 @@
         templateUrl: './components/usuarios/encargadoAduana/listarEncargadoAduana/listarEncargadoAduana.view.html',
         data:{
           pageTitle: 'Listar Encargado de Aduana'
+=======
+            return $ocLazyLoad.load('./components/usuarios/encargadoSucursal/paquetesEncargadoSucursal/paquetesEncargadoSucursal.controller.js')
+          }]
+        }, 
+        controller: 'controladorPaquetesEncargadoSucursal',
+        controllerAs: 'vm',
+      })
+
+      .state('perfilRepartidor', {
+        url:'/perfilRepartidor',
+        templateUrl: './components/usuarios/repartidores/perfilRepartidores/perfilRepartidores.view.html',
+        data:{
+          pageTitle: 'Perfil de Repartidor'
+        },
+        params: {
+          objRepartidorTemp:''
+        },
+        resolve: {
+          load: [ '$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/usuarios/repartidores/perfilRepartidores/perfilRepartidores.view.html')
+          }]
+        },
+        controller: 'controladorPerfilRepartidor',
+        controllerAs: 'vm'
+      })
+      
+       .state('editarRepartidor', {
+        url:'/editarRepartidor',
+        templateUrl: './components/usuarios/repartidores/editarRepartidor.view.html',
+        data:{
+          pageTitle: 'Editar Repartidor'
+        },
+        params: {
+          objRepartidorTemp:''
+        },
+        resolve: {
+          load: [ '$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/usuarios/repartidores/editarRepartidor.controller.js')
+          }]
+        },
+        controller: 'controladorEditarRepartidor',
+        controllerAs: 'vm'
+      })
+       .state('editarTarjetas', {
+        url: '/editarTarjetas',
+        templateUrl: './components/tarjetas/registrarTarjeta/editarTarjeta.view.html',
+        data:{
+          pageTitle: 'Editar Tarjetas'
+>>>>>>> origin/Dev
         },
         params: {
           objUsuarioTemp: ''
         },
         resolve: {
           load: ['$ocLazyLoad', ($ocLazyLoad) => {
+<<<<<<< HEAD
             return $ocLazyLoad.load('./components/usuarios/encargadoAduana/listarEncargadoAduana/listarEncargadoAduana.controller.js')
           }]
         }, 
@@ -418,12 +538,27 @@
         templateUrl: './components/usuarios/encargadoAduana/modificarEncargadoAduana/modificarEncargadoAduana.view.html',
         data:{
           pageTitle: 'Editar Encargado de Aduana'
+=======
+            return $ocLazyLoad.load('./components/tarjetas/registrarTarjeta/editarTarjeta.controller.js')
+          }]
+        },
+        controller: 'controladorEditarTarjetas',
+        controllerAs: 'vm'
+      })
+
+      .state('listartarjetas', {
+        url: '/listartarjetas',
+        templateUrl: './components/tarjetas/listarTarjeta/listarTarjeta.view.html',
+        data:{
+          pageTitle: 'Listar Tarjetas'
+>>>>>>> origin/Dev
         },
         params: {
           objUsuarioTemp: ''
         },
         resolve: {
           load: ['$ocLazyLoad', ($ocLazyLoad) => {
+<<<<<<< HEAD
             return $ocLazyLoad.load('./components/usuarios/encargadoAduana/modificarEncargadoAduana/modificarEncargadoAduana.controller.js')
           }]
         }, 
@@ -433,6 +568,15 @@
 
 
 
+=======
+            return $ocLazyLoad.load('./components/tarjetas/listarTarjeta/listarTarjeta.controller.js')
+          }]
+        },
+        controller: 'controladorListarTarjetas',
+        controllerAs: 'vm'
+      })
+  
+>>>>>>> origin/Dev
       
 
     $urlRouterProvider.otherwise('/');

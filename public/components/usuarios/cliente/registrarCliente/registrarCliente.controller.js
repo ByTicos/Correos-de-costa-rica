@@ -2,18 +2,18 @@
   'use strict'
   angular
     .module('correos')
-    .controller('controladorClientes', controladorClientes);
+    .controller('controladorRegistrarClientes', controladorRegistrarClientes);
 
-  controladorClientes.$inject = ['$http','$state', '$stateParams', '$location', 'servicioUsuarios'/*, 'imageService'*/];
+  controladorRegistrarClientes.$inject = ['$http','$state', '$stateParams', '$location', 'servicioUsuarios', 'imageService','Upload'];
 
-  function controladorClientes($http ,$state, $stateParams, $location, servicioUsuarios/*, imageService*/) {
+  function controladorRegistrarClientes($http ,$state, $stateParams, $location, servicioUsuarios, imageService, Upload) {
     let vm = this;
 
     vm.listaClientes = listarClientes();
     vm.nuevoCliente = {};
     
-    /*vm.cloudObj = imageService.getConfiguration();
-
+    vm.cloudObj = imageService.getConfiguration();
+  /*
     vm.preSave = () =>{
       vm.cloudObj.data.file = vm.nuevoCliente.foto;
       Upload.upload(vm.cloudObj)
@@ -84,6 +84,18 @@
 
 
     vm.registrarCliente = (pNuevoUsuario) => {
+
+
+    let urlImage;
+      
+    if(vm.cloudObj.data.file){
+      Upload.upload(vm.cloudObj).success((data) => { 
+        urlImage = data.url;
+      });
+    }
+      
+      
+
 
       let objNuevoCliente = new Usuario(pNuevoUsuario.cedula, pNuevoUsuario.foto, pNuevoUsuario.primerNombre, pNuevoUsuario.segundoNombre, pNuevoUsuario.primerApellido, pNuevoUsuario.segundoApellido, pNuevoUsuario.correo, pNuevoUsuario.telefono, pNuevoUsuario.fechaNacimiento, pNuevoUsuario.provincia, pNuevoUsuario.canton, pNuevoUsuario.distrito, pNuevoUsuario.direccionExacta, '1');
 

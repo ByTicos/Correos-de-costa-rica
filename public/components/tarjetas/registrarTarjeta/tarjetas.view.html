@@ -5,6 +5,11 @@
             </div>
             <div class="payment">
                 <form ng-submit="vm.registrarTarjeta(vm.nuevaTarjeta)">
+                     <div class="form-group owner">
+                        <input type="text" name="field1" id="field1" class="" disabled/>
+                        
+                    </div>
+
                     <div class="form-group owner">
                         <label for="owner">Nombre en la Tarjeta</label>
                         <input type="text" class="form-control" id="owner" ng-model="vm.nuevaTarjeta.nombre">

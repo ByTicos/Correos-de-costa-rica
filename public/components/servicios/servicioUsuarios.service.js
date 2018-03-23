@@ -25,11 +25,13 @@
             addPaquete: _addPaquete,
             getPaquete: _getPaquete,
             actualizarPaquete: _actualizarPaquete,
-            addLicencia: _addLicencia,
-            getLicencia: _getLicencia,
+            actualizarEstadoPaquete: _actualizarEstadoPaquete,
+            addLicencias: _addLicencias,
+            getLicencias: _getLicencias,
             actualizarLocal: _actualizarLicencia,
             addTarjeta: _addTarjeta,
             getTarjeta: _getTarjeta,
+            getRol: _getRol,
             getAllPaquetes: _getAllPaquetes
                 }
         return publicAPI
@@ -54,8 +56,12 @@
             }
             else {
                 listaUsuariosLocal.forEach(objUsuario => {
-                    let objUsuarioTemp = new Usuario(objUsuario.cedula, objUsuario.foto, objUsuario.primerNombre, objUsuario.segundoNombre, objUsuario.primerApellido, objUsuario.segundoApellido, objUsuario.correo, objUsuario.telefono, objUsuario.fechaNacimiento, objUsuario.provincia, objUsuario.canton, objUsuario.distrito, objUsuario.direccionExacta, objUsuario.tipo,objUsuario.sucursalAsignada, objUsuario.puesto);
+                    let objUsuarioTemp = new Usuario(objUsuario.cedula, objUsuario.foto, objUsuario.primerNombre, objUsuario.segundoNombre, objUsuario.primerApellido, objUsuario.segundoApellido, objUsuario.correo, objUsuario.telefono, objUsuario.fechaNacimiento, objUsuario.provincia, objUsuario.canton, objUsuario.distrito, objUsuario.direccionExacta, objUsuario.tipo,objUsuario.sucursalAsignada, objUsuario.puesto,objUsuario.vehiculo);
                     objUsuarioTemp.cambiarEstado(objUsuario.estado);
+
+                    objUsuario.listaLicencias.forEach(objLicencia => {
+                        let objLicenciaTemp = new Licencia(objLicencia.numLicencia, objLicencia.tipoLicencia, objLicencia.vencimiento)
+                    })
 
                      objUsuario.listaPaquetes.forEach(objPaquete => {
                     let objPaqueteTemp = new Paquete(objPaquete.usuario,objPaquete.tracking, objPaquete.distribuidor, objPaquete.precio, objPaquete.peso, objPaquete.tipoArticulo, objPaquete.descripcion );
@@ -157,6 +163,18 @@
             actualizarPaqueteLocal (listaPaquetes);
         };
 
+        function _actualizarEstadoPaquete(pObjpaquete) {
+            let listaPaquetes = _getAllPaquetes();
+
+            for (let i = 0; i < listaPaquetes.length; i++) {
+                if (listaPaquetes[i].tracking == pObjpaquete.tracking ) {
+                   
+                    listaPaquetes[i] = pObjpaquete;
+                }
+            }
+            actualizarPaqueteLocal (listaPaquetes);
+        };
+
 
         function actualizarLocal(plistaActualizada) {
             localStorage.setItem('usuariosLS', JSON.stringify(plistaActualizada));
@@ -207,17 +225,18 @@
                 actualizarLicenciaLocal (listaLicencia);
             }
 
+            function _getRol() {
+                let session = JSON.parse(sessionStorage.getItem ('sesion'));
+                let rol = session.tipo;
+                return rol;
+            };
+
 
         function _addTarjeta(pnuevaTarjeta){
             let listaTarjeta = _getTarjeta();
-            let respuesta = true;
             listaTarjeta.push(pnuevaTarjeta);
 
-            asyncLocalStorage.setItem('tarjetaLS', listaTarjeta).then((response) =>{
-                respuesta = response;
-            });
-
-            return respuesta;
+           localStorage.setItem('tarjetaLS', JSON.stringify(listaTarjeta));
         }
 
         function _getTarjeta(){
@@ -228,7 +247,7 @@
                 listaTarjeta = [];
             }else{
                 listaTarjetaLocal.forEach(obj => {
-                    let objTarjeta = new Tarjeta (obj.nombre, obj.numero, obj.expiracion,obj.cvc);
+                    let objTarjeta = new Tarjeta (obj.id, obj.nombre, obj.numero, obj.expiracion,obj.cvc);
 
                     listaTarjeta.push(objTarjeta);
                 });
