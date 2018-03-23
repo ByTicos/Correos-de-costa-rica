@@ -28,8 +28,10 @@
     "oclazyload": "^1.1.0",
     "payform": "^1.2.2",
     "popper.js": "^1.12.9",
+    "remove": "^0.1.5",
     "sweetalert": "^2.1.0",
-    "ui-router-page-title": "^1.0.4"
+    "ui-router-page-title": "^1.0.4",
+    "wow": "0.0.6"
   },
   "repository": {
     "type": "git",
