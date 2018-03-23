@@ -321,7 +321,7 @@
 
       .state('sucursales', {
         url: '/sucursales',
-        templateUrl: './components/sucursal/sucursal.view.html',
+        templateUrl: './components/sucursal/registrarSucursal/sucursalRegistrar.view.html',
         data:{
           pageTitle: 'Registrar Sucursal'
         },

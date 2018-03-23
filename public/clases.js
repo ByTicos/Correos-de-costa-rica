@@ -26,18 +26,15 @@ class Usuario{
         this.estado = pEstado;
     }
 
-<<<<<<< HEAD
     registarTarjeta(pTarjeta){
         return this.tarjeta;
     }
-=======
     getListaPaquetes(){
         return this.listaPaquetes;
     }
     agregarPaquete(pPaquete){
     this.listaPaquetes.push(pPaquete);
   }
->>>>>>> Dev
       
 }
 
