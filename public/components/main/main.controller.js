@@ -8,5 +8,7 @@
 
   function controladorMain($location, servicioLogin, servicioUsuarios) {
     const vm = this;
+
+    vm.rol = servicioUsuarios.getRol();
   }
 })();

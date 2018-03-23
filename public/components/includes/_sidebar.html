@@ -1,10 +1,11 @@
 
 <div id="sidebar">
-  <div class="sidenav">
+  <div ng-model="vm.rol" class="sidenav">
     <a ui-sref="main.registrarEncargadoSucursal">Registrar Usuarios</a>
-    <a ui-sref="listarEncargadoSucursal">Lista de Usuarios</a>
-    <a ui-sref="paquetesEncargadoSucursal">Paquetes</a>
-    <a ui-sref="entidades">Registrar Entidades</a>
-    <a ui-sref="convenio">Registrar Convenios</a>
+    <a ui-sref="main.listarEncargadoSucursal">Lista de Usuarios</a>
+    <a ui-sref="main.paquetesEncargadoSucursal">Paquetes</a>
+    <a ng-hide = 'vm.rol == 2' ui-sref="entidades">Registrar Entidades</a>
+    <a ng-hide = 'vm.rol == 2' ui-sref="convenio">Registrar Convenios</a>
+    <a ng-hide = 'vm.rol == 3' ui-sref="convenio">Otra Opcion</a>
   </div>
 </div>
