@@ -1,5 +1,9 @@
 class Usuario{
+<<<<<<< HEAD
+    constructor(pCedula, pFoto, pPrimerNombre, pSegundoNombre, pPrimerApellido, pSegundoApellido, pEmail, pTelefono, pfechaNacimiento, pProvincia, pCanton, pDistrito, pDireccionExacta, pTipo,pSucursalAsignada, pPuesto, pVehiculo,pLicencia){
+=======
     constructor(pCedula, pFoto, pPrimerNombre, pSegundoNombre, pPrimerApellido, pSegundoApellido, pEmail, pTelefono, pfechaNacimiento, pProvincia, pCanton, pDistrito, pDireccionExacta, pTipo,pSucursalAsignada, pPuesto, pVehiculo,pLicencia, pVencimientoLicencia, pTarjeta){
+>>>>>>> origin/Esteban
         this.cedula = pCedula;
         this.foto = pFoto;
         this.primerNombre = pPrimerNombre;
@@ -20,7 +24,11 @@ class Usuario{
         this.vehiculo = pVehiculo;
         this.listaLicencias = [];
         this.estado = 'activo';
+<<<<<<< HEAD
+        // this.paqueteAsignado = 
+=======
         this.tarjeta = pTarjeta || [];
+>>>>>>> origin/Esteban
     } 
     cambiarEstado(pEstado){
         this.estado = pEstado;
@@ -36,6 +44,13 @@ class Usuario{
     this.listaPaquetes.push(pPaquete);
   }
       
+  agregarLicencias(pnuevaLicencia) {
+    this.listaLicencias.push(pnuevaLicencia);
+  }
+
+  getLicencias(){
+      return this.listaLicencias
+  }
 }
 
 class Paquete{
@@ -71,8 +86,6 @@ class Paquete{
     mostrarEstadoTraslado(pEstado){
         this.estadoTraslado = pEstado;
     }
-
-
 }
 
 class Estado{
@@ -143,3 +156,13 @@ class Tarjeta {
        this.cvv = pCvv; 
     }
 }
+
+
+
+// class Repartidor extends Usuario{
+//         constructor(pCedula, pFoto, pPrimerNombre, pSegundoNombre, pPrimerApellido, pSegundoApellido, pEmail, pTelefono, pfechaNacimiento, pProvincia, pCanton, pDistrito, pDireccionExacta, pTipo,plistaPaquetes,pEstado,pSucursalAsignada,pLicencias){
+//             super(pCedula, pFoto, pPrimerNombre, pSegundoNombre, pPrimerApellido, pSegundoApellido, pEmail, pTelefono, pfechaNacimiento, pProvincia, pCanton, pDistrito, pDireccionExacta, pTipo, pTipo,plistaPaquetes,pEstado);
+//             this.sucursalAsignada = pSucursalAsignada;
+//             this.listaLicencias = pLicencias;
+//         }
+//     }

@@ -26,11 +26,12 @@
             getPaquete: _getPaquete,
             actualizarPaquete: _actualizarPaquete,
             actualizarEstadoPaquete: _actualizarEstadoPaquete,
-            addLicencia: _addLicencia,
-            getLicencia: _getLicencia,
+            addLicencias: _addLicencias,
+            getLicencias: _getLicencias,
             actualizarLocal: _actualizarLicencia,
             addTarjeta: _addTarjeta,
             getTarjeta: _getTarjeta,
+            getRol: _getRol,
             getAllPaquetes: _getAllPaquetes
                 }
         return publicAPI
@@ -55,8 +56,12 @@
             }
             else {
                 listaUsuariosLocal.forEach(objUsuario => {
-                    let objUsuarioTemp = new Usuario(objUsuario.cedula, objUsuario.foto, objUsuario.primerNombre, objUsuario.segundoNombre, objUsuario.primerApellido, objUsuario.segundoApellido, objUsuario.correo, objUsuario.telefono, objUsuario.fechaNacimiento, objUsuario.provincia, objUsuario.canton, objUsuario.distrito, objUsuario.direccionExacta, objUsuario.tipo,objUsuario.sucursalAsignada, objUsuario.puesto);
+                    let objUsuarioTemp = new Usuario(objUsuario.cedula, objUsuario.foto, objUsuario.primerNombre, objUsuario.segundoNombre, objUsuario.primerApellido, objUsuario.segundoApellido, objUsuario.correo, objUsuario.telefono, objUsuario.fechaNacimiento, objUsuario.provincia, objUsuario.canton, objUsuario.distrito, objUsuario.direccionExacta, objUsuario.tipo,objUsuario.sucursalAsignada, objUsuario.puesto,objUsuario.vehiculo);
                     objUsuarioTemp.cambiarEstado(objUsuario.estado);
+
+                    objUsuario.listaLicencias.forEach(objLicencia => {
+                        let objLicenciaTemp = new Licencia(objLicencia.numLicencia, objLicencia.tipoLicencia, objLicencia.vencimiento)
+                    })
 
                      objUsuario.listaPaquetes.forEach(objPaquete => {
                     let objPaqueteTemp = new Paquete(objPaquete.usuario,objPaquete.tracking, objPaquete.distribuidor, objPaquete.precio, objPaquete.peso, objPaquete.tipoArticulo, objPaquete.descripcion );
@@ -219,6 +224,12 @@
                 }
                 actualizarLicenciaLocal (listaLicencia);
             }
+
+            function _getRol() {
+                let session = JSON.parse(sessionStorage.getItem ('sesion'));
+                let rol = session.tipo;
+                return rol;
+            };
 
 
         function _addTarjeta(pnuevaTarjeta){

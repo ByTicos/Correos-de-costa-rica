@@ -46,6 +46,15 @@
         controllerAs: 'vm'
       })
 
+      $stateProvider
+      .state('main.dashboard', {
+        url: '/dashboard',
+        templateUrl: './components/main/dashboard/mainDashboard.view.html',
+        data:{
+          pageTitle: 'Dashboard'
+        }
+      })
+
       .state('main.registrarCliente', {
         url: '/registrarCliente',
         templateUrl: './components/usuarios/cliente/registrarCliente/registrarCliente.view.html',
@@ -64,7 +73,7 @@
         controllerAs: 'vm'
       })
       
-      .state('listarCliente', {
+      .state('main.listarCliente', {
         url: '/listarCliente',
         templateUrl: './components/usuarios/cliente/listarCliente/listarCliente.view.html',
         data:{
@@ -81,7 +90,7 @@
         controller: 'controladorListarCliente',
         controllerAs: 'vm'
       })
-      .state('modificarCliente', {
+      .state('main.modificarCliente', {
         url: '/modificarCliente',
         templateUrl: './components/usuarios/cliente/modificarCliente/modificarCliente.view.html',
         data:{
@@ -341,7 +350,7 @@
 
       .state('repartidor', {
         url: '/repartidor',
-        templateUrl: './components/repartidores/registroRepartidor.view.html',
+        templateUrl: './components/usuarios/repartidores/registrarRepartidor/registroRepartidor.view.html',
         data:{
           pageTitle: 'Registro repartidor'
         },
@@ -350,7 +359,7 @@
         },
         resolve: {
           load: ['$ocLazyLoad', ($ocLazyLoad) => {
-            return $ocLazyLoad.load('./components/repartidores/registroRepartidor.controller.js')
+            return $ocLazyLoad.load('./components/usuarios/repartidores/registrarRepartidor/registroRepartidor.controller.js')
           }]
         },
         controller: 'controladorRepartidores',
@@ -393,7 +402,7 @@
         controllerAs: 'vm'
       })
       .state('main.registrarEncargadoSucursal', {
-        url: '/registrarEncargadoSucursal',
+        url: 'registrarEncargadoSucursal',
         templateUrl: './components/usuarios/encargadoSucursal/registrarEncargadoSucursal/registrarEncargadoSucursal.view.html',
         data:{
           pageTitle: 'Registro Encargado Sucursal'
@@ -410,8 +419,8 @@
         controllerAs: 'vm'
       })
 
-      .state('listarEncargadoSucursal', {
-        url: '/listarEncargadoSucursal',
+      .state('main.listarEncargadoSucursal', {
+        url: 'listarEncargadoSucursal',
         templateUrl: './components/usuarios/encargadoSucursal/listarEncargadoSucursal/listarEncargadoSucursal.view.html',
         data:{
           pageTitle: 'Listar Encargado de Sucursal'
@@ -428,8 +437,8 @@
         controllerAs: 'vm',
       })
 
-      .state('modificarEncargadoSucursal', {
-        url: '/modificarEncargadoSucursal',
+      .state('main.modificarEncargadoSucursal', {
+        url: 'registrarEncargadoSucursal',
         templateUrl: './components/usuarios/encargadoSucursal/modificarEncargadoSucursal/modificarEncargadoSucursal.view.html',
         data:{
           pageTitle: 'Editar Encargado de Sucursal'
@@ -446,7 +455,7 @@
         controllerAs: 'vm',
       })
 
-      .state('paquetesEncargadoSucursal', {
+      .state('main.paquetesEncargadoSucursal', {
         url: '/paquetesEncargadoSucursal',
         templateUrl: './components/usuarios/encargadoSucursal/paquetesEncargadoSucursal/paquetesEncargadoSucursal.view.html',
         data:{
@@ -464,7 +473,42 @@
         controllerAs: 'vm',
       })
 
-      .state('editarTarjetas', {
+      .state('perfilRepartidor', {
+        url:'/perfilRepartidor',
+        templateUrl: './components/usuarios/repartidores/perfilRepartidores/perfilRepartidores.view.html',
+        data:{
+          pageTitle: 'Perfil de Repartidor'
+        },
+        params: {
+          objRepartidorTemp:''
+        },
+        resolve: {
+          load: [ '$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/usuarios/repartidores/perfilRepartidores/perfilRepartidores.view.html')
+          }]
+        },
+        controller: 'controladorPerfilRepartidor',
+        controllerAs: 'vm'
+      })
+      
+       .state('editarRepartidor', {
+        url:'/editarRepartidor',
+        templateUrl: './components/usuarios/repartidores/editarRepartidor.view.html',
+        data:{
+          pageTitle: 'Editar Repartidor'
+        },
+        params: {
+          objRepartidorTemp:''
+        },
+        resolve: {
+          load: [ '$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/usuarios/repartidores/editarRepartidor.controller.js')
+          }]
+        },
+        controller: 'controladorEditarRepartidor',
+        controllerAs: 'vm'
+      })
+       .state('editarTarjetas', {
         url: '/editarTarjetas',
         templateUrl: './components/tarjetas/registrarTarjeta/editarTarjeta.view.html',
         data:{
@@ -498,8 +542,7 @@
         },
         controller: 'controladorListarTarjetas',
         controllerAs: 'vm'
-      });
-  
+      })
   
       
 
