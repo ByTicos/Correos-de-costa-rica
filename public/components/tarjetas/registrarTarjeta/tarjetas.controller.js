@@ -10,14 +10,16 @@
       let vm = this;
 
         vm.nuevaTarjeta = {};
-     
+        
+        getRandom();
+        console.log(getRandom());
         vm.registrarTarjeta = (pnuevaTarjeta) => {
 
           let mes = $( "#month option:selected" ).val();
           let year = $( "#year option:selected" ).val();
           let expiracion = mes + '/' + year;  
 
-          let objnuevaTarjeta = new Tarjeta(pnuevaTarjeta.nombre, pnuevaTarjeta.numero, expiracion, pnuevaTarjeta.cvv);
+          let objnuevaTarjeta = new Tarjeta(getRandom(), pnuevaTarjeta.nombre, pnuevaTarjeta.numero, expiracion, pnuevaTarjeta.cvv);
 
           servicioUsuarios.addTarjeta(objnuevaTarjeta);
 
@@ -54,7 +56,16 @@
             return expiracion;
         };
 
+        function getRandom(){
+          let randomID = (
+        document.getElementById('field1').value = Math.floor(Math.random() * 100000));
 
+        return randomID;
+        console.log('randomID', randomID);
+        }
+      
+
+      
 
 
     }
