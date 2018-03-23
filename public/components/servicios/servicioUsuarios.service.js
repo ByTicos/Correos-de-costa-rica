@@ -31,6 +31,7 @@
             actualizarLocal: _actualizarLicencia,
             addTarjeta: _addTarjeta,
             getTarjeta: _getTarjeta,
+            getRol: _getRol,
             getAllPaquetes: _getAllPaquetes
                 }
         return publicAPI
@@ -219,6 +220,12 @@
                 }
                 actualizarLicenciaLocal (listaLicencia);
             }
+
+            function _getRol() {
+                let session = JSON.parse(sessionStorage.getItem ('sesion'));
+                let rol = session.tipo;
+                return rol;
+            };
 
 
         function _addTarjeta(pnuevaTarjeta){

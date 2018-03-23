@@ -48,7 +48,7 @@
 
       $stateProvider
       .state('main.dashboard', {
-        url: 'dashboard',
+        url: '/dashboard',
         templateUrl: './components/main/dashboard/mainDashboard.view.html',
         data:{
           pageTitle: 'Dashboard'
