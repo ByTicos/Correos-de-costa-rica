@@ -55,7 +55,7 @@
         }
       })
 
-      .state('main.registrarCliente', {
+      .state('registrarCliente', {
         url: '/registrarCliente',
         templateUrl: './components/usuarios/cliente/registrarCliente/registrarCliente.view.html',
         data:{
@@ -544,6 +544,62 @@
         controllerAs: 'vm'
       })
   
+
+
+      .state('registrarEncargadoAduana', {
+        url: '/registrarEncargadoAduana',
+        templateUrl: './components/usuarios/encargadoAduana/registrarEncargadoAduana/registrarEncargadoAduana.view.html',
+        data:{
+          pageTitle: 'Registro Encargado Aduana'
+        },
+        params: {
+          objUsuarioTemp: ''
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/usuarios/encargadoAduana/registrarEncargadoAduana/registrarEncargadoAduana.controller.js')
+          }]
+        },
+        controller: 'controladorRegistrarEncargadoAduana',
+        controllerAs: 'vm'
+      })
+
+      .state('listarEncargadoAduana', {
+        url: '/listarEncargadoAduana',
+        templateUrl: './components/usuarios/encargadoAduana/listarEncargadoAduana/listarEncargadoAduana.view.html',
+        data:{
+          pageTitle: 'Listar Encargado de Aduana'
+        },
+        params: {
+          objUsuarioTemp: ''
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/usuarios/encargadoAduana/listarEncargadoAduana/listarEncargadoAduana.controller.js')
+          }]
+        }, 
+        controller: 'controladorListarEncargadoAduana',
+        controllerAs: 'vm',
+      })
+
+      .state('modificarEncargadoAduana', {
+        url: '/modificarEncargadoAduana',
+        templateUrl: './components/usuarios/encargadoAduana/modificarEncargadoAduana/modificarEncargadoAduana.view.html',
+        data:{
+          pageTitle: 'Editar Encargado de Aduana'
+        },
+        params: {
+          objUsuarioTemp: ''
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/usuarios/encargadoAduana/modificarEncargadoAduana/modificarEncargadoAduana.controller.js')
+          }]
+        }, 
+        controller: 'controladorModificarEncargadoAduana',
+        controllerAs: 'vm',
+      })
+
       
 
     $urlRouterProvider.otherwise('/');
