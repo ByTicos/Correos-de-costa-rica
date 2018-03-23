@@ -1,5 +1,5 @@
 class Usuario{
-    constructor(pCedula, pFoto, pPrimerNombre, pSegundoNombre, pPrimerApellido, pSegundoApellido, pEmail, pTelefono, pfechaNacimiento, pProvincia, pCanton, pDistrito, pDireccionExacta, pTipo,pSucursalAsignada, pPuesto, pVehiculo,pLicencia, pVencimientoLicencia){
+    constructor(pCedula, pFoto, pPrimerNombre, pSegundoNombre, pPrimerApellido, pSegundoApellido, pEmail, pTelefono, pfechaNacimiento, pProvincia, pCanton, pDistrito, pDireccionExacta, pTipo,pSucursalAsignada, pPuesto, pVehiculo,pLicencia){
         this.cedula = pCedula;
         this.foto = pFoto;
         this.primerNombre = pPrimerNombre;
@@ -20,6 +20,7 @@ class Usuario{
         this.vehiculo = pVehiculo;
         this.listaLicencias = [];
         this.estado = 'activo';
+        // this.paqueteAsignado = 
     } 
     cambiarEstado(pEstado){
         this.estado = pEstado;
@@ -32,6 +33,13 @@ class Usuario{
     this.listaPaquetes.push(pPaquete);
   }
       
+  agregarLicencias(pnuevaLicencia) {
+    this.listaLicencias.push(pnuevaLicencia);
+  }
+
+  getLicencias(){
+      return this.listaLicencias
+  }
 }
 
 class Paquete{
@@ -67,8 +75,6 @@ class Paquete{
     mostrarEstadoTraslado(pEstado){
         this.estadoTraslado = pEstado;
     }
-
-
 }
 
 class Estado{
@@ -138,3 +144,13 @@ class Tarjeta {
        this.cvv = pCvv; 
     }
 }
+
+
+
+// class Repartidor extends Usuario{
+//         constructor(pCedula, pFoto, pPrimerNombre, pSegundoNombre, pPrimerApellido, pSegundoApellido, pEmail, pTelefono, pfechaNacimiento, pProvincia, pCanton, pDistrito, pDireccionExacta, pTipo,plistaPaquetes,pEstado,pSucursalAsignada,pLicencias){
+//             super(pCedula, pFoto, pPrimerNombre, pSegundoNombre, pPrimerApellido, pSegundoApellido, pEmail, pTelefono, pfechaNacimiento, pProvincia, pCanton, pDistrito, pDireccionExacta, pTipo, pTipo,plistaPaquetes,pEstado);
+//             this.sucursalAsignada = pSucursalAsignada;
+//             this.listaLicencias = pLicencias;
+//         }
+//     }

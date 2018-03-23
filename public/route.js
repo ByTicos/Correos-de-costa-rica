@@ -347,7 +347,7 @@
 
       .state('repartidor', {
         url: '/repartidor',
-        templateUrl: './components/repartidores/registroRepartidor.view.html',
+        templateUrl: './components/usuarios/repartidores/registrarRepartidor/registroRepartidor.view.html',
         data:{
           pageTitle: 'Registro repartidor'
         },
@@ -356,7 +356,7 @@
         },
         resolve: {
           load: ['$ocLazyLoad', ($ocLazyLoad) => {
-            return $ocLazyLoad.load('./components/repartidores/registroRepartidor.controller.js')
+            return $ocLazyLoad.load('./components/usuarios/repartidores/registrarRepartidor/registroRepartidor.controller.js')
           }]
         },
         controller: 'controladorRepartidores',
@@ -436,7 +436,41 @@
         controllerAs: 'vm',
       })
 
+      .state('perfilRepartidor', {
+        url:'/perfilRepartidor',
+        templateUrl: './components/usuarios/repartidores/perfilRepartidores/perfilRepartidores.view.html',
+        data:{
+          pageTitle: 'Perfil de Repartidor'
+        },
+        params: {
+          objRepartidorTemp:''
+        },
+        resolve: {
+          load: [ '$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/usuarios/repartidores/perfilRepartidores/perfilRepartidores.view.html')
+          }]
+        },
+        controller: 'controladorPerfilRepartidor',
+        controllerAs: 'vm'
+      })
       
+       .state('editarRepartidor', {
+        url:'/editarRepartidor',
+        templateUrl: './components/usuarios/repartidores/editarRepartidor.view.html',
+        data:{
+          pageTitle: 'Editar Repartidor'
+        },
+        params: {
+          objRepartidorTemp:''
+        },
+        resolve: {
+          load: [ '$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/usuarios/repartidores/editarRepartidor.controller.js')
+          }]
+        },
+        controller: 'controladorEditarRepartidor',
+        controllerAs: 'vm'
+      })
 
     $urlRouterProvider.otherwise('/');
   };
