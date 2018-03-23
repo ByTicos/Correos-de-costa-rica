@@ -41,7 +41,7 @@
       let listaUsuarios = servicioUsuarios.getUsuarios();
 
       listaUsuarios.forEach(objUsuario => {
-        if (objUsuario.cedula == objNuevoCliente.cedula) {
+        if (objUsuario.cedula == pUsuario.cedula) {
           objUsuario.foto = pUsuario.foto;
           objUsuario.primerNombre = pUsuario.primerNombre;
           objUsuario.segundoNombre = pUsuario.segundoNombre;
@@ -63,7 +63,7 @@
 
         }
       });
-      swal("Edición exitosa", "Reportero editado correctamente", "success", {
+      swal("Edición exitosa", "Repartidor editado correctamente", "success", {
         button: "Aceptar",
       });
       $state.go('repartidor')

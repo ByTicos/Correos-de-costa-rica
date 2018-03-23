@@ -93,6 +93,8 @@
                 <input type="text" class="form-control" ng-model="vm.nuevoRepartidor.sucursalAsignada" required>
             </div>
         </div>
+
+        
       <button type="submit">Registrar</button>
   
     </form>
@@ -132,6 +134,7 @@
           <td>{{repartidor.listaLicencias.tipoLicencia}}</td>
           <td>{{repartidor.listaLicencias.vencimiento}}</td>
           <td>{{repartidor.sucursalAsignada}}</td>
+          <td><button class="btn buttonall" ng-click="vm.editRepartidor(repartidor)" type="submit">Editar</button></td>
          
         </tr>
       </tbody>

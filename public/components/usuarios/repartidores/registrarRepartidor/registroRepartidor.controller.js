@@ -12,11 +12,10 @@
     vm.listaRepartidores = listarRepartidores();
     vm.nuevoRepartidor = {};
     // vm.agregarLicencia = agregarLicencia();
-    // vm.listarLicencias = listaLicencia();
+    vm.listaLicencias = listarLicencia();
     
     vm.editRepartidor = (pUsuario) =>{
-      $state.go('editRepartidor', {objRepartidorTemp : JSON.stringify(pUsuario)});
-
+      $state.go('editarRepartidor', {objRepartidorTemp : JSON.stringify(pUsuario)});
     };
 
 
@@ -25,8 +24,7 @@
         pNuevoUsuario.licencia, pNuevoUsuario.vencimientoLicencia)
 
       pNuevoUsuario.licencias = new Array(objLicencia);
-      console.log(pNuevoUsuario.licencias[0].numLicencia + ' Num Licencia');
-      console.log(pNuevoUsuario.licencias[0].tipoLicencia + ' tipo Licencia');
+
       
 
       let objNuevoRepartidor = new Usuario(pNuevoUsuario.cedula, pNuevoUsuario.foto, pNuevoUsuario.primerNombre, pNuevoUsuario.segundoNombre, pNuevoUsuario.primerApellido, pNuevoUsuario.segundoApellido, pNuevoUsuario.correo, pNuevoUsuario.telefono, pNuevoUsuario.fechaNacimiento, pNuevoUsuario.provincia, pNuevoUsuario.canton, pNuevoUsuario.distrito, pNuevoUsuario.direccionExacta, 'repartidor', pNuevoUsuario.sucursalAsignada, ' ',pNuevoUsuario.vehiculo, objLicencia);
@@ -62,7 +60,7 @@
     //   let listaRepartidores = servicioUsuarios.getRepartidores()
     // }
     // function listaLicencia(){
-    //   let listaRepartidores = servicioUsuarios.getLicencias();
+      let listaRepartidores = servicioUsuarios.getLicencias();
       
     // }
 
