@@ -20,8 +20,6 @@
      let session = JSON.parse(sessionStorage.getItem('sesion'));
      let usuario = session.nombre;
      
-     let articulo = pnuevoPaquete.tipoArticulo;
-     console.log(articulo);
 
      let objNuevoPaquete = new Paquete(usuario, pnuevoPaquete.tracking, pnuevoPaquete.distribuidor, pnuevoPaquete.precio, pnuevoPaquete.peso, pnuevoPaquete.tipoArticulo, pnuevoPaquete.descripcion );
     
