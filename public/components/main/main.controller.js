@@ -4,11 +4,18 @@
     .module('correos')
     .controller('controladorMain', controladorMain);
 
-    controladorMain.$inject = ['$location', 'servicioLogin', 'servicioUsuarios'];
+    controladorMain.$inject = ['$state','$location', 'servicioLogin', 'servicioUsuarios'];
 
-  function controladorMain($location, servicioLogin, servicioUsuarios) {
+  function controladorMain($state, $location, servicioLogin, servicioUsuarios) {
     const vm = this;
 
     vm.rol = servicioUsuarios.getRol();
+    vm.listaPaquetes = servicioUsuarios.getPaquete();
+
+    vm.cerrarSesion = ()=>{
+      servicioLogin.cerrarSesion();
+
+    }    
+    
   }
 })();

@@ -36,6 +36,9 @@
     }
     function _cerrarSesion(){
       servicioSesion.destruir();
+      swal("Sesión cerrada", "Sesión cerrada correctamente", "success", {
+        button: "Aceptar",
+      });
     }
   }
 

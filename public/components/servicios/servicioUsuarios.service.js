@@ -27,8 +27,8 @@
             actualizarPaquete: _actualizarPaquete,
             actualizarEstadoPaquete: _actualizarEstadoPaquete,
             addLicencias: _addLicencia,
-            getLicencias: _getLicencia,
-            actualizarLocal: _actualizarLicencia,
+            // getLicencias: _getLicencia,
+            // actualizarLocal: _actualizarLicencia, 
             addTarjeta: _addTarjeta,
             getTarjeta: _getTarjeta,
             getRol: _getRol,
@@ -196,34 +196,34 @@
                return respuesta;
             };
 
-            function _getLicencia() {
-                let listaLicencia = [];
-                let listaLicenciaLocal = JSON.parse(localStorage.getItem('licenciasLS'));
+            // function _getLicencia() {
+            //     let listaLicencia = [];
+            //     let listaLicenciaLocal = JSON.parse(localStorage.getItem('licenciasLS'));
     
-                if(listaLicenciaLocal == null){
-                   listaLicencia = [];
+            //     if(listaLicenciaLocal == null){
+            //        listaLicencia = [];
      
-                }else{
-                    listaLicenciaLocal.forEach(objLicencia => {
-                        let objLicenciaTemp = new Licencia(objLicencia.numLicencia, objLicencia.tipoLicencia, objLicencia.pVencimientoLicencia );
+            //     }else{
+            //         listaLicenciaLocal.forEach(objLicencia => {
+            //             let objLicenciaTemp = new Licencia(objLicencia.numLicencia, objLicencia.tipoLicencia, objLicencia.pVencimientoLicencia );
     
-                        listaLicencia.push(objLicenciaTemp);
-                    });
-                }
-                return listaLicencia;
-            };
+            //             listaLicencia.push(objLicenciaTemp);
+            //         });
+            //     }
+            //     return listaLicencia;
+            // };
     
-            function _actualizarLicencia(pObjlicencia) {
-                let listaLicencia = _getLicencia();
+            // function _actualizarLicencia(pObjlicencia) {
+            //     let listaLicencia = _getLicencia();
     
-                for (let i = 0; i < listaLicencia.length; i++) {
-                    if (listaLicencia[i].traking == pObjlicencia.traking ) {
+            //     for (let i = 0; i < listaLicencia.length; i++) {
+            //         if (listaLicencia[i].traking == pObjlicencia.traking ) {
                        
-                        listaLicencia[i] = pObjlicencia;
-                    }
-                }
-                actualizarLicenciaLocal (listaLicencia);
-            }
+            //             listaLicencia[i] = pObjlicencia;
+            //         }
+            //     }
+            //     actualizarLicenciaLocal (listaLicencia);
+            // }
 
             function _getRol() {
                 let session = JSON.parse(sessionStorage.getItem ('sesion'));
