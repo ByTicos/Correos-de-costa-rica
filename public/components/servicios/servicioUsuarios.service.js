@@ -26,9 +26,8 @@
             getPaquete: _getPaquete,
             actualizarPaquete: _actualizarPaquete,
             actualizarEstadoPaquete: _actualizarEstadoPaquete,
-            addLicencias: _addLicencia,
-            // getLicencias: _getLicencia,
-            // actualizarLocal: _actualizarLicencia, 
+            // addLicencias: _addLicencias,
+            // getLicencias: _getLicencias,
             addTarjeta: _addTarjeta,
             getTarjeta: _getTarjeta,
             getRol: _getRol,
@@ -59,9 +58,14 @@
                     let objUsuarioTemp = new Usuario(objUsuario.cedula, objUsuario.foto, objUsuario.primerNombre, objUsuario.segundoNombre, objUsuario.primerApellido, objUsuario.segundoApellido, objUsuario.correo, objUsuario.telefono, objUsuario.fechaNacimiento, objUsuario.provincia, objUsuario.canton, objUsuario.distrito, objUsuario.direccionExacta, objUsuario.tipo,objUsuario.sucursalAsignada, objUsuario.puesto,objUsuario.vehiculo);
                     objUsuarioTemp.cambiarEstado(objUsuario.estado);
 
+
                     objUsuario.listaLicencias.forEach(objLicencia => {
-                        let objLicenciaTemp = new Licencia(objLicencia.numLicencia, objLicencia.tipoLicencia, objLicencia.vencimiento)
-                    })
+                        let objLicenciaTemp = new Licencia(objLicencia.numLicencia, objLicencia.tipoLicencia, objLicencia.vencimiento);
+                        objUsuarioTemp.listaLicencias.push(objLicenciaTemp);
+                    });
+                    
+                    
+                    
 
                      objUsuario.listaPaquetes.forEach(objPaquete => {
                     let objPaqueteTemp = new Paquete(objPaquete.usuario,objPaquete.tracking, objPaquete.distribuidor, objPaquete.precio, objPaquete.peso, objPaquete.tipoArticulo, objPaquete.descripcion );
@@ -85,7 +89,9 @@
 
                     listaUsuarios.push(objUsuarioTemp);
                 });
+
             }
+            console.log(listaUsuarios);
             return listaUsuarios;
         };
         
@@ -182,39 +188,39 @@
         function actualizarPaqueteLocal(plistaPaqueteActualizada){
             localStorage.setItem('paquetesLS', JSON.stringify(plistaPaqueteActualizada));
         }
+        
+        // function _addLicencias(pNuevaLicencia) {
+        //     let listaLicencia = _getLicencias();
+        //         let respuesta = true;
 
-        function _addLicencia(pNuevaLicencia) {
-            let listaLicencia = _getLicencia;
-                let respuesta = true;
-                
-                listaLicencia.push(pNuevaLicencia);
-    
-                asyncLocalStorage.setItem('licenciasLS', listaLicencia).then((response) => {
-                    respuesta = response;
-                });
-    
-               return respuesta;
-            };
+        //         listaLicencia.push(pNuevaLicencia);
 
-            // function _getLicencia() {
-            //     let listaLicencia = [];
-            //     let listaLicenciaLocal = JSON.parse(localStorage.getItem('licenciasLS'));
+        //         asyncLocalStorage.setItem('licenciasLS', listaLicencia).then((response) => {
+        //             respuesta = response;
+        //         });
+
+        //        return respuesta;
+        //     };
+
+        //     function _getLicencias() {
+        //         let listaLicencia = [];
+        //         let listaLicenciaLocal = JSON.parse(localStorage.getItem('licenciasLS'));
     
-            //     if(listaLicenciaLocal == null){
-            //        listaLicencia = [];
+        //         if(listaLicenciaLocal == null){
+        //            listaLicencia = [];
      
-            //     }else{
-            //         listaLicenciaLocal.forEach(objLicencia => {
-            //             let objLicenciaTemp = new Licencia(objLicencia.numLicencia, objLicencia.tipoLicencia, objLicencia.pVencimientoLicencia );
+        //         }else{
+        //             listaLicenciaLocal.forEach(objLicencia => {
+        //                 let objLicenciaTemp = new Licencia(objLicencia.numLicencia, objLicencia.tipoLicencia, objLicencia.pVencimientoLicencia );
     
-            //             listaLicencia.push(objLicenciaTemp);
-            //         });
-            //     }
-            //     return listaLicencia;
-            // };
+        //                 listaLicencia.push(objLicenciaTemp);
+        //             });
+        //         }
+        //         return listaLicencia;
+        //     };
     
             // function _actualizarLicencia(pObjlicencia) {
-            //     let listaLicencia = _getLicencia();
+            //     let listaLicencia = _getLicencias();
     
             //     for (let i = 0; i < listaLicencia.length; i++) {
             //         if (listaLicencia[i].traking == pObjlicencia.traking ) {

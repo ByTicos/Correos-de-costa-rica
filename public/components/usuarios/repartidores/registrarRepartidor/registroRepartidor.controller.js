@@ -11,25 +11,34 @@
 
     vm.listaRepartidores = listarRepartidores();
     vm.nuevoRepartidor = {};
-    // vm.agregarLicencia = agregarLicencia();
-    vm.listaLicencias = listarLicencia();
+    // vm.agregarLicencias = agregarLicencia();
+    // vm.listaLicencias = listarLicencia();
     
     vm.editRepartidor = (pUsuario) =>{
       $state.go('editarRepartidor', {objRepartidorTemp : JSON.stringify(pUsuario)});
     };
 
-
+    
+    
     vm.registrarRepartidor = (pNuevoUsuario) => {
-      let objLicencia = new Licencia(pNuevoUsuario.numLicencia,
-        pNuevoUsuario.licencia, pNuevoUsuario.vencimientoLicencia)
+      
 
-      pNuevoUsuario.licencias = new Array(objLicencia);
+      let objLicencia = new Licencia(pNuevoUsuario.numLicencia,
+        pNuevoUsuario.tipoLicencia, pNuevoUsuario.vencimientoLicencia)
+
+         let licencias = [];
+         licencias.push(objLicencia);
+        
+
 
       
 
-      let objNuevoRepartidor = new Usuario(pNuevoUsuario.cedula, pNuevoUsuario.foto, pNuevoUsuario.primerNombre, pNuevoUsuario.segundoNombre, pNuevoUsuario.primerApellido, pNuevoUsuario.segundoApellido, pNuevoUsuario.correo, pNuevoUsuario.telefono, pNuevoUsuario.fechaNacimiento, pNuevoUsuario.provincia, pNuevoUsuario.canton, pNuevoUsuario.distrito, pNuevoUsuario.direccionExacta, 'repartidor', pNuevoUsuario.sucursalAsignada, ' ',pNuevoUsuario.vehiculo, objLicencia);
+      let objNuevoRepartidor = new Usuario(pNuevoUsuario.cedula, pNuevoUsuario.foto, pNuevoUsuario.primerNombre, pNuevoUsuario.segundoNombre, pNuevoUsuario.primerApellido, pNuevoUsuario.segundoApellido, pNuevoUsuario.correo, pNuevoUsuario.telefono, pNuevoUsuario.fechaNacimiento, pNuevoUsuario.provincia, pNuevoUsuario.canton, pNuevoUsuario.distrito, pNuevoUsuario.direccionExacta, 'repartidor', pNuevoUsuario.sucursalAsignada, ' ',pNuevoUsuario.vehiculo, licencias);
+
 
       let registro = servicioUsuarios.addUsuario(objNuevoRepartidor);
+
+
 
       if (registro == true) {
         swal("Registro exitoso", "El repartidor se registró correctamente", "success", {
@@ -54,17 +63,7 @@
       return listaRepartidores;
     }
 
-    // vm.agregarLicencia = (pNuevaLicencia) => {
 
-    //   let objNuevaLicencia = new Licencia(pNuevaLicencia.numLicencia, pNuevaLicencia.tipoLicencia, pNuevaLicencia.vencimiento);
-    //   let listaRepartidores = servicioUsuarios.getRepartidores()
-    // }
-    // function listaLicencia(){
-      let listaRepartidores = servicioUsuarios.getLicencias();
-      
-    // }
-
-    
   }
 })();
 
