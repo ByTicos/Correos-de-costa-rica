@@ -60,7 +60,7 @@
       swal("Edición exitosa", "Cliente modificado correctamente", "success", {
         button: "Aceptar",
       });
-      $state.go('listarCliente')
+      $state.go('main.listarCliente')
     }
   }
 

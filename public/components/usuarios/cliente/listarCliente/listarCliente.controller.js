@@ -12,7 +12,7 @@
     vm.listaClientes = listarClientes();
 
     vm.modificar = (pUsuario) =>{
-      $state.go('modificarCliente', { objClienteTemp: JSON.stringify(pUsuario) });
+      $state.go('main.modificarCliente', { objClienteTemp: JSON.stringify(pUsuario) });
     };
 
     function listarClientes() {

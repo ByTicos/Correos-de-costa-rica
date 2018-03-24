@@ -26,9 +26,9 @@
             getPaquete: _getPaquete,
             actualizarPaquete: _actualizarPaquete,
             actualizarEstadoPaquete: _actualizarEstadoPaquete,
-            addLicencias: _addLicencias,
-            getLicencias: _getLicencias,
-            actualizarLocal: _actualizarLicencia,
+           /* addLicencias: _addLicencia,
+            getLicencias: _getLicencia,
+            actualizarLocal: _actualizarLicencia,*/
             addTarjeta: _addTarjeta,
             getTarjeta: _getTarjeta,
             getRol: _getRol,
@@ -50,9 +50,11 @@
 
         function _getUsuarios() {
             let listaUsuarios = [];
+            let admin = new Usuario('', '', 'Administrador', '', '', '', 'administrador@correos.cr', '', '', '', '', '', '', '5','', 'Administrador','');
             let listaUsuariosLocal = JSON.parse(localStorage.getItem("usuariosLS"));
             if (listaUsuariosLocal == null) {
-                listaUsuarios = [];
+                listaUsuarios = [admin];
+                actualizarLocal(listaUsuarios);
             }
             else {
                 listaUsuariosLocal.forEach(objUsuario => {
@@ -182,7 +184,7 @@
         function actualizarPaqueteLocal(plistaPaqueteActualizada){
             localStorage.setItem('paquetesLS', JSON.stringify(plistaPaqueteActualizada));
         }
-
+/*
         function _addLicencia(pNuevaLicencia) {
             let listaLicencia = _getLicencia;
                 let respuesta = true;
@@ -224,7 +226,7 @@
                 }
                 actualizarLicenciaLocal (listaLicencia);
             }
-
+*/
             function _getRol() {
                 let session = JSON.parse(sessionStorage.getItem ('sesion'));
                 let rol = session.tipo;
