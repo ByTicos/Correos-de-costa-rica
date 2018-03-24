@@ -83,21 +83,16 @@
     };
 
 
-    vm.registrarCliente = (pNuevoUsuario) => {
+    vm.preRegistrarCliente = (pNuevoUsuario) => {
+      vm.cloudObj.data.file = pNuevoUsuario.foto[0];
+      Upload.upload(vm.cloudObj).success((data) =>{
+        vm.registrarCliente(pNuevoUsuario, data.url);
+     });
+    };
 
+    vm.registrarCliente = (pNuevoUsuario, imgUrl) => {
 
-    let urlImage;
-      
-    if(vm.cloudObj.data.file){
-      Upload.upload(vm.cloudObj).success((data) => { 
-        urlImage = data.url;
-      });
-    }
-      
-      
-
-
-      let objNuevoCliente = new Usuario(pNuevoUsuario.cedula, pNuevoUsuario.foto, pNuevoUsuario.primerNombre, pNuevoUsuario.segundoNombre, pNuevoUsuario.primerApellido, pNuevoUsuario.segundoApellido, pNuevoUsuario.correo, pNuevoUsuario.telefono, pNuevoUsuario.fechaNacimiento, pNuevoUsuario.provincia, pNuevoUsuario.canton, pNuevoUsuario.distrito, pNuevoUsuario.direccionExacta, '1');
+      let objNuevoCliente = new Usuario(pNuevoUsuario.cedula, imgUrl, pNuevoUsuario.primerNombre, pNuevoUsuario.segundoNombre, pNuevoUsuario.primerApellido, pNuevoUsuario.segundoApellido, pNuevoUsuario.correo, pNuevoUsuario.telefono, pNuevoUsuario.fechaNacimiento, pNuevoUsuario.provincia, pNuevoUsuario.canton, pNuevoUsuario.distrito, pNuevoUsuario.direccionExacta, '1');
 
       let registro = servicioUsuarios.addUsuario(objNuevoCliente);
 
@@ -105,7 +100,14 @@
         swal("Registro exitoso", "El cliente ha sido registrado correctamente", "success", {
           button: "Aceptar",
         });
-        /*$location.path('/logIn');*/
+        let sesion = JSON.parse(sessionStorage.getItem('sesion'));
+        if(sesion == null || sesion.tipo != '5'){
+          $location.path('/logIn');
+        }
+        else{
+          $location.path('/main/listarCliente');
+        }
+        
       }
       else {
         swal("Registro fallido", "Ha ocurrido un error, intente nuevamente", "error", {
