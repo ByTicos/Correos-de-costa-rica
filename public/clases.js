@@ -18,7 +18,7 @@ class Usuario{
         this.sucursalAsignada = pSucursalAsignada;
         this.puesto = pPuesto;
         this.vehiculo = pVehiculo;
-        this.listaLicencias = [];
+        this.listaLicencias = pLicencia || [] ;
         this.estado = 'activo';
         // this.paqueteAsignado = 
         this.tarjeta = pTarjeta || [];
