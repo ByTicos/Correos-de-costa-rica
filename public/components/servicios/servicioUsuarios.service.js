@@ -249,7 +249,7 @@
                 listaTarjeta = [];
             }else{
                 listaTarjetaLocal.forEach(obj => {
-                    let objTarjeta = new Tarjeta (obj.id, obj.nombre, obj.numero, obj.expiracion,obj.cvc);
+                    let objTarjeta = new Tarjeta (obj.id, obj.nombre, obj.numero, obj.expiracion,obj.cvv);
 
                     listaTarjeta.push(objTarjeta);
                 });
