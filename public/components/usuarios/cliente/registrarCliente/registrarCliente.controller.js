@@ -101,7 +101,7 @@
           button: "Aceptar",
         });
         let sesion = JSON.parse(sessionStorage.getItem('sesion'));
-        if(sesion.tipo != '5'){
+        if(sesion == null || sesion.tipo != '5'){
           $location.path('/logIn');
         }
         else{
