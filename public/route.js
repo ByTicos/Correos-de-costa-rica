@@ -564,7 +564,7 @@
   
 
 
-      .state('registrarEncargadoAduana', {
+      .state('main.registrarEncargadoAduana', {
         url: '/registrarEncargadoAduana',
         templateUrl: './components/usuarios/encargadoAduana/registrarEncargadoAduana/registrarEncargadoAduana.view.html',
         data:{
@@ -582,7 +582,7 @@
         controllerAs: 'vm'
       })
 
-      .state('listarEncargadoAduana', {
+      .state('main.listarEncargadoAduana', {
         url: '/listarEncargadoAduana',
         templateUrl: './components/usuarios/encargadoAduana/listarEncargadoAduana/listarEncargadoAduana.view.html',
         data:{
@@ -600,7 +600,7 @@
         controllerAs: 'vm',
       })
 
-      .state('modificarEncargadoAduana', {
+      .state('main.modificarEncargadoAduana', {
         url: '/modificarEncargadoAduana',
         templateUrl: './components/usuarios/encargadoAduana/modificarEncargadoAduana/modificarEncargadoAduana.view.html',
         data:{
