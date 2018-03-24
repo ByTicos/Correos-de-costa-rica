@@ -10,7 +10,7 @@
     let vm = this;
 
     vm.regresar = () => {
-      $state.go('listarEncargadoAduana');
+      $state.go('main.listarEncargadoAduana');
     }
 
     vm.editarUsuarios = {};

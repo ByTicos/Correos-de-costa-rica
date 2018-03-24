@@ -13,7 +13,7 @@
   
 
     vm.editUsuarios = (pUsuario) =>{
-      $state.go('modificarEncargadoAduana', {objUsuarioTemp : JSON.stringify(pUsuario)});
+      $state.go('main.modificarEncargadoAduana', {objUsuarioTemp : JSON.stringify(pUsuario)});
 
     };
 
