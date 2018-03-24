@@ -1,238 +1,50 @@
-<main id="registroPreAlerta" class="col-8">
-  <h1>REGISTRO DE PRE ALERTA</h1>
 
+<div id="dashboard"> 
+
+ <section id="registroPreAlerta" class="col-8">
+<h1>REGISTRO DE PRE ALERTA</h1>
+
+<div>
   <div>
-    <div>
-      <form ng-submit="vm.editPrealerta(vm.editarPaquete)">
+    <form ng-submit="vm.editPrealerta(vm.editarPaquete)">
 
-        
-        <div class="form-group">
-          <label for="">Distribuidor</label>
-          <input type="text" class="form-control" ng-model="vm.editarPaquete.distribuidor" required>
-        </div>
-        <div class="form-group">
-          <label for="">Precio</label>
-          <input type="text" class="form-control" ng-model="vm.editarPaquete.precio" required>
-        </div>
-        <div class="form-group">
-          <label for="">Peso </label>
-          <input type="text" class="form-control" ng-model="vm.editarPaquete.peso" required>
-        </div>
-        <div class="form-group">
-          <label for="29.95">Articulo</label>
-          <select ng-model='vm.editarPaquete.tipoArticulo'>
 
-            <option value="{monto: 29.95, articulo:Acoustic}">Acoustic Guitar - (29.95%)</option>
-            <option value="14.13">Adapter - (14.13%)</option>
-            <option value="29.95">Agenda (Paper) - (29.95%)</option>
-            <option value="24.30">Air / Oil Filter - (24.30%)</option>
-            <option value="0">Air Bag - (0.00%)</option>
-            <option value="14.13">Alarm - (14.13%)</option>
-            <option value="14.13">Ampoptionfier - (14.13%)</option>
-            <option value="14.13">Antenna - (14.13%)</option>
-            <option value="42.78">Auto Body Parts - (42.78%)</option>
-            <option value="14.13">Auto engine - (14.13%)</option>
-            <option value="13.00">Baby car seat - (13.00%)</option>
-            <option value="14.13">Batteries (AAA / AA, C , D) - (14.13%)</option>
-            <option value="42.38">Batteries or Energy accumulators (Laptop, cell phone, cameras) - (42.38%)</option>
-            <option value="24.30">Bicycle and a Motorcycle Rims - (24.30%)</option>
-            <option value="24.30">Bicycle Frame - (24.30%)</option>
-            <option value="14.13">Bicycle Parts - (14.13%)</option>
-            <option value="29.95">Bike CIF value exceeding $ 1000 - (29.95%)</option>
-            <option value="13.00">Bike CIF value less than $ 1000 - (13.00%)</option>
-            <option value="29.95">Binoculars - (29.95%)</option>
-            <option value="49.27">Blender - (49.27%)</option>
-            <option value="29.95">Body Lotion - (29.95%)</option>
-            <option value="1.00">Book - (1.00%)</option>
-            <option value="42.78">Brakes and parts - (42.78%)</option>
-            <option value="29.95">Briefcase - (29.95%)</option>
-            <option value="13.00">Calculator - (13.00%)</option>
-            <option value="13.00">Camera (digital) - (13.00%)</option>
-            <option value="13.00">Camera (traditional) - (13.00%)</option>
-            <option value="14.13">Camera Accessories - (14.13%)</option>
-            <option value="29.95">Camping Tent - (29.95%)</option>
-            <option value="42.78">Car body Parts - (42.78%)</option>
-            <option value="19.78">Car optionghts - (19.78%)</option>
-            <option value="14.13">Car Mirror - (14.13%)</option>
-            <option value="42.78">Car Rack - (42.78%)</option>
-            <option value="42.78">Car Rims - (42.78%)</option>
-            <option value="42.78">Car Suspension - (42.78%)</option>
-            <option value="42.27">Car Wheel - (42.27%)</option>
-            <option value="29.95">Carpet - (29.95%)</option>
-            <option value="49.00">CD / DVD ROM (external) - (49.00%)</option>
-            <option value="13.00">CD Video Games - (13.00%)</option>
-            <option value="24.30">CD's - (24.30%)</option>
-            <option value="49.00">CD/DVD External Burner - (49.00%)</option>
-            <option value="13.00">CD/DVD Internal Burner - (13.00%)</option>
-            <option value="13.00">CD/DVD ROM (internal) - (13.00%)</option>
-            <option value="29.95">Ceramic Plates - (29.95%)</option>
-            <option value="14.13">Charger - (14.13%)</option>
-            <option value="13.00">Chip (computer) - (13.00%)</option>
-            <option value="29.95">Clothing - (29.95%)</option>
-            <option value="49.27">Clutch - (49.27%)</option>
-            <option value="49.27">Coffee Maker - (49.27%)</option>
-            <option value="19.78">Coins - (19.78%)</option>
-            <option value="24.30">Comic Books - (24.30%)</option>
-            <option value="29.95">Computer Keyboard - (13.00%)</option>
-            <option value="13.00">Computer (normal or laptop) - (13.00%)</option>
-            <option value="13.00">Computer external accesories - (13.00%)</option>
-            <option value="19.78">Contact Lens - (19.78%)</option>
-            <option value="14.13">Copy Machine - (14.13%)</option>
-            <option value="13.00">CPU case - (13.00%)</option>
-            <option value="29.95">Curtains - (29.95%)</option>
-            <option value="24.30">Cymbals - (24.30%)</option>
-            <option value="42.78">Dampers - (42.78%)</option>
-            <option value="49.00">Diskman or walkman - (49.00%)</option>
-            <option value="29.95">Drinking Glass - (29.95%)</option>
-            <option value="24.30">Drum - (24.30%)</option>
-            <option value="24.30">Drum Set - (24.30%)</option>
-            <option value="19.78">Drumstick - (19.78%)</option>
-            <option value="49.27">DVD Player - (49.27%)</option>
-            <option value="49.27">DVD Recorder (external) - (49.27%)</option>
-            <option value="13.00">DVD Recorder (Internal for computer) - (13.00%)</option>
-            <option value="13.00">DVD's - (13.00%)</option>
-            <option value="24.30">Electric Guitar - (24.30%)</option>
-            <option value="29.95">Electric Water Heater - (68.60%)</option>
-            <option value="13.00">Electronic Organizer - (13.00%)</option>
-            <option value="14.13">Engine parts - (14.13%)</option>
-            <option value="13.00">External hard drive - (13.00%)</option>
-            <option value="29.95">Eye glasses - (29.95%)</option>
-            <option value="29.95">Faucets - (29.95%)</option>
-            <option value="14.13">Fish Hook - (14.13%)</option>
-            <option value="14.13">Fishing Reel - (14.13%)</option>
-            <option value="24.30">Fishing rod - (24.30%)</option>
-            <option value="24.30">Fitness Accesories - (24.30%)</option>
-            <option value="24.30">Flatware - (24.30%)</option>
-            <option value="29.95">Fluorescent bulb - (29.95%)</option>
-            <option value="14.13">Forkoptionft Part - (14.13%)</option>
-            <option value="49.27">Fryer - (49.27%)</option>
-            <option value="29.95">Furniture - (29.95%)</option>
-            <option value="14.13">Fuse - (14.13%)</option>
-            <option value="29.95">Garden Tools - (1.00%)</option>
-            <option value="24.30">Golf Balls - (24.30%)</option>
-            <option value="24.30">Golf Clubs - (24.30%)</option>
-            <option value="19.78">Guitar Pedal - (19.78%)</option>
-            <option value="49.27">Hair dryer - (49.27%)</option>
-            <option value="49.27">Hairstyoptionng Iron - (49.27%)</option>
-            <option value="29.95">Hairstyoptionng products - (68.60%)</option>
-            <option value="19.78">Hand Tools - (19.78%)</option>
-            <option value="14.13">Heater - (14.13%)</option>
-            <option value="49.27">Home appoptionances - (49.27%)</option>
-            <option value="49.27">Home Theater System - (49.27%)</option>
-            <option value="14.13">Horn - (14.13%)</option>
-            <option value="19.78">Hose - (19.78%)</option>
-            <option value="14.13">Hydrauoptionc Jack - (14.13%)</option>
-            <option value="14.13">Ink - (14.13%)</option>
-            <option value="13.00">iPAD - (13.00%)</option>
-            <option value="29.95">Jewelry - (29.95%)</option>
-            <option value="49.00">Karaoke - (49.00%)</option>
-            <option value="29.95">Lamp - (29.95%)</option>
-            <option value="14.13">Lawn Mower - (14.13%)</option>
-            <option value="19.78">optionght Bulb - (19.78%)</option>
-            <option value="29.95">optionngerie - (29.95%)</option>
-            <option value="29.95">Mattress - (29.95%)</option>
-            <option value="13.00">Memory, Video and Mother Board - (13.00%)</option>
-            <option value="14.13">Microscope - (14.13%)</option>
-            <option value="37.58">Microwave - (37.58%)</option>
-            <option value="49.27">Mixer - (49.27%)</option>
-            <option value="49.27">Monitor with access to VGA - (49.27%)</option>
-            <option value="49.27">Monitor,. Video-Monitor, HDMO, etc - (49.27%)</option>
-            <option value="19.78">Motorcycle damper - (19.78%)</option>
-            <option value="29.95">Motorcycle Helmet - (29.95%)</option>
-            <option value="42.78">Motorcycle Part - (42.78%)</option>
-            <option value="49.27">MP3 &amp; MP4 Player,iPod - (49.27%)</option>
-            <option value="29.95">Muffler - (42.78%)</option>
-            <option value="19.78">Musical Accesories - (19.78%)</option>
-            <option value="29.95">Musical Instrument Case - (29.95%)</option>
-            <option value="24.30">Musical Keyboard - (24.30%)</option>
-            <option value="14.13">Oil Pump - (14.13%)</option>
-            <option value="29.95">Ornaments (Ceramic, Wood, Metal, Plastic, Glass, Paper) - (29.95%)</option>
-            <option value="14.13">Ornaments (stone) - (14.30%)</option>
-            <option value="24.30">Paints - (24.30%)</option>
-            <option value="24.30">Paper - (24.30%)</option>
-            <option value="29.95">Party Suppoptiones - (29.95%)</option>
-            <option value="13.00">PC Processor - (13.00%)</option>
-            <option value="24.30">Percussion musical instruments - (24.30%)</option>
-            <option value="29.95">Perfume - (30.00%)</option>
-            <option value="42.78">Personal Shaver (electric) - (42.78%)</option>
-            <option value="14.13">Pinion - (14.13%)</option>
-            <option value="42.38">Portable Stove - (42.38%)</option>
-            <option value="29.95">Poster - (29.95%)</option>
-            <option value="29.95">Pots and Pans - (29.95%)</option>
-            <option value="13.00">Printer - (13.00%)</option>
-            <option value="13.00">Printer Part - (13.00%)</option>
-            <option value="14.13">Projector Accesories - (14.13%)</option>
-            <option value="24.30">Racket - (24.30%)</option>
-            <option value="42.78">Radiator - (42.78%)</option>
-            <option value="29.95">Refrigerator - (81.48%)</option>
-            <option value="14.13">Remote Control - (14.13%)</option>
-            <option value="24.30">Roller / Ice Skates - (24.30%)</option>
-            <option value="13.00">Router - (13.00%)</option>
-            <option value="29.95">Seat Belt - (41.65%)</option>
-            <option value="14.13">Sewing Machine - (14.13%)</option>
-            <option value="49.27">Shampoo - (49.27%)</option>
-            <option value="24.30">Shavers (disposable) - (24.30%)</option>
-            <option value="29.95">Sheets - (29.95%)</option>
-            <option value="29.95">Shoes - (29.95%)</option>
-            <option value="14.13">Signal Generator - (14.13%)</option>
-            <option value="29.95">Sleeping Bag - (29.95%)</option>
-            <option value="24.30">Soccer Ball - (24.30%)</option>
-            <option value="14.13">Software - (14.13%)</option>
-            <option value="42.38">Spark Plug - (42.38%)</option>
-            <option value="14.13">Speakers - (14.13%)</option>
-            <option value="42.38">Starter (Car) - (42.38%)</option>
-            <option value="49.27">Stereo (Normal and Car) - (49.27%)</option>
-            <option value="29.95">Stringed musical instruments - (30.00%)</option>
-            <option value="29.95">Stroller - (29.95%)</option>
-            <option value="24.30">Surf board - (24.30%)</option>
-            <option value="29.95">Table Games - (29.95%)</option>
-            <option value="13.00">Tablet - (13.00%)</option>
-            <option value="14.13">Tachometer - (14.13%)</option>
-            <option value="13.00">Telephone ( Normal and Cellular) - (13.00%)</option>
-            <option value="14.13">Telephone Headset - (14.13%)</option>
-            <option value="14.13">Telescope - (14.13%)</option>
-            <option value="49.27">Television (traditional, plasma or LCD) - (49.27%)</option>
-            <option value="29.95">Towels - (29.95%)</option>
-            <option value="29.95">Toy - (29.95%)</option>
-            <option value="14.13">Transformer - (14.13%)</option>
-            <option value="13.00">Transistors - (13.00%)</option>
-            <option value="14.13">Transmission Band - (14.13%)</option>
-            <option value="14.13">Tripod - (14.13%)</option>
-            <option value="29.95">Umbrella - (29.95%)</option>
-            <option value="14.13">UPS - (14.13%)</option>
-            <option value="13.00">USB Flash Drive - (13.00%)</option>
-            <option value="49.27">Vacuum Cleaner - (49.27%)</option>
-            <option value="14.13">Valves - (14.13%)</option>
-            <option value="14.13">Video camera (Camcorder) - (14.13%)</option>
-            <option value="29.95">Video Game Console - (55.55%)</option>
-            <option value="29.95">Video Game Control - (55.71%)</option>
-            <option value="29.95">Video Games PSP / DS - (29.95%)</option>
-            <option value="29.95">Video projector - (31.08%)</option>
-            <option value="29.95">Vinyl Disk - (29.95%)</option>
-            <option value="13.00">Walkie Talkies - (13.00%)</option>
-            <option value="29.95">Watches and Clocks - (29.95%)</option>
-            <option value="14.13">Water Filter - (14.13%)</option>
-            <option value="14.13">Water Pump - (14.13%)</option>
-            <option value="14.13">Weigh Scale - (14.13%)</option>
-            <option value="24.30">Wheels - (24.30%)</option>
-            <option value="29.95">Wig - (29.95%)</option>
-            <option value="19.78">Windshield - (19.78%)</option>
-            <option value="29.95">Wire - (29.95%)</option>
-            <option value="24.30">Woodwind Musical Instrument - (24.30%)</option>
+      <div class="form-group">
+        <label for="">Distribuidor</label>
+        <input type="text" class="form-control" ng-model="vm.editarPaquete.distribuidor" >
+      </div>
+      <div class="form-group">
+        <label for="">Precio</label>
+        <input type="text" class="form-control" ng-model="vm.editarPaquete.precio" >
+      </div>
+      <div class="form-group">
+        <label for="">Peso </label>
+        <input type="text" class="form-control" ng-model="vm.editarPaquete.peso" >
+      </div>
+      <div class="form-group">
+        <label for="">Articulo</label>
+        <select ng-model="vm.editarPaquete.tipoArticulo" ng-options="tipo as tipo.name for tipo in vm.tipoArticulo track by tipo._id">
+      
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="">Descripción</label>
+        <input type="text" class="form-control" ng-model="vm.editarPaquete.descripcion" >
+      </div>
 
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="">Descripción</label>
-          <input type="text" class="form-control" ng-model="vm.editarPaquete.descripcion" required>
-        </div>
+      <button type="submit">Editar</button>
+      <div class="col-md-6">
+        <button type="button" ng-click="vm.cambiarEstadoPaquete('inactivo')">Desactivar</button>
+      </div>
+      <div class="col-md-6">
+        <button type="button" ng-click="vm.cambiarEstadoPaquete('activo')">Activar</button>
+      </div>
 
-        <button type="submit">Editar</button>
-        <div class="col-md-6">
-          <button type="button" ng-click="vm.cambiarEstadoPaquete('inactivo')">Desactivar</button>
-        </div>
-        <div class="col-md-6">
-          <button type="button" ng-click="vm.cambiarEstadoPaquete('activo')">Activar</button>
-        </div>
+    </form>
 
-      </form>
+    </section>
+
+
+
+</div>
+

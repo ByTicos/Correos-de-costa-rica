@@ -126,7 +126,7 @@
         controllerAs: 'vm'
       })
 
-      .state('registrarPreAlerta',{
+      .state('main.registrarPreAlerta',{
         url: '/registrarPreAlerta',
         templateUrl: './components/paquetes/registrarPreAlerta/registroPreAlerta.view.html',
         data: {
@@ -144,7 +144,7 @@
         controllerAs: 'vm'
       })
 
-      .state('editarPreAlerta', {
+      .state('main.editarPreAlerta', {
         url: '/editarPreAlerta',
         templateUrl: './components/paquetes/editarPreAlerta/editarPreAlerta.view.html',
         data:{
@@ -199,7 +199,7 @@
       })
 
       
-       .state('listaPreAlerta', {
+       .state('main.listaPreAlerta', {
         url: '/listaPreAlerta',
         templateUrl: './components/paquetes/listarPreAlerta/listaPreAlerta.view.html',
         data:{
@@ -291,7 +291,7 @@
         controllerAs: 'vm'
       })
 
-      .state('PaquetesAdmin', {
+      .state('main.PaquetesAdmin', {
         url: '/PaquetesAdmin',
         templateUrl: './components/admin/listaPaquetes.view.html',
         data:{
@@ -309,7 +309,7 @@
         controllerAs: 'vm'
       })
 
-       .state('listaEstados', {
+       .state('main.listaEstados', {
         url: '/listaEstados',
         templateUrl: './components/admin/listaEstadosPaquetes.view.html',
         data:{
@@ -346,7 +346,7 @@
         controllerAs: 'vm'
       })     
 
-      .state('sucursales', {
+      .state('main.sucursales', {
         url: '/sucursales',
         templateUrl: './components/sucursal/registrarSucursal/sucursalRegistrar.view.html',
         data:{
@@ -384,7 +384,7 @@
         controllerAs: 'vm'
       })
       
-      .state('listarsucursales', {
+      .state('main.listarsucursales', {
         url: '/listarsucursales',
         templateUrl: './components/sucursal/listarSucursal/sucursalListar.view.html',
         data:{
@@ -420,7 +420,6 @@
         controllerAs: 'vm'
       })
 
-      
       .state('main.registrarEncargadoSucursal', {
         url: 'registrarEncargadoSucursal',
         templateUrl: './components/usuarios/encargadoSucursal/registrarEncargadoSucursal/registrarEncargadoSucursal.view.html',
@@ -566,7 +565,7 @@
   
 
 
-      .state('registrarEncargadoAduana', {
+      .state('main.registrarEncargadoAduana', {
         url: '/registrarEncargadoAduana',
         templateUrl: './components/usuarios/encargadoAduana/registrarEncargadoAduana/registrarEncargadoAduana.view.html',
         data:{
@@ -584,7 +583,7 @@
         controllerAs: 'vm'
       })
 
-      .state('listarEncargadoAduana', {
+      .state('main.listarEncargadoAduana', {
         url: '/listarEncargadoAduana',
         templateUrl: './components/usuarios/encargadoAduana/listarEncargadoAduana/listarEncargadoAduana.view.html',
         data:{
@@ -602,7 +601,7 @@
         controllerAs: 'vm',
       })
 
-      .state('modificarEncargadoAduana', {
+      .state('main.modificarEncargadoAduana', {
         url: '/modificarEncargadoAduana',
         templateUrl: './components/usuarios/encargadoAduana/modificarEncargadoAduana/modificarEncargadoAduana.view.html',
         data:{

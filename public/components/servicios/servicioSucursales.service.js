@@ -13,7 +13,8 @@
         addSucursal: _addSucursal,
         getSucursal: _getSucursal,
         actualizarSucursal: _actualizarSucursal,
-        listarSucursalesJson : _listarSucursalesJson
+        listarSucursalesJson : _listarSucursalesJson,
+        actualizarSucursalLocal: _actualizarSucursalLocal
             }
     return publicAPI
     
@@ -33,12 +34,13 @@
     function _getSucursal(){
         let listaSucursal = [];
         let listaSucursalLocal = JSON.parse(localStorage.getItem("sucursalLS"));
+        console.log('listaactual', listaSucursalLocal);
 
         if(listaSucursalLocal == null){
             listaSucursal = [];
         }else{
             listaSucursalLocal.forEach(obj => {
-                let objSucursal = new Sucursal (obj.id, obj.nombre, obj.provincia,obj.canton, obj.distrito, obj.telefono, obj.horario);
+                let objSucursal = new Sucursal (obj.id, obj.nombre, obj.provincia, obj.canton, obj.distrito, obj.telefono, obj.horario);
 
                 listaSucursal.push(objSucursal);
             });
@@ -109,7 +111,8 @@
         actualizarSucursalLocal(listaSucursal);
     };
 
-    function actualizarSucursalLocal(plistaActualizadaSucursal){
+    function _actualizarSucursalLocal(plistaActualizadaSucursal) {
+        
         localStorage.setItem('sucursalLS', JSON.stringify(plistaActualizadaSucursal));
     }
 

@@ -1,74 +1,49 @@
-<div class="container">
- <form ng-submit="vm.registrarSucursal(vm.nuevaSucursal)" name="formRegistroSucursal" novalidate autocomplete="off">
-    
+<div navegacion-Principal></div>
+<div menu-Lateral></div>
+<section id="dashboard">
+  <div class="container">
 
-<div class="form-group">
-
-  <label for="sucursalID"> ID Sucursal</label> 
-  <input ng-model="vm.nuevaSucursal.id" id="sucursalID" class="form-control" maxlength="5" minlength="5" type="number" required>
-  <div ng-message="required">
-    <small class="form-text text-muted">Este campo es requerido</small>
-  </div>
-
-  <label for="txtNombre">Nombre de la Sucursal</label>
-  <input type="text" id="txtNombre" class="form-control" name="txtNombre" ng-model="vm.nuevaSucursal.nombre" required>
-  <div ng-message="required">
-    <small class="form-text text-muted">Este campo es requerido</small>
-  </div>
-
-
-  <label for="sltProvincia">Provincia</label>
-  <input list="sltProvincia" class="form-control" name="sltProvincia" ng-change="vm.rellenarCantones(vm.nuevaSucursal.provincia)" ng-model="vm.nuevaSucursal.provincia" required>
-  <datalist id="sltProvincia">
-    <option ng-repeat="provincia in vm.provincias track by provincia._id" value="{{provincia.name}}" id="{{provincia._id}}">
-  </datalist> 
-  
-
-
-    <div ng-message="required">
-      <small class="form-text text-muted">Este campo es requerido</small>
-  </div>
-
-  <label for="sltCanton">Cantón</label>
-  <input list="sltCanton" class="form-control" name="sltCanton" ng-change="vm.rellenarDistrito(vm.nuevaSucursal.canton._id)" ng-model="vm.nuevaSucursal.canton" required>
-  <datalist id="sltCanton">
-    <option ng-repeat="canton in vm.cantones" value="{{canton.name}}">
-  </datalist>
-    <div ng-message="required">
-      <small class="form-text text-muted">Este campo es requerido</small>
-  </div>
-<!-- <div class="form-group">
-  <label for="sltDistrito">Distrito</label>
-  <select id="sltDistrito" class="form-control" name="sltDistritos" ng-options="distrito as distrito.name for distrito in vm.distritos track by distrito._id" ng-model="vm.nuevaSucursal.distrito" required>
-    <option value="">-- Seleccione un Distrito --</option>
-  </select>
-  <div ng-messages="formRegistroSucursal.sltDistritos.$error" role="alert">
-      <div ng-message="required">
+    <form ng-submit="vm.registrarSucursal(vm.nuevaSucursal)" name="formRegistroSucursal" novalidate autocomplete="off">
+      <div class="form-group">
+        <label for="sucursalID">ID Sucursal</label> 
+        <input ng-model="vm.nuevaSucursal.id" id="sucursalID" class="form-control" maxlength="5" minlength="5" type="text" required>
         <small class="form-text text-muted">Este campo es requerido</small>
-      </div> -->
 
-     
+        <label for="txtNombre">Nombre de la Sucursal</label>
+        <input type="text" id="txtNombre" class="form-control" name="txtNombre" ng-model="vm.nuevaSucursal.nombre" required>
+          <small class="form-text text-muted">Este campo es requerido</small>
+
+        <label for="sltProvincia">Provincia</label>
+        <input list="sltProvincia" class="form-control" name="sltProvincia" ng-change="vm.rellenarCantones(vm.nuevaSucursal.provincia)" ng-model="vm.nuevaSucursal.provincia" required>
+        <datalist id="sltProvincia">
+          <option ng-repeat="provincia in vm.provincias track by provincia._id" value="{{provincia.name}}" id="{{provincia._id}}">
+        </datalist> 
+        <small class="form-text text-muted">Este campo es requerido</small>
+
+        <label for="sltCanton">Cantón</label>
+        <input list="sltCanton" class="form-control" name="sltCanton" ng-change="vm.rellenarDistrito(vm.nuevaSucursal.canton)" ng-model="vm.nuevaSucursal.canton" required>
+        <datalist id="sltCanton">
+          <option ng-repeat="canton in vm.cantones" value="{{canton.name}}">
+        </datalist>
+        <small class="form-text text-muted">Este campo es requerido</small>
+
+        <label for="sltDistrito">Distrito</label>
+        <input list="sltDistrito" class="form-control" name="sltDistrito" ng-model="vm.nuevaSucursal.distrito" required>
+        <datalist id="sltDistrito">
+          <option ng-repeat="distrito in vm.distritos" value="{{distrito.name}}">
+        </datalist>
+        <small class="form-text text-muted">Este campo es requerido</small>
+
+        <label for="nTelefono">Numero de Telefono</label>
+        <input type="tel" id="nTelefono" class="form-control" name="nTelefono" ng-model="vm.nuevaSucursal.telefono"  maxlength="11" minlength="8" required>
+        <small class="form-text text-muted">Este campo es requerido</small>
+        
+        <label for="txtHorario">Horarios de Atencion</label>
+        <textarea type="text" id="txtHorario" class="form-control" name="txtHorario" ng-model="vm.nuevaSucursal.horario" style="height:100px" required></textarea>
+        <small class="form-text text-muted">Este campo es requerido</small>
+
+        <button type="submit" class="btn btn-success">Registrar Sucursal</button>
+      </div>
+    </form>
   </div>
-
-
-
-<label for="nTelefono">Numero de Telefono</label>
-<input type="tel" id="nTelefono" class="form-control" name="nTelefono" ng-model="vm.nuevaSucursal.telefono"  maxlength="11" minlength="8" required>
-<div ng-message="required">
-    <small class="form-text text-muted">Este campo es requerido</small>
-</div>
-
-<label for="txtHorario">Horarios de Atencion</label>
-<textarea type="text" id="txtHorario" class="form-control" name="txtHorario" ng-model="vm.nuevaSucursal.horario" style="height:100px" required></textarea>
-
-<div ng-message="required">
-    <small class="form-text text-muted">Este campo es requerido</small>
-</div>
-
-
-
-
-<button type="submit" class="btn btn-success">Registrar Sucursal</button>
-</div>
-</form>
-</div>
+</section>
