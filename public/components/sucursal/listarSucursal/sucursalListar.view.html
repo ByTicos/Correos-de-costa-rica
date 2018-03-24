@@ -1,23 +1,29 @@
-<table class="table">
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>Portador</th>
-      <th>Ubicacion</th>
-      <th>Telefono</th>
-      <th>Horario</th>
-      <th>Editar</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr ng-repeat="sucursal in vm.listaSucursales">
-      <td>{{sucursal.id}}</td>
-      <td>{{sucursal.nombre}}</td>
-      <td>{{sucursal.provincia}} / {{sucursal.canton}} / {{sucursal.distrito}}</td>
-      <td>{{sucursal.telefono}}</td>
-      <td>{{sucursal.horario}}</td>
-      <td><button type="button" ng-click="vm.editSucursal(sucursal)">Editar</button></td>
-    </tr>
-  </tbody>
-</table>
+<div navegacion-Principal></div>
+<div menu-Lateral></div>
+<section id="dashboard">
+  <div class="container">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Portador</th>
+          <th>Ubicacion</th>
+          <th>Telefono</th>
+          <th>Horario</th>
+          <th>Editar</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="sucursal in vm.listaSucursales">
+          <td>{{sucursal.id}}</td>
+          <td>{{sucursal.nombre}}</td>
+          <td>{{sucursal.provincia}} / {{sucursal.canton}} / {{sucursal.distrito}}</td>
+          <td>{{sucursal.telefono}}</td>
+          <td>{{sucursal.horario}}</td>
+          <td><button type="button" ng-click="vm.editSucursal(sucursal)">Editar</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>   
 

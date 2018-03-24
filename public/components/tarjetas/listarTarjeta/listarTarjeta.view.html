@@ -1,0 +1,26 @@
+<section id="dashboard" class="">
+<h1>Mis Tarjetas</h1>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nombre</th>
+          <th>Numero</th>
+          <th>Expiracion</th>
+          <th>Cvv</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="tarjeta in vm.listaTarjetas">
+          <td>{{tarjeta.id}}</td>
+          <td>{{tarjeta.nombre}}</td>
+          <td>{{tarjeta.numero}}</td>
+          <td>{{tarjeta.expiracion}}</td>
+          <td>{{tarjeta.cvv}}</td>
+          <td><button type="button" ng-click="">Editar</button></td>
+        </tr>
+      </tbody>
+    </table>
+</section>   
+
+

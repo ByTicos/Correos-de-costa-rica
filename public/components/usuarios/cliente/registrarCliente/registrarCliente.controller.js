@@ -100,7 +100,14 @@
         swal("Registro exitoso", "El cliente ha sido registrado correctamente", "success", {
           button: "Aceptar",
         });
-        $location.path('/logIn');
+        let sesion = JSON.parse(sessionStorage.getItem('sesion'));
+        if(sesion == null || sesion.tipo != '5'){
+          $location.path('/logIn');
+        }
+        else{
+          $location.path('/main/listarCliente');
+        }
+        
       }
       else {
         swal("Registro fallido", "Ha ocurrido un error, intente nuevamente", "error", {

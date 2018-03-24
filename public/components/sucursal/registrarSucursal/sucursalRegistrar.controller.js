@@ -5,9 +5,9 @@
     .module('correos')
     .controller('controladorSucursal', controladorSucursal);
 
-    controladorSucursal.$inject = ['$http', '$state','$scope','servicioSucursales']
+    controladorSucursal.$inject = ['$http', '$state','$scope','servicioSucursales', 'servicioUsuarios']
 
-  function controladorSucursal($http, $state, $scope, servicioSucursales) {
+  function controladorSucursal($http, $state, $scope, servicioSucursales,servicioUsuarios) {
     let vm = this;
     
     vm.nuevaSucursal = {};
@@ -66,7 +66,7 @@
 
     vm.registrarSucursal = (pnuevaSucursal) => {
 
-      let objnuevaSucursal = new Sucursal(pnuevaSucursal.id, pnuevaSucursal.nombre, pnuevaSucursal.provincia.name, pnuevaSucursal.canton.name, pnuevaSucursal.distrito.name, pnuevaSucursal.telefono, pnuevaSucursal.horario);
+      let objnuevaSucursal = new Sucursal(pnuevaSucursal.id, pnuevaSucursal.nombre, pnuevaSucursal.provincia, pnuevaSucursal.canton, pnuevaSucursal.distrito, pnuevaSucursal.telefono, pnuevaSucursal.horario);
 
       servicioSucursales.addSucursal(objnuevaSucursal);
 

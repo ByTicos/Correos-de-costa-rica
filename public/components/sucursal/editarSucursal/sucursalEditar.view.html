@@ -5,7 +5,7 @@
    <div class="form-group">
    
       <label for="sucursalIDeditar"> ID Sucursal</label> 
-     <input ng-model="vm.editarSucursal.id" id="sucursalIDeditar" class="form-control" maxlength="5" minlength="5" type="number" required>
+     <input ng-model="vm.editarSucursal.id" id="sucursalIDeditar" class="form-control" maxlength="5" minlength="5" type="text" required>
      <div ng-message="required">
          <small class="form-text text-muted">Este campo es requerido</small>
      </div>
@@ -16,43 +16,35 @@
        <small class="form-text text-muted">Este campo es requerido</small>
      </div>
    
-     <label for="sltProvinciaeditar">Provincia</label>
-     <select id="sltProvinciaeditar" class="form-control" name="sltProvincias" ng-change="vm.rellenarCantones(vm.editarSucursal.provincia._id)" ng-options="provincia as provincia.name for provincia in vm.provincias track by provincia._id" ng-model="vm.editarSucursal.provincia" required>
-       <option value="">-- Seleccione una Provincia --</option>
-     </select>
-     <div ng-messages="formEditarSucursal.sltProvincias.$error" role="alert">
+     <label for="sltProvincia">Provincia</label>
+     <input list="sltProvincia" class="form-control" name="sltProvincia" ng-change="vm.rellenarCantones(vm.editarSucursal.provincia)" ng-model="vm.editarSucursal.provincia" required>
+     <datalist id="sltProvincia">
+       <option ng-repeat="provincia in vm.provincias track by provincia._id" value="{{provincia.name}}" id="{{provincia._id}}">
+     </datalist> 
+     
+   
+   
+       <div ng-message="required">
+         <small class="form-text text-muted">Este campo es requerido</small>
+     </div>
+   
+     <label for="sltCanton">Cantón</label>
+     <input list="sltCanton" class="form-control" name="sltCanton" ng-change="vm.rellenarDistrito(vm.editarSucursal.canton)" ng-model="vm.editarSucursal.canton" required>
+     <datalist id="sltCanton">
+       <option ng-repeat="canton in vm.cantones" value="{{canton.name}}">
+     </datalist>
        <div ng-message="required">
          <small class="form-text text-muted">Este campo es requerido</small>
        </div>
-     </div>
-   </div>
    
-   <div class="form-group">
-     <label for="sltCantoneditar">Cantón</label>
-     <select id="sltCantoneditar" class="form-control" name="sltCantones" ng-change="vm.rellenarDistrito(vm.editarSucursal.canton._id)" ng-options="canton as canton.name for canton in vm.cantones track by canton._id" ng-model="vm.editarSucursal.canton" required>
-       <option value="">-- Seleccione un Cantón --</option>
-     </select>
-     <div ng-messages="formEditarSucursal.sltCantones.$error" role="alert">
-       <div ng-message="required">
-         <small class="form-text text-muted">Este campo es requerido</small>
-       </div>
-     </div>
-   </div>
-   
-   <div class="form-group">
-     <label for="sltDistritoeditar">Distrito</label>
-     <select id="sltDistritoeditar" class="form-control" name="sltDistritos" ng-options="distrito as distrito.name for distrito in vm.distritos track by distrito._id" ng-model="vm.editarSucursal.distrito" required>
-       <option value="">-- Seleccione un Distrito --</option>
-     </select>
-     <div ng-messages="formEditarSucursal.sltDistritos.$error" role="alert">
+     <label for="sltDistrito">Distrito</label>
+     <input list="sltDistrito" class="form-control" name="sltDistrito" ng-model="vm.editarSucursal.distrito" required>
+     <datalist id="sltDistrito">
+       <option ng-repeat="distrito in vm.distritos" value="{{distrito.name}}">
+   </datalist>
          <div ng-message="required">
            <small class="form-text text-muted">Este campo es requerido</small>
          </div>
-   
-        
-       </div>
-   </div>
-   
    
    <label for="nTelefonoeditar">Numero de Telefono</label>
    <input type="tel" id="nTelefonoeditar" class="form-control" name="nTelefono" ng-model="vm.editarSucursal.telefono"  maxlength="11" minlength="8" required>

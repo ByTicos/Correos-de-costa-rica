@@ -55,14 +55,14 @@
 
 
     vm.regresar = () => {
-      $state.go('listarsucursales');
+      $state.go('main.listarsucursales');
     }
 
     vm.editarSucursal = {};
 
     let objSucursalEditar = JSON.parse($stateParams.objSucursalTemp);
 
-    let objNuevaSucursal = new Sucursal(objSucursalEditar.id, objSucursalEditar.nombre, objSucursalEditar.provincia.name, objSucursalEditar.canton.name, objSucursalEditar.distrito.name, objSucursalEditar.telefono, objSucursalEditar.horario);
+    let objNuevaSucursal = new Sucursal(objSucursalEditar.id, objSucursalEditar.nombre, objSucursalEditar.provincia, objSucursalEditar.canton, objSucursalEditar.distrito, objSucursalEditar.telefono, objSucursalEditar.horario);
 
 
     vm.editarSucursal.id = objNuevaSucursal.id;
@@ -87,7 +87,7 @@
           objSucursal.telefono = pSucursal.telefono;
           objSucursal.horario = pSucursal.horario;
 
-          servicioSucursales.actualizarSucursalLocal(objSucursal);
+          servicioSucursales.actualizarSucursal(objSucursal);
 
         }
       });
@@ -96,6 +96,13 @@
       });
       $state.go('listarsucursales')
     }
+
+
+    vm.volver = () => {
+      $state.go('listarsucursales');
+
+    };
+
   }
 
 })();
