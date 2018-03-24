@@ -20,7 +20,6 @@ class Usuario{
         this.vehiculo = pVehiculo;
         this.listaLicencias = [];
         this.estado = 'activo';
-        // this.paqueteAsignado = 
         this.tarjeta = pTarjeta || [];
     } 
     cambiarEstado(pEstado){
