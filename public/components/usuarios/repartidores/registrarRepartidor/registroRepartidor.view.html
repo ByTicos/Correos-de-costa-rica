@@ -75,7 +75,7 @@
                 
                 <label for="">Licencia</label>
                 
-                <select  class="form-control" ng-model="vm.nuevoRepartidor.tipoLicencia" >
+                <select  class="form-control" ng-model="vm.nuevoRepartidor.licencia" >
                 <option value="">seleccione el tipo de licencia</option>
                 <option   value="A">A</option>
                 <option   value="B">B</option>
@@ -130,9 +130,9 @@
           <td>{{repartidor.telefono}}</td>
           <td>{{repartidor.fechaNacimiento}}</td>
           <td>{{repartidor.vehiculo}}</td>
-          <td>{{repartidor.listaLicencias[0].numLicencia}}</td>
-          <td>{{repartidor.listaLicencias[0].tipoLicencia}}</td>
-          <td>{{repartidor.listaLicencias[0].vencimiento}}</td>
+          <td>{{repartidor.listaLicencias.numLicencia}}</td>
+          <td>{{repartidor.listaLicencias.tipoLicencia}}</td>
+          <td>{{repartidor.listaLicencias.vencimiento}}</td>
           <td>{{repartidor.sucursalAsignada}}</td>
           <td><button class="btn buttonall" ng-click="vm.editRepartidor(repartidor)" type="submit">Editar</button></td>
          
