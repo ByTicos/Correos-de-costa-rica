@@ -165,24 +165,39 @@
             actualizarPaqueteLocal (listaPaquetes);
         };
 
-        function _actualizarEstadoPaquete(pObjpaquete) {
-            let listaPaquetes = _getAllPaquetes();
-            let listaUsuarios = _getUsuarios();
-            let sesion = JSON.parse(sessionStorage.getItem('sesion'));
-
-            listaUsuarios.forEach(objUsuario => {
-                if (objUsuario.correo == sesion.correo) {
-                    objUsuario.listaPaquetes.forEach(objPaquete => {
-                        if (objPaquete.tracking == pObjpaquete.tracking) {
-                            objPaquete = pObjpaquete;
-                        }
+        // function _actualizarEstadoPaquete(pObjpaquete) {
+        //     let listaUsuarios = _getUsuarios();
+           
+        //     listaUsuarios.forEach(objUsuario => {
+        //         if (objUsuario.primerNombre == pObjpaquete.usuario) {
+        //             objUsuario.listaPaquetes.forEach(objPaquete => {
+        //                 if (objPaquete.tracking == pObjpaquete.tracking) {
+        //                     objPaquete = pObjpaquete;
+        //                 }
                         
-                    });
+        //             });
                     
-                }
+        //         }
                 
-            });
-            actualizarLocal(listaUsuarios);  
+        //     });
+        //     actualizarLocal(listaUsuarios);  
+        // };
+
+        function _actualizarEstadoPaquete(pObjpaquete) {
+            let listaUsuarios = _getUsuarios();
+            
+            for (let i = 0; i < listaUsuarios.length; i++) {
+                console.log(listaUsuarios.length);
+                if(listaUsuarios[i].primerNombre == pObjpaquete.usuario){
+                    for (let j = 0; j < listaUsuarios[i].listaPaquetes.length; j++) {
+                        if (listaUsuarios[i].listaPaquetes[j].tracking == pObjpaquete.tracking) {
+                            listaUsuarios[i].listaPaquetes[j] = pObjpaquete;
+                        }
+                    }
+                }
+            }
+            actualizarLocal(listaUsuarios);
+
         };
 
 
