@@ -50,9 +50,11 @@
 
         function _getUsuarios() {
             let listaUsuarios = [];
+            let admin = new Usuario('', '', 'Administrador', '', '', '', 'administrador@correos.cr', '', '', '', '', '', '', '5','', 'Administrador','');
             let listaUsuariosLocal = JSON.parse(localStorage.getItem("usuariosLS"));
             if (listaUsuariosLocal == null) {
-                listaUsuarios = [];
+                listaUsuarios = [admin];
+                actualizarLocal(listaUsuarios);
             }
             else {
                 listaUsuariosLocal.forEach(objUsuario => {
