@@ -419,6 +419,8 @@
         controller: 'controladorSucursalEditar',
         controllerAs: 'vm'
       })
+
+      
       .state('main.registrarEncargadoSucursal', {
         url: 'registrarEncargadoSucursal',
         templateUrl: './components/usuarios/encargadoSucursal/registrarEncargadoSucursal/registrarEncargadoSucursal.view.html',

@@ -167,14 +167,22 @@
 
         function _actualizarEstadoPaquete(pObjpaquete) {
             let listaPaquetes = _getAllPaquetes();
+            let listaUsuarios = _getUsuarios();
+            let sesion = JSON.parse(sessionStorage.getItem('sesion'));
 
-            for (let i = 0; i < listaPaquetes.length; i++) {
-                if (listaPaquetes[i].tracking == pObjpaquete.tracking ) {
-                   
-                    listaPaquetes[i] = pObjpaquete;
+            listaUsuarios.forEach(objUsuario => {
+                if (objUsuario.correo == sesion.correo) {
+                    objUsuario.listaPaquetes.forEach(objPaquete => {
+                        if (objPaquete.tracking == pObjpaquete.tracking) {
+                            objPaquete = pObjpaquete;
+                        }
+                        
+                    });
+                    
                 }
-            }
-            actualizarPaqueteLocal (listaPaquetes);
+                
+            });
+            actualizarLocal(listaUsuarios);  
         };
 
 
