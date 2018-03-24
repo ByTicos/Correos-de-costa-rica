@@ -13,7 +13,7 @@
     
 
     vm.editPrealerta = (pPaquete)=>{
-     $state.go('editarPreAlerta', {objPaqueteTemp : JSON.stringify(pPaquete)});
+     $state.go('main.editarPreAlerta', {objPaqueteTemp : JSON.stringify(pPaquete)});
      };
 
 
