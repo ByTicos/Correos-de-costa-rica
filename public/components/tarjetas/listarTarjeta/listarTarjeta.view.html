@@ -11,13 +11,13 @@
         </tr>
       </thead>
       <tbody>
-        <tr ng-repeat="tarjeta in vm.listaTarjetas">
+        <tr ng-repeat="tarjeta in vm.listaTarjeta">
           <td>{{tarjeta.id}}</td>
           <td>{{tarjeta.nombre}}</td>
           <td>{{tarjeta.numero}}</td>
           <td>{{tarjeta.expiracion}}</td>
           <td>{{tarjeta.cvv}}</td>
-          <td><button type="button" ng-click="">Editar</button></td>
+          <td><button type="button" ng-click=""> <img src="../../sources/images/edit.png"></button></td>
         </tr>
       </tbody>
     </table>
