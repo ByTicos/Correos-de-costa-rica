@@ -19,7 +19,7 @@
               <label for="sltProvincia">Provincia</label>
               <input list="sltProvincia" class="form-control" name="sltProvincia" ng-change="vm.rellenarCantones(vm.nuevaSucursal.provincia)" ng-model="vm.nuevaSucursal.provincia" required>
               <datalist id="sltProvincia">
-                <option ng-repeat="provincia in vm.provincias track by provincia._id" value="{{provincia.name}}" id="{{provincia._id}}">
+                <option ng-repeat="provincia in vm.provincias track by provincia._id" value="{{provincia.name}}">
               </datalist> 
               <small class="form-text text-muted">Este campo es requerido</small>
               </div>
