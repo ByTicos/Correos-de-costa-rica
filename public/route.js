@@ -619,7 +619,26 @@
         controllerAs: 'vm',
       })
 
+      .state('main.paquetesEncargadoAduana', {
+        url: '/paquetesEncargadoAduana',
+        templateUrl: './components/usuarios/encargadoAduana/paquetesEncargadoAduana/paquetesEncargadoAduanas.view.html',
+        data:{
+          pageTitle: 'Paquetes Encargado de Aduana'
+        },
+        params: {
+          objUsuarioTemp: ''
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/usuarios/encargadoAduana/paquetesEncargadoAduana/paquetesEncargadoAduanas.controller.js')
+          }]
+        }, 
+        controller: 'controladorpaquetesEncargadoAduana',
+        controllerAs: 'vm',
+      })
+
       
+
 
     $urlRouterProvider.otherwise('/');
   };
