@@ -27,6 +27,7 @@
             actualizarPaquete: _actualizarPaquete,
             actualizarEstadoPaquete: _actualizarEstadoPaquete,
             actualizarRepartidor: _actualizarRepartidor,
+            // actualizarLicencias: _actualizarLicencias,
             addTarjeta: _addTarjeta,
             getTarjeta: _getTarjeta,
             getRol: _getRol,
@@ -48,7 +49,7 @@
 
         function _getUsuarios() {
             let listaUsuarios = [];
-            let admin = new Usuario('', '', 'Administrador', '', '', '', 'administrador@correos.cr', '', '', '', '', '', '', '5','', 'Administrador','');
+            let admin = new Usuario('', '', 'Administrador', '', '', '', 'administrador@correos.cr', '', '', '', '', '', '', '5', '', 'Administrador', '');
             let listaUsuariosLocal = JSON.parse(localStorage.getItem("usuariosLS"));
             if (listaUsuariosLocal == null) {
                 listaUsuarios = [admin];
@@ -56,7 +57,7 @@
             }
             else {
                 listaUsuariosLocal.forEach(objUsuario => {
-                    let objUsuarioTemp = new Usuario(objUsuario.cedula, objUsuario.foto, objUsuario.primerNombre, objUsuario.segundoNombre, objUsuario.primerApellido, objUsuario.segundoApellido, objUsuario.correo, objUsuario.telefono, objUsuario.fechaNacimiento, objUsuario.provincia, objUsuario.canton, objUsuario.distrito, objUsuario.direccionExacta, objUsuario.tipo,objUsuario.sucursalAsignada, objUsuario.puesto,objUsuario.vehiculo,[]);
+                    let objUsuarioTemp = new Usuario(objUsuario.cedula, objUsuario.foto, objUsuario.primerNombre, objUsuario.segundoNombre, objUsuario.primerApellido, objUsuario.segundoApellido, objUsuario.correo, objUsuario.telefono, objUsuario.fechaNacimiento, objUsuario.provincia, objUsuario.canton, objUsuario.distrito, objUsuario.direccionExacta, objUsuario.tipo, objUsuario.sucursalAsignada, objUsuario.puesto, objUsuario.vehiculo, []);
                     objUsuarioTemp.cambiarEstado(objUsuario.estado);
 
 
@@ -65,41 +66,37 @@
                         let objLicenciaTemp = new Licencia(objLicencia.numLicencia, objLicencia.tipoLicencia, objLicencia.vencimiento);
                         objUsuarioTemp.listaLicencias.push(objLicenciaTemp);
                     });
-                    
+
 
 
                     objUsuario.tarjeta.forEach(objTarjeta => {
-                        let objTarjetaTemp = new Tarjeta (objTarjeta.id, objTarjeta.nombre, objTarjeta.numero, objTarjeta.expiracion, objTarjeta.cvv);
+                        let objTarjetaTemp = new Tarjeta(objTarjeta.id, objTarjeta.nombre, objTarjeta.numero, objTarjeta.expiracion, objTarjeta.cvv);
 
                         objUsuarioTemp.registrarTarjeta(objTarjetaTemp);
-
-                    })
-                    })
-
-                     objUsuario.listaPaquetes.forEach(objPaquete => {
-                    let objPaqueteTemp = new Paquete(objPaquete.usuario,objPaquete.tracking, objPaquete.distribuidor, objPaquete.precio, objPaquete.peso, objPaquete.tipoArticulo, objPaquete.descripcion );
-
-                    let listaEstados =  objPaquete.listaEstados;
-
-                    listaEstados.forEach(objEstado => {
-                        let fecha = new Date (objEstado.fecha);
-                        let hora = fecha;
-                        let estadoTemp = new Estado(objEstado.usuario, fecha,hora, objEstado.estado);
-
-                      objPaqueteTemp.addEstado(estadoTemp);
                     });
 
-                   
-                    objPaqueteTemp.cambiarEstadoDeActividad(objPaquete.estado);
-                    objPaqueteTemp.mostrarEstadoTraslado (objPaquete.estadoTraslado);
-                    
-                   objUsuarioTemp.agregarPaquete(objPaqueteTemp);
+                    objUsuario.listaPaquetes.forEach(objPaquete => {
+                        let objPaqueteTemp = new Paquete(objPaquete.usuario, objPaquete.tracking, objPaquete.distribuidor, objPaquete.precio, objPaquete.peso, objPaquete.tipoArticulo, objPaquete.descripcion);
+
+                        let listaEstados = objPaquete.listaEstados;
+
+                        listaEstados.forEach(objEstado => {
+                            let fecha = new Date(objEstado.fecha);
+                            let hora = fecha;
+                            let estadoTemp = new Estado(objEstado.usuario, fecha, hora, objEstado.estado);
+
+                            objPaqueteTemp.addEstado(estadoTemp);
+                            
+                        });
+                        objPaqueteTemp.cambiarEstadoDeActividad(objPaquete.estado);
+                        objPaqueteTemp.mostrarEstadoTraslado(objPaquete.estadoTraslado);
+
+                        objUsuarioTemp.agregarPaquete(objPaqueteTemp);
+                    });
+                    listaUsuarios.push(objUsuarioTemp);
                 });
 
-                }
-
-            }
-            
+            };
             return listaUsuarios;
         };
         
@@ -296,6 +293,7 @@
             actualizarLocal(listaUsuarios);
 
         };
+    };    
 
     
 })();
