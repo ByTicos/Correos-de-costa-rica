@@ -4,20 +4,22 @@
     .module('correos')
     .controller('controladorRepartidores', controladorRepartidores);
     
-    controladorRepartidores.$inject = ['$state', '$stateParams', '$location', 'servicioUsuarios'];
+    controladorRepartidores.$inject = ['$stateParams','$state', '$location', 'servicioUsuarios'];
 
-  function controladorRepartidores($state, $stateParams, $location, servicioUsuarios) {
+  function controladorRepartidores($stateParams,$state, $location, servicioUsuarios) {
     let vm = this;
 
-    vm.listaRepartidores = listarRepartidores();
+    // vm.listaRepartidores = listarRepartidores();
     vm.nuevoRepartidor = {};
-    // vm.agregarLicencias = agregarLicencia();
-    // vm.listaLicencias = listarLicencia();
     
-    vm.editRepartidor = (pUsuario) =>{
-      $state.go('editarRepartidor', {objRepartidorTemp : JSON.stringify(pUsuario)});
-    };
+    
+    // vm.editRepartidor = (pUsuario) =>{
+    //   $state.go('main.editarRepartidor', {objRepartidorTemp : JSON.stringify(pUsuario)});
+    // };
 
+    vm.listaRepartidor=() => {
+      $state.go('main.listarRepartidores')
+    }
     
     
     vm.registrarRepartidor = (pNuevoUsuario) => {
@@ -52,17 +54,7 @@
         });
       }
     }
-    function listarRepartidores(){
-      let listaUsuarios = servicioUsuarios.getUsuarios();
-      let listaRepartidores = [];
-      listaUsuarios.forEach(usuario => {
-        if (usuario.tipo == 'repartidor') {
-          listaRepartidores.push(usuario);
-        }
-      });
-      return listaRepartidores;
-    }
-
+    
 
   }
 })();

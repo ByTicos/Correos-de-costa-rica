@@ -10,7 +10,7 @@
     let vm = this;
 
     vm.regresar = () => {
-      $state.go('repartidor');
+      $state.go('main.repartidor');
     }
 
     vm.editarRepartidor = {};
@@ -36,6 +36,7 @@
     vm.editarRepartidor.tipo = '';
     vm.editarRepartidor.sucursalAsignada = objRepartidor.sucursalAsignada;
     vm.editarRepartidor.vehiculo = objRepartidor.vehiculo;
+    vm.editarRepartidor.licencias = objRepartidor.licencias;
 
     vm.editRepartidor = (pUsuario) => {
       let listaUsuarios = servicioUsuarios.getUsuarios();
@@ -54,19 +55,20 @@
           objUsuario.canton = pUsuario.canton;
           objUsuario.distrito = pUsuario.distrito;
           objUsuario.direccionExacta = pUsuario.direccionExacta;
+          objUsuario.sucursalAsignada = pUsuario.sucursalAsignada;
           objUsuario.vehiculo = pUsuario.vehiculo;
           objUsuario.licencias = pUsuario.licencias;
-          objUsuario.sucursalAsignada = pUsuario.sucursalAsignada;
+          console.log(pUsuario.vehiculo);
+
     
 
           servicioUsuarios.actualizarUsuario(objUsuario);
-
         }
       });
       swal("Edición exitosa", "Repartidor editado correctamente", "success", {
         button: "Aceptar",
       });
-      $state.go('repartidor')
+      $state.go('main.repartidor')
     }
   }
 
