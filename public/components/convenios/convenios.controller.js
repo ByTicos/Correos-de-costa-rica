@@ -6,18 +6,14 @@
   controladorConvenios.$inject = ['$stateParams', '$state', 'servicioEntidades']
   function controladorConvenios($stateParams, $state, servicioEntidades) {
     let vm = this;
-    let objEntidad = JSON.parse($stateParams.objEntidadTemp);
-    vm.nuevoConvenio = {};
-    vm.listaConvenios = objEntidad.convenios;
-    vm.listaEntidades = servicioEntidades.getEntidades();
     
-    vm.regresar = () => {
-      $state.go('entidades');
-    }
+    vm.nuevoConvenio = {};
+    vm.listaEntidades = servicioEntidades.getEntidades();
+    vm.listaConvenios = servicioEntidades.getConvenios();
 
     vm.registrarConvenio = (pNuevoConvenio) => {
       
-      let objNuevoConvenio = new Convenio(objEntidad.nombre, vm.nuevoConvenio.tipoTramite);
+      let objNuevoConvenio = new Convenio(pNuevoConvenio.nombre, pNuevoConvenio.tipoTramite);
       let registro = servicioEntidades.addConvenio(objNuevoConvenio);
 
       if (registro == true) {

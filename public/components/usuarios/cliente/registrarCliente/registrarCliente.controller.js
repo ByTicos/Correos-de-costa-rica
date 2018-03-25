@@ -97,14 +97,18 @@
       let registro = servicioUsuarios.addUsuario(objNuevoCliente);
 
       if (registro == true) {
-        swal("Registro exitoso", "El cliente ha sido registrado correctamente", "success", {
-          button: "Aceptar",
-        });
         let sesion = JSON.parse(sessionStorage.getItem('sesion'));
         if(sesion == null || sesion.tipo != '5'){
+          
+          swal("Registro exitoso", "El cliente ha sido registrado correctamente", "success", {
+            button: "Aceptar",
+          }); 
           $location.path('/logIn');
         }
         else{
+          swal("Registro exitoso", "El cliente ha sido registrado correctamente", "success", {
+            button: "Aceptar",
+          });
           $location.path('/main/listarCliente');
         }
         
