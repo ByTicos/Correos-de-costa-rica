@@ -1,10 +1,12 @@
+<div navegacion-Principal></div>
+<div menu-Lateral></div>
+<section id="dashboard">
 
-  <div navegacion-Principal></div>
-  <div menu-Lateral></div>        
+    <div id="formregistro" class="container-fluid">
+      <div class="formregistro-page">
+        <div class="form">
 
-<div id="dashboard">
-        <section class="container">
-                <form action="" class="form-horizontal" ng-submit="vm.registrarUsuario(vm.nuevoUsuario)">
+           <form action="" class="form-horizontal" ng-submit="vm.registrarUsuario(vm.nuevoUsuario)" class="row">
                     <h1>Dashboard Administrador</h1>
                     <h3>Seleccione el rol</h3>
                     <div class="form-group">
@@ -115,12 +117,16 @@
                 
                     <div class="form-group" ng-show = 'vm.nuevoUsuario.tipo == 3'>
                         <label for="">Vencimiento de la licencia</label>
-                        <input type="date" class="form-control" ng-model="vm.nuevoRepartidor.vencimientoLicencia" min=2018->
-                    </div>
+                        <input type="date" class="form-control" ng-model="vm.nuevoRepartidor.vencimientoLicencia"   >
+                    </div>      
 
                 
                     <button type="submit">Registrar</button>
                 </form>
+            </form>
+        </div>
+      </div>
+
             
                 <table class="table table-responsive">
                     <legend>Usuarios activos</legend>
@@ -221,7 +227,8 @@
                     </tbody>
                 </table>
                 <h1>Dashboard Cliente</h1>
+            
+
+
             </section>
-
-
-</div>
+        </div>

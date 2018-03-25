@@ -366,14 +366,14 @@
 
 
 
-      .state('repartidor', {
+      .state('main.repartidor', {
         url: '/repartidor',
         templateUrl: './components/usuarios/repartidores/registrarRepartidor/registroRepartidor.view.html',
         data:{
           pageTitle: 'Registro repartidor'
         },
         params: {
-          objSucursalTemp: ''
+          objRepartidorTemp: ''
         },
         resolve: {
           load: ['$ocLazyLoad', ($ocLazyLoad) => {
@@ -492,7 +492,7 @@
         controllerAs: 'vm',
       })
 
-      .state('perfilRepartidor', {
+      .state('main.perfilRepartidor', {
         url:'/perfilRepartidor',
         templateUrl: './components/usuarios/repartidores/perfilRepartidores/perfilRepartidores.view.html',
         data:{
@@ -510,7 +510,7 @@
         controllerAs: 'vm'
       })
       
-       .state('editarRepartidor', {
+       .state('main.editarRepartidor', {
         url:'/editarRepartidor',
         templateUrl: './components/usuarios/repartidores/editarRepartidores/editarRepartidor.view.html',
         data:{
@@ -527,6 +527,7 @@
         controller: 'controladorEditarRepartidor',
         controllerAs: 'vm'
       })
+      
        .state('editarTarjetas', {
         url: '/editarTarjetas',
         templateUrl: './components/tarjetas/registrarTarjeta/editarTarjeta.view.html',
@@ -619,7 +620,44 @@
         controllerAs: 'vm',
       })
 
+      .state('main.paquetesEncargadoAduana', {
+        url: '/paquetesEncargadoAduana',
+        templateUrl: './components/usuarios/encargadoAduana/paquetesEncargadoAduana/paquetesEncargadoAduanas.view.html',
+        data:{
+          pageTitle: 'Paquetes Encargado de Aduana'
+        },
+        params: {
+          objUsuarioTemp: ''
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/usuarios/encargadoAduana/paquetesEncargadoAduana/paquetesEncargadoAduanas.controller.js')
+          }]
+        }, 
+        controller: 'controladorpaquetesEncargadoAduana',
+        controllerAs: 'vm',
+      })
+
+      .state('main.listarRepartidores', {
+        url: '/listarRepartidores',
+        templateUrl: './components/usuarios/repartidores/listarRepartidores/listarRepartidores.view.html',
+        data:{
+          pageTitle: 'Listar Repartidor'
+        },
+        params: {
+          objRepartidorTemp: ''
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/usuarios/repartidores/listarRepartidores/listarRepartidores.controller.js')
+          }]
+        }, 
+        controller: 'controladorListarRepartidores',
+        controllerAs: 'vm',
+      })
+
       
+
 
     $urlRouterProvider.otherwise('/');
   };
