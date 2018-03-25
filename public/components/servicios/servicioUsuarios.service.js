@@ -243,7 +243,8 @@
                 let session = JSON.parse(sessionStorage.getItem ('sesion'));
                 let rol = session.tipo;
                 return rol;
-            };
+            }
+        }
 
 
         function _addTarjeta(pnuevaTarjeta, pusuario){
