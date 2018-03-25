@@ -126,7 +126,7 @@
         controllerAs: 'vm'
       })
 
-      .state('main.registrarPreAlerta',{
+      .state('registrarPreAlerta',{
         url: '/registrarPreAlerta',
         templateUrl: './components/paquetes/registrarPreAlerta/registroPreAlerta.view.html',
         data: {
@@ -144,7 +144,7 @@
         controllerAs: 'vm'
       })
 
-      .state('main.editarPreAlerta', {
+      .state('editarPreAlerta', {
         url: '/editarPreAlerta',
         templateUrl: './components/paquetes/editarPreAlerta/editarPreAlerta.view.html',
         data:{
@@ -199,7 +199,7 @@
       })
 
       
-       .state('main.listaPreAlerta', {
+       .state('listaPreAlerta', {
         url: '/listaPreAlerta',
         templateUrl: './components/paquetes/listarPreAlerta/listaPreAlerta.view.html',
         data:{
@@ -291,7 +291,7 @@
         controllerAs: 'vm'
       })
 
-      .state('main.PaquetesAdmin', {
+      .state('PaquetesAdmin', {
         url: '/PaquetesAdmin',
         templateUrl: './components/admin/listaPaquetes.view.html',
         data:{
@@ -309,7 +309,7 @@
         controllerAs: 'vm'
       })
 
-       .state('main.listaEstados', {
+       .state('listaEstados', {
         url: '/listaEstados',
         templateUrl: './components/admin/listaEstadosPaquetes.view.html',
         data:{
