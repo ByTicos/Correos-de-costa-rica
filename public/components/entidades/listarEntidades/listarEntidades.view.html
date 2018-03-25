@@ -1,0 +1,16 @@
+<section class="container">
+  <table class="table table-responsive">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Cédula jurídica</th>
+      </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="entidad in vm.listaEntidades">
+      <td>{{entidad.nombre}}</td>
+      <td>{{entidad.cedulaJuridica}}</td>
+    </tr>
+    </tbody>
+  </table>
+</section>

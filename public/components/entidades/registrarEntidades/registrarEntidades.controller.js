@@ -2,11 +2,11 @@
   'use strict'
   angular
     .module('correos')
-    .controller('controladorEntidades', controladorEntidades);
+    .controller('controladorRegistrarEntidades', controladorRegistrarEntidades);
     
-    controladorEntidades.$inject = ['$stateParams', '$state', 'servicioEntidades'];
+    controladorRegistrarEntidades.$inject = ['$stateParams', '$state', 'servicioEntidades'];
 
-  function controladorEntidades($stateParams, $state, servicioEntidades) {
+  function controladorRegistrarEntidades($stateParams, $state, servicioEntidades) {
     let vm = this;
 
     vm.nuevaEntidad = {};
