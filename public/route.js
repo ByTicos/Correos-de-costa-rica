@@ -539,7 +539,7 @@
       
        .state('main.editarRepartidor', {
         url:'/editarRepartidor',
-        templateUrl: './components/usuarios/repartidores/editarRepartidores/editarRepartidor.view.html',
+        templateUrl: './components/usuarios/repartidores/ModificarRepartidores/editarRepartidor.view.html',
         data:{
           pageTitle: 'Editar Repartidor'
         },
@@ -548,7 +548,7 @@
         },
         resolve: {
           load: [ '$ocLazyLoad', ($ocLazyLoad) => {
-            return $ocLazyLoad.load('./components/usuarios/repartidores/editarRepartidores/editarRepartidor.controller.js')
+            return $ocLazyLoad.load('./components/usuarios/repartidores/ModificarRepartidores/editarRepartidor.controller.js')
           }]
         },
         controller: 'controladorEditarRepartidor',
