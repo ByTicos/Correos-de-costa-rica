@@ -83,28 +83,32 @@
     };
 
 
-    vm.preRegistrarCliente = (pNuevoUsuario) => {
+    /*vm.preRegistrarCliente = (pNuevoUsuario) => {
       vm.cloudObj.data.file = pNuevoUsuario.foto[0];
       Upload.upload(vm.cloudObj).success((data) =>{
         vm.registrarCliente(pNuevoUsuario, data.url);
      });
-    };
+    };*/
 
-    vm.registrarCliente = (pNuevoUsuario, imgUrl) => {
+    vm.registrarCliente = (pNuevoUsuario/*, imgUrl*/) => {
 
-      let objNuevoCliente = new Usuario(pNuevoUsuario.cedula, imgUrl, pNuevoUsuario.primerNombre, pNuevoUsuario.segundoNombre, pNuevoUsuario.primerApellido, pNuevoUsuario.segundoApellido, pNuevoUsuario.correo, pNuevoUsuario.telefono, pNuevoUsuario.fechaNacimiento, pNuevoUsuario.provincia, pNuevoUsuario.canton, pNuevoUsuario.distrito, pNuevoUsuario.direccionExacta, '1');
+      let objNuevoCliente = new Usuario(pNuevoUsuario.cedula, 'imgUrl', pNuevoUsuario.primerNombre, pNuevoUsuario.segundoNombre, pNuevoUsuario.primerApellido, pNuevoUsuario.segundoApellido, pNuevoUsuario.correo, pNuevoUsuario.telefono, pNuevoUsuario.fechaNacimiento, pNuevoUsuario.provincia, pNuevoUsuario.canton, pNuevoUsuario.distrito, pNuevoUsuario.direccionExacta, '1');
 
       let registro = servicioUsuarios.addUsuario(objNuevoCliente);
 
       if (registro == true) {
-        swal("Registro exitoso", "El cliente ha sido registrado correctamente", "success", {
-          button: "Aceptar",
-        });
         let sesion = JSON.parse(sessionStorage.getItem('sesion'));
         if(sesion == null || sesion.tipo != '5'){
+          
+          swal("Registro exitoso", "El cliente ha sido registrado correctamente", "success", {
+            button: "Aceptar",
+          }); 
           $location.path('/logIn');
         }
         else{
+          swal("Registro exitoso", "El cliente ha sido registrado correctamente", "success", {
+            button: "Aceptar",
+          });
           $location.path('/main/listarCliente');
         }
         

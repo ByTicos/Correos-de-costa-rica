@@ -1,9 +1,8 @@
-<div ng-include="'./components/includes/_header.html'"></div>
-<div ng-include="'./components/includes/_sidebar.html'"></div>
+<div navegacion-Principal></div>
+<div menu-Lateral></div>
 
 <div id="dashboard">
   <section class="container">
-    <button type="button" class="btn" ng-click="vm.regresar()">Regresar</button>
     <form action="" class="form-horizontal" ng-submit="vm.registrarEntidad(vm.nuevaEntidad)">
       <div class="form-group">
         <label for="">Nombre</label>
@@ -28,9 +27,6 @@
       <tr ng-repeat="entidad in vm.listaEntidades">
         <td>{{entidad.nombre}}</td>
         <td>{{entidad.cedulaJuridica}}</td>
-        <td>
-          <button class="btn" type="button" ng-click="vm.registrarConvenio(entidad)">Convenios</button>
-        </td>
       </tr>
       </tbody>
     </table>

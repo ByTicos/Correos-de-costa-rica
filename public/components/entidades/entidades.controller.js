@@ -11,14 +11,6 @@
 
     vm.nuevaEntidad = {};
     vm.listaEntidades = servicioEntidades.getEntidades();
-    
-    vm.regresar = () => {
-      $state.go('admin');
-    }
-    
-    vm.registrarConvenio = (pEntidad) => {
-      $state.go('convenio', {objEntidadTemp : JSON.stringify(pEntidad)});
-    }
 
     vm.registrarEntidad = (pNuevaEntidad) => {
 

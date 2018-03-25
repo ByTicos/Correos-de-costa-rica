@@ -21,7 +21,8 @@
     let publicAPI = {
       addEntidad: _addEntidad,
       getEntidades: _getEntidades,
-      addConvenio: _addConvenio
+      addConvenio: _addConvenio,
+      getConvenios: _getConvenios
     }
     return publicAPI
 
@@ -57,25 +58,40 @@
       }
       return listaEntidades;
     };
+
     function _addConvenio(pConvenio) {
       let listaEntidades = _getEntidades();
-      let entidad = pConvenio.nombreEntidad;
       let respuesta = true;
-      listaEntidades.forEach(objEntidad => {
-        if (objEntidad.nombre == entidad) {
-          objEntidad.registrarConvenio(pConvenio);
+      for(let i=0; i< listaEntidades.length;i++){
+        if (listaEntidades[i].nombre == pConvenio.nombreEntidad) {
+          listaEntidades[i].registrarConvenio(pConvenio);
         }
-
-      });
-      asyncLocalStorage.setItem('entidadesLS', listaEntidades).then((response) => {
-        respuesta = response;
-      });
-
+      }
+      actualizarLocal(listaEntidades);
       return respuesta;
+
     }
+
+    function _getConvenios() {
+      let listaEntidadesLocal = JSON.parse(localStorage.getItem("entidadesLS"));
+      let listaConvenios = [];
+      if (listaEntidadesLocal == null) {
+        listaConvenios = [];
+      }
+      else {
+        listaEntidadesLocal.forEach(objEntidad => {
+          if (objEntidad.convenios != null) {
+            for (let i = 0; i < objEntidad.convenios.length; i++) {
+              listaConvenios.push(objEntidad.convenios[i]);
+            }
+          }
+        });
+      }
+      return listaConvenios;
+    };
 
     function actualizarLocal(plistaActualizada) {
       localStorage.setItem('entidadesLS', JSON.stringify(plistaActualizada));
-  }
+    }
   }
 })();

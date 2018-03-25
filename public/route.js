@@ -220,7 +220,7 @@
 
 
 
-      .state('entidades', {
+      .state('main.entidades', {
         url: '/entidades',
         templateUrl: './components/entidades/entidades.view.html',
         data:{
@@ -238,7 +238,7 @@
         controllerAs: 'vm'
       })
 
-      .state('convenio', {
+      .state('main.convenio', {
         url: '/convenio',
         templateUrl: './components/convenios/convenios.view.html',
         data:{
