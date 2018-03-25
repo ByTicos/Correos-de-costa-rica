@@ -15,6 +15,7 @@
         actualizarSucursal: _actualizarSucursal,
         listarSucursalesJson : _listarSucursalesJson,
         actualizarSucursalLocal: _actualizarSucursalLocal
+        
             }
     return publicAPI
     
