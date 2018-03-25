@@ -1,6 +1,13 @@
-<section class="container">
-  <button type="button" ng-click="vm.regresar()">Regresar</button>
+<div navegacion-Principal></div>
+<div menu-Lateral></div>
+<section class="container" id="dashboard">
   <form action="" ng-submit="vm.registrarConvenio(vm.nuevoConvenio)">
+    <div class="form-group">
+      <label for="">Entidad</label>
+      <select name="" id="" ng-model="vm.nuevoConvenio.nombre">
+        <option ng-repeat="entidad in vm.listaEntidades" value="{{entidad.nombre}}">{{entidad.nombre}}</option>  
+      </select>
+    </div>
     <div class="form-group">
       <label for="">Tipo de convenio</label>
       <input type="text" class="form-control" ng-model="vm.nuevoConvenio.tipoTramite">
@@ -13,11 +20,13 @@
     <legend>Convenios registrados</legend>
     <thead>
       <tr>
+        <th>Nombre de entidad</th>
         <th>Tipo de convenio</th>
       </tr>
     </thead>
     <tbody>
       <tr ng-repeat="convenio in vm.listaConvenios">
+        <td>{{convenio.nombreEntidad}}</td>
         <td>{{convenio.tipoTramite}}</td>
       </tr>
     </tbody>

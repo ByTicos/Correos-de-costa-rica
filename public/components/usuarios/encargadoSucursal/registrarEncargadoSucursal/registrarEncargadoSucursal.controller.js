@@ -12,6 +12,8 @@
     vm.nuevoUsuario = {};
     vm.listaSucursales = servicioSucursales.getSucursal();
 
+    console.log(vm.listaSucursales = servicioSucursales.getSucursal());
+
     vm.registrarUsuario = (pNuevoUsuario) => {
 
       let objNuevoUsuario = new Usuario(pNuevoUsuario.cedula, pNuevoUsuario.foto, pNuevoUsuario.primerNombre, pNuevoUsuario.segundoNombre, pNuevoUsuario.primerApellido, pNuevoUsuario.segundoApellido, pNuevoUsuario.correo, pNuevoUsuario.telefono, pNuevoUsuario.fechaNacimiento, pNuevoUsuario.provincia, pNuevoUsuario.canton, pNuevoUsuario.distrito,pNuevoUsuario.direccionExacta, '2',pNuevoUsuario.sucursalAsignada, pNuevoUsuario.puesto);
@@ -32,14 +34,3 @@
     }
   }
 })();
-
-// function listarEncargadoSucursal(){
-//   let listaUsuarios = servicioUsuarios.getUsuarios();
-//   let listaEncargadoSucursal = [];
-//   listaUsuarios.forEach(usuario => {
-//     if (usuario.tipo == '2') {
-//       listaEncargadoSucursal.push(usuario);
-//     }
-//   });
-//   return listaEncargadoSucursal;
-// }

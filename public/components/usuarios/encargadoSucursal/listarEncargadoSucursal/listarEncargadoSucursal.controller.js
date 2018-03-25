@@ -23,14 +23,3 @@
     }
   }
 })();
-
-// function listarEncargadoSucursal(){
-//   let listaUsuarios = servicioUsuarios.getUsuarios();
-//   let listaEncargadoSucursal = [];
-//   listaUsuarios.forEach(usuario => {
-//     if (usuario.tipo == '2') {
-//       listaEncargadoSucursal.push(usuario);
-//     }
-//   });
-//   return listaEncargadoSucursal;
-// }
