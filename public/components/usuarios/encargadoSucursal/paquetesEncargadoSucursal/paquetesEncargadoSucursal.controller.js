@@ -11,7 +11,7 @@
   
     vm.listaPaquetes = servicioUsuarios.getAllPaquetes();
 
-    vm.cambiarEstadoTraslado = (pnuevoPaquete) => {
+    vm.cambiarEstadoTraslado3 = (pnuevoPaquete) => {
       
       let articulo = pnuevoPaquete.tipoArticulo;
       console.log(articulo);
@@ -34,12 +34,11 @@
       objNuevoPaquete.mostrarEstadoTraslado('Recibido en Sucursal');
       objNuevoPaquete.addEstado(objEstado);
       servicioUsuarios.actualizarEstadoPaquete(objNuevoPaquete);
-      
-  
-      
+
     }
   
-     
   }
+
+  
   
   })();
