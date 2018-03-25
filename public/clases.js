@@ -140,6 +140,11 @@ class Sucursal {
        this.distrito = pDistrito;
        this.telefono = pTelefono;
        this.horario = pHorario;
+       this.estado = 'activo';
+    }
+
+    cambiarEstadoDeActividadSucursal(pEstado){
+        this.estado = pEstado;
     }
 }
 
@@ -150,10 +155,15 @@ class Tarjeta {
        this.numero = pNumero;
        this.expiracion = pExpiracion;
        this.cvv = pCvv; 
+       this.estado = 'activo';
     }
 
     obtenerInfoTarjeta(){
         return this;
+    }
+
+    cambiarEstadoDeActividadTarjeta(pEstado){
+        this.estado = pEstado;
     }
 }
 

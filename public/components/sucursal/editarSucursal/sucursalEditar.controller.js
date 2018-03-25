@@ -73,6 +73,19 @@
     vm.editarSucursal.telefono = objNuevaSucursal.telefono;
     vm.editarSucursal.horario = objNuevaSucursal.horario;
 
+    vm.cambiarEstadoSucursal = (pSucursal) => {
+      let listaSucursal = servicioSucursales.getSucursal();
+
+      listaSucursal.forEach(objSucursal =>{
+        if (objSucursal.id == objNuevaSucursal.id) {
+          objSucursal.cambiarEstadoDeActividadSucursal(pSucursal);
+        }
+        servicioSucursales.actualizarSucursal(objSucursal);
+      });
+      $state.go('main.tarjetas');
+
+    }
+
 
     vm.editSucursal = (pSucursal) => {
       let listaSucursal = servicioSucursales.getSucursal();
