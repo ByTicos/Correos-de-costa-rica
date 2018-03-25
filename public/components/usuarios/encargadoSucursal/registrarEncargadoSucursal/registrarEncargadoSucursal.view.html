@@ -44,7 +44,7 @@
 
                     <select ng-model="nuevoUsuario.sucursalAsignada">
                         <option value="">Seleccione la Sucursal del usuario</option>
-                        <option ng-repeat="sucursal in vm.listaSucursales" value="{{sucursal.id}}">{{sucursal.nombre}}</option>
+                        <option ng-repeat="sucursal in vm.listaSucursales" value="{{sucursal.nombre}}">{{sucursal.nombre}}</option>
                       </select>
 
                     <button type="submit">Registrar</button>
