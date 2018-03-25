@@ -10,6 +10,7 @@
   function controladorPreAlerta($http, $state, $stateParams, $location, servicioUsuarios) {
     let vm = this;
     vm.nuevoPaquete = {};
+    vm.calculo = 0;
 
 
     vm.listaPreAlerta = () => {
@@ -29,13 +30,31 @@
     );
 
 
+    
+vm.calcular = (pnuevoPaquete) => {
+  let calculo = 0;
+  let impuesto = Number (pnuevoPaquete.tipoArticulo._id);
+  let peso = Number (pnuevoPaquete.peso);
+  let precio = Number (pnuevoPaquete.precio);
+  
+  calculo = peso * precio;
+  console.log (pnuevoPaquete.tipoArticulo._id);
+
+  vm.calculo = calculo;
+};
+
+
+
+
     vm.registrarPaquete = (pnuevoPaquete) => {
       let session = JSON.parse(sessionStorage.getItem('sesion'));
       let usuario = session.nombre;
 
 
       let objNuevoPaquete = new Paquete(usuario, pnuevoPaquete.tracking, pnuevoPaquete.distribuidor, pnuevoPaquete.precio, pnuevoPaquete.peso, pnuevoPaquete.tipoArticulo, pnuevoPaquete.descripcion);
-
+     
+     
+      
 
 
       let fecha = new Date();

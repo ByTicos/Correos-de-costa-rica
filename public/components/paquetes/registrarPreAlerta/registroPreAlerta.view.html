@@ -27,14 +27,17 @@
             
           </select>
         </div>
-        {{vm.nuevoPaquete.tipoArticulo}}
+        {{vm.nuevoPaquete.tipoArticulo.name}}
         <div class="form-group">
           <label for="">Descripción</label>
           <input type="text" class="form-control" ng-model="vm.nuevoPaquete.descripcion">
         </div>
 
         <button type="submit">Registrar</button>
+        <button type="button" ng-click="vm.calcular(vm.nuevoPaquete)">Calcular</button>
+        <output>{{vm.calculo}}</output>
         <button type="button" ng-click="vm.listaPreAlerta()">Lista de pedidos</button>
+        
         
 
       </form>
