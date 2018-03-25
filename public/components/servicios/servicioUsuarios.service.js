@@ -58,11 +58,18 @@
             }
             else {
                 listaUsuariosLocal.forEach(objUsuario => {
-                    let objUsuarioTemp = new Usuario(objUsuario.cedula, objUsuario.foto, objUsuario.primerNombre, objUsuario.segundoNombre, objUsuario.primerApellido, objUsuario.segundoApellido, objUsuario.correo, objUsuario.telefono, objUsuario.fechaNacimiento, objUsuario.provincia, objUsuario.canton, objUsuario.distrito, objUsuario.direccionExacta, objUsuario.tipo,objUsuario.sucursalAsignada, objUsuario.puesto,objUsuario.vehiculo);
+                    let objUsuarioTemp = new Usuario(objUsuario.cedula, objUsuario.foto, objUsuario.primerNombre, objUsuario.segundoNombre, objUsuario.primerApellido, objUsuario.segundoApellido, objUsuario.correo, objUsuario.telefono, objUsuario.fechaNacimiento, objUsuario.provincia, objUsuario.canton, objUsuario.distrito, objUsuario.direccionExacta, objUsuario.tipo,objUsuario.sucursalAsignada, objUsuario.puesto,objUsuario.vehiculo,[]);
                     objUsuarioTemp.cambiarEstado(objUsuario.estado);
 
                     objUsuario.listaLicencias.forEach(objLicencia => {
                         let objLicenciaTemp = new Licencia(objLicencia.numLicencia, objLicencia.tipoLicencia, objLicencia.vencimiento)
+
+                    objUsuario.tarjeta.forEach(objTarjeta => {
+                        let objTarjetaTemp = new Tarjeta (objTarjeta.id, objTarjeta.nombre, objTarjeta.numero, objTarjeta.expiracion, objTarjeta.cvv);
+
+                        objUsuarioTemp.registrarTarjeta(objTarjetaTemp);
+
+                    })
                     })
 
                      objUsuario.listaPaquetes.forEach(objPaquete => {
@@ -85,7 +92,6 @@
                    objUsuarioTemp.agregarPaquete(objPaqueteTemp);
                 });
 
-                    listaUsuarios.push(objUsuarioTemp);
                 });
             }
             return listaUsuarios;
@@ -242,31 +248,39 @@
             };
 
 
-        function _addTarjeta(pnuevaTarjeta){
-            let listaTarjeta = _getTarjeta();
-            listaTarjeta.push(pnuevaTarjeta);
+        function _addTarjeta(pnuevaTarjeta, pusuario){
+                let listaUsuarios = _getUsuarios();
+                let listaTarjeta = [];
 
-           localStorage.setItem('tarjetaLS', JSON.stringify(listaTarjeta));
-        }
+                for(let i = 0; i < listaUsuarios.length; i++){
+                    if(pusuario.obtenerTarjeta().id == listaUsuarios[i].obtenerTarjeta().id){
+                        listaUsuarios[i].registrarTarjeta(pnuevaTarjeta);
+                    }
+                }
+                actualizarLocal(listaUsuarios);
+        
+            };
 
-        function _getTarjeta(){
+
+
+        function _getTarjeta(objUsuario){
+            let listaUsuarios = _getUsuarios();
             let listaTarjeta = [];
             let listaTarjetaLocal = JSON.parse(localStorage.getItem("tarjetaLS"));
 
-            if(listaTarjetaLocal == null){
-                listaTarjeta = [];
-            }else{
-                listaTarjetaLocal.forEach(obj => {
-                    let objTarjeta = new Tarjeta (obj.id, obj.nombre, obj.numero, obj.expiracion,obj.cvv);
-
-                    listaTarjeta.push(objTarjeta);
-                });
-    
-                
+           for(let i = 0; i < listaUsuarios.length; i++){
+               if (objUsuario.obtenerTarjeta().id == listaUsuarios[i].obtenerTarjeta().id){
+                listaTarjeta = listaUsuarios[i].obtenerTarjeta();
+               }
             }
     
             return listaTarjeta;
-        }
+            }
+
+            function actualizarLocal(plistaActualizada){
+                localStorage.setItem('usuariosLS', JSON.stringify(plistaActualizada));
+              }
+    
 
     }
 })();

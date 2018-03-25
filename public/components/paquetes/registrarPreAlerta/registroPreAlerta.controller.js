@@ -1,71 +1,59 @@
-(() => {
+(() =>{
 
   'use strict';
   angular
-    .module('correos')
-    .controller('controladorPreAlerta', controladorPreAlerta);
+  .module('correos')
+  .controller('controladorPreAlerta', controladorPreAlerta);
 
-  controladorPreAlerta.$inject = ['$http', '$state', '$stateParams', '$location', 'servicioUsuarios'];
+  controladorPreAlerta.$inject = ['$state', '$stateParams','$location', 'servicioUsuarios'];
+  function controladorPreAlerta($state, $stateParams,$location, servicioUsuarios){
+   let vm = this;
+   vm.nuevoPaquete = {};
+   
 
-  function controladorPreAlerta($http, $state, $stateParams, $location, servicioUsuarios) {
-    let vm = this;
-    vm.nuevoPaquete = {};
+   vm.listaPreAlerta = ()=>{
+     $state.go('listaPreAlerta');
+   }
+   
 
+   vm.registrarPaquete = (pnuevoPaquete) => {
+     let session = JSON.parse(sessionStorage.getItem('sesion'));
+     let usuario = session.nombre;
+     
 
-    vm.listaPreAlerta = () => {
-      $state.go('main.listaPreAlerta');
-    }
+     let objNuevoPaquete = new Paquete(usuario, pnuevoPaquete.tracking, pnuevoPaquete.distribuidor, pnuevoPaquete.precio, pnuevoPaquete.peso, pnuevoPaquete.tipoArticulo, pnuevoPaquete.descripcion );
+    
+     
+     
+     let fecha = new Date();
+     let hora = fecha;
+     let objEstado = new Estado(usuario, fecha,hora, 'En tránsito a aduana');
+     
+     objNuevoPaquete.mostrarEstadoTraslado('En tránsito a aduana');
+     objNuevoPaquete.addEstado(objEstado);
+     
 
-    vm.tipoArticulo = $http({
-      method: 'GET',
-      url: './sources/data/articulos.json',
-    }).then(
-      success => {
-        vm.tipoArticulo = success.data;
-      },
-      error => {
-        console.log('Ocurrió un error ' + error.data);
-      }
-    );
+     //console.log(objNuevoPaquete);
+     
+     let registro = servicioUsuarios.addPaquete(objNuevoPaquete);
 
-
-    vm.registrarPaquete = (pnuevoPaquete) => {
-      let session = JSON.parse(sessionStorage.getItem('sesion'));
-      let usuario = session.nombre;
-
-
-      let objNuevoPaquete = new Paquete(usuario, pnuevoPaquete.tracking, pnuevoPaquete.distribuidor, pnuevoPaquete.precio, pnuevoPaquete.peso, pnuevoPaquete.tipoArticulo, pnuevoPaquete.descripcion);
-
-
-
-      let fecha = new Date();
-      let hora = fecha;
-      let objEstado = new Estado(usuario, fecha, hora, 'En tránsito a aduana');
-
-      objNuevoPaquete.mostrarEstadoTraslado('En tránsito a aduana');
-      objNuevoPaquete.addEstado(objEstado);
-
-
-      //console.log(objNuevoPaquete);
-
-      let registro = servicioUsuarios.addPaquete(objNuevoPaquete);
-
-      if (registro == true) {
+     if (registro == true) {
         swal("Registro exitoso", "El paquete ha sido registrado correctamente", "success", {
           button: "Aceptar",
         });
 
-      } else {
+      }
+      else {
         swal("Registro fallido", "Ha ocurrido un error, intente nuevamente", "error", {
           button: "Aceptar",
         });
       }
+      
+     vm.nuevoPaquete = null;
+     
+   }
 
-      vm.nuevoPaquete = null;
-
-    }
-
-
+    
 
 
 

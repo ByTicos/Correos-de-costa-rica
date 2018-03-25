@@ -5,24 +5,13 @@ angular
 .module('correos')
 .controller('controladorEditarPreAlerta', controladorEditarPreAlerta);
 
-controladorEditarPreAlerta.$inject = ['$http','$state', '$stateParams', '$location', 'servicioUsuarios'];
+controladorEditarPreAlerta.$inject = ['$state', '$stateParams', '$location', 'servicioUsuarios'];
 
-function controladorEditarPreAlerta($http,$state, $stateParams, $location, servicioUsuarios) {
+function controladorEditarPreAlerta($state, $stateParams, $location, servicioUsuarios) {
   let vm = this;
 
   vm.editarPaquete = {};
 
-  vm.tipoArticulo = $http({
-      method: 'GET',
-      url: './sources/data/articulos.json',
-    }).then(
-      success => {
-        vm.tipoArticulo = success.data;
-      },
-      error => {
-        console.log('Ocurrió un error ' + error.data);
-      }
-    );
   let objPaqueteAEditar = JSON.parse($stateParams.objPaqueteTemp);
   
 
@@ -44,7 +33,7 @@ function controladorEditarPreAlerta($http,$state, $stateParams, $location, servi
       }
       servicioUsuarios.actualizarPaquete(objPaquetes);
     });
-    $state.go('main.paquete');
+    $state.go('paquete');
   };
 
 
@@ -67,7 +56,7 @@ function controladorEditarPreAlerta($http,$state, $stateParams, $location, servi
   swal("Edición exitosa", "Paquete editado correctamente", "success", {
         button: "Aceptar",
       }); 
-$state.go ('main.listaPreAlerta');
+$state.go ('paquete');
 
 };
 }

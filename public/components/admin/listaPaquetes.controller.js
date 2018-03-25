@@ -10,10 +10,7 @@ function controladorListaPaquetesAdmin($state, $stateParams, $location, servicio
   let vm = this;
 
   vm.listaPaquetes = servicioUsuarios.getAllPaquetes();
- 
-  vm.reporteEstados = ()=>{
-    $state.go("main.listaEstados");
-  }
+
    
 }
 
