@@ -19,6 +19,8 @@
 
     let objRepartidor = new Usuario(objRepartidorEditable.cedula, objRepartidorEditable.foto, objRepartidorEditable.primerNombre, objRepartidorEditable.segundoNombre, objRepartidorEditable.primerApellido, objRepartidorEditable.segundoApellido, objRepartidorEditable.correo, objRepartidorEditable.telefono, objRepartidorEditable.fechaNacimiento, objRepartidorEditable.provincia, objRepartidorEditable.canton, objRepartidorEditable.distrito, objRepartidorEditable.direccionExacta, 'repartidor',objRepartidorEditable.sucursalAsignada,objRepartidorEditable.vehiculo, objRepartidorEditable.licencias);
 
+    
+
 
     vm.editarRepartidor.cedula = objRepartidor.cedula;
     vm.editarRepartidor.foto = objRepartidor.foto;
@@ -58,7 +60,6 @@
           objUsuario.sucursalAsignada = pUsuario.sucursalAsignada;
           objUsuario.vehiculo = pUsuario.vehiculo;
           objUsuario.licencias = pUsuario.licencias;
-          console.log(pUsuario.vehiculo);
 
     
 
