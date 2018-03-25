@@ -1,17 +1,26 @@
 
 <div id="sidebar">
   <div ng-model="vm.rol" class="sidenav">
+<<<<<<< HEAD
     <a ng-show = 'vm.rol == 5' ui-sref="main.registrarEncargadoSucursal">Registrar encargado de sucursal</a>
     <a ng-show = 'vm.rol == 5' ui-sref="main.registrarClienteAdmin">Registrar cliente</a>
     <a ng-show = 'vm.rol == 5' ui-sref="main.registrarEncargadoSucursal">Registrar Encargado Sucursal</a>
     <a ng-show = 'vm.rol == 5' ui-sref="main.registrarClienteAdmin">Registrar Usuarios</a>
     <a ng-show = 'vm.rol == 5' ui-sref="main.listarEncargadoSucursal">Lista de Encargados de Sucursal</a>
+=======
+    <a ng-show = 'vm.rol == 5' ui-sref="main.registrarClienteAdmin">Registrar cliente</a>
+>>>>>>> Dev
     <a ng-show = 'vm.rol == 5' ui-sref="main.listarCliente">Lista de clientes</a>
+    <a ng-show = 'vm.rol == 5' ui-sref="main.registrarEncargadoSucursal">Registrar encargado de sucursal</a>
+    <a ng-show='vm.rol == 5' ui-sref="main.registrarClienteAdmin">Registrar cliente</a>
+    <a ng-show = 'vm.rol == 5' ui-sref="main.listarEncargadoSucursal">Lista de Encargados de Sucursal</a>
     <a ng-show = 'vm.rol == 2' ui-sref="main.paquetesEncargadoSucursal">Paquetes</a>
     <a ng-show = 'vm.rol == 1' ui-sref="main.registrarPreAlerta">Paquetes</a>
     <a ng-show = 'vm.rol == 1' ui-sref="main.listaPreAlerta"> Lista de paquetes</a>
-    <a ng-show = 'vm.rol == 5' ui-sref="entidades">Registrar Entidades</a>
-    <a ng-show = 'vm.rol == 5' ui-sref="convenio">Registrar Convenios</a>
+    <a ng-show = 'vm.rol == 5' ui-sref="main.registrarEntidades">Registrar Entidades</a>
+    <a ng-show = 'vm.rol == 5' ui-sref="main.listarEntidades"> Lista de entidades</a>
+    <a ng-show = 'vm.rol == 5' ui-sref="main.registrarConvenio">Registrar Convenios</a>
+    <a ng-show = 'vm.rol == 5' ui-sref="main.listarConvenios"> Lista de convenios</a>
     <a ng-show = 'vm.rol == 5' ui-sref="main.sucursales">Registrar Sucursal</a>
     <a ng-show = 'vm.rol == 5' ui-sref="main.listarsucursales">Lista de Sucursales</a>
     <a ng-show = 'vm.rol == 1' ui-sref="tarjetas">Registrar Tarjeta</a>
