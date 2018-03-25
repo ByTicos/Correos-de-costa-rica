@@ -25,7 +25,8 @@
             {
               nombre: listaUsuarios[i].primerNombre,
               correo: listaUsuarios[i].correo,
-              tipo: listaUsuarios[i].tipo
+              tipo: listaUsuarios[i].tipo,
+              sucursalAsignada: listaUsuarios[i].sucursalAsignada
             }
           );
           incioExitoso = true;

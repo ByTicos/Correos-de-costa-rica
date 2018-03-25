@@ -17,7 +17,7 @@
   
     </thead>
     <tbody>
-      <tr ng-repeat="paquete in vm.listaPaquetes" ng-if="paquete.estadoTraslado === 'En tránsito a aduana'">
+      <tr ng-repeat="paquete in vm.listaPaquetes" ng-if="paquete.estadoTraslado === 'En transito a centro de distribución'">
         <td>{{paquete.usuario}}</td>
         <td>{{paquete.distribuidor}}</td>
         <td>{{paquete.precio}}</td>
@@ -25,7 +25,7 @@
         <td>{{paquete.tipoArticulo}}</td>
         <td>{{paquete.descripcion}}</td>
         <td>{{paquete.estadoTraslado}}</td>
-        <td><button class="btn " type="button" ng-click="vm.cambiarEstadoTraslado(paquete)">Recibido En Sucursal</button></td>
+        <td><button class="btn " type="button" ng-click="vm.cambiarEstadoTraslado3(paquete)">Recibido En Sucursal</button></td>
       </tr>
     </tbody>
   
@@ -56,10 +56,12 @@
         <td>{{paquete.tipoArticulo}}</td>
         <td>{{paquete.descripcion}}</td>
         <td>{{paquete.estadoTraslado}}</td>
+        <td><button class="btn " type="button" ng-click="vm.cambiarEstadoTraslado4(paquete)">Recibido En Sucursal</button></td>
       </tr>
     </tbody>
   
   </table>
+
 
 </div>
 
