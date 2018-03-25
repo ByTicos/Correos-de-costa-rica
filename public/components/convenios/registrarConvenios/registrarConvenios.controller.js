@@ -2,9 +2,9 @@
   'use strict';
   angular
     .module('correos')
-    .controller('controladorConvenios', controladorConvenios);
-  controladorConvenios.$inject = ['$stateParams', '$state', 'servicioEntidades']
-  function controladorConvenios($stateParams, $state, servicioEntidades) {
+    .controller('controladorRegistrarConvenios', controladorRegistrarConvenios);
+  controladorRegistrarConvenios.$inject = ['$stateParams', '$state', 'servicioEntidades']
+  function controladorRegistrarConvenios($stateParams, $state, servicioEntidades) {
     let vm = this;
     
     vm.nuevoConvenio = {};

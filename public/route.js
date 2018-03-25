@@ -217,30 +217,39 @@
         controllerAs: 'vm'
       })
 
-
-
-
-      .state('main.entidades', {
-        url: '/entidades',
-        templateUrl: './components/entidades/entidades.view.html',
+      .state('main.registrarEntidades', {
+        url: '/registrarEntidades',
+        templateUrl: './components/entidades/registrarEntidades/registrarEntidades.view.html',
         data:{
           pageTitle: 'Registrar entidad'
         },
-        params: {
-          objEntidadTemp: ''
-        },
         resolve: {
           load: ['$ocLazyLoad', ($ocLazyLoad) => {
-            return $ocLazyLoad.load('./components/entidades/entidades.controller.js')
+            return $ocLazyLoad.load('./components/entidades/registrarEntidades/registrarEntidades.controller.js')
           }]
         },
-        controller: 'controladorEntidades',
+        controller: 'controladorRegistrarEntidades',
         controllerAs: 'vm'
       })
 
-      .state('main.convenio', {
-        url: '/convenio',
-        templateUrl: './components/convenios/convenios.view.html',
+      .state('main.listarEntidades', {
+        url: '/listarEntidades',
+        templateUrl: './components/entidades/listarEntidades/listarEntidades.view.html',
+        data:{
+          pageTitle: 'Registrar entidad'
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/entidades/listarEntidades/listarEntidades.controller.js')
+          }]
+        },
+        controller: 'controladorListarEntidades',
+        controllerAs: 'vm'
+      })
+
+      .state('main.registrarConvenio', {
+        url: '/registrarConvenio',
+        templateUrl: './components/convenios/registrarConvenios/registrarConvenios.view.html',
         data:{
           pageTitle: 'Registrar convenio'
         },
@@ -249,10 +258,25 @@
         },
         resolve: {
           load: ['$ocLazyLoad', ($ocLazyLoad) => {
-            return $ocLazyLoad.load('./components/convenios/convenios.controller.js')
+            return $ocLazyLoad.load('./components/convenios/registrarConvenios/registrarConvenios.controller.js')
           }]
         },
-        controller: 'controladorConvenios',
+        controller: 'controladorRegistrarConvenios',
+        controllerAs: 'vm'
+      })
+      
+      .state('main.listarConvenios', {
+        url: '/listarConvenios',
+        templateUrl: './components/convenios/listarConvenios/listarConvenios.view.html',
+        data:{
+          pageTitle: 'Registrar entidad'
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/convenios/listarConvenios/listarConvenios.controller.js')
+          }]
+        },
+        controller: 'controladorListarConvenios',
         controllerAs: 'vm'
       })
 
