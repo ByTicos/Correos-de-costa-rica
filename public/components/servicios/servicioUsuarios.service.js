@@ -203,11 +203,45 @@
         }
         
 
+            function _getLicencia() {
+                let listaLicencia = [];
+                let listaLicenciaLocal = JSON.parse(localStorage.getItem('licenciasLS'));
+    
+                if(listaLicenciaLocal == null){
+                   listaLicencia = [];
+     
+                }else{
+                    listaLicenciaLocal.forEach(objLicencia => {
+                        let objLicenciaTemp = new Licencia(objLicencia.numLicencia, objLicencia.tipoLicencia, objLicencia.pVencimientoLicencia );
+    
+                        listaLicencia.push(objLicenciaTemp);
+                    });
+                }
+                return listaLicencia;
+            };
+    
+            function _actualizarLicencia(pObjlicencia) {
+                let listaLicencia = _getLicencia();
+    
+                for (let i = 0; i < listaLicencia.length; i++) {
+                    if (listaLicencia[i].traking == pObjlicencia.traking ) {
+                       
+                        listaLicencia[i] = pObjlicencia;
+                    }
+                }
+                actualizarLicenciaLocal (listaLicencia);
+            }
+
+        function _getRol() {
+            let session = JSON.parse(sessionStorage.getItem ('sesion'));
+            let rol = session.tipo;
+            return rol;
             function _getRol() {
                 let session = JSON.parse(sessionStorage.getItem ('sesion'));
                 let rol = session.tipo;
                 return rol;
-            };
+            }
+        }
 
 
         function _addTarjeta(pnuevaTarjeta, pusuario){
