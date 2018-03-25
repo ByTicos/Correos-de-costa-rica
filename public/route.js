@@ -527,6 +527,7 @@
         controller: 'controladorEditarRepartidor',
         controllerAs: 'vm'
       })
+      
        .state('editarTarjetas', {
         url: '/editarTarjetas',
         templateUrl: './components/tarjetas/registrarTarjeta/editarTarjeta.view.html',
