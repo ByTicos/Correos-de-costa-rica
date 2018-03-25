@@ -26,12 +26,13 @@ function controladorEditarPreAlerta($http,$state, $stateParams, $location, servi
   let objPaqueteAEditar = JSON.parse($stateParams.objPaqueteTemp);
   
 
-  let objNuevoPaquete = new Paquete(objPaqueteAEditar.usuario,objPaqueteAEditar.tracking, objPaqueteAEditar.distribuidor, objPaqueteAEditar.precio, objPaqueteAEditar.peso, objPaqueteAEditar.tipoArticulo, objPaqueteAEditar.descripcion );
+  let objNuevoPaquete = new Paquete(objPaqueteAEditar.usuario,objPaqueteAEditar.tracking, objPaqueteAEditar.distribuidor, objPaqueteAEditar.precio,objPaqueteAEditar.peso, objPaqueteAEditar.Kilometro, objPaqueteAEditar.tipoArticulo, objPaqueteAEditar.descripcion );
 
   vm.editarPaquete.tracking = objNuevoPaquete.tracking;
   vm.editarPaquete.distribuidor = objNuevoPaquete.distribuidor;
   vm.editarPaquete.precio = objNuevoPaquete.precio;
   vm.editarPaquete.peso = objNuevoPaquete.peso;
+  objPaqueteAEditar.Kilometro = objNuevoPaquete.kilometro;
   vm.editarPaquete.tipoArticulo = objNuevoPaquete.tipoArticulo;
   vm.editarPaquete.descripcion = objNuevoPaquete.descripcion;
 
@@ -58,6 +59,7 @@ function controladorEditarPreAlerta($http,$state, $stateParams, $location, servi
    objPaquete.distribuidor = pPrealerta.distribuidor;
    objPaquete.precio = pPrealerta.precio;
    objPaquete.peso = pPrealerta.peso;
+   objPaquete.kilometro = pPrealerta.kilometro;
    objPaquete.tipoArticulo = pPrealerta.tipoArticulo;
    objPaquete.descripcion = pPrealerta.descripcion;
 

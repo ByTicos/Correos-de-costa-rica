@@ -50,12 +50,13 @@ class Usuario{
 }
 
 class Paquete{
-    constructor(pUsuario,pNumeroTracking, pDistribuidor, pPrecio, pPeso, pTipoArticulo, pDescripcion){
+    constructor(pUsuario,pNumeroTracking, pDistribuidor, pPrecio, pPeso,pKilometro, pTipoArticulo, pDescripcion){
         this.usuario = pUsuario;
         this.tracking = pNumeroTracking;
         this.distribuidor = pDistribuidor;
         this.precio = pPrecio;
         this.peso = pPeso;
+        this.kilometro = pKilometro;
         this.tipoArticulo = pTipoArticulo;
         this.descripcion = pDescripcion;
         this.estado = 'activo';
