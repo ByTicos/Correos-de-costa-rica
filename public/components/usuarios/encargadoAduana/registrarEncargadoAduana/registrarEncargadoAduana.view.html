@@ -4,7 +4,6 @@
 
         <section class="container">
                 <form action="" class="form-horizontal" ng-submit="vm.registrarUsuario(vm.nuevoUsuario)">
-                    <h1>Dashboard Encargado Sucursal</h1>
             
                     <div class="form-group">
                         <label for="">Cédula</label>
@@ -44,15 +43,17 @@
                         <input type="date" class="form-control" ng-model="vm.nuevoUsuario.fechaNacimiento">
                     </div>
 
-                    <div class="form-group">
-                        <label for="">Puesto</label>
-                        <input type="text" class="form-control" ng-model="vm.nuevoUsuario.puesto">
-                      </div>
+         >
 
-                    <!-- <select ng-model="nuevoUsuario.sucursalAsignada">
-                        <option value="">Seleccione la Sucursal del usuario</option>
-                        <option ng-repeat="sucursal in vm.listaSucursales" value="{{sucursal.id}}">{{sucursal.nombre}</option>
-                      </select> -->
+                      
+                          <select ng-model="vm.registrarUsuarios.puesto">
+                              <option value="">Seleccione su puesto en aduana</option>
+                              <option value="Despachador">Despachador</option>
+                              <option value="Cajero">Cajero</option>
+                              <option value="Agente">Agente Aduanal</option>
+                              <option value="Supervisor">Supervisor Aduanal</option>
+                          </select>
+
 
                     <button type="submit">Registrar</button>
                 </form>  

@@ -1,4 +1,4 @@
-(() => {
+(() =>{
 
   'use strict';
   angular
@@ -74,17 +74,18 @@
           button: "Aceptar",
         });
 
-      } else {
+      }
+      else {
         swal("Registro fallido", "Ha ocurrido un error, intente nuevamente", "error", {
           button: "Aceptar",
         });
       }
+      
+     vm.nuevoPaquete = null;
+     
+   }
 
-      vm.nuevoPaquete = null;
-
-    }
-
-
+    
 
 
 
