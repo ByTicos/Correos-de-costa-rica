@@ -45,7 +45,7 @@
         }
         servicioUsuarios.actualizarUsuario(objUsuario);
       });
-      $state.go('listarEncargadoAduana');
+      $state.go('main.listarEncargadoAduana');
     }
     
 
@@ -78,7 +78,7 @@
       swal("Edición exitosa", "Usuario editado correctamente", "success", {
         button: "Aceptar",
       });
-      $state.go('listarEncargadoAduana');
+      $state.go('main.listarEncargadoAduana');
     }
   }
 
