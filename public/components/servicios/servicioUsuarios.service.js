@@ -26,9 +26,7 @@
             getPaquete: _getPaquete,
             actualizarPaquete: _actualizarPaquete,
             actualizarEstadoPaquete: _actualizarEstadoPaquete,
-           /* addLicencias: _addLicencia,
-            getLicencias: _getLicencia,
-            actualizarLocal: _actualizarLicencia,*/
+            actualizarRepartidor: _actualizarRepartidor,
             addTarjeta: _addTarjeta,
             getTarjeta: _getTarjeta,
             getRol: _getRol,
@@ -61,8 +59,14 @@
                     let objUsuarioTemp = new Usuario(objUsuario.cedula, objUsuario.foto, objUsuario.primerNombre, objUsuario.segundoNombre, objUsuario.primerApellido, objUsuario.segundoApellido, objUsuario.correo, objUsuario.telefono, objUsuario.fechaNacimiento, objUsuario.provincia, objUsuario.canton, objUsuario.distrito, objUsuario.direccionExacta, objUsuario.tipo,objUsuario.sucursalAsignada, objUsuario.puesto,objUsuario.vehiculo,[]);
                     objUsuarioTemp.cambiarEstado(objUsuario.estado);
 
+
                     objUsuario.listaLicencias.forEach(objLicencia => {
-                        let objLicenciaTemp = new Licencia(objLicencia.numLicencia, objLicencia.tipoLicencia, objLicencia.vencimiento)
+
+                        let objLicenciaTemp = new Licencia(objLicencia.numLicencia, objLicencia.tipoLicencia, objLicencia.vencimiento);
+                        objUsuarioTemp.listaLicencias.push(objLicenciaTemp);
+                    });
+                    
+
 
                     objUsuario.tarjeta.forEach(objTarjeta => {
                         let objTarjetaTemp = new Tarjeta (objTarjeta.id, objTarjeta.nombre, objTarjeta.numero, objTarjeta.expiracion, objTarjeta.cvv);
@@ -92,8 +96,10 @@
                    objUsuarioTemp.agregarPaquete(objPaqueteTemp);
                 });
 
-                });
+                }
+
             }
+            
             return listaUsuarios;
         };
         
@@ -198,49 +204,8 @@
         function actualizarPaqueteLocal(plistaPaqueteActualizada){
             localStorage.setItem('paquetesLS', JSON.stringify(plistaPaqueteActualizada));
         }
-/*
-        function _addLicencia(pNuevaLicencia) {
-            let listaLicencia = _getLicencia;
-                let respuesta = true;
-                
-                listaLicencia.push(pNuevaLicencia);
-    
-                asyncLocalStorage.setItem('licenciasLS', listaLicencia).then((response) => {
-                    respuesta = response;
-                });
-    
-               return respuesta;
-            };
+        
 
-            function _getLicencia() {
-                let listaLicencia = [];
-                let listaLicenciaLocal = JSON.parse(localStorage.getItem('licenciasLS'));
-    
-                if(listaLicenciaLocal == null){
-                   listaLicencia = [];
-     
-                }else{
-                    listaLicenciaLocal.forEach(objLicencia => {
-                        let objLicenciaTemp = new Licencia(objLicencia.numLicencia, objLicencia.tipoLicencia, objLicencia.pVencimientoLicencia );
-    
-                        listaLicencia.push(objLicenciaTemp);
-                    });
-                }
-                return listaLicencia;
-            };
-    
-            function _actualizarLicencia(pObjlicencia) {
-                let listaLicencia = _getLicencia();
-    
-                for (let i = 0; i < listaLicencia.length; i++) {
-                    if (listaLicencia[i].traking == pObjlicencia.traking ) {
-                       
-                        listaLicencia[i] = pObjlicencia;
-                    }
-                }
-                actualizarLicenciaLocal (listaLicencia);
-            }
-*/
             function _getRol() {
                 let session = JSON.parse(sessionStorage.getItem ('sesion'));
                 let rol = session.tipo;
@@ -281,6 +246,22 @@
                 localStorage.setItem('usuariosLS', JSON.stringify(plistaActualizada));
               }
     
+
+        function _actualizarRepartidor(pObjRepartidor) {
+            let listaUsuarios = _getUsuarios();
+            let sesion = JSON.parse(sessionStorage.getItem('sesion'));
+            for (let i = 0; i < listaUsuarios.length; i++) {
+                if(listaUsuarios[i].correo == sesion.correo){
+                    for (let j = 0; j < listaUsuarios[i].listaUsuarios.length; j++) {
+                        if (listaUsuarios[i].listaUsuarios[j].tipo == '3') {
+                            listaUsuarios[i].listaUsuarios[j] = licencias;
+                        }
+                    }
+                }
+            }
+            actualizarLocal(listaUsuarios);
+
+        };
 
     }
 })();
