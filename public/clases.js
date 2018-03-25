@@ -26,9 +26,9 @@ class Usuario{
         this.estado = pEstado;
     }
 
-    registarTarjeta(pTarjeta){
-        return this.tarjeta;
-    }
+    registrarTarjeta(pTarjeta){
+        this.tarjeta.push(pTarjeta);
+      }
     getListaPaquetes(){
         return this.listaPaquetes;
     }
@@ -42,6 +42,9 @@ class Usuario{
 
   getLicencias(){
       return this.listaLicencias
+  }
+  obtenerTarjeta(){
+      return this.tarjeta;
   }
 }
 
@@ -146,6 +149,10 @@ class Tarjeta {
        this.numero = pNumero;
        this.expiracion = pExpiracion;
        this.cvv = pCvv; 
+    }
+
+    obtenerInfoTarjeta(){
+        return this;
     }
 }
 

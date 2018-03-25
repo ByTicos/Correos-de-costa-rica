@@ -1,12 +1,13 @@
-     <div class="container">
-        <div class="creditCardForm">
-            <div class="heading">
+<div navegacion-Principal></div>
+<div menu-Lateral></div>
+<section id="dashboard">
+
                 <h1>Ingrese su tarjeta</h1>
             </div>
             <div class="payment">
                 <form ng-submit="vm.registrarTarjeta(vm.nuevaTarjeta)">
                      <div class="form-group owner">
-                        <input type="text" name="field1" id="field1" class="" disabled/>
+                        <input type="text" name="field1" id="field1" class="" disabled ng-model="vm.nuevaTarjeta.id"/>
                         
                     </div>
 
@@ -98,3 +99,5 @@
             </div>
         </div>
     </div>
+</form>
+</section>
