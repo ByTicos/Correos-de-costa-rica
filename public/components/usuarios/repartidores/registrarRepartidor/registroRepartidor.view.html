@@ -89,7 +89,11 @@
         
             <div class="form-group">
                 <label for="">Sucursal asignada</label>
-                <input type="text" class="form-control" ng-model="vm.nuevoRepartidor.sucursalAsignada" required>
+                <select ng-model="nuevoUsuario.sucursalAsignada">
+                    <option value="">Seleccione la Sucursal del usuario</option>
+                    <option ng-repeat="sucursal in vm.listaSucursales" value="{{sucursal.nombre}}">{{sucursal.nombre}}</option>
+                  </select>
+
             </div>
         </div>
 
