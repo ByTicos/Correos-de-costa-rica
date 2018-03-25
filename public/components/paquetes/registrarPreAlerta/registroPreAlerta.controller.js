@@ -37,6 +37,7 @@ vm.calcular = (pnuevoPaquete) => {
   let peso = Number (pnuevoPaquete.peso);
   let precio = Number (pnuevoPaquete.precio);
   
+  
   calculo = peso * precio;
   console.log (pnuevoPaquete.tipoArticulo._id);
 
