@@ -30,7 +30,8 @@
             addTarjeta: _addTarjeta,
             getTarjeta: _getTarjeta,
             getRol: _getRol,
-            getAllPaquetes: _getAllPaquetes
+            getAllPaquetes: _getAllPaquetes,
+            actualizarTarjeta: _actualizarTarjeta
                 }
         return publicAPI
 
@@ -165,7 +166,7 @@
         }
 
 
-        function _actualizarPaquete(pObjpaquete) {
+        function _actualizarTarjeta(pObjpaquete) {
             let listaUsuarios = _getUsuarios();
             let sesion = JSON.parse(sessionStorage.getItem('sesion'));
             for (let i = 0; i < listaUsuarios.length; i++) {
@@ -255,6 +256,22 @@
                     for (let j = 0; j < listaUsuarios[i].listaUsuarios.length; j++) {
                         if (listaUsuarios[i].listaUsuarios[j].tipo == '3') {
                             listaUsuarios[i].listaUsuarios[j] = licencias;
+                        }
+                    }
+                }
+            }
+            actualizarLocal(listaUsuarios);
+
+        };
+
+        function _actualizarPaquete(pObjTarjeta) {
+            let listaUsuarios = _getUsuarios();
+            let sesion = JSON.parse(sessionStorage.getItem('sesion'));
+            for (let i = 0; i < listaUsuarios.length; i++) {
+                if(listaUsuarios[i].correo == sesion.correo){
+                    for (let j = 0; j < listaUsuarios[i].tarjeta.length; j++) {
+                        if (listaUsuarios[i].tarjeta[j].id == pObjTarjeta.id) {
+                            listaUsuarios[i].tarjeta[j] = pObjTarjeta;
                         }
                     }
                 }

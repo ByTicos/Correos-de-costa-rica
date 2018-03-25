@@ -12,8 +12,11 @@
     
     vm.nuevaSucursal = {};
     vm.listaSucursales = listarSucursales();
-    
     servicioSucursales.listarSucursalesJson();
+
+    vm.listaTarjeta = () => {
+      $state.go('main.listartarjetas');
+    }
 
     vm.provincias = $http({
       method: 'GET',

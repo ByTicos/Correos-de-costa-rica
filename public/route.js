@@ -276,11 +276,14 @@
   
       
 
-      .state('tarjetas', {
+      .state('main.tarjetas', {
         url: '/tarjetas',
         templateUrl: './components/tarjetas/registrarTarjeta/tarjetas.view.html',
         data:{
           pageTitle: 'Registrar Tarjetas'
+        },
+        params: {
+          objTarjetaTemp: ''
         },
         resolve: {
           load: ['$ocLazyLoad', ($ocLazyLoad) => {
@@ -402,7 +405,7 @@
         controllerAs: 'vm'
       })
 
-      .state('editarsucursales', {
+      .state('main.editarsucursales', {
         url: '/editarsucursales',
         templateUrl: './components/sucursal/editarSucursal/sucursalEditar.view.html',
         data:{
@@ -528,14 +531,14 @@
         controllerAs: 'vm'
       })
       
-       .state('editarTarjetas', {
+       .state('main.editarTarjetas', {
         url: '/editarTarjetas',
         templateUrl: './components/tarjetas/registrarTarjeta/editarTarjeta.view.html',
         data:{
           pageTitle: 'Editar Tarjetas'
         },
         params: {
-          objUsuarioTemp: ''
+          objTarjetaTemp: ''
         },
         resolve: {
           load: ['$ocLazyLoad', ($ocLazyLoad) => {
@@ -546,7 +549,7 @@
         controllerAs: 'vm'
       })
 
-      .state('listartarjetas', {
+      .state('main.listartarjetas', {
         url: '/listartarjetas',
         templateUrl: './components/tarjetas/listarTarjeta/listarTarjeta.view.html',
         data:{

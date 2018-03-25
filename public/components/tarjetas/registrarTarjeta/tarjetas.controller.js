@@ -9,15 +9,11 @@
     function controladorTarjetas($state, $scope,servicioUsuarios) {
       let vm = this;
 
-      if (!$stateParams.objUsuarioTemp) {
-        $state.go('main.dashboard');
+
+      vm.listaTarjeta = () => {
+        $state.go('main.listartarjetas');
       }
 
-      let objSinFormatoUsuario = JSON.parse($stateParams.objUsuarioTemp);
-
-      let objUsuario = new Usuario(objUsuario.cedula, objUsuario.foto, objUsuario.primerNombre, objUsuario.segundoNombre, objUsuario.primerApellido, objUsuario.segundoApellido, objUsuario.correo, objUsuario.telefono, objUsuario.fechaNacimiento, objUsuario.provincia, objUsuario.canton, objUsuario.distrito, objUsuario.direccionExacta, objUsuario.tipo,objUsuario.sucursalAsignada, objUsuario.puesto,objUsuario.vehiculo,objUsuario.tarjeta);
-
-      listaTarjetas(objUsuario);
           
           function verificar(){
             let fullDate, someday, fullDateFrom;
@@ -47,6 +43,8 @@
 
 
         vm.registrarTarjeta = (pnuevaTarjeta) => {
+          let session = JSON.parse(sessionStorage.getItem('sesion'));
+          let usuario = session.nombre;
 
           let mes = $( "#month option:selected" ).val();
           let year = $( "#year option:selected" ).val();
@@ -54,27 +52,23 @@
           
           let objnuevaTarjeta = new Tarjeta(pnuevaTarjeta.id, pnuevaTarjeta.nombre, pnuevaTarjeta.numero, expiracion, pnuevaTarjeta.cvv);
 
-          let objUsuario2 = servicioUsuarios.addTarjeta(objUsuario, objTarjeta);
-          objUsuario = new Usuario(objUsuario2.cedula, objUsuario2.foto, objUsuario2.primerNombre, objUsuario2.segundoNombre, objUsuario2.primerApellido, objUsuario2.segundoApellido, objUsuario2.correo, objUsuario2.telefono, objUsuario2.fechaNacimiento, objUsuario2.provincia, objUsuario2.canton, objUsuario2.distrito, objUsuario2.direccionExacta, objUsuario2.tipo,objUsuario2.sucursalAsignada, objUsuario2.puesto,objUsuario2.vehiculo,objUsuario2.tarjeta);
+          let registro = servicioUsuarios.addPaquete(objnuevaTarjeta);
 
-          listaTarjetas(objUsuario);
-          
-          // servicioUsuarios.addTarjeta(objnuevaTarjeta);
-          // verificar();
-          swal("Registro exitoso", "Tarjeta registrada con exito", "success", {
+          if (registro == true) {
+            swal("Registro exitoso", "Tarjeta registrada con exito", "success", {
+
+              button: "Aceptar",
+          });
+
+        }else{
+          swal("Registro fallido", "Ha ocurrido un error, intente nuevamente", "error", {
             button: "Aceptar",
           });
 
-          vm.volver = () => {
-            $state.go('tarjetas');
-          }
-   
+          vm.pnuevaTarjeta = null;
+        }
+      };
           
-        }
-
-        function listaTarjetas(objUsuario) {
-          vm.listararjetas = objUsuario.obtenerTarjeta();
-        }
 
         // Funcion de validacion de tarjeta
     
@@ -102,10 +96,6 @@
         return randomID;
         console.log('randomID', randomID);
         }
-      
-
-    
-
 
     }
 })();
