@@ -13,7 +13,7 @@
   
 
     vm.editUsuarios = (pUsuario) =>{
-      $state.go('modificarEncargadoAduana', {objUsuarioTemp : JSON.stringify(pUsuario)});
+      $state.go('main.modificarEncargadoAduana', {objUsuarioTemp : JSON.stringify(pUsuario)});
 
     };
 
@@ -23,14 +23,3 @@
     }
   }
 })();
-
-// function listarEncargadoAduana(){
-//   let listaUsuarios = servicioUsuarios.getUsuarios();
-//   let listaEncargadoAduana = [];
-//   listaUsuarios.forEach(usuario => {
-//     if (usuario.tipo == '2') {
-//       listaEncargadoAduana.push(usuario);
-//     }
-//   });
-//   return listaEncargadoAduana;
-// }
