@@ -1,13 +1,8 @@
 
 <div id="sidebar">
   <div ng-model="vm.rol" class="sidenav">
-<<<<<<< HEAD
-    <a ng-show = 'vm.rol == 5' ui-sref="main.registrarEncargadoSucursal">Registrar encargado de sucursal</a>
-    <a ng-show = 'vm.rol == 5' ui-sref="main.registrarClienteAdmin">Registrar cliente</a>
-=======
     <a ng-show = 'vm.rol == 5' ui-sref="main.registrarEncargadoSucursal">Registrar Encargado Sucursal</a>
     <a ng-show = 'vm.rol == 5' ui-sref="main.registrarClienteAdmin">Registrar Usuarios</a>
->>>>>>> Aaron
     <a ng-show = 'vm.rol == 5' ui-sref="main.listarEncargadoSucursal">Lista de Encargados de Sucursal</a>
     <a ng-show = 'vm.rol == 5' ui-sref="main.listarCliente">Lista de clientes</a>
     <a ng-show = 'vm.rol == 2' ui-sref="main.paquetesEncargadoSucursal">Paquetes</a>
@@ -20,6 +15,11 @@
     <a ng-show = 'vm.rol == 1' ui-sref="tarjetas">Registrar Tarjeta</a>
     <a ng-show = 'vm.rol == 1' ui-sref="listatarjetas"> Mis Tarjets</a>
     <a ng-show = 'vm.rol == 5' ui-sref="main.PaquetesAdmin"> Mis Tarjets</a>
+    <a ng-show = 'vm.rol == 5' ui-sref="main.repartidor">Registrar Repartidores</a>
+    <a ng-show = 'vm.rol == 5' ui-sref="main.listarRepartidores">Lista de Repartidor</a>
+    <a ng-show = 'vm.rol == 2' ui-sref="main.repartidor">Registrar Repartidor</a>
+    <a ng-show = 'vm.rol == 2' ui-sref="main.listarRepartidores">Lista de Repartidores</a>
+    <a ng-show = 'vm.rol == 3' ui-sref="main.editarRepartidor">Editar Repartidor</a>
     
   </div>
 </div>

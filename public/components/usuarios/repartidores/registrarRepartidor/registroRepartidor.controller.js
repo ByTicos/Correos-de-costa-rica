@@ -4,13 +4,15 @@
     .module('correos')
     .controller('controladorRepartidores', controladorRepartidores);
     
-    controladorRepartidores.$inject = ['$stateParams','$state', '$location', 'servicioUsuarios'];
+    controladorRepartidores.$inject = ['$stateParams','$state', '$location', 'servicioUsuarios', 'servicioSucursales'];
 
-  function controladorRepartidores($stateParams,$state, $location, servicioUsuarios) {
+  function controladorRepartidores($stateParams,$state, $location, servicioUsuarios, servicioSucursales) {
     let vm = this;
 
     // vm.listaRepartidores = listarRepartidores();
     vm.nuevoRepartidor = {};
+    servicioSucursales.listarSucursalesJson();
+    vm.listaSucursales = servicioSucursales.getSucursal();
     
     
     // vm.editRepartidor = (pUsuario) =>{
