@@ -31,6 +31,7 @@
             addTarjeta: _addTarjeta,
             getTarjeta: _getTarjeta,
             getRol: _getRol,
+            getRolSucursal: _getRolSucursal,
             getAllPaquetes: _getAllPaquetes,
             actualizarTarjeta: _actualizarTarjeta
                 }
@@ -237,12 +238,14 @@
             let session = JSON.parse(sessionStorage.getItem ('sesion'));
             let rol = session.tipo;
             return rol;
-            function _getRol() {
-                let session = JSON.parse(sessionStorage.getItem ('sesion'));
-                let rol = session.tipo;
-                return rol;
-            }
         }
+
+        function _getRolSucursal() {
+            let session = JSON.parse(sessionStorage.getItem ('sesion'));
+            let rol = session.sucursalAsignada;
+            return rol;
+        }
+        
 
 
         function _addTarjeta(pnuevaTarjeta, pusuario){
