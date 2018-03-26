@@ -4,7 +4,7 @@
   <table class="table table-responsive">
     <thead>
       <tr>
-        <th>Foto</th>
+        <!-- <th>Foto</th> -->
         <th>Cédula</th>
         <th>Nombre completo </th>
         <th>apellidos</th>
@@ -23,7 +23,7 @@
 
     <tbody>
       <tr ng-repeat="repartidor in vm.listaRepartidores">
-        <td>{{repartidor.foto}}</td>
+        <!-- <td>{{repartidor.foto}}</td> -->
         <td>{{repartidor.cedula}}</td>
         <td>{{repartidor.primerNombre}} {{repartidor.segundoNombre}}</td>
         <td>{{repartidor.primerApellido}} {{repartidor.segundoApellido}}</td>
@@ -36,10 +36,8 @@
         <td>{{repartidor.listaLicencias[0].vencimiento}}</td>
         <td>{{repartidor.sucursalAsignada}}</td>
         <td><button class="btn buttonall" ng-click="vm.editRepartidor(repartidor)" type="submit">Editar</button></td>
-        <td><button type="button" ng-click="vm.eliminarUsuario('inactivo')">Desactivar</button>
-        </td>
-        <td>    <button type="button" ng-click="vm.eliminarUsuario('activo')">Activar</button>
-        </td>
+        <td><button type="button" ng-click="vm.eliminarUsuario('inactivo')">Desactivar</button></td>
+        <td><button type="button" ng-click="vm.eliminarUsuario('activo')">Activar</button></td>
        
       </tr>
     </tbody>

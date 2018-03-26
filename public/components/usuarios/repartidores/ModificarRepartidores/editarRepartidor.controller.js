@@ -17,7 +17,7 @@
 
     let objRepartidorEditable = JSON.parse($stateParams.objRepartidorTemp);
 
-    let objRepartidor = new Usuario(objRepartidorEditable.cedula, objRepartidorEditable.foto, objRepartidorEditable.primerNombre, objRepartidorEditable.segundoNombre, objRepartidorEditable.primerApellido, objRepartidorEditable.segundoApellido, objRepartidorEditable.correo, objRepartidorEditable.telefono, objRepartidorEditable.fechaNacimiento, objRepartidorEditable.provincia, objRepartidorEditable.canton, objRepartidorEditable.distrito, objRepartidorEditable.direccionExacta, 'repartidor',objRepartidorEditable.sucursalAsignada,objRepartidorEditable.vehiculo, objRepartidorEditable.licencias);
+    let objRepartidor = new Usuario(objRepartidorEditable.cedula, objRepartidorEditable.foto, objRepartidorEditable.primerNombre, objRepartidorEditable.segundoNombre, objRepartidorEditable.primerApellido, objRepartidorEditable.segundoApellido, objRepartidorEditable.correo, objRepartidorEditable.telefono, objRepartidorEditable.fechaNacimiento, objRepartidorEditable.provincia, objRepartidorEditable.canton, objRepartidorEditable.distrito, objRepartidorEditable.direccionExacta, '3',objRepartidorEditable.sucursalAsignada,objRepartidorEditable.vehiculo, objRepartidorEditable.licencias);
 
     
 
