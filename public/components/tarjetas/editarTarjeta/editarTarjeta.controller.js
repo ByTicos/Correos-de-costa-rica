@@ -9,13 +9,23 @@
   
   function controladorEditarTarjetas($http,$state, $stateParams, $location, servicioUsuarios) {
     let vm = this;
-  
+
+     // Format input for card number entry
+    var input = document.getElementById('cardNumber');
+    payform.cardNumberInput(input);
+ 
+     
+
+    vm.getType = () => {
+       console.log(payform.parseCardType(vm.editarTarjeta.numero));
+    }
+    
     vm.editarTarjeta = {};
-  
-    let objTarjetaAEditar = JSON.parse($stateParams.objPaqueteTemp);
+    
+    let objTarjetaAEditar = JSON.parse($stateParams.objTarjetaTemp);
     
   
-    let objNuevaTarjeta = new Tarjeta(objTarjetaAEditar.id,objTarjetaAEditar.nombre, objTarjetaAEditar.numero, objTarjetaAEditar.expiracion, objTarjetaAEditar.cvv,);
+    let objNuevaTarjeta = new Tarjeta(objTarjetaAEditar.id,objTarjetaAEditar.nombre, objTarjetaAEditar.numero, objTarjetaAEditar.expiracion, objTarjetaAEditar.cvv);
   
     vm.editarTarjeta.id = objNuevaTarjeta.id;
     vm.editarTarjeta.nombre = objNuevaTarjeta.nombre;
@@ -23,14 +33,14 @@
     vm.editarTarjeta.expiracion = objNuevaTarjeta.expiracion;
     vm.editarTarjeta.cvv = objNuevaTarjeta.cvv;
   
-    vm.cambiarEstadoTarjeta = (pTarjeta) =>{
+    vm.cambiarEstadoTarjeta = (pEstado) =>{
       let listaTarjeta = servicioUsuarios.getTarjeta();
-  
+      
       listaTarjeta.forEach(objTarjetas =>{
-        if (objTarjetas.id == objNuevoPaquete.id) {
-          objTarjetas.cambiarEstadoDeActividadTarjeta(pTarjeta);
+        if (objTarjetas.id == objNuevaTarjeta.id) {
+          objTarjetas.cambiarEstadoDeActividadTarjeta(pEstado);
         }
-        servicioUsuarios.actualizartarjeta(objTarjetas);
+        servicioUsuarios.actualizarTarjeta(objTarjetas);
       });
       $state.go('main.tarjetas');
     };
@@ -41,14 +51,14 @@
     let listaTarjeta = servicioUsuarios.getTarjeta();
   
     listaTarjeta.forEach(objTarjeta =>{
-    if(objTarjeta.id == objNuevoPaquete.id){
+    if(objTarjeta.id == objNuevaTarjeta.id){
      objTarjeta.id = pTarjeta.id;
      objTarjeta.nombre = pTarjeta.nombre;
      objTarjeta.numero = pTarjeta.numero;
      objTarjeta.expiracion = pTarjeta.expiracion;
      objTarjeta.cvv = pTarjeta.cvv;
       
-     servicioUsuarios.actualizarPaquete(objTarjeta);
+     servicioUsuarios.actualizarTarjeta(objTarjeta);
     }
     });
     swal("Edición exitosa", "Tarjeta editada correctamente", "success", {

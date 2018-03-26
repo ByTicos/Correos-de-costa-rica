@@ -557,7 +557,7 @@
       
        .state('main.editarTarjetas', {
         url: '/editarTarjetas',
-        templateUrl: './components/tarjetas/registrarTarjeta/editarTarjeta.view.html',
+        templateUrl: './components/tarjetas/editarTarjeta/editarTarjeta.view.html',
         data:{
           pageTitle: 'Editar Tarjetas'
         },
@@ -566,7 +566,7 @@
         },
         resolve: {
           load: ['$ocLazyLoad', ($ocLazyLoad) => {
-            return $ocLazyLoad.load('./components/tarjetas/registrarTarjeta/editarTarjeta.controller.js')
+            return $ocLazyLoad.load('./components/tarjetas/editarTarjeta/editarTarjeta.controller.js')
           }]
         },
         controller: 'controladorEditarTarjetas',
@@ -580,7 +580,7 @@
           pageTitle: 'Listar Tarjetas'
         },
         params: {
-          objUsuarioTemp: ''
+          objTarjetaTemp: ''
         },
         resolve: {
           load: ['$ocLazyLoad', ($ocLazyLoad) => {

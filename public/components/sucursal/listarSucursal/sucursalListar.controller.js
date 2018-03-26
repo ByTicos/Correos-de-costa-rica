@@ -12,7 +12,7 @@
         listarSucursales();
         
         vm.editSucursal = (pSucursal) => {
-          $state.go('editarsucursales', {objSucursalTemp: JSON.stringify(pSucursal) });
+          $state.go('main.editarsucursales', {objSucursalTemp: JSON.stringify(pSucursal) });
     
         };
     
