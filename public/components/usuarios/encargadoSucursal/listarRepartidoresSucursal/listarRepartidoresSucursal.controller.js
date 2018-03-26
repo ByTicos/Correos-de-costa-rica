@@ -2,16 +2,16 @@
   'use strict'
   angular
     .module('correos')
-    .controller('controladorListarRepartidores', controladorListarRepartidores);
+    .controller('controladorListarRepartidoresSucursal', controladorListarRepartidoresSucursal);
     
-    controladorListarRepartidores.$inject = ['$state', '$stateParams', '$location', 'servicioUsuarios'];
+    controladorListarRepartidoresSucursal.$inject = ['$state', '$stateParams', '$location', 'servicioUsuarios'];
 
-  function controladorListarRepartidores($state, $stateParams, $location, servicioUsuarios) {
+  function controladorListarRepartidoresSucursal($state, $stateParams, $location, servicioUsuarios) {
     let vm = this;
 
     vm.listaRepartidores = listarRepartidores();
   
-      
+    vm.rolSucursal = servicioUsuarios.getRolSucursal();    
 
     vm.editRepartidor = (pUsuario) =>{
       $state.go('main.editarRepartidor', {objRepartidorTemp : JSON.stringify(pUsuario)});

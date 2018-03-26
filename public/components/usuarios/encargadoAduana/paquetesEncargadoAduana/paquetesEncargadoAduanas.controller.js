@@ -33,7 +33,7 @@
       objNuevoPaquete.mostrarEstadoTraslado('En proceso de desalmacenaje');
       objNuevoPaquete.addEstado(objEstado);
       servicioUsuarios.actualizarEstadoPaquete(objNuevoPaquete);
-      
+      location.reload();
   
       
     }
@@ -62,7 +62,7 @@
       objNuevoPaquete.mostrarEstadoTraslado('En transito a centro de distribución');
       objNuevoPaquete.addEstado(objEstado);
       servicioUsuarios.actualizarEstadoPaquete(objNuevoPaquete);
-      
+      location.reload();
   
       
     }
