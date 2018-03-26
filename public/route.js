@@ -718,6 +718,24 @@
       })
 
 
+      .state('main.listarRepartidoresSucursal', {
+        url: '/listarRepartidoresSucursal',
+        templateUrl: './components/usuarios/encargadoSucursal/listarRepartidoresSucursal/listarRepartidoresSucursal.view.html',
+        data:{
+          pageTitle: 'Mis repartidores'
+        },
+        params: {
+          objUsuarioTemp: ''
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/usuarios/encargadoSucursal/listarRepartidoresSucursal/listarRepartidoresSucursal.controller.js')
+          }]
+        }, 
+        controller: 'controladorListarRepartidoresSucursal',
+        controllerAs: 'vm',
+      })
+
         .state('main.paquetesRepartidor', {
           url: '/paquetesRepartidor',
           templateUrl: './components/usuarios/repartidores/paquetesRepartidor/paquetesRepartidor.view.html',
