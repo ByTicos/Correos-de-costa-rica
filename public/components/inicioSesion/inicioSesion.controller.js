@@ -20,7 +20,7 @@
           $location.path('main/dashboard');
       }
       else {
-        swal("Datos erroneos", "asfasf", "error");
+        swal("Datos erroneos", "Intente nuevamente", "error");
       }
     }
   }

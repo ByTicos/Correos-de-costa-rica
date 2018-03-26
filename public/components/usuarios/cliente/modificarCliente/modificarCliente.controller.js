@@ -93,6 +93,7 @@
 
       listaUsuarios.forEach(objUsuario => {
         if (objUsuario.correo == vm.objNuevoCliente.correo) {
+          objUsuario.cedula = pUsuario.cedula;
           objUsuario.foto = pUsuario.foto;
           objUsuario.primerNombre = pUsuario.primerNombre;
           objUsuario.segundoNombre = pUsuario.segundoNombre;
@@ -113,7 +114,14 @@
       swal("Edición exitosa", "Cliente modificado correctamente", "success", {
         button: "Aceptar",
       });
-      $state.go('main.listarCliente')
+      let sesion = JSON.parse(sessionStorage.getItem('sesion'));
+      if(sesion.tipo == '5'){
+        $state.go('main.listarCliente');
+      }
+      else{
+        $state.go('main.dashboard');
+      }
+      
     }
   }
 
