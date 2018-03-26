@@ -49,6 +49,7 @@ class Usuario{
   }
 }
 
+
 class Paquete{
     constructor(pUsuario,pNumeroTracking, pDistribuidor, pPrecio, pPeso,pKilometro, pTipoArticulo, pDescripcion){
         this.usuario = pUsuario;
