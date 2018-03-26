@@ -5,7 +5,7 @@
    <div class="form-group">
    
       <label for="sucursalIDeditar"> ID Sucursal</label> 
-     <input ng-model="vm.editarSucursal.id" id="sucursalIDeditar" class="form-control" maxlength="5" minlength="5" type="text" required>
+     <input ng-model="vm.editarSucursal.id" id="sucursalIDeditar" class="form-control" maxlength="5" minlength="5" type="text" disabled>
      <div ng-message="required">
          <small class="form-text text-muted">Este campo es requerido</small>
      </div>
@@ -61,14 +61,15 @@
    
    
    
-   <button type="submit" class="btn btn-success">Registrar Sucursal</button>
+   <button type="submit" class="btn"><img src="../../sources/images/edit.png"></button>
 
-   <div class="col-md-6">
-      <button type="button" ng-click="vm.cambiarEstadoPaquete('inactivo')">Desactivar</button>
-    </div>
-    <div class="col-md-6">
-      <button type="button" ng-click="vm.cambiarEstadoPaquete('activo')">Activar</button>
-    </div>
+ 
    
    </form>
+   <div class="col-md-6">
+      <button type="button" ng-click="vm.cambiarEstadoSucursal('inactivo')"><img src="../../sources/images/desactivar.png"></button>
+    </div>
+    <div class="col-md-6">
+      <button type="button" ng-click="vm.cambiarEstadoSucursal('activo')"><img src="../../sources/images/activar.png"></button>
+    </div>
    </div>

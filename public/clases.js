@@ -21,7 +21,7 @@ class Usuario {
         this.listaLicencias = pLicencia || [];
         this.estado = 'activo';
         // this.paqueteAsignado = 
-        this.tarjeta = pTarjeta || [];
+        this.listaTarjetas = pTarjeta || [];
         this.listaPaquetesConvenios = [];
         this.contrasenna = pContrasenna;
     }
@@ -30,7 +30,7 @@ class Usuario {
     }
 
     registrarTarjeta(pTarjeta) {
-        this.tarjeta.push(pTarjeta);
+        this.listaTarjetas.push(pTarjeta);
     }
     getListaPaquetes() {
         return this.listaPaquetes;
@@ -139,30 +139,30 @@ class Licencia {
     }
 }
 class Sucursal {
-    constructor(pId, pNombre, pProvincia, pCanton, pDistrito, pTelefono, pHorario) {
-        this.id = pId;
-        this.nombre = pNombre;
-        this.provincia = pProvincia;
-        this.canton = pCanton;
-        this.distrito = pDistrito;
-        this.telefono = pTelefono;
-        this.horario = pHorario;
-        this.estado = 'activo';
+    constructor(pId, pNombre, pProvincia, pCanton, pDistrito, pTelefono, pHorario, pEstado){
+       this.id = pId;
+       this.nombre = pNombre;
+       this.provincia = pProvincia;
+       this.canton = pCanton;
+       this.distrito = pDistrito;
+       this.telefono = pTelefono;
+       this.horario = pHorario;
+       this.estado = pEstado || 'activo';
     }
 
-    cambiarEstadoDeActividadSucursal(pEstado) {
+    cambiarEstadoDeActividadSucursal(pEstado){
         this.estado = pEstado;
     }
 }
 
 class Tarjeta {
-    constructor(pId, pNombre, pNumero, pExpiracion, pCvv) {
-        this.id = pId;
-        this.nombre = pNombre;
-        this.numero = pNumero;
-        this.expiracion = pExpiracion;
-        this.cvv = pCvv;
-        this.estado = 'activo';
+    constructor(pId, pNombre, pNumero, pExpiracion, pCvv, pEstado){
+       this.id = pId;
+       this.nombre = pNombre;
+       this.numero = pNumero;
+       this.expiracion = pExpiracion;
+       this.cvv = pCvv; 
+       this.estado = pEstado || 'activo';
     }
 
     obtenerInfoTarjeta() {
