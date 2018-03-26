@@ -143,7 +143,7 @@
             let listaUsuarios = _getUsuarios();
 
             for (let i = 0; i < listaUsuarios.length; i++) {
-                if (pUsuario.cedula == listaUsuarios[i].cedula) {
+                if (pUsuario.correo == listaUsuarios[i].correo) {
                     listaUsuarios[i] = pUsuario;
                 }
             }
