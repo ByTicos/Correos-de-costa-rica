@@ -682,7 +682,6 @@
         controller: 'controladorListarRepartidores',
         controllerAs: 'vm',
       })
-
       .state('main.registrarPaquetesConvenio', {
         url: '/registrarPaquetesConvenio',
         templateUrl: './components/paquetesConvenio/registrarPaquetesConvenio/registrarPaquetesConvenio.view.html',
@@ -700,7 +699,6 @@
         controller: 'controladorRegistrarPaquetesConvenio',
         controllerAs: 'vm'
       })
-
       .state('main.listarPaquetesConvenio', {
         url: '/listarPaquetesConvenio',
         templateUrl: './components/paquetesConvenio/listarPaquetesConvenio/listarPaquetesConvenio.view.html',

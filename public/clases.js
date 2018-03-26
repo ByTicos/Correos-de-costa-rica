@@ -170,7 +170,6 @@ class Tarjeta {
         this.estado = pEstado;
     }
 }
-
 class PaqueteConv{
     constructor(pCliente, pConvenio, pFecha){
         this.cliente = pCliente;
