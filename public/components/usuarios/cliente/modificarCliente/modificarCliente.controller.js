@@ -54,36 +54,50 @@
 
     vm.modificarCliente = {};
 
-    let objClienteAModificar = JSON.parse($stateParams.objClienteTemp);
+    vm.objNuevoCliente = {};
 
-    let objNuevoCliente = new Usuario(objClienteAModificar.cedula, objClienteAModificar.foto, objClienteAModificar.primerNombre, objClienteAModificar.segundoNombre, objClienteAModificar.primerApellido, objClienteAModificar.segundoApellido, objClienteAModificar.correo, objClienteAModificar.telefono, objClienteAModificar.fechaNacimiento, objClienteAModificar.provincia, objClienteAModificar.canton, objClienteAModificar.distrito, objClienteAModificar.direccionExacta, 'cliente');
+    if(servicioUsuarios.getRol() == '1') {
+      let sesion = JSON.parse(sessionStorage.getItem('sesion'));
+      let listaUsuarios = servicioUsuarios.getUsuarios();
+      for (let i = 0; i < listaUsuarios.length; i++) {
+        if(listaUsuarios[i].correo == sesion.correo){
+          vm.objNuevoCliente = new Usuario(listaUsuarios[i].cedula, listaUsuarios[i].foto, listaUsuarios[i].primerNombre, listaUsuarios[i].segundoNombre, listaUsuarios[i].primerApellido, listaUsuarios[i].segundoApellido, listaUsuarios[i].correo, listaUsuarios[i].telefono, listaUsuarios[i].fechaNacimiento, listaUsuarios[i].provincia, listaUsuarios[i].canton, listaUsuarios[i].distrito, listaUsuarios[i].direccionExacta, '1'); 
+        }
 
+      }
+    }
+    else {
+      let objClienteAModificar = JSON.parse($stateParams.objClienteTemp);
+      vm.objNuevoCliente = new Usuario(objClienteAModificar.cedula, objClienteAModificar.foto, objClienteAModificar.primerNombre, objClienteAModificar.segundoNombre, objClienteAModificar.primerApellido, objClienteAModificar.segundoApellido, objClienteAModificar.correo, objClienteAModificar.telefono, objClienteAModificar.fechaNacimiento, objClienteAModificar.provincia, objClienteAModificar.canton, objClienteAModificar.distrito, objClienteAModificar.direccionExacta, '1');
+    }
 
-    vm.modificarCliente.cedula = objNuevoCliente.cedula;
-    vm.modificarCliente.foto = objNuevoCliente.foto;
-    vm.modificarCliente.primerNombre = objNuevoCliente.primerNombre;
-    vm.modificarCliente.segundoNombre = objNuevoCliente.segundoNombre;
-    vm.modificarCliente.primerApellido = objNuevoCliente.primerApellido;
-    vm.modificarCliente.segundoApellido = objNuevoCliente.segundoApellido;
-    vm.modificarCliente.correo = objNuevoCliente.correo;
-    vm.modificarCliente.telefono = objNuevoCliente.telefono;
-    vm.modificarCliente.fechaNacimiento = new Date(objNuevoCliente.fechaNacimiento);
-    vm.modificarCliente.provincia = objNuevoCliente.provincia;
-    vm.modificarCliente.canton = objNuevoCliente.canton;
-    vm.modificarCliente.distrito = objNuevoCliente.distrito;
-    vm.modificarCliente.direccionExacta = objNuevoCliente.direccionExacta;
+      vm.modificarCliente.cedula = vm.objNuevoCliente.cedula;
+      vm.modificarCliente.foto = vm.objNuevoCliente.foto;
+      vm.modificarCliente.primerNombre = vm.objNuevoCliente.primerNombre;
+      vm.modificarCliente.segundoNombre = vm.objNuevoCliente.segundoNombre;
+      vm.modificarCliente.primerApellido = vm.objNuevoCliente.primerApellido;
+      vm.modificarCliente.segundoApellido = vm.objNuevoCliente.segundoApellido;
+      vm.modificarCliente.correo = vm.objNuevoCliente.correo;
+      vm.modificarCliente.telefono = vm.objNuevoCliente.telefono;
+      vm.modificarCliente.fechaNacimiento = new Date(vm.objNuevoCliente.fechaNacimiento);
+      vm.modificarCliente.provincia = vm.objNuevoCliente.provincia;
+      vm.modificarCliente.canton = vm.objNuevoCliente.canton;
+      vm.modificarCliente.distrito = vm.objNuevoCliente.distrito;
+      vm.modificarCliente.direccionExacta = vm.objNuevoCliente.direccionExacta;
+    
+
+    
 
     vm.modifCliente = (pUsuario) => {
       let listaUsuarios = servicioUsuarios.getUsuarios();
 
       listaUsuarios.forEach(objUsuario => {
-        if (objUsuario.cedula == objNuevoCliente.cedula) {
+        if (objUsuario.correo == vm.objNuevoCliente.correo) {
           objUsuario.foto = pUsuario.foto;
           objUsuario.primerNombre = pUsuario.primerNombre;
           objUsuario.segundoNombre = pUsuario.segundoNombre;
           objUsuario.primerApellido = pUsuario.primerApellido;
           objUsuario.segundoApellido = pUsuario.segundoApellido;
-          objUsuario.correo = pUsuario.correo;
           objUsuario.telefono = pUsuario.telefono;
           objUsuario.fechaNacimiento = pUsuario.fechaNacimiento;
           objUsuario.provincia = pUsuario.provincia;
