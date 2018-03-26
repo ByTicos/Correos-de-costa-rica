@@ -92,7 +92,7 @@
 
     vm.registrarCliente = (pNuevoUsuario/*, imgUrl*/) => {
 
-      let objNuevoCliente = new Usuario(pNuevoUsuario.cedula, 'imgUrl', pNuevoUsuario.primerNombre, pNuevoUsuario.segundoNombre, pNuevoUsuario.primerApellido, pNuevoUsuario.segundoApellido, pNuevoUsuario.correo, pNuevoUsuario.telefono, pNuevoUsuario.fechaNacimiento, pNuevoUsuario.provincia, pNuevoUsuario.canton, pNuevoUsuario.distrito, pNuevoUsuario.direccionExacta, '1');
+      let objNuevoCliente = new Usuario(pNuevoUsuario.cedula, 'imgUrl', pNuevoUsuario.primerNombre, pNuevoUsuario.segundoNombre, pNuevoUsuario.primerApellido, pNuevoUsuario.segundoApellido, pNuevoUsuario.correo, pNuevoUsuario.telefono, pNuevoUsuario.fechaNacimiento, pNuevoUsuario.provincia, pNuevoUsuario.canton, pNuevoUsuario.distrito, pNuevoUsuario.direccionExacta, pNuevoUsuario.contrasenna, '1' );
 
       let registro = servicioUsuarios.addUsuario(objNuevoCliente);
 
