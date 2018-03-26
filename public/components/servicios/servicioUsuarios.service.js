@@ -235,7 +235,7 @@
             }
 
         function _getRol() {
-            let session = JSON.parse(sessionStorage.getItem ('sesion'));
+            let session = JSON.parse(sessionStorage.getItem('sesion'));
             let rol = session.tipo;
             return rol;
         }
