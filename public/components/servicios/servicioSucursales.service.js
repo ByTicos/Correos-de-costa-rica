@@ -40,7 +40,7 @@
             listaSucursal = [];
         }else{
             listaSucursalLocal.forEach(obj => {
-                let objSucursal = new Sucursal (obj.id, obj.nombre, obj.provincia, obj.canton, obj.distrito, obj.telefono, obj.horario);
+                let objSucursal = new Sucursal (obj.id, obj.nombre, obj.provincia, obj.canton, obj.distrito, obj.telefono, obj.horario, obj.estado);
 
                 listaSucursal.push(objSucursal);
             });

@@ -11,7 +11,7 @@
     let vm = this;
   
     vm.editarTarjeta = {};
-  
+    
     let objTarjetaAEditar = JSON.parse($stateParams.objTarjetaTemp);
     
   

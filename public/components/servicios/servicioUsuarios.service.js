@@ -71,7 +71,7 @@
 
 
                     objUsuario.listaTarjetas.forEach(objTarjeta => {
-                        let objTarjetaTemp = new Tarjeta(objTarjeta.id, objTarjeta.nombre, objTarjeta.numero, objTarjeta.expiracion, objTarjeta.cvv);
+                        let objTarjetaTemp = new Tarjeta(objTarjeta.id, objTarjeta.nombre, objTarjeta.numero, objTarjeta.expiracion, objTarjeta.cvv, objTarjeta.estado);
 
                         objUsuarioTemp.registrarTarjeta(objTarjetaTemp);
                     });
@@ -81,7 +81,7 @@
 
                         let listaEstados = objPaquete.listaEstados;
 
-                        objTarjetaTemp.cambiarEstadoDeActividadTarjeta(objTarjeta.estado);
+                        // objTarjetaTemp.cambiarEstadoDeActividadTarjeta(objTarjeta.estado);
 
                         listaEstados.forEach(objEstado => {
                             let fecha = new Date(objEstado.fecha);
@@ -100,6 +100,7 @@
                 });
 
             };
+            console.log('listaUsuarios',listaUsuarios);
             return listaUsuarios;
         };
         
@@ -223,15 +224,10 @@
             };
 
         function _getRol() {
-            let session = JSON.parse(sessionStorage.getItem ('sesion'));
+            let session = JSON.parse(sessionStorage.getItem('sesion'));
             let rol = session.tipo;
             return rol;
-            function _getRol() {
-                let session = JSON.parse(sessionStorage.getItem ('sesion'));
-                let rol = session.tipo;
-                return rol;
-            }
-        };
+        }
 
 
         function _addTarjeta (pNuevaTarjeta) {

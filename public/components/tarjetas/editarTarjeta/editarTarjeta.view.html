@@ -1,9 +1,8 @@
 <div navegacion-Principal></div>
 <div menu-Lateral></div>
 <section id="dashboard">
-
-                <h1>Ingrese su tarjeta</h1>
-           
+<div class="col-4">
+    <h1>Ingrese su tarjeta</h1>
             <div class="payment">
                 <form ng-submit="vm.editTarjeta(vm.editarTarjeta)">
                   
@@ -21,7 +20,7 @@
                         <input type="text" class="form-control" id="cvv" ng-model="vm.editarTarjeta.cvv" required>
                     </div>
                     <div class="form-group" id="card-number-field">
-                        <label for="cardNumber">Numero de Tarjeta</label>
+                        <label for="cardNumber" ng-change="vm.getType()">Numero de Tarjeta</label>
                         <input type="text" class="form-control" id="cardNumber" ng-model="vm.editarTarjeta.numero" required>
                     </div>
                     <div class="form-group" id="expiration-date">
@@ -61,15 +60,18 @@
                         <img src="../../sources/images/discover.jpg" id="discover">
                     </div>
                     <div class="form-group" id="">
-                        <button type="submit" class="btn btn-default" id="" ng-click="verificar()">Editar </button>
+                        <button type="submit" class="btn btn-default" id="" ng-click="verificar()"><img src="../../sources/images/edit.png"></button>
                     </div>
 
-                    <div class="col-md-6">
-                        <button type="button" ng-click="vm.cambiarEstadoTarjeta('inactivo')">Desactivar</button>
-                      </div>
-                      <div class="col-md-6">
-                        <button type="button" ng-click="vm.cambiarEstadoTarjeta('activo')">Activar</button>
-                      </div>
+                
                 </form>
             </div>
-        </section>
+        
+        </div> 
+        <div class="col-md-6">
+                <button type="button" ng-click="vm.cambiarEstadoTarjeta('inactivo')"><img src="../../sources/images/desactivar.png"></button>
+              </div>
+              <div class="col-md-6">
+                <button type="button" ng-click="vm.cambiarEstadoTarjeta('activo')"><img src="../../sources/images/activar.png"></button>
+              </div>
+    </section>

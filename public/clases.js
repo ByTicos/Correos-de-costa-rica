@@ -135,7 +135,7 @@ class Licencia{
     } 
 }
 class Sucursal {
-    constructor(pId, pNombre, pProvincia, pCanton, pDistrito, pTelefono, pHorario){
+    constructor(pId, pNombre, pProvincia, pCanton, pDistrito, pTelefono, pHorario, pEstado){
        this.id = pId;
        this.nombre = pNombre;
        this.provincia = pProvincia;
@@ -143,7 +143,7 @@ class Sucursal {
        this.distrito = pDistrito;
        this.telefono = pTelefono;
        this.horario = pHorario;
-       this.estado = 'activo';
+       this.estado = pEstado || 'activo';
     }
 
     cambiarEstadoDeActividadSucursal(pEstado){
@@ -152,13 +152,13 @@ class Sucursal {
 }
 
 class Tarjeta {
-    constructor(pId, pNombre, pNumero, pExpiracion, pCvv){
+    constructor(pId, pNombre, pNumero, pExpiracion, pCvv, pEstado){
        this.id = pId;
        this.nombre = pNombre;
        this.numero = pNumero;
        this.expiracion = pExpiracion;
        this.cvv = pCvv; 
-       this.estado = 'activo';
+       this.estado = pEstado || 'activo';
     }
 
     obtenerInfoTarjeta(){

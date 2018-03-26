@@ -9,6 +9,22 @@
     function controladorTarjetas($state, $scope, $location, servicioUsuarios) {
       let vm = this;
 
+      // cardNumber
+
+      // Format input for card number entry
+      var input = document.getElementById('cardNumber');
+      console.log('input',input);
+      payform.cardNumberInput(input)
+      console.log('input',input); 
+      // Get card type from number
+      payform.parseCardType('4242 4242 4242 4242'); //=> 'visa'
+      
+
+      vm.getType = () => {
+        console.log(payform.parseCardType(vm.nuevaTarjeta.numero));
+      }
+
+
 
       vm.listaTarjeta = () => {
         $state.go('main.listartarjetas');
