@@ -21,14 +21,14 @@ class Usuario{
         this.listaLicencias = pLicencia || [] ;
         this.estado = 'activo';
         // this.paqueteAsignado = 
-        this.tarjeta = pTarjeta || [];
+        this.listaTarjetas = pTarjeta || [];
     } 
     cambiarEstado(pEstado){
         this.estado = pEstado;
     }
 
     registrarTarjeta(pTarjeta){
-        this.tarjeta.push(pTarjeta);
+        this.listaTarjetas.push(pTarjeta);
       }
     getListaPaquetes(){
         return this.listaPaquetes;
@@ -45,7 +45,10 @@ class Usuario{
       return this.listaLicencias
   }
   obtenerTarjeta(){
-      return this.tarjeta;
+      return this.listaTarjetas;
+  }
+  obtenerCedula(){
+      return this.cedula;
   }
 }
 

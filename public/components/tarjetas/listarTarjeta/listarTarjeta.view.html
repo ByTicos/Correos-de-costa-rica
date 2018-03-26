@@ -8,19 +8,47 @@
           <th>Numero</th>
           <th>Expiracion</th>
           <th>Cvv</th>
+          <th>estado</th>          
         </tr>
       </thead>
       <tbody>
-        <tr ng-repeat="tarjeta in vm.listaTarjeta">
+        <tr ng-repeat="tarjeta in vm.listaTarjeta" ng-if="tarjeta.estado === 'activo'">
           <td>{{tarjeta.id}}</td>
           <td>{{tarjeta.nombre}}</td>
           <td>{{tarjeta.numero}}</td>
           <td>{{tarjeta.expiracion}}</td>
           <td>{{tarjeta.cvv}}</td>
-          <td><button type="button" ng-click="editTarjeta(tarjeta)"> <img src="../../sources/images/edit.png"></button></td>
+          <td>{{tarjeta.estado}}</td>
+          <td><button type="button" ng-click="vm.editTarjeta(tarjeta)"> <img src="../../sources/images/edit.png"></button></td>
         </tr>
       </tbody>
     </table>
+
+    <h1>Tarjetas desactivadas</h1>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nombre</th>
+          <th>Numero</th>
+          <th>Expiracion</th>
+          <th>Cvv</th>
+          <th>estado</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr ng-repeat="tarjeta in vm.listaTarjeta" ng-if="tarjeta.estado === 'inactivo'">
+          <td>{{tarjeta.id}}</td>
+          <td>{{tarjeta.nombre}}</td>
+          <td>{{tarjeta.numero}}</td>
+          <td>{{tarjeta.expiracion}}</td>
+          <td>{{tarjeta.cvv}}</td>
+          <td>{{tarjeta.estado}}</td>
+          <td><button type="button" ng-click="vm.editTarjeta(tarjeta)"> <img src="../../sources/images/edit.png"></button></td>
+        </tr>
+      </tbody>
+    </table>
+    
 </section>   
 
 

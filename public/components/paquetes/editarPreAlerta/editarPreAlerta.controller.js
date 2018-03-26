@@ -45,6 +45,7 @@ function controladorEditarPreAlerta($http,$state, $stateParams, $location, servi
       servicioUsuarios.actualizarPaquete(objPaquetes);
     });
     $state.go('main.paquete');
+    
   };
 
 

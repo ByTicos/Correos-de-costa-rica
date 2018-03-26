@@ -13,8 +13,7 @@
         addSucursal: _addSucursal,
         getSucursal: _getSucursal,
         actualizarSucursal: _actualizarSucursal,
-        listarSucursalesJson : _listarSucursalesJson,
-        actualizarSucursalLocal: _actualizarSucursalLocal
+        listarSucursalesJson : _listarSucursalesJson
         
             }
     return publicAPI
@@ -112,7 +111,7 @@
         actualizarSucursalLocal(listaSucursal);
     };
 
-    function _actualizarSucursalLocal(plistaActualizadaSucursal) {
+    function actualizarSucursalLocal(plistaActualizadaSucursal) {
         
         localStorage.setItem('sucursalLS', JSON.stringify(plistaActualizadaSucursal));
     }

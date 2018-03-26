@@ -4,9 +4,9 @@
       .module('correos')
       .controller('controladorTarjetas', controladorTarjetas);
   
-      controladorTarjetas.$inject = ['$state','$scope','servicioUsuarios']
+      controladorTarjetas.$inject = ['$state','$scope','$location', 'servicioUsuarios']
   
-    function controladorTarjetas($state, $scope,servicioUsuarios) {
+    function controladorTarjetas($state, $scope, $location, servicioUsuarios) {
       let vm = this;
 
 
@@ -36,13 +36,15 @@
             }
         } 
         
-        getRandom();
+        let idRandom = getRandom();
         console.log(getRandom());
         vm.pnuevaTarjeta = {};
 
 
 
         vm.registrarTarjeta = (pnuevaTarjeta) => {
+
+          
           let session = JSON.parse(sessionStorage.getItem('sesion'));
           let usuario = session.nombre;
 
@@ -50,9 +52,9 @@
           let year = $( "#year option:selected" ).val();
           let expiracion = mes + '/' + year;  
           
-          let objnuevaTarjeta = new Tarjeta(pnuevaTarjeta.id, pnuevaTarjeta.nombre, pnuevaTarjeta.numero, expiracion, pnuevaTarjeta.cvv);
+          let objnuevaTarjeta = new Tarjeta(idRandom, pnuevaTarjeta.nombre, pnuevaTarjeta.numero, expiracion, pnuevaTarjeta.cvv);
 
-          let registro = servicioUsuarios.addPaquete(objnuevaTarjeta);
+          let registro = servicioUsuarios.addTarjeta(objnuevaTarjeta);
 
           if (registro == true) {
             swal("Registro exitoso", "Tarjeta registrada con exito", "success", {

@@ -82,7 +82,7 @@
         }
         servicioSucursales.actualizarSucursal(objSucursal);
       });
-      $state.go('main.tarjetas');
+      $state.go('main.sucursales');
 
     }
 
@@ -107,12 +107,12 @@
       swal("Edición exitosa", "Sucursal Editada correctamente", "success", {
         button: "Aceptar",
       });
-      $state.go('listarsucursales')
+      $state.go('main.listarsucursales')
     }
 
 
     vm.volver = () => {
-      $state.go('listarsucursales');
+      $state.go('main.listarsucursales');
 
     };
 
