@@ -21,7 +21,7 @@
           <td>{{paquete.distribuidor}}</td>
           <td>{{paquete.precio}}</td>
           <td>{{paquete.peso}}</td>
-          <td>{{paquete.tipoArticulo}}</td>
+          <td>{{paquete.tipoArticulo.name}}</td>
           <td>{{paquete.descripcion}}</td>
           <td>{{paquete.estadoTraslado}}</td>
           <td><button class="btn " type="button" ng-click="vm.cambiarEstadoTraslado1(paquete)"><img src="../../sources/images/actualizar.png"><small>Recibido En Aduana</small> </button></td>
@@ -52,7 +52,7 @@
           <td>{{paquete.distribuidor}}</td>
           <td>{{paquete.precio}}</td>
           <td>{{paquete.peso}}</td>
-          <td>{{paquete.tipoArticulo}}</td>
+          <td>{{paquete.tipoArticulo.name}}</td>
           <td>{{paquete.descripcion}}</td>
           <td>{{paquete.estadoTraslado}}</td>
           <td><button class="btn-light" type="button" ng-click="vm.cambiarEstadoTraslado2(paquete)"><img src="../../sources/images/actualizar.png"><small>En transito a centro de distribución</small> </button></td>
@@ -81,7 +81,7 @@
           <td>{{paquete.distribuidor}}</td>
           <td>{{paquete.precio}}</td>
           <td>{{paquete.peso}}</td>
-          <td>{{paquete.tipoArticulo}}</td>
+          <td>{{paquete.tipoArticulo.name}}</td>
           <td>{{paquete.descripcion}}</td>
           <td>{{paquete.estadoTraslado}}</td>
           
