@@ -36,7 +36,8 @@
             actualizarTarjeta: _actualizarTarjeta,
             addPaqueteConvenio:_addPaqueteConvenio,
             getPaquetesConvenio:_getPaquetesConvenio,
-            getUsuarioActivo:_getUsuarioActivo
+            getUsuarioActivo:_getUsuarioActivo,
+            solicitarEnvioPaqueteConvenio:_solicitarEnvioPaqueteConvenio
             }
         return publicAPI
 
@@ -84,6 +85,7 @@
 
                     objUsuario.listaPaquetesConvenios.forEach(objPaqueteConv => {
                         let objPaqueteConvTemp = new PaqueteConv(objPaqueteConv.cliente, objPaqueteConv.convenio, new Date(objPaqueteConv.fecha));
+                        objPaqueteConvTemp.cambiarEstadoTraslado(objPaqueteConv.estadoTraslado);
 
                         objUsuarioTemp.agregarPaqueteConvenio(objPaqueteConvTemp);
                     });
@@ -143,6 +145,25 @@
             }
             return listaPaquetesConvenios;
         };
+
+        function _solicitarEnvioPaqueteConvenio(pPaquete) {
+            let listaUsuarios = _getUsuarios();
+            let sesion = JSON.parse(sessionStorage.getItem('sesion'));
+            let usuario = {};
+            for (let i = 0; i < listaUsuarios.length; i++) {
+                if (listaUsuarios[i].correo = sesion.correo) {
+                    for (let j = 0; j < listaUsuarios[i].listaPaquetesConvenios.length; j++) {
+                        if (listaUsuarios[i].listaPaquetesConvenios[j].cliente == pPaquete.cliente && listaUsuarios[i].listaPaquetesConvenios[j].convenio == pPaquete.convenio) {
+                            listaUsuarios[i].listaPaquetesConvenios[j].cambiarEstadoTraslado('En proceso de envio');
+                            usuario = listaUsuarios[i];
+                        }
+                    }
+
+                }
+            }
+            _actualizarUsuario(usuario);
+        }
+        
         
         function _actualizarUsuario(pUsuario) {
             let listaUsuarios = _getUsuarios();

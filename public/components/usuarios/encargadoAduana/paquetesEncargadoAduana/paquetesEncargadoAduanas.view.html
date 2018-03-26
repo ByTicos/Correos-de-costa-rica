@@ -21,10 +21,10 @@
           <td>{{paquete.distribuidor}}</td>
           <td>{{paquete.precio}}</td>
           <td>{{paquete.peso}}</td>
-          <td>{{paquete.tipoArticulo}}</td>
+          <td>{{paquete.tipoArticulo.name}}</td>
           <td>{{paquete.descripcion}}</td>
           <td>{{paquete.estadoTraslado}}</td>
-          <td><button class="btn " type="button" ng-click="vm.cambiarEstadoTraslado1(paquete)"><img src="../../sources/images/actualizar.png"><small>Recibido En Aduana</small> </button></td>
+          <td><button class="btn" type="button" ng-click="vm.cambiarEstadoTraslado1(paquete)"><img src="../../sources/images/actualizar.png"><small>Recibido En Aduana</small> </button></td>
         </tr>
       </tbody>
     
@@ -40,7 +40,7 @@
         <th>Distribuidor</th>
         <th>Precio</th>
         <th>Peso</th>
-        <th>Tipo de articulo</th>
+        <th>Tipo de artículo</th>
         <th>Descripción</th>
         <th>Estado</th>
         <th>Pasar Estado</th>
@@ -52,10 +52,10 @@
           <td>{{paquete.distribuidor}}</td>
           <td>{{paquete.precio}}</td>
           <td>{{paquete.peso}}</td>
-          <td>{{paquete.tipoArticulo}}</td>
+          <td>{{paquete.tipoArticulo.name}}</td>
           <td>{{paquete.descripcion}}</td>
           <td>{{paquete.estadoTraslado}}</td>
-          <td><button class="btn-light" type="button" ng-click="vm.cambiarEstadoTraslado2(paquete)"><img src="../../sources/images/actualizar.png"><small>En transito a centro de distribución</small> </button></td>
+          <td><button class="btn" type="button" ng-click="vm.cambiarEstadoTraslado2(paquete)"><img src="../../sources/images/actualizar.png"><small>En tránsito a centro de distribución</small> </button></td>
         </tr>
       </tbody>
     
@@ -81,7 +81,7 @@
           <td>{{paquete.distribuidor}}</td>
           <td>{{paquete.precio}}</td>
           <td>{{paquete.peso}}</td>
-          <td>{{paquete.tipoArticulo}}</td>
+          <td>{{paquete.tipoArticulo.name}}</td>
           <td>{{paquete.descripcion}}</td>
           <td>{{paquete.estadoTraslado}}</td>
           

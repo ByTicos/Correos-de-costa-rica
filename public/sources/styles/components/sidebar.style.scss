@@ -1,4 +1,5 @@
 #sidebar{
+   font-size: 18px; 
 
   .sidenav {
     height: 100%;
@@ -15,18 +16,25 @@
 
 }
 
+.sidenav label {
+    font-size: 18px;
+    color: #052753;
+}
 
 
 .sidenav a {
-    padding: 6px 6px 6px 32px;
+    padding: 4px 4px 4px 8px;
     text-decoration: none;
-    font-size: 18px;
+    font-size: 14px;
     color: #052753;
     display: block;
+
 }
 
 .sidenav a:hover {
-    color: #f1f1f4;
+    color: #093035;
+    text-shadow: 0.5px 0.5px rgb(248, 248, 248);
+    
 }
 
 @media screen and (max-height: 450px) {
