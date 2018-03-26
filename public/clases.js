@@ -1,5 +1,5 @@
 class Usuario {
-    constructor(pCedula, pFoto, pPrimerNombre, pSegundoNombre, pPrimerApellido, pSegundoApellido, pEmail, pTelefono, pfechaNacimiento, pProvincia, pCanton, pDistrito, pDireccionExacta, pTipo, pSucursalAsignada, pPuesto, pVehiculo, pLicencia, pVencimientoLicencia, pTarjeta) {
+    constructor(pCedula, pFoto, pPrimerNombre, pSegundoNombre, pPrimerApellido, pSegundoApellido, pEmail, pTelefono, pfechaNacimiento, pProvincia, pCanton, pDistrito, pDireccionExacta, pContrasenna,pTipo, pSucursalAsignada, pPuesto, pVehiculo, pLicencia, pVencimientoLicencia, pTarjeta) {
         this.cedula = pCedula;
         this.foto = pFoto;
         this.primerNombre = pPrimerNombre;
@@ -21,15 +21,16 @@ class Usuario {
         this.listaLicencias = pLicencia || [];
         this.estado = 'activo';
         // this.paqueteAsignado = 
-        this.tarjeta = pTarjeta || [];
+        this.listaTarjetas = pTarjeta || [];
         this.listaPaquetesConvenios = [];
+        this.contrasenna = pContrasenna;
     }
     cambiarEstado(pEstado) {
         this.estado = pEstado;
     }
 
     registrarTarjeta(pTarjeta) {
-        this.tarjeta.push(pTarjeta);
+        this.listaTarjetas.push(pTarjeta);
     }
     getListaPaquetes() {
         return this.listaPaquetes;

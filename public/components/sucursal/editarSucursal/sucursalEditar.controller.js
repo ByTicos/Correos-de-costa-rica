@@ -85,6 +85,7 @@
       $state.go('main.sucursales');
 
     }
+  
 
 
     vm.editSucursal = (pSucursal) => {
@@ -101,8 +102,8 @@
           objSucursal.horario = pSucursal.horario;
 
           servicioSucursales.actualizarSucursal(objSucursal);
-
         }
+
       });
       swal("Edición exitosa", "Sucursal Editada correctamente", "success", {
         button: "Aceptar",

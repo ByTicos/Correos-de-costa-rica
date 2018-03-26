@@ -20,11 +20,12 @@
       let incioExitoso = false;
 
       for(let i = 0; i<listaUsuarios.length; i++){
-        if(listaUsuarios[i].correo == pCredenciales.correo){
+        if(listaUsuarios[i].correo == pCredenciales.correo && listaUsuarios[i].contrasenna == pCredenciales.contrasenna){
           servicioSesion.crear(
             {
               nombre: listaUsuarios[i].primerNombre,
               correo: listaUsuarios[i].correo,
+              contrasenna: listaUsuarios[i].contrasenna,
               tipo: listaUsuarios[i].tipo,
               sucursalAsignada: listaUsuarios[i].sucursalAsignada
             }

@@ -9,13 +9,23 @@
   
   function controladorEditarTarjetas($http,$state, $stateParams, $location, servicioUsuarios) {
     let vm = this;
-  
+
+     // Format input for card number entry
+    var input = document.getElementById('cardNumber');
+    payform.cardNumberInput(input);
+ 
+     
+
+    vm.getType = () => {
+       console.log(payform.parseCardType(vm.editarTarjeta.numero));
+    }
+    
     vm.editarTarjeta = {};
     
     let objTarjetaAEditar = JSON.parse($stateParams.objTarjetaTemp);
     
   
-    let objNuevaTarjeta = new Tarjeta(objTarjetaAEditar.id,objTarjetaAEditar.nombre, objTarjetaAEditar.numero, objTarjetaAEditar.expiracion, objTarjetaAEditar.cvv,);
+    let objNuevaTarjeta = new Tarjeta(objTarjetaAEditar.id,objTarjetaAEditar.nombre, objTarjetaAEditar.numero, objTarjetaAEditar.expiracion, objTarjetaAEditar.cvv);
   
     vm.editarTarjeta.id = objNuevaTarjeta.id;
     vm.editarTarjeta.nombre = objNuevaTarjeta.nombre;

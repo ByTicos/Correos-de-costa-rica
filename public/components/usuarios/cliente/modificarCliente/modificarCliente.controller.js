@@ -61,14 +61,14 @@
       let listaUsuarios = servicioUsuarios.getUsuarios();
       for (let i = 0; i < listaUsuarios.length; i++) {
         if(listaUsuarios[i].correo == sesion.correo){
-          vm.objNuevoCliente = new Usuario(listaUsuarios[i].cedula, listaUsuarios[i].foto, listaUsuarios[i].primerNombre, listaUsuarios[i].segundoNombre, listaUsuarios[i].primerApellido, listaUsuarios[i].segundoApellido, listaUsuarios[i].correo, listaUsuarios[i].telefono, listaUsuarios[i].fechaNacimiento, listaUsuarios[i].provincia, listaUsuarios[i].canton, listaUsuarios[i].distrito, listaUsuarios[i].direccionExacta, '1'); 
+          vm.objNuevoCliente = new Usuario(listaUsuarios[i].cedula, listaUsuarios[i].foto, listaUsuarios[i].primerNombre, listaUsuarios[i].segundoNombre, listaUsuarios[i].primerApellido, listaUsuarios[i].segundoApellido, listaUsuarios[i].correo, listaUsuarios[i].telefono, listaUsuarios[i].fechaNacimiento, listaUsuarios[i].provincia, listaUsuarios[i].canton, listaUsuarios[i].distrito, listaUsuarios[i].direccionExacta, listaUsuarios[i].contrasenna, '1'); 
         }
 
       }
     }
     else {
       let objClienteAModificar = JSON.parse($stateParams.objClienteTemp);
-      vm.objNuevoCliente = new Usuario(objClienteAModificar.cedula, objClienteAModificar.foto, objClienteAModificar.primerNombre, objClienteAModificar.segundoNombre, objClienteAModificar.primerApellido, objClienteAModificar.segundoApellido, objClienteAModificar.correo, objClienteAModificar.telefono, objClienteAModificar.fechaNacimiento, objClienteAModificar.provincia, objClienteAModificar.canton, objClienteAModificar.distrito, objClienteAModificar.direccionExacta, '1');
+      vm.objNuevoCliente = new Usuario(objClienteAModificar.cedula, objClienteAModificar.foto, objClienteAModificar.primerNombre, objClienteAModificar.segundoNombre, objClienteAModificar.primerApellido, objClienteAModificar.segundoApellido, objClienteAModificar.correo, objClienteAModificar.telefono, objClienteAModificar.fechaNacimiento, objClienteAModificar.provincia, objClienteAModificar.canton, objClienteAModificar.distrito, objClienteAModificar.direccionExacta, objClienteAModificar.contrasenna, '1');
     }
 
       vm.modificarCliente.cedula = vm.objNuevoCliente.cedula;

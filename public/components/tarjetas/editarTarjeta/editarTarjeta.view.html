@@ -20,8 +20,8 @@
                         <input type="text" class="form-control" id="cvv" ng-model="vm.editarTarjeta.cvv" required>
                     </div>
                     <div class="form-group" id="card-number-field">
-                        <label for="cardNumber" ng-change="vm.getType()">Numero de Tarjeta</label>
-                        <input type="text" class="form-control" id="cardNumber" ng-model="vm.editarTarjeta.numero" required>
+                        <label for="cardNumber">Numero de Tarjeta</label>
+                        <input type="text" class="form-control" id="cardNumber" ng-model="vm.editarTarjeta.numero"  ng-change="vm.getType()" required>
                     </div>
                     <div class="form-group" id="expiration-date">
                         <label>Valido Hasta</label>
