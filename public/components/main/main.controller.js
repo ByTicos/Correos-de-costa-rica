@@ -16,6 +16,6 @@
       servicioLogin.cerrarSesion();
 
     }    
-    
+    vm.usuarioActivo = servicioUsuarios.getUsuarioActivo();
   }
 })();

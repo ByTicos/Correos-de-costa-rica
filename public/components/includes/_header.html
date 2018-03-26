@@ -1,12 +1,12 @@
 <header>
-    <nav class="navbar navbar-dark bg-primary navbar-expand-md py-md-2">
+    <nav class="navbar navbar-dark navbar-expand-md py-md-2">
         <a class="navbar-brand" href="#">Correos de Costa Rica</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="navbar-collapse collapse" id="navbarNav">
             <ul class="navbar-nav">
-                <li class="nav-item py-md-2"><a href="#" class="nav-link">BIENVENIDO USUARIO: </a></li>
+                <li class="nav-item py-md-2"><a href="#" class="nav-link">BIENVENIDO USUARIO: {{vm.usuarioActivo}}</a></li>
                 <li class="nav-item py-md-2"><a ui-sref="main.modificarCliente" class="nav-link">Mi Perfil</a></li>
                 <li class="nav-item py-md-2"><a href="#" class="nav-link">Notificaciones</a></li>
                 <li class="nav-item py-md-2" ng-click= "vm.cerrarSesion()"><a ui-sref="logIn" class="nav-link">Cerrar Sesión</a></li>
