@@ -32,8 +32,10 @@
             getTarjeta: _getTarjeta,
             getRol: _getRol,
             getAllPaquetes: _getAllPaquetes,
-            actualizarTarjeta: _actualizarTarjeta
-                }
+            actualizarTarjeta: _actualizarTarjeta,
+            addPaqueteConvenio:_addPaqueteConvenio,
+            getPaquetesConvenio:_getPaquetesConvenio
+            }
         return publicAPI
 
         function _addUsuario(pNuevoUsuario) {
@@ -47,6 +49,8 @@
 
             return respuesta;
         };
+
+        
 
         function _getUsuarios() {
             let listaUsuarios = [];
@@ -76,8 +80,14 @@
                         objUsuarioTemp.registrarTarjeta(objTarjetaTemp);
                     });
 
+                    objUsuario.listaPaquetesConvenios.forEach(objPaqueteConv => {
+                        let objPaqueteConvTemp = new PaqueteConv(objPaqueteConv.cliente, objPaqueteConv.convenio, new Date(objPaqueteConv.fecha));
+
+                        objUsuarioTemp.agregarPaqueteConvenio(objPaqueteConvTemp);
+                    });
+
                     objUsuario.listaPaquetes.forEach(objPaquete => {
-                        let objPaqueteTemp = new Paquete(objPaquete.usuario, objPaquete.tracking, objPaquete.distribuidor, objPaquete.precio, objPaquete.peso, objPaquete.tipoArticulo, objPaquete.descripcion);
+                        let objPaqueteTemp = new Paquete(objPaquete.usuario, objPaquete.tracking, objPaquete.distribuidor, objPaquete.precio,objPaquete.peso, objPaquete.Kilometro,objPaquete.tipoArticulo, objPaquete.descripcion);
 
                         let listaEstados = objPaquete.listaEstados;
 
@@ -103,12 +113,40 @@
             console.log('listaUsuarios',listaUsuarios);
             return listaUsuarios;
         };
+
+        function _addPaqueteConvenio(pNuevoPaquete){
+            let listaUsuarios = _getUsuarios();
+            let usuario = pNuevoPaquete.cliente;
+            let respuesta = true;
+            for (let i = 0; i < listaUsuarios.length; i++) {
+                if (usuario == listaUsuarios[i].correo) {
+                    listaUsuarios[i].agregarPaqueteConvenio(pNuevoPaquete);
+                }
+            }
+            console.log(listaUsuarios);
+            actualizarLocal(listaUsuarios);
+            return respuesta;
+        };
+        function _getPaquetesConvenio() {
+            let listaUsuarios = _getUsuarios();
+            let listaPaquetesConvenios = [];
+            let session = JSON.parse(sessionStorage.getItem('sesion'));
+
+            for (let i = 0; i < listaUsuarios.length; i++) {
+                if (session.correo == listaUsuarios[i].correo) {
+                    if (listaUsuarios[i].listaPaquetesConvenios != null) {
+                        listaPaquetesConvenios = listaUsuarios[i].listaPaquetesConvenios;
+                    }
+                }
+            }
+            return listaPaquetesConvenios;
+        };
         
         function _actualizarUsuario(pUsuario) {
             let listaUsuarios = _getUsuarios();
 
             for (let i = 0; i < listaUsuarios.length; i++) {
-                if (pUsuario.cedula == listaUsuarios[i].cedula) {
+                if (pUsuario.correo == listaUsuarios[i].correo) {
                     listaUsuarios[i] = pUsuario;
                 }
             }
@@ -163,6 +201,23 @@
             }
         }
         return listaPaquetes;
+        }
+
+
+        function _actualizarPaquete(pObjpaquete) {
+            let listaUsuarios = _getUsuarios();
+            let sesion = JSON.parse(sessionStorage.getItem('sesion'));
+            for (let i = 0; i < listaUsuarios.length; i++) {
+                if(listaUsuarios[i].correo == sesion.correo){
+                    for (let j = 0; j < listaUsuarios[i].listaPaquetes.length; j++) {
+                        if (listaUsuarios[i].listaPaquetes[j].tracking == pObjpaquete.tracking) {
+                            listaUsuarios[i].listaPaquetes[j] = pObjpaquete;
+                        }
+                    }
+                }
+            }
+            actualizarLocal(listaUsuarios);
+
         };
 
 
@@ -299,23 +354,5 @@
                 actualizarLocal(listaUsuarios);
             };
 
-        function _actualizarPaquete(pObjpaquete) {
-            let listaUsuarios = _getUsuarios();
-            let sesion = JSON.parse(sessionStorage.getItem('sesion'));
-
-            for (let i = 0; i < listaUsuarios.length; i++) {
-            if(listaUsuarios[i].correo == sesion.correo){
-                for (let j = 0; j < listaUsuarios[i].listaPaquetes.length; j++) {
-                    if (listaUsuarios[i].listaPaquetes[j].tracking == pObjpaquete.tracking) {
-                        listaUsuarios[i].listaPaquetes[j] = pObjpaquete;
-                    }
-                }   
-            }
-
-        }
-        actualizarLocal(listaUsuarios);
-    };
-    
-    
-}
+        };    
 })();

@@ -4,4 +4,5 @@ public/lib
 package-lock.json
 TODO.md
 public/.DS_Store
-*.json
+
+.vscode/launch.json

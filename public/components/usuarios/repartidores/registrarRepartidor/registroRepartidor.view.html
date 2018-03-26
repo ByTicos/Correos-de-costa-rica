@@ -5,12 +5,12 @@
 <div id="dashboard">
 <section  class="container">
     <form action="" class="form-horizontal" ng-submit="vm.registrarRepartidor(vm.nuevoRepartidor)" >
-        <div class="col-sm-6 center">
+        <!-- <div class="col-sm-6 center">
             <div class="form-group">
                 <label for="">Foto</label>
                 <input type="file" class="form-control" ng-model="vm.nuevoRepartidor.foto" >
             </div>
-        </div>
+        </div> -->
 
         <div class="col-sm-6">    
             <div class="form-group">
@@ -62,7 +62,7 @@
                         <option  value="moto">Motocicleta</option>
                         <option  value="camion">Camión</option>
                         <option  value="trailer">Trailer</option>
-                        <option  value="ban">Ban</option>
+                        <option  value="van">Van</option>
                     </select>
             </div>
         
@@ -100,50 +100,7 @@
         
       <button type="submit">Registrar</button>  
     </form>
-  
-  
-    <!-- <table class="table table-responsive">
-      <thead>
-        <tr>
-          <th>Foto</th>
-          <th>Cédula</th>
-          <th>Nombre completo </th>
-          <th>apellidos</th>
-          <th>Correo electrónico</th>
-          <th>Teléfono</th>
-          <th>Fecha de Nacimiento</th>
-          <th>Vehículo</th>
-          <th>Numero de licencia</th>
-          <th>Licencia</th>
-          <th>Vencimiento de licencia</th>
-          <th>Sucursal Asignada</th>
-          
-  
-        </tr>
-      </thead>
-  
-      <tbody>
-        <tr ng-repeat="repartidor in vm.listaRepartidores">
-          <td>{{repartidor.foto}}</td>
-          <td>{{repartidor.cedula}}</td>
-          <td>{{repartidor.primerNombre}} {{repartidor.segundoNombre}}</td>
-          <td>{{repartidor.primerApellido}} {{repartidor.segundoApellido}}</td>
-          <td>{{repartidor.correo}}</td>
-          <td>{{repartidor.telefono}}</td>
-          <td>{{repartidor.fechaNacimiento}}</td>
-          <td>{{repartidor.vehiculo}}</td>
-          <td>{{repartidor.listaLicencias[0].numLicencia}}</td>
-          <td>{{repartidor.listaLicencias[0].tipoLicencia}}</td>
-          <td>{{repartidor.listaLicencias[0].vencimiento}}</td>
-          <td>{{repartidor.sucursalAsignada}}</td>
-          <td><button class="btn buttonall" ng-click="vm.editRepartidor(repartidor)" type="submit">Editar</button></td>
-          
-        </tr>
-      </tbody>
-    </table> -->
 
-
- 
   
   </section>
 

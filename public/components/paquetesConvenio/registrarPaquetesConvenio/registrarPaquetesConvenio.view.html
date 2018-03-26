@@ -1,0 +1,25 @@
+<div navegacion-Principal></div>
+<div menu-Lateral></div>
+<section id="dashboard">
+  <form action="" class="form-horizontal" ng-submit="vm.registrarPaqueteConvenio(vm.nuevoPaqueteConvenio)">
+    <div class="form-group">
+      <label for="sltCliente">Cliente</label>
+      <input list="sltCliente" class="form-control" name="sltCliente" ng-model="vm.nuevoPaqueteConvenio.cliente" required>
+      <datalist id="sltCliente">
+        <option ng-repeat="cliente in vm.listaClientes track by cliente.correo" value="{{cliente.correo}}">{{cliente.nombre}}</option>
+      </datalist>
+    </div>
+    <div class="form-group">
+      <label for="sltConvenio">Convenio</label>
+      <input list="sltConvenio" class="form-control" name="sltConvenio" ng-model="vm.nuevoPaqueteConvenio.convenio" required>
+      <datalist id="sltConvenio">
+        <option ng-repeat="convenio in vm.listaConvenios track by convenio.tipoTramite" value="{{convenio.tipoTramite}}">{{convenio.tipoTramite}}</option>
+      </datalist>
+    </div>
+    <div class="form-group">
+      <label for="">Fecha de recibido</label>
+      <input type="date" class="form-control" ng-model="vm.nuevoPaqueteConvenio.fecha">
+    </div>
+    <button type="submit">Registrar</button>
+  </form>
+</section>
