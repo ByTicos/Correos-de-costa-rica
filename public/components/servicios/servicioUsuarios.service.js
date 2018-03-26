@@ -77,7 +77,7 @@
                     });
 
                     objUsuario.listaPaquetes.forEach(objPaquete => {
-                        let objPaqueteTemp = new Paquete(objPaquete.usuario, objPaquete.tracking, objPaquete.distribuidor, objPaquete.precio,objPaquete.peso, objPaquete.Kilometro, objPaquete.tipoArticulo, objPaquete.descripcion);
+                        let objPaqueteTemp = new Paquete(objPaquete.usuario, objPaquete.tracking, objPaquete.distribuidor, objPaquete.precio,objPaquete.peso, objPaquete.Kilometro,objPaquete.tipoArticulo, objPaquete.descripcion);
 
                         let listaEstados = objPaquete.listaEstados;
 

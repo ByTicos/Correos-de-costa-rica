@@ -32,7 +32,7 @@ function controladorEditarPreAlerta($http,$state, $stateParams, $location, servi
   vm.editarPaquete.distribuidor = objNuevoPaquete.distribuidor;
   vm.editarPaquete.precio = objNuevoPaquete.precio;
   vm.editarPaquete.peso = objNuevoPaquete.peso;
-  objPaqueteAEditar.Kilometro = objNuevoPaquete.kilometro;
+  vm.editarPaquete.Kilometro = objNuevoPaquete.kilometro;
   vm.editarPaquete.tipoArticulo = objNuevoPaquete.tipoArticulo;
   vm.editarPaquete.descripcion = objNuevoPaquete.descripcion;
 
@@ -45,7 +45,20 @@ function controladorEditarPreAlerta($http,$state, $stateParams, $location, servi
       }
       servicioUsuarios.actualizarPaquete(objPaquetes);
     });
-    $state.go('main.paquete');
+
+    if (pEstado == 'activo') {
+      swal(" Activacion exitosa", "Paquete ya esta activado", "success", {
+        button: "Aceptar",
+      });
+    }
+     if (pEstado == 'inactivo') {
+      swal(" Desactivacion exitosa", "Paquete ya esta desactivado", "success", {
+        button: "Aceptar",
+      });
+    }
+
+    
+    $state.go('main.listaPreAlerta');
   };
 
 
@@ -69,7 +82,7 @@ function controladorEditarPreAlerta($http,$state, $stateParams, $location, servi
   swal("Edición exitosa", "Paquete editado correctamente", "success", {
         button: "Aceptar",
       }); 
-$state.go ('main.listaPreAlerta');
+   $state.go ('main.listaPreAlerta');
 
 };
 }
