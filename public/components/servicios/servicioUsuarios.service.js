@@ -88,7 +88,7 @@
                     });
 
                     objUsuario.listaPaquetes.forEach(objPaquete => {
-                        let objPaqueteTemp = new Paquete(objPaquete.usuario, objPaquete.tracking, objPaquete.distribuidor, objPaquete.precio, objPaquete.peso, objPaquete.tipoArticulo, objPaquete.descripcion);
+                        let objPaqueteTemp = new Paquete(objPaquete.usuario, objPaquete.tracking, objPaquete.distribuidor, objPaquete.precio,objPaquete.peso, objPaquete.Kilometro,objPaquete.tipoArticulo, objPaquete.descripcion);
 
                         let listaEstados = objPaquete.listaEstados;
 
@@ -202,7 +202,7 @@
         }
 
 
-        function _actualizarTarjeta(pObjpaquete) {
+        function _actualizarPaquete(pObjpaquete) {
             let listaUsuarios = _getUsuarios();
             let sesion = JSON.parse(sessionStorage.getItem('sesion'));
             for (let i = 0; i < listaUsuarios.length; i++) {
@@ -337,7 +337,7 @@
         };
     };    
 
-        function _actualizarPaquete(pObjTarjeta) {
+        function _actualizarTarjeta(pObjTarjeta) {
             let listaUsuarios = _getUsuarios();
             let sesion = JSON.parse(sessionStorage.getItem('sesion'));
             for (let i = 0; i < listaUsuarios.length; i++) {
