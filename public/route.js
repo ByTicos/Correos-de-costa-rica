@@ -683,7 +683,6 @@
         controllerAs: 'vm',
       })
 
-<<<<<<< HEAD
       .state('main.listarRepartidoresSucursal', {
         url: '/listarRepartidoresSucursal',
         templateUrl: './components/usuarios/encargadoSucursal/listarRepartidoresSucursal/listarRepartidoresSucursal.view.html',
@@ -702,7 +701,6 @@
         controllerAs: 'vm',
       })
 
-=======
         .state('main.paquetesRepartidor', {
           url: '/paquetesRepartidor',
           templateUrl: './components/usuarios/repartidores/paquetesRepartidor/paquetesRepartidor.view.html',
@@ -720,7 +718,6 @@
           controller: 'controladorPaquetesRepartidor',
           controllerAs: 'vm',
         })
->>>>>>> Dev
       
 
 
