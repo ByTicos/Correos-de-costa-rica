@@ -8,7 +8,7 @@
 
       function controladorSucursalListar($http, $state, $scope, $location,$stateParams, servicioSucursales) {
         let vm = this;
-        
+        servicioSucursales.listarSucursalesJson();
         listarSucursales();
         
         vm.editSucursal = (pSucursal) => {

@@ -17,7 +17,8 @@
     vm.listaTarjeta = () => {
       $state.go('main.listartarjetas');
     }
-
+    servicioSucursales.listarSucursalesJson();
+    
     vm.provincias = $http({
       method: 'GET',
       url: './sources/data/provincias.json'
