@@ -11,5 +11,9 @@
 
     vm.listaPaquetesConvenio = servicioUsuarios.getPaquetesConvenio();
     console.log(vm.listaPaquetesConvenio);
+    
+    vm.solicitarEnvio = (pPaquete) =>{
+      servicioUsuarios.solicitarEnvioPaqueteConvenio(pPaquete);
+    }
   }
 })();
