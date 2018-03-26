@@ -17,7 +17,7 @@
 
     let objRepartidorEditable = JSON.parse($stateParams.objRepartidorTemp);
 
-    let objRepartidor = new Usuario(objRepartidorEditable.cedula, objRepartidorEditable.foto, objRepartidorEditable.primerNombre, objRepartidorEditable.segundoNombre, objRepartidorEditable.primerApellido, objRepartidorEditable.segundoApellido, objRepartidorEditable.correo, objRepartidorEditable.telefono, objRepartidorEditable.fechaNacimiento, objRepartidorEditable.provincia, objRepartidorEditable.canton, objRepartidorEditable.distrito, objRepartidorEditable.direccionExacta, '3',objRepartidorEditable.sucursalAsignada,objRepartidorEditable.vehiculo, objRepartidorEditable.licencias);
+    let objRepartidor = new Usuario(objRepartidorEditable.cedula, objRepartidorEditable.foto, objRepartidorEditable.primerNombre, objRepartidorEditable.segundoNombre, objRepartidorEditable.primerApellido, objRepartidorEditable.segundoApellido, objRepartidorEditable.correo, objRepartidorEditable.telefono, objRepartidorEditable.fechaNacimiento, objRepartidorEditable.provincia, objRepartidorEditable.canton, objRepartidorEditable.distrito, objRepartidorEditable.direccionExacta,objRepartidorEditable.contrasenna, '3',objRepartidorEditable.sucursalAsignada,objRepartidorEditable.vehiculo, objRepartidorEditable.licencias);
 
     
 
@@ -35,10 +35,22 @@
     vm.editarRepartidor.canton = objRepartidor.canton;
     vm.editarRepartidor.distrito = objRepartidor.distrito;
     vm.editarRepartidor.direccionExacta = objRepartidor.direccionExacta;
+    vm.editarRepartidor.contrasenna = objRepartidor.contrasenna;
     vm.editarRepartidor.tipo = '';
     vm.editarRepartidor.sucursalAsignada = objRepartidor.sucursalAsignada;
     vm.editarRepartidor.vehiculo = objRepartidor.vehiculo;
     vm.editarRepartidor.licencias = objRepartidor.licencias;
+
+    vm.eliminarUsuario = (pEstado) =>{
+      let listaUsuarios = servicioUsuarios.getUsuarios();
+      listaUsuarios.forEach(objUsuario => {
+        if(objUsuario.correo == objNuevoUsuario.correo){
+          objUsuario.cambiarEstado(pEstado);
+        }
+        servicioUsuarios.actualizarUsuario(objUsuario);
+      });
+      $state.go('main.listarRepartidores');
+    }
 
     vm.editRepartidor = (pUsuario) => {
       let listaUsuarios = servicioUsuarios.getUsuarios();
@@ -57,6 +69,7 @@
           objUsuario.canton = pUsuario.canton;
           objUsuario.distrito = pUsuario.distrito;
           objUsuario.direccionExacta = pUsuario.direccionExacta;
+          objUsuario.contrasenna = pUsuario.contrasenna;
           objUsuario.sucursalAsignada = pUsuario.sucursalAsignada;
           objUsuario.vehiculo = pUsuario.vehiculo;
           objUsuario.licencias = pUsuario.licencias;

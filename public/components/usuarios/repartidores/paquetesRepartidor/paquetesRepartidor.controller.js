@@ -36,6 +36,32 @@
       servicioUsuarios.actualizarEstadoPaquete(objNuevoPaquete);
 
     }
+
+    
+    vm.cambiarEstadoTraslado5 = (pnuevoPaquete) => {
+      
+      let articulo = pnuevoPaquete.tipoArticulo;
+
+
+ 
+      let objNuevoPaquete = new Paquete(pnuevoPaquete.usuario, pnuevoPaquete.tracking, pnuevoPaquete.distribuidor, pnuevoPaquete.precio, pnuevoPaquete.peso, pnuevoPaquete.tipoArticulo, pnuevoPaquete.descripcion);
+
+      let listaEstados = pnuevoPaquete.listaEstados;
+
+      listaEstados.forEach(objEstado => {
+        objNuevoPaquete.addEstado(objEstado);
+        
+      });
+     
+      let fecha = new Date();
+      let hora = fecha;
+      let objEstado = new Estado(pnuevoPaquete.usuario, fecha,hora, 'Entregado');
+      
+      objNuevoPaquete.mostrarEstadoTraslado('Entregado');
+      objNuevoPaquete.addEstado(objEstado);
+      servicioUsuarios.actualizarEstadoPaquete(objNuevoPaquete);
+
+    }
   
   }
 
