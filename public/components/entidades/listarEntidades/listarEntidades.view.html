@@ -1,4 +1,6 @@
-<section class="container">
+<div navegacion-Principal></div>
+<div menu-Lateral></div>
+<section id="dashboard">
   <table class="table table-responsive">
     <thead>
       <tr>
@@ -7,10 +9,10 @@
       </tr>
     </thead>
     <tbody>
-    <tr ng-repeat="entidad in vm.listaEntidades">
-      <td>{{entidad.nombre}}</td>
-      <td>{{entidad.cedulaJuridica}}</td>
-    </tr>
+      <tr ng-repeat="entidad in vm.listaEntidades">
+        <td>{{entidad.nombre}}</td>
+        <td>{{entidad.cedulaJuridica}}</td>
+      </tr>
     </tbody>
   </table>
 </section>

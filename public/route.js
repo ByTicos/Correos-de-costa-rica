@@ -530,7 +530,7 @@
         },
         resolve: {
           load: [ '$ocLazyLoad', ($ocLazyLoad) => {
-            return $ocLazyLoad.load('./components/usuarios/repartidores/perfilRepartidores/perfilRepartidores.view.html')
+            return $ocLazyLoad.load('./components/usuarios/repartidores/perfilRepartidores/perfilRepartidores.controller.html')
           }]
         },
         controller: 'controladorPerfilRepartidor',
@@ -683,6 +683,7 @@
         controllerAs: 'vm',
       })
 
+<<<<<<< HEAD
       .state('main.listarRepartidoresSucursal', {
         url: '/listarRepartidoresSucursal',
         templateUrl: './components/usuarios/encargadoSucursal/listarRepartidoresSucursal/listarRepartidoresSucursal.view.html',
@@ -701,6 +702,25 @@
         controllerAs: 'vm',
       })
 
+=======
+        .state('main.paquetesRepartidor', {
+          url: '/paquetesRepartidor',
+          templateUrl: './components/usuarios/repartidores/paquetesRepartidor/paquetesRepartidor.view.html',
+          data:{
+            pageTitle: 'Paquetes del Repartidor'
+          },
+          params: {
+            objRepartidorTemp: ''
+          },
+          resolve: {
+            load: ['$ocLazyLoad', ($ocLazyLoad) => {
+              return $ocLazyLoad.load('./components/usuarios/repartidores/paquetesRepartidor/paquetesRepartidor.controller.js')
+            }]
+          },
+          controller: 'controladorPaquetesRepartidor',
+          controllerAs: 'vm',
+        })
+>>>>>>> Dev
       
 
 

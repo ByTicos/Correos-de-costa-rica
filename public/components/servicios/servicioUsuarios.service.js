@@ -33,8 +33,10 @@
             getRol: _getRol,
             getRolSucursal: _getRolSucursal,
             getAllPaquetes: _getAllPaquetes,
-            actualizarTarjeta: _actualizarTarjeta
-                }
+            actualizarTarjeta: _actualizarTarjeta,
+            addPaqueteConvenio:_addPaqueteConvenio,
+            getPaquetesConvenio:_getPaquetesConvenio
+            }
         return publicAPI
 
         function _addUsuario(pNuevoUsuario) {
@@ -48,6 +50,8 @@
 
             return respuesta;
         };
+
+        
 
         function _getUsuarios() {
             let listaUsuarios = [];
@@ -77,6 +81,12 @@
                         objUsuarioTemp.registrarTarjeta(objTarjetaTemp);
                     });
 
+                    objUsuario.listaPaquetesConvenios.forEach(objPaqueteConv => {
+                        let objPaqueteConvTemp = new PaqueteConv(objPaqueteConv.cliente, objPaqueteConv.convenio, new Date(objPaqueteConv.fecha));
+
+                        objUsuarioTemp.agregarPaqueteConvenio(objPaqueteConvTemp);
+                    });
+
                     objUsuario.listaPaquetes.forEach(objPaquete => {
                         let objPaqueteTemp = new Paquete(objPaquete.usuario, objPaquete.tracking, objPaquete.distribuidor, objPaquete.precio, objPaquete.peso, objPaquete.tipoArticulo, objPaquete.descripcion);
 
@@ -101,12 +111,40 @@
             };
             return listaUsuarios;
         };
+
+        function _addPaqueteConvenio(pNuevoPaquete){
+            let listaUsuarios = _getUsuarios();
+            let usuario = pNuevoPaquete.cliente;
+            let respuesta = true;
+            for (let i = 0; i < listaUsuarios.length; i++) {
+                if (usuario == listaUsuarios[i].correo) {
+                    listaUsuarios[i].agregarPaqueteConvenio(pNuevoPaquete);
+                }
+            }
+            console.log(listaUsuarios);
+            actualizarLocal(listaUsuarios);
+            return respuesta;
+        };
+        function _getPaquetesConvenio() {
+            let listaUsuarios = _getUsuarios();
+            let listaPaquetesConvenios = [];
+            let session = JSON.parse(sessionStorage.getItem('sesion'));
+
+            for (let i = 0; i < listaUsuarios.length; i++) {
+                if (session.correo == listaUsuarios[i].correo) {
+                    if (listaUsuarios[i].listaPaquetesConvenios != null) {
+                        listaPaquetesConvenios = listaUsuarios[i].listaPaquetesConvenios;
+                    }
+                }
+            }
+            return listaPaquetesConvenios;
+        };
         
         function _actualizarUsuario(pUsuario) {
             let listaUsuarios = _getUsuarios();
 
             for (let i = 0; i < listaUsuarios.length; i++) {
-                if (pUsuario.cedula == listaUsuarios[i].cedula) {
+                if (pUsuario.correo == listaUsuarios[i].correo) {
                     listaUsuarios[i] = pUsuario;
                 }
             }
@@ -313,7 +351,5 @@
             }
             actualizarLocal(listaUsuarios);
 
-        };
-
-    
+        };    
 })();

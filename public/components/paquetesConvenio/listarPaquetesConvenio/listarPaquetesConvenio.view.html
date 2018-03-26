@@ -1,0 +1,21 @@
+<div navegacion-Principal></div>
+<div menu-Lateral></div>
+<section id="dashboard">
+    <table class="table table-responsive">
+    <legend>Paquetes de Convenios</legend>
+    <thead>
+      <tr>
+        <th>Nombre de paquete</th>
+        <th>Tipo de convenio</th>
+        <th>Fecha de recibido</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="paquete in vm.listaPaquetesConvenio">
+        <td>{{paquete.cliente}}</td>
+        <td>{{paquete.convenio}}</td>
+        <td>{{paquete.fecha | date}}</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
