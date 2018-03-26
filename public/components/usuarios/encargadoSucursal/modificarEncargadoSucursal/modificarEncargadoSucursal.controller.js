@@ -9,6 +9,9 @@
   function controladorModificarEncargadoSucursal($stateParams, $state, $location, servicioUsuarios, servicioSucursales) {
     let vm = this;
 
+    servicioSucursales.listarSucursalesJson();
+    vm.listaSucursales = servicioSucursales.getSucursal();
+
     vm.regresar = () => {
       $state.go('main.listarEncargadoSucursal');
     }
@@ -17,7 +20,7 @@
 
     let objUsuarioAEditar = JSON.parse($stateParams.objUsuarioTemp);
 
-    let objNuevoUsuario = new Usuario(objUsuarioAEditar.cedula, objUsuarioAEditar.foto, objUsuarioAEditar.primerNombre, objUsuarioAEditar.segundoNombre, objUsuarioAEditar.primerApellido, objUsuarioAEditar.segundoApellido, objUsuarioAEditar.correo, objUsuarioAEditar.telefono, objUsuarioAEditar.fechaNacimiento, objUsuarioAEditar.provincia, objUsuarioAEditar.canton, objUsuarioAEditar.distrito, objUsuarioAEditar.direccionExacta, objUsuarioAEditar.tipo, objUsuarioAEditar.sucursalAsignada, objUsuarioAEditar.puesto);
+    let objNuevoUsuario = new Usuario(objUsuarioAEditar.cedula, objUsuarioAEditar.foto, objUsuarioAEditar.primerNombre, objUsuarioAEditar.segundoNombre, objUsuarioAEditar.primerApellido, objUsuarioAEditar.segundoApellido, objUsuarioAEditar.correo, objUsuarioAEditar.telefono, objUsuarioAEditar.fechaNacimiento, objUsuarioAEditar.provincia, objUsuarioAEditar.canton, objUsuarioAEditar.distrito, objUsuarioAEditar.direccionExacta, objUsuarioAEditar.contrasenna, objUsuarioAEditar.tipo, objUsuarioAEditar.sucursalAsignada);
 
 
     vm.editarUsuarios.cedula = objNuevoUsuario.cedula;
@@ -32,9 +35,10 @@
     vm.editarUsuarios.canton = objNuevoUsuario.canton;
     vm.editarUsuarios.distrito = objNuevoUsuario.distrito;
     vm.editarUsuarios.direccionExacta = objNuevoUsuario.direccionExacta;
+    vm.editarUsuarios.contrasenna = objNuevoUsuario.contrasenna;
     vm.editarUsuarios.tipo = objNuevoUsuario.tipo;
     vm.editarUsuarios.sucursalAsignada = objNuevoUsuario.sucursalAsignada;
-    vm.editarUsuarios.puesto = objNuevoUsuario.puesto;
+    
 
 
     vm.eliminarUsuario = (pEstado) =>{
@@ -65,11 +69,9 @@
           objUsuario.canton = pUsuario.canton;
           objUsuario.distrito = pUsuario.distrito;
           objUsuario.direccionExacta = pUsuario.direccionExacta;
+          objUsuario.contrasenna = pUsuario.contrasenna;
           objUsuario.tipo = pUsuario.tipo;
           objUsuario.sucursalAsignada = pUsuario.sucursalAsignada;
-          objUsuario.contrasenna = pUsuario.contrasenna;
-          objUsuario.puesto = pUsuario.puesto;
-
 
           servicioUsuarios.actualizarUsuario(objUsuario);
 

@@ -87,6 +87,7 @@
                 <input type="date" class="form-control" ng-model="vm.nuevoRepartidor.vencimientoLicencia" required>
             </div>
         
+<<<<<<< HEAD
             <div class="form-group">
                 <label for="">Sucursal asignada</label>
                 <select ng-model="nuevoUsuario.sucursalAsignada">
@@ -101,6 +102,15 @@
                     <input type="password" class="form-control" ng-model="vm.nuevoRepartidor.contrasenna" required>
                   </div>
               
+=======
+            
+            <select ng-model="vm.nuevoRepartidor.sucursalAsignada">
+              <option value="">Seleccione la Sucursal del usuario</option>
+              <option ng-repeat="sucursal in vm.listaSucursales" value="{{sucursal.nombre}}">{{sucursal.nombre}}</option>
+            </select>
+        </div>
+
+>>>>>>> Dev
         
       <button type="submit">Registrar</button>  
     </form>

@@ -38,18 +38,25 @@
                         <label for="">Teléfono</label>
                         <input type="text" class="form-control" ng-model="vm.editarUsuarios.telefono">
                     </div>
+                    
                     <div class="form-group">
                         <label for="">Fecha de nacimiento</label>
                         <input type="date" class="form-control" ng-model="vm.editarUsuarios.fechaNacimiento">
                     </div>
 
                     <select ng-model="vm.editarUsuarios.puesto">
-                            <option value="">Seleccione su puesto en aduana</option>
-                            <option value="Despachador">Despachador</option>
-                            <option value="Cajero">Cajero</option>
-                            <option value="Agente">Agente Aduanal</option>
-                            <option value="Supervisor">Supervisor Aduanal</option>
-                        </select>
+                        <option value="">Seleccione su puesto en aduana</option>
+                        <option value="Despachador">Despachador</option>
+                        <option value="Cajero">Cajero</option>
+                        <option value="Agente">Agente Aduanal</option>
+                        <option value="Supervisor">Supervisor Aduanal</option>
+                    </select>
+                    
+                    <div class="form-group">
+                        <label for="">Contraseña</label>
+                        <input type="text" class="form-control" ng-model="vm.editarUsuarios.contrasenna">
+                    </div>
+    
 
                     <div class="row">
                         <div class="col-md-6">
