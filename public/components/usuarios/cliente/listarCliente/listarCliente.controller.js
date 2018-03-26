@@ -10,6 +10,19 @@
     let vm = this;
 
     vm.listaClientes = listarClientes();
+    
+    vm.cambiarEstado =(pEstado, pUsuario)=>{
+      let listaUsuarios = servicioUsuarios.getUsuarios();
+      let usuario = {};
+      for (let i = 0; i < listaUsuarios.length; i++) {
+        if(listaUsuarios[i].correo == pUsuario.correo){
+          listaUsuarios[i].cambiarEstado(pEstado);
+          usuario = listaUsuarios[i];
+        }
+      }
+      servicioUsuarios.actualizarUsuario(usuario);
+      vm.listaClientes = listarClientes();
+    }
 
     vm.modificar = (pUsuario) =>{
       $state.go('main.modificarCliente', { objClienteTemp: JSON.stringify(pUsuario) });
