@@ -682,6 +682,41 @@
         controller: 'controladorListarRepartidores',
         controllerAs: 'vm',
       })
+      .state('main.registrarPaquetesConvenio', {
+        url: '/registrarPaquetesConvenio',
+        templateUrl: './components/paquetesConvenio/registrarPaquetesConvenio/registrarPaquetesConvenio.view.html',
+        data:{
+          pageTitle: 'Registrar paquete de convenio'
+        },
+        params: {
+          objEstadoTemp: ''
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/paquetesConvenio/registrarPaquetesConvenio/registrarPaquetesConvenio.controller.js')
+          }]
+        },
+        controller: 'controladorRegistrarPaquetesConvenio',
+        controllerAs: 'vm'
+      })
+      .state('main.listarPaquetesConvenio', {
+        url: '/listarPaquetesConvenio',
+        templateUrl: './components/paquetesConvenio/listarPaquetesConvenio/listarPaquetesConvenio.view.html',
+        data:{
+          pageTitle: 'Registrar paquete de convenio'
+        },
+        params: {
+          objEstadoTemp: ''
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/paquetesConvenio/listarPaquetesConvenio/listarPaquetesConvenio.controller.js')
+          }]
+        },
+        controller: 'controladorListarPaquetesConvenio',
+        controllerAs: 'vm'
+      })
+
 
         .state('main.paquetesRepartidor', {
           url: '/paquetesRepartidor',
