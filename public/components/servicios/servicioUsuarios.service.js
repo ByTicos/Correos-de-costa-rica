@@ -32,8 +32,11 @@
             getTarjeta: _getTarjeta,
             getRol: _getRol,
             getAllPaquetes: _getAllPaquetes,
-            actualizarTarjeta: _actualizarTarjeta
-                }
+            actualizarTarjeta: _actualizarTarjeta,
+            addPaqueteConvenio:_addPaqueteConvenio,
+            getPaquetesConvenio:_getPaquetesConvenio,
+            getUsuarioActivo:_getUsuarioActivo
+            }
         return publicAPI
 
         function _addUsuario(pNuevoUsuario) {
@@ -48,9 +51,11 @@
             return respuesta;
         };
 
+        
+
         function _getUsuarios() {
             let listaUsuarios = [];
-            let admin = new Usuario('', '', 'Administrador', '', '', '', 'administrador@correos.cr', '', '', '', '', '', '', '5', '', 'Administrador', '');
+            let admin = new Usuario('', '', 'Administrador', '', '', '', 'administrador@correos.cr', '', '', '', '', '', '', 'admin', '5', '', 'Administrador', '');
             let listaUsuariosLocal = JSON.parse(localStorage.getItem("usuariosLS"));
             if (listaUsuariosLocal == null) {
                 listaUsuarios = [admin];
@@ -58,7 +63,7 @@
             }
             else {
                 listaUsuariosLocal.forEach(objUsuario => {
-                    let objUsuarioTemp = new Usuario(objUsuario.cedula, objUsuario.foto, objUsuario.primerNombre, objUsuario.segundoNombre, objUsuario.primerApellido, objUsuario.segundoApellido, objUsuario.correo, objUsuario.telefono, objUsuario.fechaNacimiento, objUsuario.provincia, objUsuario.canton, objUsuario.distrito, objUsuario.direccionExacta, objUsuario.tipo, objUsuario.sucursalAsignada, objUsuario.puesto, objUsuario.vehiculo, []);
+                    let objUsuarioTemp = new Usuario(objUsuario.cedula, objUsuario.foto, objUsuario.primerNombre, objUsuario.segundoNombre, objUsuario.primerApellido, objUsuario.segundoApellido, objUsuario.correo, objUsuario.telefono, objUsuario.fechaNacimiento, objUsuario.provincia, objUsuario.canton, objUsuario.distrito, objUsuario.direccionExacta, objUsuario.contrasenna,objUsuario.tipo, objUsuario.sucursalAsignada, objUsuario.puesto, objUsuario.vehiculo, []);
                     objUsuarioTemp.cambiarEstado(objUsuario.estado);
 
 
@@ -76,8 +81,14 @@
                         objUsuarioTemp.registrarTarjeta(objTarjetaTemp);
                     });
 
+                    objUsuario.listaPaquetesConvenios.forEach(objPaqueteConv => {
+                        let objPaqueteConvTemp = new PaqueteConv(objPaqueteConv.cliente, objPaqueteConv.convenio, new Date(objPaqueteConv.fecha));
+
+                        objUsuarioTemp.agregarPaqueteConvenio(objPaqueteConvTemp);
+                    });
+
                     objUsuario.listaPaquetes.forEach(objPaquete => {
-                        let objPaqueteTemp = new Paquete(objPaquete.usuario, objPaquete.tracking, objPaquete.distribuidor, objPaquete.precio, objPaquete.peso, objPaquete.tipoArticulo, objPaquete.descripcion);
+                        let objPaqueteTemp = new Paquete(objPaquete.usuario, objPaquete.tracking, objPaquete.distribuidor, objPaquete.precio,objPaquete.peso, objPaquete.Kilometro,objPaquete.tipoArticulo, objPaquete.descripcion);
 
                         let listaEstados = objPaquete.listaEstados;
 
@@ -100,12 +111,40 @@
             };
             return listaUsuarios;
         };
+
+        function _addPaqueteConvenio(pNuevoPaquete){
+            let listaUsuarios = _getUsuarios();
+            let usuario = pNuevoPaquete.cliente;
+            let respuesta = true;
+            for (let i = 0; i < listaUsuarios.length; i++) {
+                if (usuario == listaUsuarios[i].correo) {
+                    listaUsuarios[i].agregarPaqueteConvenio(pNuevoPaquete);
+                }
+            }
+            console.log(listaUsuarios);
+            actualizarLocal(listaUsuarios);
+            return respuesta;
+        };
+        function _getPaquetesConvenio() {
+            let listaUsuarios = _getUsuarios();
+            let listaPaquetesConvenios = [];
+            let session = JSON.parse(sessionStorage.getItem('sesion'));
+
+            for (let i = 0; i < listaUsuarios.length; i++) {
+                if (session.correo == listaUsuarios[i].correo) {
+                    if (listaUsuarios[i].listaPaquetesConvenios != null) {
+                        listaPaquetesConvenios = listaUsuarios[i].listaPaquetesConvenios;
+                    }
+                }
+            }
+            return listaPaquetesConvenios;
+        };
         
         function _actualizarUsuario(pUsuario) {
             let listaUsuarios = _getUsuarios();
 
             for (let i = 0; i < listaUsuarios.length; i++) {
-                if (pUsuario.cedula == listaUsuarios[i].cedula) {
+                if (pUsuario.correo == listaUsuarios[i].correo) {
                     listaUsuarios[i] = pUsuario;
                 }
             }
@@ -145,7 +184,7 @@
             
             return listaPaquetes;
         };
-
+    
         function _getAllPaquetes(){
         let listaUsuarios = _getUsuarios();
         let listaPaquetes = [];
@@ -163,7 +202,7 @@
         }
 
 
-        function _actualizarTarjeta(pObjpaquete) {
+        function _actualizarPaquete(pObjpaquete) {
             let listaUsuarios = _getUsuarios();
             let sesion = JSON.parse(sessionStorage.getItem('sesion'));
             for (let i = 0; i < listaUsuarios.length; i++) {
@@ -238,7 +277,18 @@
             let rol = session.tipo;
             return rol;
         }
-
+        function _getUsuarioActivo(){
+            let listaUsuarios= _getUsuarios();
+            let sesion = JSON.parse(sessionStorage.getItem('sesion'));
+            let usuarioActivo = '';
+            for (let i = 0; i < listaUsuarios.length; i++) {
+                if(sesion.correo == listaUsuarios[i].correo){
+                    usuarioActivo = listaUsuarios[i].primerNombre +' '+ listaUsuarios[i].segundoNombre +' ' + listaUsuarios[i].primerApellido+' '; 
+                }   
+                
+            }
+            return usuarioActivo;
+        }
 
         function _addTarjeta(pnuevaTarjeta, pusuario){
                 let listaUsuarios = _getUsuarios();
@@ -291,7 +341,7 @@
         };
     };    
 
-        function _actualizarPaquete(pObjTarjeta) {
+        function _actualizarTarjeta(pObjTarjeta) {
             let listaUsuarios = _getUsuarios();
             let sesion = JSON.parse(sessionStorage.getItem('sesion'));
             for (let i = 0; i < listaUsuarios.length; i++) {
@@ -306,6 +356,5 @@
             actualizarLocal(listaUsuarios);
 
         };
-
-    
+        
 })();

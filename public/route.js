@@ -530,7 +530,7 @@
         },
         resolve: {
           load: [ '$ocLazyLoad', ($ocLazyLoad) => {
-            return $ocLazyLoad.load('./components/usuarios/repartidores/perfilRepartidores/perfilRepartidores.view.html')
+            return $ocLazyLoad.load('./components/usuarios/repartidores/perfilRepartidores/perfilRepartidores.controller.html')
           }]
         },
         controller: 'controladorPerfilRepartidor',
@@ -682,9 +682,77 @@
         controller: 'controladorListarRepartidores',
         controllerAs: 'vm',
       })
+      .state('main.registrarPaquetesConvenio', {
+        url: '/registrarPaquetesConvenio',
+        templateUrl: './components/paquetesConvenio/registrarPaquetesConvenio/registrarPaquetesConvenio.view.html',
+        data:{
+          pageTitle: 'Registrar paquete de convenio'
+        },
+        params: {
+          objEstadoTemp: ''
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/paquetesConvenio/registrarPaquetesConvenio/registrarPaquetesConvenio.controller.js')
+          }]
+        },
+        controller: 'controladorRegistrarPaquetesConvenio',
+        controllerAs: 'vm'
+      })
+      .state('main.listarPaquetesConvenio', {
+        url: '/listarPaquetesConvenio',
+        templateUrl: './components/paquetesConvenio/listarPaquetesConvenio/listarPaquetesConvenio.view.html',
+        data:{
+          pageTitle: 'Registrar paquete de convenio'
+        },
+        params: {
+          objEstadoTemp: ''
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/paquetesConvenio/listarPaquetesConvenio/listarPaquetesConvenio.controller.js')
+          }]
+        },
+        controller: 'controladorListarPaquetesConvenio',
+        controllerAs: 'vm'
+      })
 
+
+        .state('main.paquetesRepartidor', {
+          url: '/paquetesRepartidor',
+          templateUrl: './components/usuarios/repartidores/paquetesRepartidor/paquetesRepartidor.view.html',
+          data:{
+            pageTitle: 'Paquetes del Repartidor'
+          },
+          params: {
+            objRepartidorTemp: ''
+          },
+          resolve: {
+            load: ['$ocLazyLoad', ($ocLazyLoad) => {
+              return $ocLazyLoad.load('./components/usuarios/repartidores/paquetesRepartidor/paquetesRepartidor.controller.js')
+            }]
+          },
+          controller: 'controladorPaquetesRepartidor',
+          controllerAs: 'vm',
+        })
       
-
+     .state('main.EstadosPaquetesCliente', {
+        url: '/EstadosPaquetesCliente',
+        templateUrl: './components/paquetes/listaEstadosCliente.view.html',
+        data:{
+          pageTitle: 'Mis estados'
+        },
+        params: {
+          objEstadoTemp: ''
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/paquetes/listaEstadosCliente.controller.js')
+          }]
+        },
+        controller: 'controladorListaEstadosCliente',
+        controllerAs: 'vm'
+      })
 
     $urlRouterProvider.otherwise('/');
   };

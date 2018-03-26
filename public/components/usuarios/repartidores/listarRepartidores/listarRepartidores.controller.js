@@ -23,7 +23,7 @@
       let listaUsuarios = servicioUsuarios.getUsuarios();
       let listaRepartidores = [];
       listaUsuarios.forEach(usuario => {
-        if (usuario.tipo == 'repartidor') {
+        if (usuario.tipo == '3') {
           listaRepartidores.push(usuario);
         }
       });
