@@ -1,5 +1,5 @@
-class Usuario{
-    constructor(pCedula, pFoto, pPrimerNombre, pSegundoNombre, pPrimerApellido, pSegundoApellido, pEmail,   pTelefono, pfechaNacimiento, pProvincia, pCanton, pDistrito, pDireccionExacta, pTipo,           pSucursalAsignada, pPuesto, pVehiculo,pLicencia, pVencimientoLicencia, pTarjeta){
+class Usuario {
+    constructor(pCedula, pFoto, pPrimerNombre, pSegundoNombre, pPrimerApellido, pSegundoApellido, pEmail, pTelefono, pfechaNacimiento, pProvincia, pCanton, pDistrito, pDireccionExacta, pTipo, pSucursalAsignada, pPuesto, pVehiculo, pLicencia, pVencimientoLicencia, pTarjeta) {
         this.cedula = pCedula;
         this.foto = pFoto;
         this.primerNombre = pPrimerNombre;
@@ -18,81 +18,87 @@ class Usuario{
         this.sucursalAsignada = pSucursalAsignada;
         this.puesto = pPuesto;
         this.vehiculo = pVehiculo;
-        this.listaLicencias = pLicencia || [] ;
+        this.listaLicencias = pLicencia || [];
         this.estado = 'activo';
         // this.paqueteAsignado = 
         this.tarjeta = pTarjeta || [];
-    } 
-    cambiarEstado(pEstado){
+        this.listaPaquetesConvenios = [];
+    }
+    cambiarEstado(pEstado) {
         this.estado = pEstado;
     }
 
-    registrarTarjeta(pTarjeta){
+    registrarTarjeta(pTarjeta) {
         this.tarjeta.push(pTarjeta);
-      }
-    getListaPaquetes(){
+    }
+    getListaPaquetes() {
         return this.listaPaquetes;
     }
-    agregarPaquete(pPaquete){
-    this.listaPaquetes.push(pPaquete);
-  }
-      
-  agregarLicencias(pnuevaLicencia) {
-    this.listaLicencias.push(pnuevaLicencia);
-  }
+    agregarPaquete(pPaquete) {
+        this.listaPaquetes.push(pPaquete);
+    }
 
-  getLicencias(){
-      return this.listaLicencias
-  }
-  obtenerTarjeta(){
-      return this.tarjeta;
-  }
+    agregarLicencias(pnuevaLicencia) {
+        this.listaLicencias.push(pnuevaLicencia);
+    }
+
+    getLicencias() {
+        return this.listaLicencias
+    }
+    obtenerTarjeta() {
+        return this.tarjeta;
+    }
+    agregarPaqueteConvenio(pPaqueteConvenio){
+        this.listaPaquetesConvenios.push(pPaqueteConvenio);
+    }
 }
 
+
 class Paquete{
-    constructor(pUsuario,pNumeroTracking, pDistribuidor, pPrecio, pPeso, pTipoArticulo, pDescripcion){
+    constructor(pUsuario,pNumeroTracking, pDistribuidor, pPrecio, pPeso,pKilometro, pTipoArticulo, pDescripcion){
         this.usuario = pUsuario;
         this.tracking = pNumeroTracking;
         this.distribuidor = pDistribuidor;
         this.precio = pPrecio;
         this.peso = pPeso;
+        this.kilometro = pKilometro;
         this.tipoArticulo = pTipoArticulo;
         this.descripcion = pDescripcion;
         this.estado = 'activo';
         this.estadoTraslado = '';
         this.listaEstados = [];
 
-    } 
+    }
 
-    cambiarEstadoDeActividad(pEstado){
+    cambiarEstadoDeActividad(pEstado) {
         this.estado = pEstado;
     }
-    
-    
 
-      addEstado(pEstado){
-        this.listaEstados.push(pEstado); 
+
+
+    addEstado(pEstado) {
+        this.listaEstados.push(pEstado);
     }
 
-    getListaEstados(){
+    getListaEstados() {
         return this.listaEstados;
     }
 
-    
-    mostrarEstadoTraslado(pEstado){
+
+    mostrarEstadoTraslado(pEstado) {
         this.estadoTraslado = pEstado;
     }
 }
 
-class Estado{
-    constructor(pUsuario, pFecha, pHora, pEstado){
+class Estado {
+    constructor(pUsuario, pFecha, pHora, pEstado) {
         this.usuario = pUsuario;
         this.fecha = pFecha;
         this.hora = pHora;
         this.estado = pEstado;
     }
- 
-    
+
+
 }
 
 // class Encargado extends Usuario{
@@ -101,74 +107,78 @@ class Estado{
 //         this.sucursalAsignada = pSucursalAsignada;
 //     }
 // }
-          
 
 
-class Entidad{
-    constructor(pNombre, pCedulaJuridica){
+
+class Entidad {
+    constructor(pNombre, pCedulaJuridica) {
         this.nombre = pNombre;
         this.cedulaJuridica = pCedulaJuridica;
         this.convenios = [];
     }
 
-    registrarConvenio(pConvenio){
+    registrarConvenio(pConvenio) {
         this.convenios.push(pConvenio);
     }
 }
 
-class Convenio{
-    constructor(pNombreEntidad, pTipoTramite){
+class Convenio {
+    constructor(pNombreEntidad, pTipoTramite) {
         this.nombreEntidad = pNombreEntidad;
         this.tipoTramite = pTipoTramite;
     }
 }
 
 
-class Licencia{
-    constructor(pNumLicencia, pTipoLicencia, pVencimientoLicencia){
+class Licencia {
+    constructor(pNumLicencia, pTipoLicencia, pVencimientoLicencia) {
         this.numLicencia = pNumLicencia;
         this.tipoLicencia = pTipoLicencia;
         this.vencimiento = pVencimientoLicencia;
-    } 
+    }
 }
 class Sucursal {
-    constructor(pId, pNombre, pProvincia, pCanton, pDistrito, pTelefono, pHorario){
-       this.id = pId;
-       this.nombre = pNombre;
-       this.provincia = pProvincia;
-       this.canton = pCanton;
-       this.distrito = pDistrito;
-       this.telefono = pTelefono;
-       this.horario = pHorario;
-       this.estado = 'activo';
+    constructor(pId, pNombre, pProvincia, pCanton, pDistrito, pTelefono, pHorario) {
+        this.id = pId;
+        this.nombre = pNombre;
+        this.provincia = pProvincia;
+        this.canton = pCanton;
+        this.distrito = pDistrito;
+        this.telefono = pTelefono;
+        this.horario = pHorario;
+        this.estado = 'activo';
     }
 
-    cambiarEstadoDeActividadSucursal(pEstado){
+    cambiarEstadoDeActividadSucursal(pEstado) {
         this.estado = pEstado;
     }
 }
 
 class Tarjeta {
-    constructor(pId, pNombre, pNumero, pExpiracion, pCvv){
-       this.id = pId;
-       this.nombre = pNombre;
-       this.numero = pNumero;
-       this.expiracion = pExpiracion;
-       this.cvv = pCvv; 
-       this.estado = 'activo';
+    constructor(pId, pNombre, pNumero, pExpiracion, pCvv) {
+        this.id = pId;
+        this.nombre = pNombre;
+        this.numero = pNumero;
+        this.expiracion = pExpiracion;
+        this.cvv = pCvv;
+        this.estado = 'activo';
     }
 
-    obtenerInfoTarjeta(){
+    obtenerInfoTarjeta() {
         return this;
     }
 
-    cambiarEstadoDeActividadTarjeta(pEstado){
+    cambiarEstadoDeActividadTarjeta(pEstado) {
         this.estado = pEstado;
     }
 }
-
-
-
+class PaqueteConv{
+    constructor(pCliente, pConvenio, pFecha){
+        this.cliente = pCliente;
+        this.convenio = pConvenio;
+        this.fecha = pFecha;
+    }
+}
 // class Repartidor extends Usuario{
 //         constructor(pCedula, pFoto, pPrimerNombre, pSegundoNombre, pPrimerApellido, pSegundoApellido, pEmail, pTelefono, pfechaNacimiento, pProvincia, pCanton, pDistrito, pDireccionExacta, pTipo,plistaPaquetes,pEstado,pSucursalAsignada,pLicencias){
 //             super(pCedula, pFoto, pPrimerNombre, pSegundoNombre, pPrimerApellido, pSegundoApellido, pEmail, pTelefono, pfechaNacimiento, pProvincia, pCanton, pDistrito, pDireccionExacta, pTipo, pTipo,plistaPaquetes,pEstado);
