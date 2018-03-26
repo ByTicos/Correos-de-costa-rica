@@ -34,7 +34,8 @@
             getAllPaquetes: _getAllPaquetes,
             actualizarTarjeta: _actualizarTarjeta,
             addPaqueteConvenio:_addPaqueteConvenio,
-            getPaquetesConvenio:_getPaquetesConvenio
+            getPaquetesConvenio:_getPaquetesConvenio,
+            getUsuarioActivo:_getUsuarioActivo
             }
         return publicAPI
 
@@ -54,7 +55,7 @@
 
         function _getUsuarios() {
             let listaUsuarios = [];
-            let admin = new Usuario('', '', 'Administrador', '', '', '', 'administrador@correos.cr', '', '', '', '', '', '', '5', '', 'Administrador', '');
+            let admin = new Usuario('', '', 'Administrador', '', '', '', 'administrador@correos.cr', '', '', '', '', '', '', 'admin', '5', '', 'Administrador', '');
             let listaUsuariosLocal = JSON.parse(localStorage.getItem("usuariosLS"));
             if (listaUsuariosLocal == null) {
                 listaUsuarios = [admin];
@@ -62,7 +63,7 @@
             }
             else {
                 listaUsuariosLocal.forEach(objUsuario => {
-                    let objUsuarioTemp = new Usuario(objUsuario.cedula, objUsuario.foto, objUsuario.primerNombre, objUsuario.segundoNombre, objUsuario.primerApellido, objUsuario.segundoApellido, objUsuario.correo, objUsuario.telefono, objUsuario.fechaNacimiento, objUsuario.provincia, objUsuario.canton, objUsuario.distrito, objUsuario.direccionExacta, objUsuario.tipo, objUsuario.sucursalAsignada, objUsuario.puesto, objUsuario.vehiculo, []);
+                    let objUsuarioTemp = new Usuario(objUsuario.cedula, objUsuario.foto, objUsuario.primerNombre, objUsuario.segundoNombre, objUsuario.primerApellido, objUsuario.segundoApellido, objUsuario.correo, objUsuario.telefono, objUsuario.fechaNacimiento, objUsuario.provincia, objUsuario.canton, objUsuario.distrito, objUsuario.direccionExacta, objUsuario.contrasenna,objUsuario.tipo, objUsuario.sucursalAsignada, objUsuario.puesto, objUsuario.vehiculo, []);
                     objUsuarioTemp.cambiarEstado(objUsuario.estado);
 
 
@@ -183,7 +184,7 @@
             
             return listaPaquetes;
         };
-
+    
         function _getAllPaquetes(){
         let listaUsuarios = _getUsuarios();
         let listaPaquetes = [];
@@ -276,7 +277,18 @@
             let rol = session.tipo;
             return rol;
         }
-
+        function _getUsuarioActivo(){
+            let listaUsuarios= _getUsuarios();
+            let sesion = JSON.parse(sessionStorage.getItem('sesion'));
+            let usuarioActivo = '';
+            for (let i = 0; i < listaUsuarios.length; i++) {
+                if(sesion.correo == listaUsuarios[i].correo){
+                    usuarioActivo = listaUsuarios[i].primerNombre +' '+ listaUsuarios[i].segundoNombre +' ' + listaUsuarios[i].primerApellido+' '; 
+                }   
+                
+            }
+            return usuarioActivo;
+        }
 
         function _addTarjeta(pnuevaTarjeta, pusuario){
                 let listaUsuarios = _getUsuarios();
@@ -343,5 +355,6 @@
             }
             actualizarLocal(listaUsuarios);
 
-        };    
+        };
+        
 })();
