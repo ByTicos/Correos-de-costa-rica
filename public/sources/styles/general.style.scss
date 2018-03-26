@@ -112,11 +112,10 @@ input {
 //
 }
 
-
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,100);
 
 body {
-  background: url(https://dl.dropboxusercontent.com/u/23299152/Wallpapers/wallpaper-22705.jpg) no-repeat center center fixed; 
+
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -125,29 +124,34 @@ body {
 }
 
 .login-card {
-  padding: 10px;
-  width: 600px;
+  padding: 90px;
+  width: 500px;
   background-color: #F7F7F7;
-  margin: 0 auto 5px;
+  margin: 0 auto 10px;
   border-radius: 2px;
   box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
   overflow: hidden;
 }
 
+.login-card img{
+  width: 100%;
+  height: 220px;
+}
+
 .login-card h1 {
   font-weight: 100;
   text-align: center;
-  font-size: 16px;
+  font-size: 25px;
 }
 
-.login-card input[type=submit] {
+.login-card input[type=submit], input[type=button], input[type=date], input[list] {
   width: 100%;
   display: block;
   margin-bottom: 10px;
   position: relative;
 }
 
-.login-card input[type=text], input[type=password] {
+.login-card input[type=text], input[type=password], input[type=date], input[list] {
   height: 44px;
   font-size: 16px;
   width: 100%;
@@ -187,7 +191,7 @@ body {
   border: 0px;
   color: #fff;
   text-shadow: 0 1px rgba(0,0,0,0.1); 
-  background-color: #4d90fe;
+  background-color: #79b629;
   /* background-image: -webkit-gradient(linear, 0 0, 0 100%,   from(#4d90fe), to(#4787ed)); */
 }
 
@@ -195,7 +199,7 @@ body {
   /* border: 1px solid #2f5bb7; */
   border: 0px;
   text-shadow: 0 1px rgba(0,0,0,0.3);
-  background-color: #357ae8;
+  background-color: #238b8f;
   /* background-image: -webkit-gradient(linear, 0 0, 0 100%,   from(#4d90fe), to(#357ae8)); */
 }
 
@@ -217,4 +221,196 @@ body {
   width: 100%;
   text-align: center;
   font-size: 12px;
+}
+
+.wrapper {
+  background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(210, 222, 255, 0.8)),
+              rgba(34, 86, 255, 0.8) url('../../sources/images/collage.png') no-repeat center;
+  background-size: cover;
+  color: #052753;
+  text-align: center;
+  text-rendering: optimizeLegibility;
+  margin: 0;
+  padding: 15px 10px 15px;
+  min-height: 640px;
+} 
+
+
+.login-card2 {
+  padding: 45px;
+  width: 1200px;
+  background-color: #F7F7F7;
+  margin: 0 auto 10px;
+  border-radius: 2px;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+}
+
+.login-card2 img{
+height: 220px;
+}
+
+.login-card2 h1 {
+  font-weight: 100;
+  text-align: center;
+  font-size: 25px;
+}
+
+.login-card2 input[type=submit],input[type=date], input[list],input[type=email], input[type=file] {
+  width: 100%;
+  display: block;
+  margin-bottom: 10px;
+  position: relative;
+}
+
+.login-card2 input[type=text], input[type=password], input[type=date], input[list], input[type=email],input[type=file] {
+  height: 44px;
+  font-size: 16px;
+  width: 100%;
+  margin-bottom: 10px;
+  -webkit-appearance: none;
+  background: #fff;
+  border: 1px solid #d9d9d9;
+  border-top: 1px solid #c0c0c0;
+  /* border-radius: 2px; */
+  padding: 0 8px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+
+.login-card2 input[type=text]:hover, input[type=password]:hover {
+  border: 1px solid #b9b9b9;
+  border-top: 1px solid #a0a0a0;
+  -moz-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+  -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+}
+
+.login {
+  text-align: center;
+  font-size: 14px;
+  font-family: 'Arial', sans-serif;
+  font-weight: 700;
+  height: 36px;
+  padding: 0 8px;
+/* border-radius: 3px; */
+/* -webkit-user-select: none;
+  user-select: none; */
+}
+
+.login-submit {
+  /* border: 1px solid #3079ed; */
+  border: 0px;
+  color: #fff;
+  text-shadow: 0 1px rgba(0,0,0,0.1); 
+  background-color: #79b629;
+  /* background-image: -webkit-gradient(linear, 0 0, 0 100%,   from(#4d90fe), to(#4787ed)); */
+}
+
+.login-submit:hover {
+  /* border: 1px solid #2f5bb7; */
+  border: 0px;
+  text-shadow: 0 1px rgba(0,0,0,0.3);
+  background-color: #238b8f;
+  /* background-image: -webkit-gradient(linear, 0 0, 0 100%,   from(#4d90fe), to(#357ae8)); */
+}
+
+.login-card2 a {
+  text-decoration: none;
+  color: #666;
+  font-weight: 400;
+  text-align: center;
+  display: inline-block;
+  opacity: 0.6;
+  transition: opacity ease 0.5s;
+}
+
+.login-card2 a:hover {
+  opacity: 1;
+}
+
+.login-help {
+  width: 100%;
+  text-align: center;
+  font-size: 12px;
+}
+
+.wrapper {
+  background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(210, 222, 255, 0.8)),
+              rgba(34, 86, 255, 0.8) url('../../sources/images/collage.png') no-repeat center;
+  background-size: cover;
+  color: #052753;
+  text-align: center;
+  text-rendering: optimizeLegibility;
+  margin: 0;
+  padding: 15px 10px 15px;
+  min-height: 640px;
+} 
+
+
+// CSS para el sidebar
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic,500,500italic,700,700italic,900,900italic,100italic,100);
+
+body {
+    font-family: "Roboto";
+    font-size: 15px;
+    padding: 20px;
+}
+
+.collapse-list {
+    margin-bottom: 0;
+    padding-left: 0;
+    list-style: none;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.collapse-open {
+    display: none;
+}
+
+.collapse-painel {
+    visibility: hidden;
+    max-height: 0;
+    opacity: 0;
+    transition: max-height .1s,
+    visibility .3s,
+    opacity .3s;
+}
+
+.collapse-open:checked ~ .collapse-painel {
+    max-height: 100%;
+    opacity: 100;
+    visibility: visible
+}
+
+.collapse-list li {
+    margin-bottom: 0;
+}
+
+.collapse-list .collapse-btn {
+    border-top: 2px solid #e0e0e0;
+    cursor: pointer;
+    display: block;
+    padding: 25px 10px;
+    margin-bottom: 0;
+    color: #4285f4;
+    font-weight: normal;
+    transition: background-color .2s ease;
+}
+
+.collapse-list .collapse-btn:hover {
+    background: #eee;
+}
+
+.collapse-open ~ .collapse-btn:before {
+    content: "↓";
+    float: right;
+}
+
+.collapse-open:checked ~ .collapse-btn:before {
+    content: "↑";
+}
+
+.collapse-list .collapse-inner {
+    padding: 10px
 }

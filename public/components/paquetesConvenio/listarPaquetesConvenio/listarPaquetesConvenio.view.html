@@ -2,20 +2,44 @@
 <div menu-Lateral></div>
 <section id="dashboard">
     <table class="table table-responsive">
-    <legend>Paquetes de Convenios</legend>
+    <legend>Paquetes recibidos en sucursal</legend>
     <thead>
       <tr>
         <th>Nombre de paquete</th>
         <th>Tipo de convenio</th>
         <th>Fecha de recibido</th>
+        <th>Estado</th>
+        <th>Solicitar Envío</th>
       </tr>
     </thead>
     <tbody>
-      <tr ng-repeat="paquete in vm.listaPaquetesConvenio">
+      <tr ng-repeat="paquete in vm.listaPaquetesConvenio" ng-if="paquete.estadoTraslado === 'Recibido en sucursal'">
         <td>{{paquete.cliente}}</td>
         <td>{{paquete.convenio}}</td>
         <td>{{paquete.fecha | date}}</td>
+        <td>{{paquete.estadoTraslado}}</td>
+        <td>
+          <button type="button" class="btn" ng-click="vm.solicitarEnvio(paquete)">Solicitar</button></td>
       </tr>
     </tbody>
   </table>
+  <table class="table table-responsive">
+      <legend>Paquetes en proceso de envio</legend>
+      <thead>
+        <tr>
+          <th>Nombre de paquete</th>
+          <th>Tipo de convenio</th>
+          <th>Fecha de recibido</th>
+          <th>Estado</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="paquete in vm.listaPaquetesConvenio " ng-if="paquete.estadoTraslado === 'En proceso de envio'">
+          <td>{{paquete.cliente}}</td>
+          <td>{{paquete.convenio}}</td>
+          <td>{{paquete.fecha | date}}</td>
+          <td>{{paquete.estadoTraslado}}</td>
+        </tr>
+      </tbody>
+    </table>
 </section>
