@@ -736,7 +736,23 @@
           controllerAs: 'vm',
         })
       
-
+     .state('main.EstadosPaquetesCliente', {
+        url: '/EstadosPaquetesCliente',
+        templateUrl: './components/paquetes/listaEstadosCliente.view.html',
+        data:{
+          pageTitle: 'Mis estados'
+        },
+        params: {
+          objEstadoTemp: ''
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/paquetes/listaEstadosCliente.controller.js')
+          }]
+        },
+        controller: 'controladorListaEstadosCliente',
+        controllerAs: 'vm'
+      })
 
     $urlRouterProvider.otherwise('/');
   };
