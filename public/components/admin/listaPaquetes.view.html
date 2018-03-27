@@ -19,12 +19,12 @@
         <td>{{paquete.distribuidor}}</td>
         <td>{{paquete.precio}}</td>
         <td>{{paquete.peso}}</td>
-        <td>{{paquete.tipoArticulo}}</td>
+        <td>{{paquete.tipoArticulo.name}}</td>
         <td>{{paquete.descripcion}}</td>
         <td>{{paquete.estadoTraslado}}</td>
   
         <td>
-          <button type="button" class="btn" ng-click="vm.reporteEstados()" >Reporte de estados</button>
+          <button type="button" class="login login-submit" ng-click="vm.reporteEstados()" >Reporte de estados</button>
         </td>
       </tr>
     </tbody>

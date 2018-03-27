@@ -1,7 +1,7 @@
 #dashboard {
   font-size: 16px;  
   padding-top:15px;
-  margin-left: 250px;
+  margin-left: 220px;
   padding-left: 15px;
   img {
     display: inline-block;
@@ -68,4 +68,22 @@
       right: 10px;
       left: auto;
     }
+  }
+
+
+
+  #mainDashboard {
+    .wrapper {
+      background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(210, 222, 255, 0.8)),
+                  rgba(34, 86, 255, 0.8) url('../../sources/images/collage.png') no-repeat center;
+      background-size: cover;
+      color: #052753;
+      text-align: center;
+      text-rendering: optimizeLegibility;
+      margin: 0;
+      padding: 15px 10px 15px;
+      min-height: 640px;
+  } 
+  color: black;
+  
   }

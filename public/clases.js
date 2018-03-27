@@ -1,5 +1,5 @@
 class Usuario {
-    constructor(pCedula, pFoto, pPrimerNombre, pSegundoNombre, pPrimerApellido, pSegundoApellido, pEmail, pTelefono, pfechaNacimiento, pProvincia, pCanton, pDistrito, pDireccionExacta, pContrasenna,pTipo, pSucursalAsignada, pPuesto, pVehiculo, pLicencia, pVencimientoLicencia, pTarjeta) {
+    constructor(pCedula, pFoto, pPrimerNombre, pSegundoNombre, pPrimerApellido, pSegundoApellido, pEmail, pTelefono, pfechaNacimiento, pProvincia, pCanton, pDistrito, pDireccionExacta, pContrasenna, pTipo, pSucursalAsignada, pPuesto, pVehiculo, pLicencia, pVencimientoLicencia, pTarjeta) {
         this.cedula = pCedula;
         this.foto = pFoto;
         this.primerNombre = pPrimerNombre;
@@ -51,6 +51,14 @@ class Usuario {
     }
     agregarPaqueteConvenio(pPaqueteConvenio){
         this.listaPaquetesConvenios.push(pPaqueteConvenio);
+    }
+    obtenerNombreCompleto(){
+        let nombreCompleto = this.primerNombre + ' ' + this.segundoNombre + ' ' + this.primerApellido + ' ';
+        return nombreCompleto;
+    }
+    obtenerDatosProvCantDist(){
+        let provCantDist = this.provincia + ', ' + this.canton + ', ' + this.distrito + ' ';
+        return provCantDist;
     }
 }
 
@@ -178,6 +186,11 @@ class PaqueteConv{
         this.cliente = pCliente;
         this.convenio = pConvenio;
         this.fecha = pFecha;
+        this.estadoTraslado = 'Recibido en sucursal';
+    }
+
+    cambiarEstadoTraslado(pEstado){
+        this.estadoTraslado = pEstado;
     }
 }
 // class Repartidor extends Usuario{

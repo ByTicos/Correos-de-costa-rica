@@ -17,7 +17,9 @@
 
 
  
-      let objNuevoPaquete = new Paquete(pnuevoPaquete.usuario, pnuevoPaquete.tracking, pnuevoPaquete.distribuidor, pnuevoPaquete.precio, pnuevoPaquete.peso, pnuevoPaquete.tipoArticulo, pnuevoPaquete.descripcion);
+      let objNuevoPaquete = new Paquete(pnuevoPaquete.usuario, pnuevoPaquete.tracking, pnuevoPaquete.distribuidor, pnuevoPaquete.precio, pnuevoPaquete.peso, pnuevoPaquete.kilometro, pnuevoPaquete.tipoArticulo, pnuevoPaquete.descripcion);
+      
+      new Paquete(pnuevoPaquete.usuario, pnuevoPaquete.tracking, pnuevoPaquete.distribuidor, pnuevoPaquete.precio, pnuevoPaquete.peso , pnuevoPaquete.kilometro, pnuevoPaquete.tipoArticulo, pnuevoPaquete.descripcion);
 
       let listaEstados = pnuevoPaquete.listaEstados;
 
@@ -33,7 +35,7 @@
       objNuevoPaquete.mostrarEstadoTraslado('En proceso de desalmacenaje');
       objNuevoPaquete.addEstado(objEstado);
       servicioUsuarios.actualizarEstadoPaquete(objNuevoPaquete);
-      
+      location.reload();
   
       
     }
@@ -46,7 +48,7 @@
 
 
  
-      let objNuevoPaquete = new Paquete(pnuevoPaquete.usuario, pnuevoPaquete.tracking, pnuevoPaquete.distribuidor, pnuevoPaquete.precio, pnuevoPaquete.peso, pnuevoPaquete.tipoArticulo, pnuevoPaquete.descripcion);
+      let objNuevoPaquete = new Paquete(pnuevoPaquete.usuario, pnuevoPaquete.tracking, pnuevoPaquete.distribuidor, pnuevoPaquete.precio, pnuevoPaquete.peso, pnuevoPaquete.kilometro, pnuevoPaquete.tipoArticulo, pnuevoPaquete.descripcion);
 
       let listaEstados = pnuevoPaquete.listaEstados;
 
@@ -62,7 +64,7 @@
       objNuevoPaquete.mostrarEstadoTraslado('En transito a centro de distribución');
       objNuevoPaquete.addEstado(objEstado);
       servicioUsuarios.actualizarEstadoPaquete(objNuevoPaquete);
-      
+      location.reload();
   
       
     }

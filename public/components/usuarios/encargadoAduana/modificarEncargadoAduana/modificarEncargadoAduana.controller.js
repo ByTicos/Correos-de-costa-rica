@@ -17,7 +17,7 @@
 
     let objUsuarioAEditar = JSON.parse($stateParams.objUsuarioTemp);
 
-    let objNuevoUsuario = new Usuario(objUsuarioAEditar.cedula, objUsuarioAEditar.foto, objUsuarioAEditar.primerNombre, objUsuarioAEditar.segundoNombre, objUsuarioAEditar.primerApellido, objUsuarioAEditar.segundoApellido, objUsuarioAEditar.correo, objUsuarioAEditar.telefono, objUsuarioAEditar.fechaNacimiento, objUsuarioAEditar.provincia, objUsuarioAEditar.canton, objUsuarioAEditar.distrito, objUsuarioAEditar.direccionExacta, objUsuarioAEditar.tipo, objUsuarioAEditar.sucursalAsignada, objUsuarioAEditar.puesto);
+    let objNuevoUsuario = new Usuario(objUsuarioAEditar.cedula, objUsuarioAEditar.foto, objUsuarioAEditar.primerNombre, objUsuarioAEditar.segundoNombre, objUsuarioAEditar.primerApellido, objUsuarioAEditar.segundoApellido, objUsuarioAEditar.correo, objUsuarioAEditar.telefono, objUsuarioAEditar.fechaNacimiento, objUsuarioAEditar.provincia, objUsuarioAEditar.canton, objUsuarioAEditar.distrito, objUsuarioAEditar.direccionExacta, objUsuarioAEditar.contrasenna, objUsuarioAEditar.tipo, objUsuarioAEditar.puesto);
 
 
     vm.editarUsuarios.cedula = objNuevoUsuario.cedula;
@@ -32,8 +32,8 @@
     vm.editarUsuarios.canton = objNuevoUsuario.canton;
     vm.editarUsuarios.distrito = objNuevoUsuario.distrito;
     vm.editarUsuarios.direccionExacta = objNuevoUsuario.direccionExacta;
+    vm.editarUsuarios.sucursalAsignada = objNuevoUsuario.contrasenna;
     vm.editarUsuarios.tipo = objNuevoUsuario.tipo;
-    vm.editarUsuarios.sucursalAsignada = objNuevoUsuario.sucursalAsignada;
     vm.editarUsuarios.puesto = objNuevoUsuario.puesto;
 
 
@@ -65,9 +65,8 @@
           objUsuario.canton = pUsuario.canton;
           objUsuario.distrito = pUsuario.distrito;
           objUsuario.direccionExacta = pUsuario.direccionExacta;
-          objUsuario.tipo = pUsuario.tipo;
-          objUsuario.sucursalAsignada = pUsuario.sucursalAsignada;
           objUsuario.contrasenna = pUsuario.contrasenna;
+          objUsuario.tipo = pUsuario.tipo;
           objUsuario.puesto = pUsuario.puesto;
 
 
