@@ -37,7 +37,8 @@
             addPaqueteConvenio:_addPaqueteConvenio,
             getPaquetesConvenio:_getPaquetesConvenio,
             getUsuarioActivo:_getUsuarioActivo,
-            solicitarEnvioPaqueteConvenio:_solicitarEnvioPaqueteConvenio
+            solicitarEnvioPaqueteConvenio:_solicitarEnvioPaqueteConvenio,
+            getAllPaquetesConvenio:_getAllPaquetesConvenio
             }
         return publicAPI
 
@@ -140,6 +141,20 @@
                 if (session.correo == listaUsuarios[i].correo) {
                     if (listaUsuarios[i].listaPaquetesConvenios != null) {
                         listaPaquetesConvenios = listaUsuarios[i].listaPaquetesConvenios;
+                    }
+                }
+            }
+            return listaPaquetesConvenios;
+        };
+
+        function _getAllPaquetesConvenio() {
+            let listaUsuarios = _getUsuarios();
+            let listaPaquetesConvenios = [];
+            for (let i = 0; i < listaUsuarios.length; i++) {
+                if (listaUsuarios[i].listaPaquetesConvenios != null) {
+                    for (let j = 0; j < listaUsuarios[i].listaPaquetesConvenios.length; j++) {
+                        listaPaquetesConvenios.push(listaUsuarios[i].listaPaquetesConvenios[j]);
+                        
                     }
                 }
             }
