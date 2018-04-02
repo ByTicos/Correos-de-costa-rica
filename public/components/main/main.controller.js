@@ -17,5 +17,6 @@
 
     }    
     vm.usuarioActivo = servicioUsuarios.getUsuarioActivo();
+    
   }
 })();
