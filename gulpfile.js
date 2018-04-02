@@ -7,7 +7,7 @@ const gulp = require('gulp'),
   rename = require('gulp-rename'),
   nodemon = require('gulp-nodemon'),
   todo = require('gulp-todo'),
-  browserSync = require('browser-sync'),  
+  browserSync = require('browser-sync'),
   paths = {
     views: './public/components/**/**/*.html',
     styles: './public/sources/styles/**/*.scss',
@@ -61,6 +61,13 @@ gulp.task('dependencies', () => {
       './node_modules/sweetalert/dist/sweetalert.min.js'
     ])
     .pipe(gulp.dest('./public/lib/sweetalert'));
+
+
+  gulp.src([
+      './node_modules/font-awesome/css/font-awesome.min.css'
+    ])
+    .pipe(gulp.dest('./public/lib/font-awesome'));
+
 
   gulp.src([
       './node_modules/ng-file-upload/dist/ng-file-upload.min.js',
