@@ -69,6 +69,12 @@ gulp.task('dependencies', () => {
     .pipe(gulp.dest('./public/lib/font-awesome'));
 
 
+    gulp.src([
+      './node_modules/payform/dist/jquery.payform.min.js'
+    ])
+    .pipe(gulp.dest('./public/lib/payform'));
+
+
   gulp.src([
       './node_modules/ng-file-upload/dist/ng-file-upload.min.js',
       './node_modules/ng-file-upload/dist/ng-file-upload-shim.min.js'

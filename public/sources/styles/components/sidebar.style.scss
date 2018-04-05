@@ -14,7 +14,7 @@ strong {
   font-family: 'Encode Sans Condensed', sans-serif;
   font-weight: 600;
   letter-spacing: .03em;
-  color: #212121;
+  color: #1c924c;
 }
 .button {
   position: fixed;
@@ -39,7 +39,7 @@ strong {
   display: block;
   width: 100%;
   height: 3px;
-  background: #aaa;
+  background: #b6e977;
   transition: .3s;
 }
 header {
@@ -48,39 +48,16 @@ header {
   position: fixed;
   width: 100%;
   height: 70px;
-  background: #212121;
-  color: #fff;
+  background: #1c924c;
+  color: #b6e977;
   justify-content: center;
   align-items: center;
   -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-box-shadow: 0 10px 6px -6px #777;
+       -moz-box-shadow: 0 10px 6px -6px #777;
+            box-shadow: 0 10px 6px -6px #777;
 }
 
-main {
-  padding: 70px 20px 0;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-}
-
-main > div {
-  margin: auto;
-  max-width: 600px;
-}
-
-main h2 span {
-  color: #BF7497;
-}
-
-main p {
-  line-height: 1.5;
-  font-weight: 200;
-  margin: 20px 0;
-}
-
-main small {
-  font-weight: 300;
-  color: #888;
-}
 
 #nav-container {
   z-index: 1;
@@ -128,14 +105,13 @@ main small {
 
 #nav-content {
   margin-top: 70px;
-  padding: 20px;
   width: 90%;
   max-width: 300px;
   position: absolute;
   top: 0;
   left: 0;
   height: calc(100% - 70px);
-  background: #ececec;
+  background: white;
   pointer-events: auto;
   -webkit-tap-highlight-color: rgba(0,0,0,0);
   transform: translateX(-100%);
@@ -150,6 +126,17 @@ main small {
   flex-direction: column;
 }
 
+#nav-content li {
+  padding-left: 5px;
+  }
+  
+
+#nav-content li:hover {
+padding-left: 10px;
+background-color:rgba(182,233,119,0.3);
+}
+
+
 #nav-content li a {
   padding: 10px 5px;
   display: block;
@@ -158,7 +145,7 @@ main small {
 }
 
 #nav-content li a:hover {
-  color: #BF7497;
+  color: #a32f13;
 }
 
 #nav-content li:not(.small) + .small {
@@ -221,4 +208,18 @@ img {
   vertical-align: middle;
   height: auto;
   width: 100%;
+}
+
+#myVideo {
+  position: fixed;
+  left: 15;
+  bottom: 0;
+  min-width: 100%; 
+  min-height: 100%;
+  z-index: -1;
+}
+
+video {
+  opacity: 0.1;
+  
 }

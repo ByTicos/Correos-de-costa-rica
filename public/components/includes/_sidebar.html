@@ -38,7 +38,7 @@
   <!-- </div>
 </div> -->
 <div class="page">
-    <header tabindex="0">Header</header>
+    <header tabindex="0">Bienvenido: {{vm.usuarioActivo}}</header>
     <div id="nav-container">
       <div class="bg"></div>
       <div class="button" tabindex="0">
@@ -47,15 +47,20 @@
         <span class="icon-bar"></span>
       </div>
       <div id="nav-content" tabindex="0">
+          
         <ul>
-          <a ng-show='vm.rol == 1' ui-sref="main.modificarCliente">Modificar perfil</a>
-          <a ng-show='vm.rol == 1' ui-sref="main.tarjetas">Registrar Tarjeta</a>
-          <a ng-show='vm.rol == 1' ui-sref="main.listartarjetas"> Mis Tarjetas</a>
-          <a ng-show='vm.rol == 1' ui-sref="main.registrarPreAlerta">Crear Pre-alerta</a>
-          <a ng-show='vm.rol == 1' ui-sref="main.listaPreAlerta">Historial Paquetes</a>
-          <a ng-show='vm.rol == 1' ui-sref="main.listarPaquetesConvenio"> Lista de paquetes de convenio</a>
+          <li><a ng-show='vm.rol == 1' ui-sref="main.modificarCliente">Modificar perfil</a></li>
+          <li><a ng-show='vm.rol == 1' ui-sref="main.tarjetas">Registrar Tarjeta</a></li>
+          <li><a ng-show='vm.rol == 1' ui-sref="main.listartarjetas"> Mis Tarjetas</a></li>
+          <li><a ng-show='vm.rol == 1' ui-sref="main.registrarPreAlerta">Crear Pre-alerta</a></li>
+          <li><a ng-show='vm.rol == 1' ui-sref="main.listaPreAlerta">Historial Paquetes</a></li>
+          <li><a ng-show='vm.rol == 1' ui-sref="main.listarPaquetesConvenio"> Lista de paquetes de convenio</a></li>
           <li class="small"><a href="#0">Facebook</a><a href="#0">Instagram</a></li>
         </ul>
+        <video autoplay muted loop id="myVideo" class="">
+            <source src="../../sources/video/bgvideo.mp4" type="video/mp4">
+            </video>
+      
       </div>
     </div>
 
