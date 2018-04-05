@@ -37,7 +37,48 @@
 
 <!-- </div>
 </div> -->
-<div id="sidebar">
+<div class="page">
+    <header tabindex="0">Header</header>
+    <div id="nav-container">
+      <div class="bg"></div>
+      <div class="button" tabindex="0">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </div>
+      <div id="nav-content" tabindex="0">
+        <ul>
+          <a ng-show='vm.rol == 1' ui-sref="main.modificarCliente">Modificar perfil</a>
+          <a ng-show='vm.rol == 1' ui-sref="main.tarjetas">Registrar Tarjeta</a>
+          <a ng-show='vm.rol == 1' ui-sref="main.listartarjetas"> Mis Tarjetas</a>
+          <a ng-show='vm.rol == 1' ui-sref="main.registrarPreAlerta">Crear Pre-alerta</a>
+          <a ng-show='vm.rol == 1' ui-sref="main.listaPreAlerta">Historial Paquetes</a>
+          <a ng-show='vm.rol == 1' ui-sref="main.listarPaquetesConvenio"> Lista de paquetes de convenio</a>
+
+          <a ng-show='vm.rol == 5' ui-sref="main.registrarClienteAdmin">
+            Registrar cliente</a>
+          <a ng-show='vm.rol == 5' ui-sref="main.registrarEntidades">Registrar Entidades</a>
+          <a ng-show='vm.rol == 5' ui-sref="main.registrarConvenio">Registrar Convenios</a>
+          <a ng-show='vm.rol == 5' ui-sref="main.registrarEncargadoAduana">Registrar Encargado de Aduanas</a>
+          <a ng-show='vm.rol == 5' ui-sref="main.repartidor">Registrar Repartidores</a>
+          <a ng-show='vm.rol == 5' ui-sref="main.sucursales">Registar Sucursales</a>
+          <a ng-show='vm.rol == 5' ui-sref="main.registrarEncargadoSucursal">Registrar encargado de sucursal</a>
+          <a ng-show='vm.rol == 5' ui-sref="main.listarCliente">Lista de clientes</a>
+          <a ng-show='vm.rol == 5' ui-sref="main.listarEncargadoSucursal">Lista de Encargados de Sucursal</a>
+          <a ng-show='vm.rol == 5' ui-sref="main.listarEntidades"> Lista de entidades</a>
+          <a ng-show='vm.rol == 5' ui-sref="main.listarConvenios"> Lista de convenios</a>
+          <a ng-show='vm.rol == 5' ui-sref="main.listarEncargadoAduana">Lista de Encargados de Aduanas</a>
+          <a ng-show='vm.rol == 5' ui-sref="main.listarRepartidores">Lista de Repartidor</a>
+          <a ng-show='vm.rol == 5' ui-sref="main.listarsucursales">Lista de Sucursales</a>
+          <a ng-show='vm.rol == 5' ui-sref="main.PaquetesAdmin">Historial Paquetes</a>
+          <li class="small"><a href="#0">Facebook</a><a href="#0">Instagram</a></li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+  <!--
+  <div id="sidebar">
     <div class="page">
         <header tabindex="0">Bienvenido: {{vm.usuarioActivo}}</header>
         <div id="nav-container">
@@ -145,4 +186,5 @@
             </div>
         </div>
     </div>
-</div>
+
+  </div>

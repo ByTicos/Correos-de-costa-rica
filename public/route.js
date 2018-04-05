@@ -338,7 +338,7 @@
 
       .state('main.PaquetesAdmin', {
         url: '/PaquetesAdmin',
-        templateUrl: './components/admin/listaPaquetes.view.html',
+        templateUrl: './components/paquetes/listaPaquetesAmin/listaPaquetes.view.html',
         data:{
           pageTitle: 'Filtrar Paquetes'
         },
@@ -347,7 +347,7 @@
         },
         resolve: {
           load: ['$ocLazyLoad', ($ocLazyLoad) => {
-            return $ocLazyLoad.load('./components/admin/listaPaquetes.controller.js')
+            return $ocLazyLoad.load('./components/paquetes/listaPaquetesAmin/listaPaquetes.controller.js')
           }]
         },
         controller: 'controladorListaPaquetesAdmin',
@@ -356,7 +356,7 @@
 
        .state('main.listaEstados', {
         url: '/listaEstados',
-        templateUrl: './components/admin/listaEstadosPaquetes.view.html',
+        templateUrl: './components/paquetes/listaEstadosPaquetesAdmin/listaEstadosPaquetes.view.html',
         data:{
           pageTitle: 'Filtrar Estados'
         },
@@ -365,7 +365,7 @@
         },
         resolve: {
           load: ['$ocLazyLoad', ($ocLazyLoad) => {
-            return $ocLazyLoad.load('./components/admin/listaEstadosPaquetes.controller.js')
+            return $ocLazyLoad.load('./components/paquetes/listaEstadosPaquetesAdmin/listaEstadosPaquetes.controller.js')
           }]
         },
         controller: 'controladorListaEstados',
