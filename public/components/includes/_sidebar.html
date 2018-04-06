@@ -38,7 +38,12 @@
   <!-- </div>
 </div> -->
 <div class="page">
-    <header tabindex="0">Bienvenido: {{vm.usuarioActivo}}</header>
+    <div class="headerclass">
+     <h4 class=""> Bienvenido: {{vm.usuarioActivo}}</h4>
+      <a ui-sref="logIn" class="" ng-click= "vm.cerrarSesion()">Cerrar Sesión</a>
+    
+    </div>
+    
     <div id="nav-container">
       <div class="bg"></div>
       <div class="button" tabindex="0">
