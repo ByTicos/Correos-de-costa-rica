@@ -753,6 +753,66 @@
           controller: 'controladorPaquetesRepartidor',
           controllerAs: 'vm',
         })
+
+         .state('registrarArticulo', {
+        url: '/registrarArticulo',
+        templateUrl: './components/articulos/registrarArticulo.view.html',
+        data:{
+          pageTitle: 'Registrar articulo'
+        },
+        params: {
+          objArticuloTemp: ''
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/articulos/registrarArticulo.controller.js')
+          }]
+        },
+        controller: 'controladorArticulo',
+        controllerAs: 'vm'
+      })
+
+      .state('listarArticulo',{
+
+        url:'/listarArticulo',
+        templateUrl: './components/articulos/listaArticulos/listaArticulos.view.html',
+        data: {
+          pageTitle: 'lista de articulos'
+        },
+        params: {
+          objArticuloTemp: ''
+        },
+
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/articulos/listaArticulos/listaArticulos.controller.js')
+          }]
+        },
+        controller: 'controladorListaArticulo',
+        controllerAs: 'vm'
+      })
+
+      .state('editarArticulo',{
+
+        url:'/editarArticulo',
+        templateUrl: './components/articulos/editarArticulo/editArticulo.view.html',
+        data: {
+          pageTitle: 'Edicion de articulos'
+        },
+        params: {
+          objArticuloTemp: ''
+        },
+
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/articulos/editarArticulo/editArticulo.controller.js')
+          }]
+        },
+        controller: 'controladorEditarArticulo',
+        controllerAs: 'vm'
+      })
+
+      
       
     
 

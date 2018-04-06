@@ -110,6 +110,7 @@
 
                         objUsuarioTemp.agregarPaquete(objPaqueteTemp);
                     });
+                    
                     listaUsuarios.push(objUsuarioTemp);
                 });
 

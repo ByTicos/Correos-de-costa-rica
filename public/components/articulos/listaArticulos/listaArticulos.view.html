@@ -1,0 +1,41 @@
+<div navegacion-Principal></div>
+<div menu-Lateral></div>
+<section id="">
+  <div class="container">
+    <form class="row">
+      <div class=" col-xs-12 col-md-4">
+        <label for="">Buscar por Nombre</label>
+        <input type="text" class="form-control" >
+
+      </div>
+
+
+
+
+
+    </form>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nombre</th>
+          <th>%IV</th>
+          <th>Editar</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="articulo in vm.listaArticulos">
+          <td>{{articulo.id}}</td>
+          <td>{{articulo.producto}}</td>
+          <td>{{articulo.impuesto}}</td>
+          
+          <td><button type="button" ng-click="vm.editArticulo(articulo)">Editar</button></td>
+          
+          
+          
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
