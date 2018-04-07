@@ -42,7 +42,7 @@
         }
         servicioUsuarios.actualizarTarjeta(objTarjetas);
       });
-      $state.go('main.tarjetas');
+      $state.go('main.listartarjetas');
     };
 
 
