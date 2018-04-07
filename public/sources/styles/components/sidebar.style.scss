@@ -10,56 +10,88 @@ strong {
 
 .page {
   width: 100%;
-  height: 15px;
-  background: #fdfdfd;
+    background: #fdfdfd;
   font-family: 'Encode Sans Condensed', sans-serif;
   font-weight: 600;
   letter-spacing: .03em;
-  color: #212121;
+  color: #1c924c;
+}
+.button {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  -webkit-appearance: none;
+  border: 0;
+  background: transparent;
+  border-radius: 0;
+  height: 70px;
+  width: 30px;
+  cursor: pointer;
+  pointer-events: auto;
+  margin-left: 25px;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
 
-header {
-  display: flex;
+.icon-bar {
+  z-index: 1;
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 3px;
+  background: #b6e977;
+  transition: .3s;
+}
+.headerclass {
+  z-index: 1;
+  display: sticky;
   position: fixed;
   width: 100%;
   height: 70px;
-  background: linear-gradient(to bottom,#77b828 100%, #ffffff 0%, #77b828 100%);
-  color: #fff;
-  justify-content: center;
-  align-items: center;
+  background: linear-gradient(to right, #005825 0%, #005825 0%, #005825 65%, #77b924 100%);
+  color: #b6e977;
   -webkit-tap-highlight-color: rgba(0,0,0,0);
-  box-shadow: 5px 2px 10px #aaaaaa;
-  
+    -webkit-box-shadow: 0 10px 6px -6px #777;
+       -moz-box-shadow: 0 10px 6px -6px #777;
+            box-shadow: 0 10px 6px -6px #777;
+            transition: .3s;
+            a {
+              float: right;
+              position: relative;
+             text-align:center;
+             bottom: 24px;
+             margin-right: 10px;
+             cursor: pointer;
+             
+            
+            }
+            a:hover {
+              color: #3d6f00;
+             
+            
+            }
+
+            h4 {
+              float: none;
+              position: relative;
+             text-align:center;
+             margin-top: 20px;
+            }
+
+            img {
+              width: 100%;
+              height: 50%;
+              float: none;
+              position: relative;
+              bottom: 40px;
+              left: 20px;
+            }
 }
 
-main {
-  padding: 70px 20px 0;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-}
-
-main > div {
-  margin: auto;
-  max-width: 600px;
-}
-
-main h2 span {
-  color: #BF7497;
-}
-
-main p {
-  line-height: 1.5;
-  font-weight: 200;
-  margin: 20px 0;
-}
-
-main small {
-  font-weight: 300;
-  color: #888;
-}
 
 #nav-container {
+  z-index: 1;
   position: fixed;
   height: 100vh;
   width: 100%;
@@ -84,31 +116,7 @@ main small {
   visibility: visible;
 }
 
-.button {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  z-index: 1;
-  -webkit-appearance: none;
-  border: 0;
-  background: transparent;
-  border-radius: 0;
-  height: 70px;
-  width: 30px;
-  cursor: pointer;
-  pointer-events: auto;
-  margin-left: 25px;
-  touch-action: manipulation;
-  -webkit-tap-highlight-color: rgb(255, 255, 255);
-}
-.icon-bar {
-  display: block;
-  width: 100%;
-  height: 3px;
-  background: rgb(255, 255, 255);
-  transition: .3s;
-}
+
 .icon-bar + .icon-bar {
   margin-top: 5px;
 }
@@ -128,14 +136,13 @@ main small {
 
 #nav-content {
   margin-top: 70px;
-  padding: 20px;
   width: 90%;
   max-width: 300px;
   position: absolute;
   top: 0;
   left: 0;
   height: calc(100% - 70px);
-  background: #ececec;
+  background: white;
   pointer-events: auto;
   -webkit-tap-highlight-color: rgba(0,0,0,0);
   transform: translateX(-100%);
@@ -150,6 +157,17 @@ main small {
   flex-direction: column;
 }
 
+#nav-content li {
+  padding-left: 5px;
+  }
+  
+
+#nav-content li:hover {
+padding-left: 10px;
+background-color:rgba(182,233,119,0.3);
+}
+
+
 #nav-content li a {
   padding: 10px 5px;
   display: block;
@@ -158,7 +176,7 @@ main small {
 }
 
 #nav-content li a:hover {
-  color: #BF7497;
+  color: #a32f13;
 }
 
 #nav-content li:not(.small) + .small {
@@ -182,10 +200,6 @@ main small {
 #nav-container:focus-within #nav-content {
   transform: none;
 }
-
-
-
-
 
 
 * {
@@ -224,6 +238,25 @@ ul {
 img {
   vertical-align: middle;
   height: auto;
+  width: 100%;
+}
+
+#myVideo {
+  position: fixed;
+  left: 15;
+  bottom: 0;
+  min-width: 100%; 
+  min-height: 100%;
+  z-index: -1;
+}
+
+video {
+  opacity: 0.1;
   
 }
 
+.right {
+  position: relative;
+  left: 25%;
+
+}
