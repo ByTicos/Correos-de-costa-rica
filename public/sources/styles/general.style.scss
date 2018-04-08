@@ -111,6 +111,7 @@
   line-height: 20px;
   height: 20px;
   margin-top:20px; 
+  background: rgba(255, 255, 250, 0.5);
       a {
         cursor: pointer;
       }
@@ -133,4 +134,10 @@
 
 
 // Aqui terminan los estilos de las tarjetas
+
+// Estilos para la seccion de editar perfil
+
+.buttoneditar {
+  margin-top:10px;
+}
 
