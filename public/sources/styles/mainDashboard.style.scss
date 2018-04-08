@@ -1,89 +1,34 @@
-#dashboard {
-  font-size: 16px;  
-  padding-top:15px;
-  margin-left: 220px;
-  padding-left: 15px;
-  img {
-    display: inline-block;
-    position: relative;    
-  }
+main {
+  padding: 90px 0 0 0;
+  margin: 0 auto;
+  width: 100%;
+  position: relative;
+  
 }
 
-  
-  #viewonly {
-    button {
-    margin: 0 auto;
-    font-size: 16px;
-    padding: 0.45rem 1.5rem;
-    display: inline;
-    background-color: #009ac9;
-    border: 1px solid transparent;
-    color: #ffffff;
-    font-weight: 300;
-    -webkit-border-radius: 3px;
-    border-radius: 3px;
-    -webkit-transition: all 0.3s ease-in-out;
-    -moz-transition: all 0.3s ease-in-out;
-    transition: all 0.3s ease-in-out;
-  }
-  
-    button:hover {
-    background-color: #ffffff;
-    color: #009ac9;
-    border-color: #009ac9;
-     }
-     
-  }
+main:after {
+  content : "";
 
- 
-  input .effect5 {
-      position: relative;
+position: absolute;
+top: 0;
+left: 0;
+background-image: url('../../sources/images/fondo.png'); 
+width: 100%;
+height: 900px;
+opacity : 0.2;
+z-index: -1;
+background-repeat: no-repeat;
+background-position: center;
+background-size: cover;
 
-      .effect5:before, .effect5:after {
-      z-index: -1;
-      position: absolute;
-      content: "";
-      bottom: 25px;
-      left: 10px;
-      width: 50%;
-      top: 80%;
-      max-width:300px;
-      background: #777;
-      -webkit-box-shadow: 0 35px 20px #777;
-      -moz-box-shadow: 0 35px 20px #777;
-      box-shadow: 0 35px 20px #777;
-      -webkit-transform: rotate(-8deg);
-      -moz-transform: rotate(-8deg);
-      -o-transform: rotate(-8deg);
-      -ms-transform: rotate(-8deg);
-      transform: rotate(-8deg);
-    }
+}
 
-    .effect5:after{
-      -webkit-transform: rotate(8deg);
-      -moz-transform: rotate(8deg);
-      -o-transform: rotate(8deg);
-      -ms-transform: rotate(8deg);
-      transform: rotate(8deg);
-      right: 10px;
-      left: auto;
-    }
-  }
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #cc4728;
+  margin: 1em 0;
+  padding: 0;
+}
 
-
-
-  #mainDashboard {
-    .wrapper {
-      background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(210, 222, 255, 0.8)),
-                  rgba(34, 86, 255, 0.8) url('../../sources/images/collage.png') no-repeat center;
-      background-size: cover;
-      color: #052753;
-      text-align: center;
-      text-rendering: optimizeLegibility;
-      margin: 0;
-      padding: 15px 10px 15px;
-      min-height: 640px;
-  } 
-  color: black;
-  
-  }

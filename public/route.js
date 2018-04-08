@@ -320,7 +320,7 @@
 
       .state('main.PaquetesAdmin', {
         url: '/PaquetesAdmin',
-        templateUrl: './components/admin/listaPaquetes.view.html',
+        templateUrl: './components/paquetes/listaPaquetesAmin/listaPaquetes.view.html',
         data:{
           pageTitle: 'Filtrar Paquetes'
         },
@@ -329,7 +329,7 @@
         },
         resolve: {
           load: ['$ocLazyLoad', ($ocLazyLoad) => {
-            return $ocLazyLoad.load('./components/admin/listaPaquetes.controller.js')
+            return $ocLazyLoad.load('./components/paquetes/listaPaquetesAmin/listaPaquetes.controller.js')
           }]
         },
         controller: 'controladorListaPaquetesAdmin',
@@ -338,7 +338,7 @@
 
        .state('main.listaEstados', {
         url: '/listaEstados',
-        templateUrl: './components/admin/listaEstadosPaquetes.view.html',
+        templateUrl: './components/paquetes/listaEstadosPaquetesAdmin/listaEstadosPaquetes.view.html',
         data:{
           pageTitle: 'Filtrar Estados'
         },
@@ -347,7 +347,7 @@
         },
         resolve: {
           load: ['$ocLazyLoad', ($ocLazyLoad) => {
-            return $ocLazyLoad.load('./components/admin/listaEstadosPaquetes.controller.js')
+            return $ocLazyLoad.load('./components/paquetes/listaEstadosPaquetesAdmin/listaEstadosPaquetes.controller.js')
           }]
         },
         controller: 'controladorListaEstados',
@@ -753,6 +753,85 @@
           controller: 'controladorPaquetesRepartidor',
           controllerAs: 'vm',
         })
+
+         .state('main.registrarArticulo', {
+        url: '/registrarArticulo',
+        templateUrl: './components/articulos/registrarArticulo.view.html',
+        data:{
+          pageTitle: 'Registrar articulo'
+        },
+        params: {
+          objArticuloTemp: ''
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/articulos/registrarArticulo.controller.js')
+          }]
+        },
+        controller: 'controladorArticulo',
+        controllerAs: 'vm'
+      })
+
+      .state('main.listarArticulo',{
+
+        url:'/listarArticulo',
+        templateUrl: './components/articulos/listaArticulos/listaArticulos.view.html',
+        data: {
+          pageTitle: 'lista de articulos'
+        },
+        params: {
+          objArticuloTemp: ''
+        },
+
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/articulos/listaArticulos/listaArticulos.controller.js')
+          }]
+        },
+        controller: 'controladorListaArticulo',
+        controllerAs: 'vm'
+      })
+
+      .state('main.editarArticulo',{
+
+        url:'/editarArticulo',
+        templateUrl: './components/articulos/editarArticulo/editArticulo.view.html',
+        data: {
+          pageTitle: 'Edicion de articulos'
+        },
+        params: {
+          objArticuloTemp: ''
+        },
+
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/articulos/editarArticulo/editArticulo.controller.js')
+          }]
+        },
+        controller: 'controladorEditarArticulo',
+        controllerAs: 'vm'
+      })
+      .state('main.articulosDesactivados',{
+
+        url:'/articulosDesactivados',
+        templateUrl: './components/articulos/listaArticulos/articulosDesactivados.view.html',
+        data: {
+          pageTitle: 'articulos desactivados'
+        },
+        params: {
+          objArticuloTemp: ''
+        },
+
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/articulos/listaArticulos/articulosDesactivados.controller.js')
+          }]
+        },
+        controller: 'controladorArticuloDesactivado',
+        controllerAs: 'vm'
+      })
+
+      
       
     
 

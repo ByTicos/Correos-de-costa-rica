@@ -4,6 +4,7 @@
     
     <div class="col-7">
 <h1>REGISTRO DE PRE-ALERTA</h1>
+<hr/>
        <form ng-submit="vm.registrarPaquete(vm.nuevoPaquete)">
 
         <div class="form-group ">
@@ -29,7 +30,7 @@
       
         <div class="form-group">
           <label for="">Articulo</label>
-          <select class="form-control" ng-model="vm.nuevoPaquete.tipoArticulo" ng-options="tipo as tipo.name for tipo in vm.tipoArticulo track by tipo._id" required>
+          <select class="form-control" ng-model="vm.nuevoPaquete.tipoArticulo" ng-options="tipo as tipo.producto for tipo in vm.tipoArticulo track by tipo.impuesto" required>
             
           </select>
         </div>

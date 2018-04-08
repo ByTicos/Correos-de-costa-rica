@@ -6,3 +6,7 @@ TODO.md
 public/.DS_Store
 
 .vscode/launch.json
+
+
+public/generalStyles.css
+public/sources/styles.min.css
