@@ -43,6 +43,9 @@
             
           );
 
+          objArticuloTemp.cambiarEstadoDeActividadArticulo (objArticulo.estado);
+
+
           listaArticulos.push (objArticuloTemp);
         });
       }

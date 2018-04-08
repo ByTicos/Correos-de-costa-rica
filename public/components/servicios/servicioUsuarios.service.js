@@ -177,6 +177,21 @@
             actualizarLocal(listaUsuarios);
         };
 
+        //    function encontrarTraking(pNuevoPaquete) {
+        //        let listaUsuarios = _getUsuarios ();
+        //        let trackingEncontrado;
+
+        //        for (let i = 0; i < listaUsuarios.length; i++) {
+        //            let listaPaquetes = listaUsuarios[i].listaPaquetes;
+        //            for (let j = 0; j < listaPaquetes.length; j++) {
+        //                if (listaPaquetes[j].tracking == pNuevoPaquete.tracking) {
+        //                    trackingEncontrado = listaPaquetes[j].tracking;
+        //                }
+        //            }
+        //        }
+        //        return trackingEncontrado;
+        //    };
+
            function _addPaquete (pNuevoPaquete) {
                 let listaUsuarios = _getUsuarios();
                 let sesion = JSON.parse(sessionStorage.getItem('sesion'));

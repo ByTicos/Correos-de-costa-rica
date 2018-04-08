@@ -5,10 +5,8 @@
       <h1>REGISTRO DE ARTICULO</h1>
       <form ng-submit="vm.editArticulo(vm.edicionDeArticulo)">
 
-        <div class="form-group ">
-          <label for="">ID</label>
-          <input type="number" class="form-control" ng-model="vm.edicionDeArticulo.id" required>
-        </div>
+     
+
         <div class="form-group">
           <label for="">PRODUCTO</label>
           <input type="text" class="form-control" ng-model="vm.edicionDeArticulo.producto" required>
@@ -18,6 +16,7 @@
           <input type="text" class="form-control" ng-model="vm.edicionDeArticulo.impuesto" required>
         </div>
         <button class="btn btn-secondary" type="submit">Editar</button>
+       
 
       </form>
     </div>

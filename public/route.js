@@ -754,7 +754,7 @@
           controllerAs: 'vm',
         })
 
-         .state('registrarArticulo', {
+         .state('main.registrarArticulo', {
         url: '/registrarArticulo',
         templateUrl: './components/articulos/registrarArticulo.view.html',
         data:{
@@ -772,7 +772,7 @@
         controllerAs: 'vm'
       })
 
-      .state('listarArticulo',{
+      .state('main.listarArticulo',{
 
         url:'/listarArticulo',
         templateUrl: './components/articulos/listaArticulos/listaArticulos.view.html',
@@ -792,7 +792,7 @@
         controllerAs: 'vm'
       })
 
-      .state('editarArticulo',{
+      .state('main.editarArticulo',{
 
         url:'/editarArticulo',
         templateUrl: './components/articulos/editarArticulo/editArticulo.view.html',
@@ -809,6 +809,25 @@
           }]
         },
         controller: 'controladorEditarArticulo',
+        controllerAs: 'vm'
+      })
+      .state('main.articulosDesactivados',{
+
+        url:'/articulosDesactivados',
+        templateUrl: './components/articulos/listaArticulos/articulosDesactivados.view.html',
+        data: {
+          pageTitle: 'articulos desactivados'
+        },
+        params: {
+          objArticuloTemp: ''
+        },
+
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/articulos/listaArticulos/articulosDesactivados.controller.js')
+          }]
+        },
+        controller: 'controladorArticuloDesactivado',
         controllerAs: 'vm'
       })
 

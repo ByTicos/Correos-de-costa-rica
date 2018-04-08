@@ -15,11 +15,39 @@
 
   let objArticuloAEditar = JSON.parse ($stateParams.objArticuloTemp);
 
-  vm.objArticuloNuevo = new Articulo (objArticuloAEditar.id, objArticuloAEditar.producto, objArticuloAEditar.impuesto);
+  let objArticuloNuevo = new Articulo (objArticuloAEditar.id, objArticuloAEditar.producto, objArticuloAEditar.impuesto);
 
-  vm.edicionDeArticulo.id = objArticuloAEditar.id;
   vm.edicionDeArticulo.producto = objArticuloAEditar.producto;
   vm.edicionDeArticulo.impuesto = objArticuloAEditar.impuesto;
+
+
+  // vm.eliminarArticulo = (pEstado) =>{
+  //   let listaArticulos = servicioArticulos.getArticulo ();
+    
+
+  //   listaArticulos.forEach(objArticulo =>{
+  //     if (objArticulo.id == objArticuloNuevo.id) {
+  //       objArticulo.cambiarEstadoDeActividadArticulo(pEstado);
+  //     }
+  //     servicioArticulos.actualizarArticulo (objArticulo);
+      
+  //   });
+
+  //   // if (pEstado == 'activo') {
+  //   //   swal(" Activacion exitosa", "Paquete ya esta activado", "success", {
+  //   //     button: "Aceptar",
+  //   //   });
+  //   // }
+  //   //  if (pEstado == 'inactivo') {
+  //   //   swal(" Desactivacion exitosa", "Paquete ya esta desactivado", "success", {
+  //   //     button: "Aceptar",
+  //   //   });
+  //   // }
+
+    
+  //   $state.go('listarArticulo');
+  // };
+
 
   vm.editArticulo = (pArticulo) =>{
     let listaArticulos = servicioArticulos.getArticulo();
@@ -28,35 +56,18 @@
 
       if (objEditar.id == objArticuloNuevo.id ) {
         
-        vm.objEditar.id = pArticulo.id;
-        vm.objEditar.producto = pArticulo.producto;
-        vm.objEditar.impuesto = pArticulo.impuesto;
+        objEditar.producto = pArticulo.producto;
+        objEditar.impuesto = pArticulo.impuesto;
 
         servicioArticulos.actualizarArticulo(objEditar);
       }
 
 
 
+
     });
+ $state.go ('main.listarArticulo');
 
-  }
-  
-
-  
-
-
-
-
-
-
-
-
-
-  vm.editArticulo = (pNuevoArticulo)=>{
-
-    let ArticuloTemp = new Articulo(pNuevoArticulo.id, pNuevoArticulo.producto,pNuevoArticulo.impuesto);
-
-    servicioArticulos.addArticulo(ArticuloTemp);
 
   }
 

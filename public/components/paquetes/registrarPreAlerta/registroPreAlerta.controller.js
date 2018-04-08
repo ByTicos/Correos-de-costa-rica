@@ -4,9 +4,9 @@
     .module ('correos')
     .controller ('controladorPreAlerta', controladorPreAlerta);
 
-  controladorPreAlerta.$inject = ['$http','$state','$stateParams','$location','servicioUsuarios' ];
+  controladorPreAlerta.$inject = ['$http','$state','$stateParams','$location','servicioUsuarios','servicioArticulos' ];
 
-  function controladorPreAlerta ( $http, $state, $stateParams, $location, servicioUsuarios ) {
+  function controladorPreAlerta ( $http, $state, $stateParams, $location, servicioUsuarios,servicioArticulos ) {
     let vm = this;
     vm.nuevoPaquete = {};
     vm.calculo = 0;
@@ -18,17 +18,21 @@
       $state.go ('main.listaPreAlerta');
     };
 
-    vm.tipoArticulo = $http ({
-      method: 'GET',
-      url: './sources/data/articulos.json',
-    }).then (
-      success => {
-        vm.tipoArticulo = success.data;
-      },
-      error => {
-        console.log ('Ocurrió un error ' + error.data);
-      }
-    );
+     vm.tipoArticulo = servicioArticulos.getArticulo();
+
+    
+    
+    //$http ({
+    //   method: 'GET',
+    //   url: './sources/data/articulos.json',
+    // }).then (
+    //   success => {
+    //     vm.tipoArticulo = success.data;
+    //   },
+    //   error => {
+    //     console.log ('Ocurrió un error ' + error.data);
+    //   }
+    // );
 
     vm.calcular = pnuevoPaquete => {
       let calculo = 0;

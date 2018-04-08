@@ -21,7 +21,22 @@
 
     servicioArticulos.addArticulo(ArticuloTemp);
 
+    swal (
+          'Registro exitoso',
+          'El paquete ha sido registrado correctamente',
+          'success',
+          {
+            button: 'Aceptar',
+          }
+        );
+        vm.nuevoArticulo = {};
+
+
+
   }
+
+  
+
 
   }
 

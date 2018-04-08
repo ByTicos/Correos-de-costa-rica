@@ -207,6 +207,11 @@ class Articulo{
         this.id = pId;
         this.producto = pProducto;
         this.impuesto = pImpuesto;
+        this.estado = 'activo';
         
+    }
+
+     cambiarEstadoDeActividadArticulo(pEstado) {
+        this.estado = pEstado;
     }
 }
