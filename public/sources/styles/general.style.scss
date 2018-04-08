@@ -111,6 +111,7 @@
   line-height: 20px;
   height: 20px;
   margin-top:20px; 
+  background: rgba(255, 255, 250, 0.5);
       a {
         cursor: pointer;
       }
@@ -134,11 +135,20 @@
 
 // Aqui terminan los estilos de las tarjetas
 
-/// 
+.creditCardForm .btn-success  {
+  margin-bottom: 20px;
+}
 
-//LogIn
+.creditCardForm .btn-primary  {
+  margin-bottom: 20px;
+}
+
+.creditCardForm .btn-danger  {
+  margin-bottom: 20px;
+}
+
+// Estilos login
 @import url(https://fonts.googleapis.com/css?family=Roboto:300);
-
 .login-page {
   width: 360px;
   padding: 8% 0 0;
@@ -164,7 +174,7 @@
     box-sizing: border-box;
     font-size: 14px;
   }
-  .form label{
+  .form label {
     text-align: left;
   }
   .form button {
@@ -232,5 +242,5 @@
   .container .info span .fa {
     color: #EF3B3A;
   }
-  
 }
+//Final estilos login

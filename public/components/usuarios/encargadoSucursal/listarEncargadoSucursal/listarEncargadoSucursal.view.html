@@ -1,10 +1,10 @@
 
 
-<div id="dashboard">
+<div id="container-fluid">
 
-    <table class="table table-responsive">
-        <legend>Usuarios activos</legend>
-        <thead>
+    <table class="table table-responsive table-striped text-centered col-12 offset-1">
+        <legend class="col-12 offset-1">Usuarios activos</legend>
+        <thead class="thead-dark">
             <tr>
                 <th>Cédula</th>
                 <th>Foto</th>
@@ -28,14 +28,14 @@
                 <td>{{usuario.telefono}}</td>
                 <td>{{usuario.tipo}}</td>
                 <td>
-                    <button class="btn " type="button" ng-click="vm.editUsuarios(usuario)">Editar</button>
+                    <button class="btn btn-success" type="button" ng-click="vm.editUsuarios(usuario)">Editar</button>
                 </td>
             </tr>
         </tbody>
     </table>
-    <table class="table table-responsive">
-        <legend>Usuarios desactivados</legend>
-        <thead>
+    <table class="table table-responsive table-striped text-centered col-12 offset-1">
+        <legend class="col-12 offset-1">Usuarios desactivados</legend>
+        <thead class="thead-dark">
             <tr>
                 <th>Cédula</th>
                 <th>Foto</th>
@@ -59,7 +59,7 @@
                 <td>{{usuario.telefono}}</td>
                 <td>{{usuario.tipo}}</td>
                 <td>
-                    <button class="btn " type="button" ng-click="vm.editUsuarios(usuario)">Editar</button>
+                    <button class="btn btn-success" type="button" ng-click="vm.editUsuarios(usuario)">Editar</button>
                 </td>
             </tr>
         </tbody>
