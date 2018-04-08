@@ -1,8 +1,8 @@
 <div navegacion-Principal></div>
 <div menu-Lateral></div>
 <section id="dashboard">
-    <table class="table table-responsive">
-    <legend>Paquetes recibidos en sucursal</legend>
+    <table class="table table-responsive" ng-show="vm.rol === '1'">
+    <legend ng-show="vm.rol === '1'">Paquetes recibidos en sucursal</legend>
     <thead>
       <tr>
         <th>Nombre de paquete</th>
@@ -31,6 +31,7 @@
           <th>Tipo de convenio</th>
           <th>Fecha de recibido</th>
           <th>Estado</th>
+          <th ng-show="vm.rol == '2'">Repartidor</th>
         </tr>
       </thead>
       <tbody>
@@ -39,6 +40,14 @@
           <td>{{paquete.convenio}}</td>
           <td>{{paquete.fecha | date}}</td>
           <td>{{paquete.estadoTraslado}}</td>
+          <td ng-show="vm.rol == '2'">
+            <select>
+              <option value="">Seleccione el repartidor</option>
+              <option ng-repeat="repartidor in vm.repartidores" value="{{repartidor.correo}}">{{repartidor.primerNombre}}</option>
+            </select>
+            <!--<button ng-show="vm.rol == '2'" ng-click="asignarPaqueteConvenio(repartidor.correo)" >Asignar paquete</button>-->
+          </td>
+          
         </tr>
       </tbody>
     </table>

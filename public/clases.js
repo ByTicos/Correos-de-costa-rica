@@ -200,3 +200,18 @@ class PaqueteConv{
 //             this.listaLicencias = pLicencias;
 //         }
 //     }
+
+
+class Articulo{
+    constructor(pId, pProducto, pImpuesto){
+        this.id = pId;
+        this.producto = pProducto;
+        this.impuesto = pImpuesto;
+        this.estado = 'activo';
+        
+    }
+
+     cambiarEstadoDeActividadArticulo(pEstado) {
+        this.estado = pEstado;
+    }
+}

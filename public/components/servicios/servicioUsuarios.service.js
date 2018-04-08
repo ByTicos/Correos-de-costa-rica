@@ -37,7 +37,8 @@
             addPaqueteConvenio:_addPaqueteConvenio,
             getPaquetesConvenio:_getPaquetesConvenio,
             getUsuarioActivo:_getUsuarioActivo,
-            solicitarEnvioPaqueteConvenio:_solicitarEnvioPaqueteConvenio
+            solicitarEnvioPaqueteConvenio:_solicitarEnvioPaqueteConvenio,
+            getAllPaquetesConvenio:_getAllPaquetesConvenio
             }
         return publicAPI
 
@@ -110,6 +111,7 @@
 
                         objUsuarioTemp.agregarPaquete(objPaqueteTemp);
                     });
+                    
                     listaUsuarios.push(objUsuarioTemp);
                 });
 
@@ -146,6 +148,20 @@
             return listaPaquetesConvenios;
         };
 
+        function _getAllPaquetesConvenio() {
+            let listaUsuarios = _getUsuarios();
+            let listaPaquetesConvenios = [];
+            for (let i = 0; i < listaUsuarios.length; i++) {
+                if (listaUsuarios[i].listaPaquetesConvenios != null) {
+                    for (let j = 0; j < listaUsuarios[i].listaPaquetesConvenios.length; j++) {
+                        listaPaquetesConvenios.push(listaUsuarios[i].listaPaquetesConvenios[j]);
+                        
+                    }
+                }
+            }
+            return listaPaquetesConvenios;
+        };
+
         function _solicitarEnvioPaqueteConvenio(pPaquete) {
             let listaUsuarios = _getUsuarios();
             let sesion = JSON.parse(sessionStorage.getItem('sesion'));
@@ -175,6 +191,21 @@
             }
             actualizarLocal(listaUsuarios);
         };
+
+        //    function encontrarTraking(pNuevoPaquete) {
+        //        let listaUsuarios = _getUsuarios ();
+        //        let trackingEncontrado;
+
+        //        for (let i = 0; i < listaUsuarios.length; i++) {
+        //            let listaPaquetes = listaUsuarios[i].listaPaquetes;
+        //            for (let j = 0; j < listaPaquetes.length; j++) {
+        //                if (listaPaquetes[j].tracking == pNuevoPaquete.tracking) {
+        //                    trackingEncontrado = listaPaquetes[j].tracking;
+        //                }
+        //            }
+        //        }
+        //        return trackingEncontrado;
+        //    };
 
            function _addPaquete (pNuevoPaquete) {
                 let listaUsuarios = _getUsuarios();
