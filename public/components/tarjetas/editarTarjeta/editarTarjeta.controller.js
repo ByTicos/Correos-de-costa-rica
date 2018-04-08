@@ -17,7 +17,7 @@
     // vm.getType = () => {
     //   console.log(payform.parseCardType(vm.editarTarjeta.numero));
     // }
-
+    
     vm.editarTarjeta = {};
 
     let objTarjetaAEditar = JSON.parse($stateParams.objTarjetaTemp);
@@ -49,13 +49,18 @@
 
     vm.editTarjeta = (pTarjeta) => {
       let listaTarjeta = servicioUsuarios.getTarjeta();
+      console.log(' servicioUsuarios.getTarjeta()',  servicioUsuarios.getTarjeta());
+      let mes = $("#month option:selected").val();
+      let year = $("#year option:selected").val();
+      let expiracion = mes + '/' + year;
+  
 
       listaTarjeta.forEach(objTarjeta => {
         if (objTarjeta.id == objNuevaTarjeta.id) {
           objTarjeta.id = pTarjeta.id;
           objTarjeta.nombre = pTarjeta.nombre;
           objTarjeta.numero = pTarjeta.numero;
-          objTarjeta.expiracion = pTarjeta.expiracion;
+          objTarjeta.expiracion = expiracion;
           objTarjeta.cvv = pTarjeta.cvv;
 
           servicioUsuarios.actualizarTarjeta(objTarjeta);
