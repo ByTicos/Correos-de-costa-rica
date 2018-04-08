@@ -13,6 +13,8 @@
     vm.rolSucursal = servicioUsuarios.getRolSucursal();  
     vm.listaPaquetes = servicioUsuarios.getAllPaquetes(); 
 
+    
+
 
     function listarRepartidores(){
       let listaUsuarios = servicioUsuarios.getUsuarios();
