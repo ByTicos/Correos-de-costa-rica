@@ -355,24 +355,6 @@
       })
     
 
-      .state('encargadoAduanas', {
-        url: '/encargadoAduanas',
-        templateUrl: './components/encargadoAduanas/encargadoAduanas.view.html',
-        data:{
-          pageTitle: 'Dashboard Encargado de Aduanas'
-        },
-        params: {
-          objUsuarioTemp: ''
-        },
-        resolve: {
-          load: ['$ocLazyLoad', ($ocLazyLoad) => {
-            return $ocLazyLoad.load('./components/encargadoAduanas/encargadoAduanas.controller.js')
-          }]
-        },
-        controller: 'controladorEncargadoAduanas',
-        controllerAs: 'vm'
-      })     
-
       .state('main.sucursales', {
         url: '/sucursales',
         templateUrl: './components/sucursal/registrarSucursal/sucursalRegistrar.view.html',

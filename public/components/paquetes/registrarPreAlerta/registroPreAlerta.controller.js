@@ -91,7 +91,10 @@
 
       let fecha = new Date ();
       let hora = fecha;
-      let objEstado = new Estado (usuario, fecha, hora, 'En tránsito a aduana');
+      let objEstado = new Estado(usuario, fecha, hora, 'En Aduanas');
+
+      objNuevoPaquete.mostrarEstadoTraslado('En Aduanas');
+      objNuevoPaquete.addEstado(objEstado);
 
       objNuevoPaquete.mostrarEstadoTraslado ('En tránsito a aduana');
       objNuevoPaquete.addEstado (objEstado);
