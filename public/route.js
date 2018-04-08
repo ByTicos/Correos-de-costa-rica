@@ -90,6 +90,24 @@
         controller: 'controladorRegistrarClientes',
         controllerAs: 'vm'
       })
+
+      .state('main.registrarClienteSucursal', {
+        url: '/registrarClienteSucursal',
+        templateUrl: './components/usuarios/cliente/registrarCliente/registrarCliente.view.html',
+        data:{
+          pageTitle: 'Registro cliente'
+        },
+        params: {
+          objClienteTemp: ''
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/usuarios/cliente/registrarCliente/registrarCliente.controller.js')
+          }]
+        },
+        controller: 'controladorRegistrarClientes',
+        controllerAs: 'vm'
+      })
       
       .state('main.listarCliente', {
         url: '/listarCliente',
