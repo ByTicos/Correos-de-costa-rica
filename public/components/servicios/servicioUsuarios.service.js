@@ -170,7 +170,7 @@
                 if (listaUsuarios[i].correo = sesion.correo) {
                     for (let j = 0; j < listaUsuarios[i].listaPaquetesConvenios.length; j++) {
                         if (listaUsuarios[i].listaPaquetesConvenios[j].cliente == pPaquete.cliente && listaUsuarios[i].listaPaquetesConvenios[j].convenio == pPaquete.convenio) {
-                            listaUsuarios[i].listaPaquetesConvenios[j].cambiarEstadoTraslado('En proceso de envio');
+                            listaUsuarios[i].listaPaquetesConvenios[j].cambiarEstadoTraslado('En proceso de envío');
                             usuario = listaUsuarios[i];
                         }
                     }

@@ -343,13 +343,18 @@
         <label for="">Dirección Exacta</label>
         <input type="text" class="form-control" ng-model="vm.nuevoCliente.direccionExacta" required>
 
-        <select class="form-control"  ng-model="vm.nuevoCliente.sucursalAsignada" required>
-            <option value="">Seleccione una sucursal</option>
-            <option ng-repeat="sucursal in vm.listaSucursales" value="{{sucursal.nombre}}">{{sucursal.nombre}}</option>
+
+
+        <select class="form-control" ng-model="vm.nuevoCliente.sucursalAsignada" required>
+          <option value="">Seleccione una sucursal</option>
+          <option ng-repeat="sucursal in vm.listaSucursales" value="{{sucursal.nombre}}">{{sucursal.nombre}}</option>
         </select>
 
-        <label for="" >Contraseña</label>
+
+        <label for="">Contraseña</label>
         <input type="password" ng-model="vm.nuevoCliente.contrasenna" required>
+
+
 
         <button type="submit" class="btn">Registrar</button>
         <p ng-hide="vm.rol != null" class="message">¿Ya tiene una cuenta?
