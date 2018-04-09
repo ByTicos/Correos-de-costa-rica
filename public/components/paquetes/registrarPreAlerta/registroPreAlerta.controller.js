@@ -96,9 +96,6 @@
       objNuevoPaquete.mostrarEstadoTraslado('En Aduanas');
       objNuevoPaquete.addEstado(objEstado);
 
-      objNuevoPaquete.mostrarEstadoTraslado ('En tránsito a aduana');
-      objNuevoPaquete.addEstado (objEstado);
-
       //console.log(objNuevoPaquete);
 
       let registro = servicioUsuarios.addPaquete (objNuevoPaquete);
