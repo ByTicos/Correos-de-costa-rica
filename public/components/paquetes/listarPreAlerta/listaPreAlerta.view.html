@@ -20,6 +20,7 @@
         <th><a class="puntero" ng-click="columna = 'tipoArticulo'; reverse = !reverse">Tipo de articulo</a></th>
         <th><a class="puntero" ng-click="columna = 'descripcion'; reverse = !reverse">Descripción</a></th>
         <th>Estado</th>
+        <th>Sucursal</th>
     
       </thead>
       <tbody>
@@ -28,10 +29,11 @@
           <td>{{paquete.distribuidor}}</td>
           <td>{{paquete.precio}}</td>
           <td>{{paquete.peso}}</td>
-          <td>{{paquete.tipoArticulo.name}}</td>
+          <td>{{paquete.tipoArticulo.producto}}</td>
           <td>{{paquete.descripcion}}</td>
           <td>{{paquete.estadoTraslado}}</td>
-    
+          <td>{{paquete.sucursal}}</td>
+
           <td>
             <button type="button" class="login login-submit" ng-click="vm.editPrealerta(paquete)"> Editar</button>
           </td>

@@ -10,7 +10,7 @@
 
     
          vm.listaTarjeta = servicioUsuarios.getTarjeta();
-         console.log('servicioUsuarios.getTarjeta()', servicioUsuarios.getTarjeta())
+         console.log('servicioUsuarios.getTarjeta()', servicioUsuarios.getTarjeta());
 
          vm.editTarjeta = (pTarjeta) => {
            $state.go('main.editarTarjetas', {objTarjetaTemp: JSON.stringify(pTarjeta)});

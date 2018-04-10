@@ -4,13 +4,16 @@
     .module('correos')
     .controller('controladorRegistrarClientes', controladorRegistrarClientes);
 
-  controladorRegistrarClientes.$inject = ['$http','$state', '$stateParams', '$location', 'servicioUsuarios', 'imageService','Upload'];
+  controladorRegistrarClientes.$inject = ['$http','$state', '$stateParams', '$location', 'servicioUsuarios', 'imageService','Upload', 'servicioSucursales'];
 
-  function controladorRegistrarClientes($http ,$state, $stateParams, $location, servicioUsuarios, imageService, Upload) {
+  function controladorRegistrarClientes($http ,$state, $stateParams, $location, servicioUsuarios, imageService, Upload, servicioSucursales) {
     let vm = this;
 
+    //da error y no llena los data list cuando no hay un rol seleccionado
+    // vm.rol = servicioUsuarios.getRol();
     vm.listaClientes = listarClientes();
     vm.nuevoCliente = {};
+    
     
     vm.cloudObj = imageService.getConfiguration();
   /*
@@ -82,6 +85,9 @@
 
     };
 
+    servicioSucursales.listarSucursalesJson();
+    vm.listaSucursales = servicioSucursales.getSucursal();
+
 
     /*vm.preRegistrarCliente = (pNuevoUsuario) => {
       vm.cloudObj.data.file = pNuevoUsuario.foto[0];
@@ -92,7 +98,7 @@
 
     vm.registrarCliente = (pNuevoUsuario/*, imgUrl*/) => {
 
-      let objNuevoCliente = new Usuario(pNuevoUsuario.cedula, 'imgUrl', pNuevoUsuario.primerNombre, pNuevoUsuario.segundoNombre, pNuevoUsuario.primerApellido, pNuevoUsuario.segundoApellido, pNuevoUsuario.correo, pNuevoUsuario.telefono, pNuevoUsuario.fechaNacimiento, pNuevoUsuario.provincia, pNuevoUsuario.canton, pNuevoUsuario.distrito, pNuevoUsuario.direccionExacta, pNuevoUsuario.contrasenna, '1' );
+      let objNuevoCliente = new Usuario(pNuevoUsuario.cedula, 'imgUrl', pNuevoUsuario.primerNombre, pNuevoUsuario.segundoNombre, pNuevoUsuario.primerApellido, pNuevoUsuario.segundoApellido, pNuevoUsuario.correo, pNuevoUsuario.telefono, pNuevoUsuario.fechaNacimiento, pNuevoUsuario.provincia, pNuevoUsuario.canton, pNuevoUsuario.distrito, pNuevoUsuario.direccionExacta, pNuevoUsuario.contrasenna, '1', pNuevoUsuario.sucursalAsignada);
 
       let registro = servicioUsuarios.addUsuario(objNuevoCliente);
 

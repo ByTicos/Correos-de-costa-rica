@@ -38,7 +38,7 @@
       let calculo = 0;
       let transporte = 0;
       let total = 0;
-      let impuesto = Number (pnuevoPaquete.tipoArticulo._id);
+      let impuesto = Number (pnuevoPaquete.tipoArticulo.impuesto);
       let peso = Number (pnuevoPaquete.peso);
       let precioxKilo = 0;
       let precio = Number (pnuevoPaquete.precio);
@@ -77,6 +77,7 @@
     vm.registrarPaquete = pnuevoPaquete => {
       let session = JSON.parse (sessionStorage.getItem ('sesion'));
       let usuario = session.nombre;
+      let sucursal = session.sucursalAsignada;
 
       let objNuevoPaquete = new Paquete (
         usuario,
@@ -86,15 +87,17 @@
         pnuevoPaquete.peso,
         pnuevoPaquete.kilometro,
         pnuevoPaquete.tipoArticulo,
-        pnuevoPaquete.descripcion
+        pnuevoPaquete.descripcion,
+        sucursal
       );
 
       let fecha = new Date ();
       let hora = fecha;
-      let objEstado = new Estado (usuario, fecha, hora, 'En tránsito a aduana');
+      let objEstado = new Estado(usuario, fecha, hora, 'En Aduanas');
 
-      objNuevoPaquete.mostrarEstadoTraslado ('En tránsito a aduana');
-      objNuevoPaquete.addEstado (objEstado);
+      objNuevoPaquete.mostrarEstadoTraslado('En Aduanas');
+      objNuevoPaquete.addEstado(objEstado);
+
 
       //console.log(objNuevoPaquete);
 

@@ -1,11 +1,8 @@
-<div navegacion-Principal></div>
-<div menu-Lateral></div>
-<section id="dashboard">
-    <table class="table table-responsive">
-    <legend>Paquetes recibidos en sucursal</legend>
-    <thead>
+<section>
+  <table class="table table-responsive table-striped text-centered col-12 offset-1" ng-show="vm.rol === '1'">
+    <legend class="col-12 offset-1" ng-show="vm.rol === '1'">Paquetes recibidos en sucursal</legend>
+    <thead class="thead-dark">
       <tr>
-        <th>Nombre de paquete</th>
         <th>Tipo de convenio</th>
         <th>Fecha de recibido</th>
         <th>Estado</th>
@@ -14,7 +11,6 @@
     </thead>
     <tbody>
       <tr ng-repeat="paquete in vm.listaPaquetesConvenio" ng-if="paquete.estadoTraslado === 'Recibido en sucursal'">
-        <td>{{paquete.cliente}}</td>
         <td>{{paquete.convenio}}</td>
         <td>{{paquete.fecha | date}}</td>
         <td>{{paquete.estadoTraslado}}</td>
@@ -23,23 +19,39 @@
       </tr>
     </tbody>
   </table>
-  <table class="table table-responsive">
-      <legend>Paquetes en proceso de envio</legend>
-      <thead>
+  <table class="table table-responsive table-striped text-centered col-12 offset-1" >
+    <legend class="col-12 offset-1">Paquetes en proceso de envio</legend>
+    <thead class="thead-dark" ng-show="vm.rol === '1'">
+      <tr>
+        <th>Tipo de convenio</th>
+        <th>Fecha de recibido</th>
+        <th>Estado</th>
+      </tr>
+    </thead>
+    <thead class="thead-dark" ng-show="vm.rol === '2'">
         <tr>
-          <th>Nombre de paquete</th>
+          <th>Nombre del cliente</th>
           <th>Tipo de convenio</th>
           <th>Fecha de recibido</th>
           <th>Estado</th>
+          <th>Repartidor</th>
         </tr>
       </thead>
-      <tbody>
-        <tr ng-repeat="paquete in vm.listaPaquetesConvenio " ng-if="paquete.estadoTraslado === 'En proceso de envio'">
-          <td>{{paquete.cliente}}</td>
-          <td>{{paquete.convenio}}</td>
-          <td>{{paquete.fecha | date}}</td>
-          <td>{{paquete.estadoTraslado}}</td>
-        </tr>
-      </tbody>
-    </table>
-</section>
+    <tbody>
+      <tr ng-repeat="paquete in vm.listaPaquetesConvenio " ng-if="paquete.estadoTraslado === 'En proceso de envío'">
+        <td ng-show="vm.rol == '2'">{{paquete.cliente}}</td>
+        <td>{{paquete.convenio}}</td>
+        <td>{{paquete.fecha | date}}</td>
+        <td>{{paquete.estadoTraslado}}</td>
+        <td ng-show="vm.rol == '2'">
+          <select>
+            <option value="">Seleccione el repartidor</option>
+            <option ng-repeat="repartidor in vm.repartidores" value="{{repartidor.correo}}">{{repartidor.primerNombre}}</option>
+          </select>
+          <!--<button ng-show="vm.rol == '2'" ng-click="asignarPaqueteConvenio(repartidor.correo)" >Asignar paquete</button>-->
+        </td>
+        
+      </tr>
+    </tbody>
+  </table>
+  </section>

@@ -13,14 +13,16 @@
     vm.rolSucursal = servicioUsuarios.getRolSucursal();  
     vm.listaPaquetes = servicioUsuarios.getAllPaquetes(); 
 
-    vm.cambiarEstadoTraslado3 = (pnuevoPaquete) => {
+
+    vm.asignarRepartidor = (pnuevoPaquete, pnombre) => {
       
       let articulo = pnuevoPaquete.tipoArticulo;
-      console.log(articulo);
 
-
+      let repartidor = pnombre;
  
-      let objNuevoPaquete = new Paquete(pnuevoPaquete.usuario, pnuevoPaquete.tracking, pnuevoPaquete.distribuidor, pnuevoPaquete.precio, pnuevoPaquete.peso, pnuevoPaquete.kilometro, pnuevoPaquete.tipoArticulo, pnuevoPaquete.descripcion);
+      let objNuevoPaquete = new Paquete(pnuevoPaquete.usuario, pnuevoPaquete.tracking, pnuevoPaquete.distribuidor, pnuevoPaquete.precio, pnuevoPaquete.peso, pnuevoPaquete.kilometro, pnuevoPaquete.tipoArticulo, pnuevoPaquete.descripcion, pnuevoPaquete.sucursal, pnombre);
+      
+      new Paquete(pnuevoPaquete.usuario, pnuevoPaquete.tracking, pnuevoPaquete.distribuidor, pnuevoPaquete.precio, pnuevoPaquete.peso , pnuevoPaquete.kilometro, pnuevoPaquete.tipoArticulo, pnuevoPaquete.descripcion, pnuevoPaquete.sucursal, pnombre);
 
       let listaEstados = pnuevoPaquete.listaEstados;
 
@@ -31,14 +33,17 @@
      
       let fecha = new Date();
       let hora = fecha;
-      let objEstado = new Estado(pnuevoPaquete.usuario, fecha,hora, 'Recibido en Sucursal');
+      let objEstado = new Estado(pnuevoPaquete.usuario, fecha,hora, 'Asignado');
       
-      objNuevoPaquete.mostrarEstadoTraslado('Recibido en Sucursal');
+      objNuevoPaquete.mostrarEstadoTraslado('Asignado');
       objNuevoPaquete.addEstado(objEstado);
       servicioUsuarios.actualizarEstadoPaquete(objNuevoPaquete);
       location.reload();
-
+  
+      
     }
+
+
 
     function listarRepartidores(){
       let listaUsuarios = servicioUsuarios.getUsuarios();

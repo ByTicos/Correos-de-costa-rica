@@ -75,6 +75,24 @@
 
       .state('main.registrarClienteAdmin', {
         url: '/registrarClienteAdmin',
+        templateUrl: './components/usuarios/cliente/registrarCliente/registrarClienteAdmin.view.html',
+        data:{
+          pageTitle: 'Registro cliente'
+        },
+        params: {
+          objClienteTemp: ''
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/usuarios/cliente/registrarCliente/registrarCliente.controller.js')
+          }]
+        },
+        controller: 'controladorRegistrarClientes',
+        controllerAs: 'vm'
+      })
+
+      .state('main.registrarClienteSucursal', {
+        url: '/registrarClienteSucursal',
         templateUrl: './components/usuarios/cliente/registrarCliente/registrarCliente.view.html',
         data:{
           pageTitle: 'Registro cliente'
@@ -354,24 +372,6 @@
         controllerAs: 'vm'
       })
     
-
-      .state('encargadoAduanas', {
-        url: '/encargadoAduanas',
-        templateUrl: './components/encargadoAduanas/encargadoAduanas.view.html',
-        data:{
-          pageTitle: 'Dashboard Encargado de Aduanas'
-        },
-        params: {
-          objUsuarioTemp: ''
-        },
-        resolve: {
-          load: ['$ocLazyLoad', ($ocLazyLoad) => {
-            return $ocLazyLoad.load('./components/encargadoAduanas/encargadoAduanas.controller.js')
-          }]
-        },
-        controller: 'controladorEncargadoAduanas',
-        controllerAs: 'vm'
-      })     
 
       .state('main.sucursales', {
         url: '/sucursales',
