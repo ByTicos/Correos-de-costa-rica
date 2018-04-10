@@ -77,6 +77,7 @@
     vm.registrarPaquete = pnuevoPaquete => {
       let session = JSON.parse (sessionStorage.getItem ('sesion'));
       let usuario = session.nombre;
+      let sucursal = session.sucursalAsignada;
 
       let objNuevoPaquete = new Paquete (
         usuario,
@@ -86,7 +87,8 @@
         pnuevoPaquete.peso,
         pnuevoPaquete.kilometro,
         pnuevoPaquete.tipoArticulo,
-        pnuevoPaquete.descripcion
+        pnuevoPaquete.descripcion,
+        sucursal
       );
 
       let fecha = new Date ();
@@ -96,8 +98,6 @@
       objNuevoPaquete.mostrarEstadoTraslado('En Aduanas');
       objNuevoPaquete.addEstado(objEstado);
 
-      objNuevoPaquete.mostrarEstadoTraslado ('En tránsito a aduana');
-      objNuevoPaquete.addEstado (objEstado);
 
       //console.log(objNuevoPaquete);
 

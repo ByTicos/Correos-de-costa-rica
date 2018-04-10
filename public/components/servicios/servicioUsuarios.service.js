@@ -32,6 +32,7 @@
             getTarjeta: _getTarjeta,
             getRol: _getRol,
             getRolSucursal: _getRolSucursal,
+            getRolNombre: _getRolNombre,
             getAllPaquetes: _getAllPaquetes,
             actualizarTarjeta: _actualizarTarjeta,
             addPaqueteConvenio:_addPaqueteConvenio,
@@ -92,7 +93,7 @@
                     });
 
                     objUsuario.listaPaquetes.forEach(objPaquete => {
-                        let objPaqueteTemp = new Paquete(objPaquete.usuario, objPaquete.tracking, objPaquete.distribuidor, objPaquete.precio,objPaquete.peso, objPaquete.Kilometro,objPaquete.tipoArticulo, objPaquete.descripcion);
+                        let objPaqueteTemp = new Paquete(objPaquete.usuario, objPaquete.tracking, objPaquete.distribuidor, objPaquete.precio,objPaquete.peso, objPaquete.Kilometro,objPaquete.tipoArticulo, objPaquete.descripcion, objPaquete.sucursal, objPaquete.repartidor);
 
                         let listaEstados = objPaquete.listaEstados;
 
@@ -341,6 +342,12 @@
         function _getRolSucursal() {
             let session = JSON.parse(sessionStorage.getItem ('sesion'));
             let rol = session.sucursalAsignada;
+            return rol;
+        }
+        
+        function _getRolNombre() {
+            let session = JSON.parse(sessionStorage.getItem ('sesion'));
+            let rol = session.nombre;
             return rol;
         }
         
