@@ -1,19 +1,23 @@
-<div navegacion-Principal></div>
-<div menu-Lateral></div>
+<section id="container-fluid">
 
-<div id="dashboard">
-  <section class="container">
-    <form action="" class="form-horizontal" ng-submit="vm.registrarEntidad(vm.nuevaEntidad)">
-      <div class="form-group">
-        <label for="">Nombre</label>
-        <input type="text" class="form-control" ng-model="vm.nuevaEntidad.nombre">
-      </div>
-      <div class="form-group">
-        <label for="">Cédula jurídica</label>
-        <input type="text" class="form-control" ng-model="vm.nuevaEntidad.cedulaJuridica">
-      </div>
-      <button class="btn" type="submit">Registrar</button>
-    </form>
-  </section>
-</div>
+  <div class="creditCardForm">
 
+    <div class="heading">
+      <h1>Registro de Entidades</h1>
+    </div>
+    <hr class="hrCliente">
+    <div class="payment">
+      <form action="" class="form-horizontal" ng-submit="vm.registrarEntidad(vm.nuevaEntidad)">
+        <div class="form-group col-6">
+          <label for="">Nombre</label>
+          <input type="text" class="form-control" ng-model="vm.nuevaEntidad.nombre">
+        </div>
+        <div class="form-group col-6">
+          <label for="">Cédula jurídica</label>
+          <input type="text" class="form-control" ng-model="vm.nuevaEntidad.cedulaJuridica">
+        </div>
+        <button class="btn" type="submit">Registrar</button>
+      </form>
+    </div>
+  </div>
+</section>
