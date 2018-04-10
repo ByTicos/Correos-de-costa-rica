@@ -35,7 +35,7 @@
     <a ng-show='vm.rol == 4' ui-sref="main.paquetesEncargadoAduana">Paquetes Encargado Aduanas</a> -->
 
 
-  <!-- </div>
+<!-- </div>
 </div> -->
 <div class="page">
     <div class="headerclass">
@@ -76,7 +76,18 @@
           <a ng-show='vm.rol == 5' ui-sref="main.listarEncargadoAduana">Lista de Encargados de Aduanas</a>
           <a ng-show='vm.rol == 5' ui-sref="main.listarRepartidores">Lista de Repartidor</a>
           <a ng-show='vm.rol == 5' ui-sref="main.listarsucursales">Lista de Sucursales</a>
+          <a ng-show='vm.rol == 5' ui-sref="main.registrarArticulo">Registrar Articulo</a>
+          <a ng-show='vm.rol == 5' ui-sref="main.listarArticulo">Lista de Articulos</a>
+         
+          <a ng-show='vm.rol == 5' ui-sref="main.articulosDesactivados">Lista de Articulos Desactivados</a>
           <a ng-show='vm.rol == 5' ui-sref="main.PaquetesAdmin">Historial Paquetes</a>
+          <a ng-show='vm.rol == 4' ui-sref="main.paquetesEncargadoAduana">Paquetes Encargado Aduanas</a>
+          <a ng-show='vm.rol == 3' ui-sref="main.Repartidor">Editar Repartidor</a>
+          <a ng-show='vm.rol == 3' ui-sref="main.paquetesRepartidor">Mis Paquetes</a>
+          <a ng-show='vm.rol == 2' ui-sref="main.repartidor">Registrar Repartidor</a>
+          <a ng-show='vm.rol == 2' ui-sref="main.registrarPaquetesConvenio">Registrar paquete de convenio</a>
+          <a ng-show='vm.rol == 2' ui-sref="main.listarRepartidores">Lista de Repartidores</a>
+          <a ng-show='vm.rol == 2' ui-sref="main.paquetesEncargadoSucursal">Paquetes</a>
           <li class="small"><a href="#0">Facebook</a><a href="#0">Instagram</a></li>
         </ul>
         <video autoplay muted loop id="myVideo" class="">
@@ -84,6 +95,117 @@
             </video>
       
       </div>
+    </div>
+
+  </div>
+  <!--
+  <div id="sidebar">
+    <div class="page">
+        <header tabindex="0">Bienvenido: {{vm.usuarioActivo}}</header>
+        <div id="nav-container">
+            <div class="bg"></div>
+            <div class="button" tabindex="0">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <img src="" alt="">
+
+            </div>
+            <div id="nav-content" tabindex="0">
+                <ul ng-show='vm.rol == 3'>
+                    <li>
+                        <a ng-show='vm.rol == 3' ui-sref="main.editarRepartidor">Editar Repartidor</a>
+                    </li>
+                    <li>
+                        <a ng-show='vm.rol == 3' ui-sref="main.paquetesRepartidor">Mis Paquetes</a>
+                    </li>
+                </ul>
+
+                <ul ng-show='vm.rol == 1'>
+                    <li>
+                        <a ng-show='vm.rol == 1' ui-sref="main.modificarCliente">Modificar perfil</a>
+                    </li>
+                    <li>
+                        <a ng-show='vm.rol == 1' ui-sref="main.tarjetas">Registrar Tarjeta</a>
+                    </li>
+                    <li>
+                        <a ng-show='vm.rol == 1' ui-sref="main.listartarjetas"> Mis Tarjetas</a>
+                    </li>
+                    <li>
+                        <a ng-show='vm.rol == 1' ui-sref="main.registrarPreAlerta">Crear Pre-alerta</a>
+                    </li>
+                    <li>
+                        <a ng-show='vm.rol == 1' ui-sref="main.listaPreAlerta">Historial Paquetes</a>
+                    </li>
+                    <li>
+                        <a ng-show='vm.rol == 1' ui-sref="main.listarPaquetesConvenio"> Lista de paquetes de convenio</a>
+                    </li>
+                </ul>
+
+                <ul ng-show='vm.rol == 5'>
+                    <li>
+                        <a ng-show='vm.rol == 5' ui-sref="main.registrarEntidades">Registrar Entidades</a>
+                    </li>
+                    <li>
+                        <a ng-show='vm.rol == 5' ui-sref="main.registrarConvenio">Registrar Convenios</a>
+                    </li>
+                    <li>
+                        <a ng-show='vm.rol == 5' ui-sref="main.registrarEncargadoAduana">Registrar Encargado de Aduanas</a>
+                    </li>
+                    <li>
+                        <a ng-show='vm.rol == 5' ui-sref="main.repartidor">Registrar Repartidores</a>
+                    </li>
+                    <li>
+                        <a ng-show='vm.rol == 5' ui-sref="main.sucursales">Registar Sucursales</a>
+                    </li>
+                    <li>
+                        <a ng-show='vm.rol == 5' ui-sref="main.registrarEncargadoSucursal">Registrar encargado de sucursal</a>
+                    </li>
+                    <li>
+                        <a ng-show='vm.rol == 5' ui-sref="main.listarCliente">Lista de clientes</a>
+                    </li>
+                    <li>
+                        <a ng-show='vm.rol == 5' ui-sref="main.listarEncargadoSucursal">Lista de Encargados de Sucursal</a>
+                    </li>
+                    <li>
+                        <a ng-show='vm.rol == 5' ui-sref="main.listarEntidades"> Lista de entidades</a>
+                    </li>
+                    <li>
+                        <a ng-show='vm.rol == 5' ui-sref="main.listarConvenios"> Lista de convenios</a>
+                    </li>
+                    <li>
+                        <a ng-show='vm.rol == 5' ui-sref="main.listarEncargadoAduana">Lista de Encargados de Aduanas</a>
+                    </li>
+                    <li>
+                        <a ng-show='vm.rol == 5' ui-sref="main.listarRepartidores">Lista de Repartidor</a>
+                    </li>
+                    <li>
+                        <a ng-show='vm.rol == 5' ui-sref="main.listarsucursales">Lista de Sucursales</a>
+                    </li>
+                    <li>
+                        <a ng-show='vm.rol == 5' ui-sref="main.PaquetesAdmin">Historial Paquetes</a>
+                    </li>
+                    <li>
+                        <a ng-show='vm.rol == 5' ui-sref="main.registrarClienteAdmin">Registrar cliente</a>
+                    </li>
+                </ul>
+
+                <ul ng-show='vm.rol == 2'>
+                    <li>
+                        <a ng-show='vm.rol == 2' ui-sref="main.repartidor">Registrar Repartidor</a>
+                    </li>
+                    <li>
+                        <a ng-show='vm.rol == 2' ui-sref="main.registrarPaquetesConvenio">Registrar paquete de convenio</a>
+                    </li>
+                    <li>
+                        <a ng-show='vm.rol == 2' ui-sref="main.listarRepartidores">Lista de Repartidores</a>
+                    </li>
+                    <li>
+                        <a ng-show='vm.rol == 2' ui-sref="main.paquetesEncargadoSucursal">Paquetes</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </div>
 
   </div>

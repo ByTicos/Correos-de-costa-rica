@@ -11,6 +11,7 @@
         servicioSucursales.listarSucursalesJson();
         listarSucursales();
         
+        
         vm.editSucursal = (pSucursal) => {
           $state.go('main.editarsucursales', {objSucursalTemp: JSON.stringify(pSucursal) });
     

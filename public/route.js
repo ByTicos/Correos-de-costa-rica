@@ -90,6 +90,24 @@
         controller: 'controladorRegistrarClientes',
         controllerAs: 'vm'
       })
+
+      .state('main.registrarClienteSucursal', {
+        url: '/registrarClienteSucursal',
+        templateUrl: './components/usuarios/cliente/registrarCliente/registrarCliente.view.html',
+        data:{
+          pageTitle: 'Registro cliente'
+        },
+        params: {
+          objClienteTemp: ''
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/usuarios/cliente/registrarCliente/registrarCliente.controller.js')
+          }]
+        },
+        controller: 'controladorRegistrarClientes',
+        controllerAs: 'vm'
+      })
       
       .state('main.listarCliente', {
         url: '/listarCliente',
@@ -354,24 +372,6 @@
         controllerAs: 'vm'
       })
     
-
-      .state('encargadoAduanas', {
-        url: '/encargadoAduanas',
-        templateUrl: './components/encargadoAduanas/encargadoAduanas.view.html',
-        data:{
-          pageTitle: 'Dashboard Encargado de Aduanas'
-        },
-        params: {
-          objUsuarioTemp: ''
-        },
-        resolve: {
-          load: ['$ocLazyLoad', ($ocLazyLoad) => {
-            return $ocLazyLoad.load('./components/encargadoAduanas/encargadoAduanas.controller.js')
-          }]
-        },
-        controller: 'controladorEncargadoAduanas',
-        controllerAs: 'vm'
-      })     
 
       .state('main.sucursales', {
         url: '/sucursales',
@@ -753,6 +753,85 @@
           controller: 'controladorPaquetesRepartidor',
           controllerAs: 'vm',
         })
+
+         .state('main.registrarArticulo', {
+        url: '/registrarArticulo',
+        templateUrl: './components/articulos/registrarArticulo.view.html',
+        data:{
+          pageTitle: 'Registrar articulo'
+        },
+        params: {
+          objArticuloTemp: ''
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/articulos/registrarArticulo.controller.js')
+          }]
+        },
+        controller: 'controladorArticulo',
+        controllerAs: 'vm'
+      })
+
+      .state('main.listarArticulo',{
+
+        url:'/listarArticulo',
+        templateUrl: './components/articulos/listaArticulos/listaArticulos.view.html',
+        data: {
+          pageTitle: 'lista de articulos'
+        },
+        params: {
+          objArticuloTemp: ''
+        },
+
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/articulos/listaArticulos/listaArticulos.controller.js')
+          }]
+        },
+        controller: 'controladorListaArticulo',
+        controllerAs: 'vm'
+      })
+
+      .state('main.editarArticulo',{
+
+        url:'/editarArticulo',
+        templateUrl: './components/articulos/editarArticulo/editArticulo.view.html',
+        data: {
+          pageTitle: 'Edicion de articulos'
+        },
+        params: {
+          objArticuloTemp: ''
+        },
+
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/articulos/editarArticulo/editArticulo.controller.js')
+          }]
+        },
+        controller: 'controladorEditarArticulo',
+        controllerAs: 'vm'
+      })
+      .state('main.articulosDesactivados',{
+
+        url:'/articulosDesactivados',
+        templateUrl: './components/articulos/listaArticulos/articulosDesactivados.view.html',
+        data: {
+          pageTitle: 'articulos desactivados'
+        },
+        params: {
+          objArticuloTemp: ''
+        },
+
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/articulos/listaArticulos/articulosDesactivados.controller.js')
+          }]
+        },
+        controller: 'controladorArticuloDesactivado',
+        controllerAs: 'vm'
+      })
+
+      
       
     
 
