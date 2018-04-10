@@ -38,7 +38,7 @@
       let calculo = 0;
       let transporte = 0;
       let total = 0;
-      let impuesto = Number (pnuevoPaquete.tipoArticulo._id);
+      let impuesto = Number (pnuevoPaquete.tipoArticulo.impuesto);
       let peso = Number (pnuevoPaquete.peso);
       let precioxKilo = 0;
       let precio = Number (pnuevoPaquete.precio);
