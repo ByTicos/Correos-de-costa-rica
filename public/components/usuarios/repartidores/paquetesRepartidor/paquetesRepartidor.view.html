@@ -11,18 +11,22 @@
       <th>Peso</th>
       <th>Tipo de articulo</th>
       <th>Descripción</th>
+      <th>Sucursal</th>
+      <th>Repartidor</th>
       <th>Estado</th>
       <th>Pasar Estado</th>
   
     </thead>
     <tbody>
-      <tr ng-repeat="paquete in vm.listaPaquetes" ng-if="paquete.estadoTraslado === 'En Sucursal'">
+      <tr ng-repeat="paquete in vm.listaPaquetes" ng-if="paquete.estadoTraslado === 'Asignado' && paquete.repartidor === vm.rolNombre">
         <td>{{paquete.usuario}}</td>
         <td>{{paquete.distribuidor}}</td>
         <td>{{paquete.precio}}</td>
         <td>{{paquete.peso}}</td>
         <td>{{paquete.tipoArticulo.name}}</td>
         <td>{{paquete.descripcion}}</td>
+        <td>{{paquete.sucursal}}</td>
+        <td>{{paquete.repartidor}}</td>
         <td>{{paquete.estadoTraslado}}</td>
         <td><button class="btn" type="button" ng-click="vm.cambiarEstadoTraslado4(paquete)"><img src="../../sources/images/actualizar.png"><small>En tránsito a domicilio</small> </button></td>
       </tr>

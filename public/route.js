@@ -75,7 +75,7 @@
 
       .state('main.registrarClienteAdmin', {
         url: '/registrarClienteAdmin',
-        templateUrl: './components/usuarios/cliente/registrarCliente/registrarCliente.view.html',
+        templateUrl: './components/usuarios/cliente/registrarCliente/registrarClienteAdmin.view.html',
         data:{
           pageTitle: 'Registro cliente'
         },

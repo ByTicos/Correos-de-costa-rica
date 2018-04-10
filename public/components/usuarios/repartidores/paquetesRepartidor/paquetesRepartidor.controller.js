@@ -10,6 +10,7 @@
     let vm = this;
   
     vm.listaPaquetes = servicioUsuarios.getAllPaquetes();
+    vm.rolNombre = servicioUsuarios.getRolNombre(); 
 
     vm.cambiarEstadoTraslado4 = (pnuevoPaquete) => {
       
@@ -18,7 +19,7 @@
 
 
  
-      let objNuevoPaquete = new Paquete(pnuevoPaquete.usuario, pnuevoPaquete.tracking, pnuevoPaquete.distribuidor, pnuevoPaquete.precio, pnuevoPaquete.peso, pnuevoPaquete.tipoArticulo, pnuevoPaquete.descripcion);
+      let objNuevoPaquete = new Paquete(pnuevoPaquete.usuario, pnuevoPaquete.tracking, pnuevoPaquete.distribuidor, pnuevoPaquete.precio, pnuevoPaquete.peso, pnuevoPaquete.tipoArticulo, pnuevoPaquete.descripcion, pnuevoPaquete.sucursal, pnuevoPaquete.repartidor);
 
       let listaEstados = pnuevoPaquete.listaEstados;
 
@@ -44,7 +45,7 @@
 
 
  
-      let objNuevoPaquete = new Paquete(pnuevoPaquete.usuario, pnuevoPaquete.tracking, pnuevoPaquete.distribuidor, pnuevoPaquete.precio, pnuevoPaquete.peso, pnuevoPaquete.tipoArticulo, pnuevoPaquete.descripcion);
+      let objNuevoPaquete = new Paquete(pnuevoPaquete.usuario, pnuevoPaquete.tracking, pnuevoPaquete.distribuidor, pnuevoPaquete.precio, pnuevoPaquete.peso, pnuevoPaquete.tipoArticulo, pnuevoPaquete.descripcion, pnuevoPaquete.sucursal, pnuevoPaquete.repartidor);
 
       let listaEstados = pnuevoPaquete.listaEstados;
 

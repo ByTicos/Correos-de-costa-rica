@@ -64,7 +64,7 @@ class Usuario {
 
 
 class Paquete{
-    constructor(pUsuario,pNumeroTracking, pDistribuidor, pPrecio, pPeso,pKilometro, pTipoArticulo, pDescripcion){
+    constructor(pUsuario,pNumeroTracking, pDistribuidor, pPrecio, pPeso,pKilometro, pTipoArticulo, pDescripcion, pSucursal, pRepartidor){
         this.usuario = pUsuario;
         this.tracking = pNumeroTracking;
         this.distribuidor = pDistribuidor;
@@ -73,6 +73,8 @@ class Paquete{
         this.kilometro = pKilometro;
         this.tipoArticulo = pTipoArticulo;
         this.descripcion = pDescripcion;
+        this.sucursal = pSucursal;
+        this.repartidor = pRepartidor;
         this.estado = 'activo';
         this.estadoTraslado = '';
         this.listaEstados = [];
