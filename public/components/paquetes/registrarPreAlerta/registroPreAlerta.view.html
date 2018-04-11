@@ -1,4 +1,3 @@
-
 <div id="dashboard">
   <section id="registroPreAlerta" class="row">
     
@@ -30,7 +29,7 @@
       
         <div class="form-group">
           <label for="">Articulo</label>
-          <select class="form-control" ng-model="vm.nuevoPaquete.tipoArticulo" ng-options="tipo as (tipo.producto) for tipo in vm.tipoArticulo track by tipo.impuesto" required>
+          <select class="form-control" ng-model="vm.nuevoPaquete.tipoArticulo" ng-options="tipo as (tipo.producto) for tipo in vm.tipoArticulo track by tipo.id" value="tipo.impuesto" required>
 
           <!-- <label for="">Articulo</label>
           <select class="form-control" ng-model="vm.nuevoPaquete.tipoArticulo" required>
