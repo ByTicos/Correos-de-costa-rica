@@ -4,9 +4,9 @@
     .module('correos')
     .service('servicioEntidades', servicioEntidades)
 
-  servicioEntidades.$inject = ['$log', '$http'];
+  servicioEntidades.$inject = ['$log', '$http', 'dataStorageFactory'];
 
-  function servicioEntidades($log, $http) {
+  function servicioEntidades($log, $http, dataStorageFactory) {
 
     const asyncLocalStorage = {
       setItem: function (key, value) {
@@ -28,14 +28,21 @@
 
     function _addEntidad(pNuevaEntidad) {
       let listaEntidades = _getEntidades();
-      let respuesta = true;
-      listaEntidades.push(pNuevaEntidad);
+      let registroExitoso;
+      let entidadRepetida = false;
 
-      asyncLocalStorage.setItem('entidadesLS', listaEntidades).then((response) => {
-        respuesta = response;
-      });
+      for (let i = 0; i < listaEntidades.length; i++) {
+        if (listaEntidades[i].cedulaJuridica == pNuevaEntidad.cedulaJuridica) {
+            entidadRepetida = true;
+        }
+      }
+      if (entidadRepetida === false) {
+          registroExitoso = dataStorageFactory.setEntidadData(pNuevaEntidad);
+      } else {
+          registroExitoso = false;
+      }
 
-      return respuesta;
+      return registroExitoso;
     };
 
     function _getEntidades() {

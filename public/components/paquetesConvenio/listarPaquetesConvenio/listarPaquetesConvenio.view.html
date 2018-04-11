@@ -3,6 +3,7 @@
     <legend class="col-12 offset-1" ng-show="vm.rol === '1'">Paquetes recibidos en sucursal</legend>
     <thead class="thead-dark">
       <tr>
+        <th>Tracking</th>
         <th>Tipo de convenio</th>
         <th>Fecha de recibido</th>
         <th>Estado</th>
@@ -11,6 +12,7 @@
     </thead>
     <tbody>
       <tr ng-repeat="paquete in vm.listaPaquetesConvenio" ng-if="paquete.estadoTraslado === 'Recibido en sucursal'">
+        <td>{{paquete.tracking}}</td>
         <td>{{paquete.convenio}}</td>
         <td>{{paquete.fecha | date}}</td>
         <td>{{paquete.estadoTraslado}}</td>
@@ -23,6 +25,7 @@
     <legend class="col-12 offset-1">Paquetes en proceso de envio</legend>
     <thead class="thead-dark" ng-show="vm.rol === '1'">
       <tr>
+        <th>Tracking</th>
         <th>Tipo de convenio</th>
         <th>Fecha de recibido</th>
         <th>Estado</th>
@@ -30,6 +33,7 @@
     </thead>
     <thead class="thead-dark" ng-show="vm.rol === '2'">
         <tr>
+          <td>{{paquete.tracking}}</td>
           <th>Nombre del cliente</th>
           <th>Tipo de convenio</th>
           <th>Fecha de recibido</th>

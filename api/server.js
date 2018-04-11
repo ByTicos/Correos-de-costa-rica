@@ -61,9 +61,9 @@ app.use( (req, res, next) => {
 
  ///Aqui van agregados todos los componentes amiguitos!!
 const index = require('./index'),
-      usuarios = require('./components/usuarios/usuarios.route');
-      articulos = require ('./components/articulos/articulos.route.js');
-      
+      usuarios = require('./components/usuarios/usuarios.route'),
+      articulos = require ('./components/articulos/articulos.route.js'),
+      entidades = require('./components/entidades/entidades.route');
 
 /**
  * Se definien las rutas de ExpressJS
@@ -72,7 +72,7 @@ const index = require('./index'),
 ///Aqui van agregados todos los componentes amiguitos!!
 app.use('/api', usuarios);
 app.use ('/api', articulos);
-
+app.use('/api', entidades);
 app.use('/', index);
 
 /// Se guarda todo lo que se ha realizado

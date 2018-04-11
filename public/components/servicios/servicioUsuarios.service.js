@@ -89,7 +89,7 @@
                     });
 
                     objUsuario.listaPaquetesConvenios.forEach(objPaqueteConv => {
-                        let objPaqueteConvTemp = new PaqueteConv(objPaqueteConv.cliente, objPaqueteConv.convenio, new Date(objPaqueteConv.fecha));
+                        let objPaqueteConvTemp = new PaqueteConv(objPaqueteConv.tracking, objPaqueteConv.cliente, objPaqueteConv.convenio, new Date(objPaqueteConv.fecha));
                         objPaqueteConvTemp.cambiarEstadoTraslado(objPaqueteConv.estadoTraslado);
 
                         objUsuarioTemp.agregarPaqueteConvenio(objPaqueteConvTemp);
@@ -173,7 +173,7 @@
             for (let i = 0; i < listaUsuarios.length; i++) {
                 if (listaUsuarios[i].correo = sesion.correo) {
                     for (let j = 0; j < listaUsuarios[i].listaPaquetesConvenios.length; j++) {
-                        if (listaUsuarios[i].listaPaquetesConvenios[j].cliente == pPaquete.cliente && listaUsuarios[i].listaPaquetesConvenios[j].convenio == pPaquete.convenio) {
+                        if (listaUsuarios[i].listaPaquetesConvenios[j].tracking == pPaquete.tracking) {
                             listaUsuarios[i].listaPaquetesConvenios[j].cambiarEstadoTraslado('En proceso de envío');
                             usuario = listaUsuarios[i];
                         }
