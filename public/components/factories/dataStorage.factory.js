@@ -13,7 +13,9 @@
       setUserData: _setUserData,
       setSession: _setSession,
       closeSession: _closeSession,
-      getSession: _getSession
+      getSession: _getSession,
+      getArticuloData: _getArticuloData,
+      setArticuloData: _setArticuloData
     };
     return localAPI;
 
@@ -121,5 +123,49 @@
       return sessionActive;
     }
 
+     function _getArticuloData() {
+      let listaArticulos = [];
+
+      let peticion = $.ajax({
+        url: 'http://localhost:4000/api/get_all_articulos',
+        type: 'get',
+        contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+        dataType: 'json',
+        async: false,
+        data: {}
+      });
+
+      peticion.done((articulos) => {
+        console.log('Datos que vienen desde la base de datos')
+        console.log(articulos);
+        listaArticulos = articulos;
+      });
+      peticion.fail(() => {
+        listaArticulos = [];
+        console.log('Ocurrió un error');
+      });
+
+      return listaArticulos;
+    }
+
+    function _setArticuloData(data) {
+      let response;
+
+      let peticion = $.ajax({
+        url: 'http://localhost:4000/api/save_articulo',
+        type: 'post',
+        contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+        dataType: 'json',
+        async: false,
+        data: {
+          'id': data.id,
+          'producto': data.producto,
+          'impuesto': data.impuesto,
+          'estado': data.estado
+          
+        }
+      });
+
   }
+ }
 })();
