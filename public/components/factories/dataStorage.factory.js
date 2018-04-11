@@ -12,11 +12,14 @@
       getUsersData: _getUsersData,
       setUserData: _setUserData,
       setEntidadData: _setEntidadData,
+      getEntidadesData:_getEntidadesData,
       setSession: _setSession,
       closeSession: _closeSession,
       getSession: _getSession,
       getArticuloData: _getArticuloData,
-      setArticuloData: _setArticuloData
+      setArticuloData: _setArticuloData,
+      getConveniosData:_getConveniosData,
+      setConvenioData:_setConvenioData
     };
     return localAPI;
 
@@ -95,6 +98,55 @@
 
       return response;
     }
+    function _getEntidadesData() {
+      let listaEntidades = [];
+
+      let peticion = $.ajax({
+        url: 'http://localhost:4000/api/get_all_entidades',
+        type: 'get',
+        contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+        dataType: 'json',
+        async: false,
+        data: {}
+      });
+
+      peticion.done((entidades) => {
+        console.log('Datos que vienen desde la base de datos')
+        console.log(entidades);
+        listaEntidades = entidades;
+      });
+      peticion.fail(() => {
+        listaEntidades = [];
+        console.log('Ocurrió un error');
+      });
+
+      return listaEntidades;
+    }
+
+    function _getConveniosData() {
+      let listaConvenios = [];
+
+      let peticion = $.ajax({
+        url: 'http://localhost:4000/api/get_all_convenios',
+        type: 'get',
+        contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+        dataType: 'json',
+        async: false,
+        data: {}
+      });
+
+      peticion.done((convenios) => {
+        console.log('Datos que vienen desde la base de datos')
+        console.log(convenios);
+        listaConvenios = convenios;
+      });
+      peticion.fail(() => {
+        listaConvenios = [];
+        console.log('Ocurrió un error');
+      });
+
+      return listaConvenios;
+    }
 
     function _setEntidadData(data) {
       let response;
@@ -109,6 +161,33 @@
           'nombre': data.nombre,
           'cedulaJuridica': data.cedulaJuridica,
           'convenios': data.convenios,
+        }
+      });
+
+      peticion.done((datos) => {
+        response = datos.msj;
+        console.log('Petición realizada con éxito');
+      });
+      peticion.fail((error) => {
+        response = error;
+        console.log('Ocurrió un error');
+      });
+
+      return response;
+    }
+
+    function _setConvenioData(data) {
+      let response;
+
+      let peticion = $.ajax({
+        url: 'http://localhost:4000/api/save_convenio',
+        type: 'post',
+        contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+        dataType: 'json',
+        async: false,
+        data: {
+          'nombreEntidad': data.nombreEntidad,
+          'tipoTramite': data.tipoTramite,
         }
       });
 

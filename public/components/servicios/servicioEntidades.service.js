@@ -32,14 +32,14 @@
       let entidadRepetida = false;
 
       for (let i = 0; i < listaEntidades.length; i++) {
-        if (listaEntidades[i].cedulaJuridica == pNuevaEntidad.cedulaJuridica) {
-            entidadRepetida = true;
+        if (listaEntidades[i].cedulaJuridica == pNuevaEntidad.cedulaJuridica || listaEntidades[i].nombre == pNuevaEntidad.nombre) {
+          entidadRepetida = true;
         }
       }
       if (entidadRepetida === false) {
-          registroExitoso = dataStorageFactory.setEntidadData(pNuevaEntidad);
+        registroExitoso = dataStorageFactory.setEntidadData(pNuevaEntidad);
       } else {
-          registroExitoso = false;
+        registroExitoso = false;
       }
 
       return registroExitoso;
@@ -47,54 +47,56 @@
 
     function _getEntidades() {
       let listaEntidades = [];
-      let listaEntidadesLocal = JSON.parse(localStorage.getItem("entidadesLS"));
-      if (listaEntidadesLocal == null) {
-        listaEntidades = [];
-      }
-      else {
-        listaEntidadesLocal.forEach(objEntidad => {
-          let objEntidadTemp = new Entidad(objEntidad.nombre, objEntidad.cedulaJuridica);
-          if (objEntidad.convenios != []) {
-            for (let i = 0; i < objEntidad.convenios.length; i++) {
-              objEntidadTemp.registrarConvenio(objEntidad.convenios[i]);
-            }
-          }
+      let listaEntidadesBD = dataStorageFactory.getEntidadesData();
+      listaEntidadesBD.forEach(objEntidad => {
+        let objEntidadTemp = new Entidad(objEntidad.nombre, objEntidad.cedulaJuridica);
+        objEntidadTemp.convenios = objEntidad.convenios;
+        listaEntidades.push(objEntidadTemp);
 
-          listaEntidades.push(objEntidadTemp);
-        });
-      }
+      });
+
       return listaEntidades;
+
     };
 
     function _addConvenio(pConvenio) {
+      let listaConvenios = _getConvenios();
       let listaEntidades = _getEntidades();
-      let respuesta = true;
-      for(let i=0; i< listaEntidades.length;i++){
-        if (listaEntidades[i].nombre == pConvenio.nombreEntidad) {
-          listaEntidades[i].registrarConvenio(pConvenio);
+      let registroExitoso;
+      let convenioRepetido = false;
+
+      for (let i = 0; i < listaConvenios.length; i++) {
+        if (listaConvenios[i].tipoTramite == pConvenio.tipoTramite) {
+          convenioRepetido = true;
         }
       }
-      actualizarLocal(listaEntidades);
-      return respuesta;
+      if (convenioRepetido === false) {
+        for (let i = 0; i < listaEntidades.length; i++) {
+          if (listaEntidades[i].nombre == pConvenio.nombreEntidad) {
+            listaEntidades[i].registrarConvenio(pConvenio.tipoTramite);
+           
+          }
+        }
+      registroExitoso = dataStorageFactory.setConvenioData(pConvenio);
+      } else {
+        registroExitoso = false;
+      }
 
-    }
+      return registroExitoso;
+    };
 
     function _getConvenios() {
-      let listaEntidadesLocal = JSON.parse(localStorage.getItem("entidadesLS"));
       let listaConvenios = [];
-      if (listaEntidadesLocal == null) {
-        listaConvenios = [];
-      }
-      else {
-        listaEntidadesLocal.forEach(objEntidad => {
-          if (objEntidad.convenios != null) {
-            for (let i = 0; i < objEntidad.convenios.length; i++) {
-              listaConvenios.push(objEntidad.convenios[i]);
-            }
-          }
-        });
-      }
+      let listaConveniosBD = dataStorageFactory.getConveniosData();
+      listaConveniosBD.forEach(objConvenio => {
+        let objConvenioTemp = new Convenio(objConvenio.nombreEntidad, objConvenio.tipoTramite);
+
+        listaConvenios.push(objConvenioTemp);
+
+      });
+
       return listaConvenios;
+
     };
 
     function actualizarLocal(plistaActualizada) {
