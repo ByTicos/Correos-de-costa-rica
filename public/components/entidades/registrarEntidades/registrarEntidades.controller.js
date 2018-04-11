@@ -18,10 +18,11 @@
 
       let registro = servicioEntidades.addEntidad(objNuevaEntidad);
 
-      if (registro == true) {
+      if (registro == 'Se registró la entidad correctamente') {
         swal("Registro exitoso", "La entidad ha sido registrado correctamente", "success", {
-          button: "Aceptar",
-        });
+          button: "Aceptar",}).then((value) => {
+            vm.nuevaEntidad = null;
+          });
         /*$location.path('/logIn');*/
       }
       else {
