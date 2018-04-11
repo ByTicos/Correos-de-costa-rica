@@ -2,9 +2,9 @@
   'use strict';
   angular.module ('correos').service ('servicioArticulos', servicioArticulos);
 
-  servicioArticulos.$inject = ['$log', '$http'];
+  servicioArticulos.$inject = ['$log', '$http', 'dataStorageFactory'];
 
-  function servicioArticulos ($log, $http) {
+  function servicioArticulos ($log, $http, dataStorageFactory) {
   
 
     let publicAPI = {
@@ -17,25 +17,39 @@
     return publicAPI;
 
     function _addArticulo (pNuevoArticulo) {
-      let listaArticulos = _getArticulo ();
-      
-      listaArticulos.push (pNuevoArticulo);
+      let listaArticulos = _getArticulo (),
+          registroExitoso,
+          articuloRepetido = false;
 
-      localStorage.setItem ('articulosLS', JSON.stringify (listaArticulos));
 
-      
+       for (let i = 0; i < listaArticulos.length; i++) {
+         if (pNuevoArticulo.id == listaArticulos[i].id) {
+
+           articuloRepetido = true;
+         }
+       }
+
+       if (articuloRepetido === false){
+         registroExitoso = dataStorageFactory.setArticuloData(pNuevoArticulo);
+
+       }else{
+         registroExitoso = false;
+         
+       }
+            return registroExitoso;
+       
     }
+
 
     function _getArticulo() {
       let listaArticulos = [];
-      let listaArticulosLocal = JSON.parse (
-        localStorage.getItem ('articulosLS')
-      );
+      let listaArticulosBD = dataStorageFactory.getArticuloData();
 
-      if (listaArticulosLocal == null) {
+
+      if (listaArticulosBD == null) {
         listaArticulos = [];
       } else {
-        listaArticulosLocal.forEach (objArticulo => {
+        listaArticulosBD.forEach (objArticulo => {
           let objArticuloTemp = new Articulo (
             objArticulo.id,
             objArticulo.producto,

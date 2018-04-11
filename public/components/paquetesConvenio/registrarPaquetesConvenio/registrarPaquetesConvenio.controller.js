@@ -14,7 +14,7 @@
     vm.listaConvenios = servicioEntidades.getConvenios();
 
     vm.registrarPaqueteConvenio = (pNuevoPaqueteConvenio) => {
-      let objPaqueteConvenioTemp = new PaqueteConv(pNuevoPaqueteConvenio.cliente, pNuevoPaqueteConvenio.convenio, new Date(pNuevoPaqueteConvenio.fecha));
+      let objPaqueteConvenioTemp = new PaqueteConv(pNuevoPaqueteConvenio.tracking, pNuevoPaqueteConvenio.cliente, pNuevoPaqueteConvenio.convenio, new Date(pNuevoPaqueteConvenio.fecha));
 
       let registro = servicioUsuarios.addPaqueteConvenio(objPaqueteConvenioTemp);
       if (registro == true) {

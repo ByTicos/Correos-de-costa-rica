@@ -184,7 +184,8 @@ class Tarjeta {
     }
 }
 class PaqueteConv{
-    constructor(pCliente, pConvenio, pFecha){
+    constructor(pTracking, pCliente, pConvenio, pFecha){
+        this.tracking = pTracking;
         this.cliente = pCliente;
         this.convenio = pConvenio;
         this.fecha = pFecha;
