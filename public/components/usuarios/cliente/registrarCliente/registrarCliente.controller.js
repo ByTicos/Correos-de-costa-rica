@@ -102,7 +102,7 @@
 
       let registro = servicioUsuarios.addUsuario(objNuevoCliente);
 
-      if (registro == true) {
+      if (registro == 'Se registró el usuario correctamente') {
         let sesion = JSON.parse(sessionStorage.getItem('sesion'));
         if(sesion == null || sesion.tipo != '5'){
           

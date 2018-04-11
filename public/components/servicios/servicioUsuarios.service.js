@@ -4,9 +4,9 @@
         .module('correos')
         .service('servicioUsuarios', servicioUsuarios)
 
-    servicioUsuarios.$inject = ['$log', '$http'];
+    servicioUsuarios.$inject = ['$log', '$http', 'dataStorageFactory'];
 
-    function servicioUsuarios($log, $http) {
+    function servicioUsuarios($log, $http, dataStorageFactory) {
 
         const asyncLocalStorage = {
             setItem: function (key, value) {
@@ -44,29 +44,32 @@
         return publicAPI
 
         function _addUsuario(pNuevoUsuario) {
-            let listaUsuarios = _getUsuarios();
-            let respuesta = true;
-            listaUsuarios.push(pNuevoUsuario);
+            let listaUsuarios = _getUsuarios(),
+                registroExitoso,
+                usuarioRepetido = false;
 
-            localStorage.setItem('usuariosLS', JSON.stringify(listaUsuarios));/*.tshen((response) => {
-                respuesta = response;
-            })*/
+            for (let i = 0; i < listaUsuarios.length; i++) {
+                if (listaUsuarios[i].correo == pNuevoUsuario.correo) {
+                    usuarioRepetido = true;
+                }
+            }
 
-            return respuesta;
-        };
+            if (usuarioRepetido === false) {
+                registroExitoso = dataStorageFactory.setUserData(pNuevoUsuario);
+            } else {
+                registroExitoso = false;
+            }
 
-        
+            return registroExitoso;
+        }
+
+
 
         function _getUsuarios() {
-            let listaUsuarios = [];
             let admin = new Usuario('', '', 'Administrador', '', '', '', 'administrador@correos.cr', '', '', '', '', '', '', 'admin', '5', '', 'Administrador', '');
-            let listaUsuariosLocal = JSON.parse(localStorage.getItem("usuariosLS"));
-            if (listaUsuariosLocal == null) {
-                listaUsuarios = [admin];
-                actualizarLocal(listaUsuarios);
-            }
-            else {
-                listaUsuariosLocal.forEach(objUsuario => {
+            let listaUsuarios = [admin];
+            let listaUsuariosBD = dataStorageFactory.getUsersData();
+            listaUsuariosBD.forEach(objUsuario => {
                     let objUsuarioTemp = new Usuario(objUsuario.cedula, objUsuario.foto, objUsuario.primerNombre, objUsuario.segundoNombre, objUsuario.primerApellido, objUsuario.segundoApellido, objUsuario.correo, objUsuario.telefono, objUsuario.fechaNacimiento, objUsuario.provincia, objUsuario.canton, objUsuario.distrito, objUsuario.direccionExacta, objUsuario.contrasenna,objUsuario.tipo, objUsuario.sucursalAsignada, objUsuario.puesto, objUsuario.vehiculo, []);
                     objUsuarioTemp.cambiarEstado(objUsuario.estado);
 
@@ -116,8 +119,8 @@
                     listaUsuarios.push(objUsuarioTemp);
                 });
 
-            };
-            console.log('listaUsuarios',listaUsuarios);
+                console.log('Datos de la BD convertidos en clases');
+                console.log('Lista de usuarios ', listaUsuarios);
             return listaUsuarios;
         };
 
