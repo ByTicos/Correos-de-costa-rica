@@ -11,7 +11,7 @@ var UserSchema = new mongoose.Schema({
   segundoApellido : {type : String},
   correo : {type : String, required : true},
   telefono : {type : String, required : true},
-  fechaNacimiento : {type : String, required : true},
+  fechaNacimiento : {type : Date, required : true},
   provincia : {type : String, required : true},
   canton : {type : String, required : true},
   distrito : {type : String, required : true},

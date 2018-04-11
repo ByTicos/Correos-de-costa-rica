@@ -1,17 +1,11 @@
-const articuloModel = require('./articulos.model');
+const ArticuloModel = require('./articulos.model');
 
 module.exports.registrar = (req, res) => {
-  var newArticulo = new articuloModel({
+  var newArticulo = new ArticuloModel({
     id            :  req.body.id,
     producto      :  req.body.producto,
     impuesto      :  req.body.impuesto,
     estado        :  req.body.estado,
-    
-    
-
-
-      
-    
   });
 
   newArticulo.save((err) => {
@@ -24,13 +18,13 @@ module.exports.registrar = (req, res) => {
 };
 
 module.exports.listarTodos = (req,res) => {
-  articuloModel.find().then((articulos) => {
+  ArticuloModel.find().then((articulos) => {
     res.send(articulos);
   });
 };
 
 module.exports.actualizar = (req,res) => {
-  articuloModel.findByIdAndUpdate(req.body._id, { $set: req.body}, (err, articulo) => {
+  ArticuloModel.findByIdAndUpdate(req.body._id, { $set: req.body}, (err, articulo) => {
     if (err){
       res.json({success:false,msg:'No se ha actualizado.' + handleError(err)});
 
