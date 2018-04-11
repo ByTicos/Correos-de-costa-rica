@@ -11,6 +11,7 @@
     const localAPI = {
       getUsersData: _getUsersData,
       setUserData: _setUserData,
+      setEntidadData: _setEntidadData,
       setSession: _setSession,
       closeSession: _closeSession,
       getSession: _getSession
@@ -78,6 +79,34 @@
           'listaTarjetas': data.listaTarjetas,
           'listaPaquetesConvenios': data.listaPaquetesConvenios,
           'contrasenna': data.contrasenna,
+        }
+      });
+
+      peticion.done((datos) => {
+        response = datos.msj;
+        console.log('Petición realizada con éxito');
+      });
+      peticion.fail((error) => {
+        response = error;
+        console.log('Ocurrió un error');
+      });
+
+      return response;
+    }
+
+    function _setEntidadData(data) {
+      let response;
+
+      let peticion = $.ajax({
+        url: 'http://localhost:4000/api/save_entidad',
+        type: 'post',
+        contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+        dataType: 'json',
+        async: false,
+        data: {
+          'nombre': data.nombre,
+          'cedulaJuridica': data.cedulaJuridica,
+          'convenios': data.convenios,
         }
       });
 
