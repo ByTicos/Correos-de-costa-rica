@@ -61,7 +61,7 @@ app.use( (req, res, next) => {
 
  ///Aqui van agregados todos los componentes amiguitos!!
 const index = require('./index'),
-      usuarios = require('./components/usuarios/usuarios.route');
+      usuarios = require('./components/usuarios/usuarios.route'),
       articulos = require ('./components/articulos/articulos.route.js');
       
 
