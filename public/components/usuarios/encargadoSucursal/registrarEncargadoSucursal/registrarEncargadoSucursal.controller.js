@@ -4,9 +4,9 @@
     .module('correos')
     .controller('controladorRegistrarEncargadoSucursal', controladorRegistrarEncargadoSucursal);
     
-    controladorRegistrarEncargadoSucursal.$inject = ['$state', '$stateParams', '$location', 'servicioUsuarios', 'servicioSucursales'];
+  controladorRegistrarEncargadoSucursal.$inject = ['$http','$state', '$stateParams', '$location', 'servicioUsuarios', 'imageService','Upload', 'servicioSucursales'];
 
-  function controladorRegistrarEncargadoSucursal($state, $stateParams, $location, servicioUsuarios, servicioSucursales) {
+  function controladorRegistrarEncargadoSucursal($http ,$state, $stateParams, $location, servicioUsuarios, imageService, Upload, servicioSucursales) {
     let vm = this;
 
     vm.nuevoUsuario = {};
