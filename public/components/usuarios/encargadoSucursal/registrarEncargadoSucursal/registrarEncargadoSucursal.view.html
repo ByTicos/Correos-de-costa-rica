@@ -47,6 +47,30 @@
                                 <label for="">Fecha de nacimiento</label>
                                 <input type="date" class="form-control" ng-model="vm.nuevoUsuario.fechaNacimiento">
                             </div>
+
+                            <label for="">Provincia</label>
+                            <input list="sltProvincia" class="form-control" name="sltProvincia" ng-change="vm.rellenarCantones(vm.nuevoUsuario.provincia)"
+                              ng-model="vm.nuevoUsuario.provincia" required>
+                            <datalist id="sltProvincia">
+                              <option ng-repeat="provincia in vm.provincias track by provincia._id" value="{{provincia.name}}" id="{{provincia._id}}">
+                            </datalist>
+                    
+                            <label for="">Cantón</label>
+                            <input list="sltCanton" name="sltCanton" class="form-control" ng-change="vm.rellenarDistrito(vm.nuevoUsuario.canton)" ng-model="vm.nuevoUsuario.canton"
+                              required>
+                            <datalist id="sltCanton">
+                              <option ng-repeat="canton in vm.cantones" value="{{canton.name}}">
+                            </datalist>
+                    
+                            <label for="">Distrito</label>
+                            <input list="sltDistrito" name="sltDistrito" class="form-control" ng-model="vm.nuevoUsuario.distrito" required>
+                            <datalist id="sltDistrito">
+                              <option ng-repeat="distrito in vm.distritos" value="{{distrito.name}}">
+                            </datalist>
+                    
+                            <label for="">Dirección Exacta</label>
+                            <input type="text" class="form-control" ng-model="vm.nuevoUsuario.direccionExacta" required>
+
                             <div class="form-group col-6">
                                 <label for="">Contraseña</label>
                                 <input type="text" class="form-control" ng-model="vm.nuevoUsuario.contrasenna">
