@@ -18,7 +18,7 @@
       getSession: _getSession,
       getArticuloData: _getArticuloData,
       setArticuloData: _setArticuloData,
-      getConveniosData:_getConveniosData,
+      getpaquetesData:_getpaquetesData,
       setConvenioData:_setConvenioData
     };
     return localAPI;
@@ -82,7 +82,7 @@
           'listaLicencias': data.listaLicencias,
           'estado': data.estado,
           'listaTarjetas': data.listaTarjetas,
-          'listaPaquetesConvenios': data.listaPaquetesConvenios,
+          'listaPaquetespaquetes': data.listaPaquetespaquetes,
           'contrasenna': data.contrasenna,
         }
       });
@@ -123,11 +123,11 @@
       return listaEntidades;
     }
 
-    function _getConveniosData() {
-      let listaConvenios = [];
+    function _getpaquetesData() {
+      let listaPaquetes = [];
 
       let peticion = $.ajax({
-        url: 'http://localhost:4000/api/get_all_convenios',
+        url: 'http://localhost:4000/api/get_all_paquetes',
         type: 'get',
         contentType: 'application/x-www-form-urlencoded; charset=utf-8',
         dataType: 'json',
@@ -135,17 +135,17 @@
         data: {}
       });
 
-      peticion.done((convenios) => {
+      peticion.done((paquetes) => {
         console.log('Datos que vienen desde la base de datos')
-        console.log(convenios);
-        listaConvenios = convenios;
+        console.log(paquetes);
+        listaPaquetes = paquetes;
       });
       peticion.fail(() => {
-        listaConvenios = [];
+        listaPaquetes = [];
         console.log('Ocurrió un error');
       });
 
-      return listaConvenios;
+      return listaPaquetes;
     }
 
     function _setEntidadData(data) {
@@ -160,7 +160,7 @@
         data: {
           'nombre': data.nombre,
           'cedulaJuridica': data.cedulaJuridica,
-          'convenios': data.convenios,
+          'paquetes': data.paquetes,
         }
       });
 
@@ -275,5 +275,32 @@
       });
 
   }
+  
+  function _getPaquetesData () {
+  let listaPaquetes = [];
+
+  let peticion = $.ajax ({
+    url: 'http://localhost:4000/api/get_all_paquetes',
+    type: 'get',
+    contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+    dataType: 'json',
+    async: false,
+    data: {},
+  });
+
+  peticion.done (paquetes => {
+    console.log ('Datos que vienen desde la base de datos');
+    console.log (paquetes);
+    listaPaquetes = paquetes;
+  });
+  peticion.fail (() => {
+    listaPaquetes = [];
+    console.log ('Ocurrió un error');
+  });
+
+  return listaPaquetes;
+}
+
+
  }
 })();
