@@ -70,7 +70,7 @@
             let listaUsuarios = [admin];
             let listaUsuariosBD = dataStorageFactory.getUsersData();
             listaUsuariosBD.forEach(objUsuario => {
-                    let objUsuarioTemp = new Usuario(objUsuario.cedula, objUsuario.foto, objUsuario.primerNombre, objUsuario.segundoNombre, objUsuario.primerApellido, objUsuario.segundoApellido, objUsuario.correo, objUsuario.telefono, objUsuario.fechaNacimiento, objUsuario.provincia, objUsuario.canton, objUsuario.distrito, objUsuario.direccionExacta, objUsuario.contrasenna,objUsuario.tipo, objUsuario.sucursalAsignada, objUsuario.puesto, objUsuario.vehiculo, []);
+                    let objUsuarioTemp = new Usuario(objUsuario.cedula, objUsuario.foto, objUsuario.primerNombre, objUsuario.segundoNombre, objUsuario.primerApellido, objUsuario.segundoApellido, objUsuario.correo, objUsuario.telefono, objUsuario.fechaNacimiento, objUsuario.provincia, objUsuario.canton, objUsuario.distrito, objUsuario.direccionExacta, objUsuario.contrasenna,objUsuario.tipo, objUsuario.sucursalAsignada, objUsuario.puesto, objUsuario.vehiculo,[]);
                     objUsuarioTemp.cambiarEstado(objUsuario.estado);
 
 
@@ -309,7 +309,8 @@
 
             function _getLicencia() {
                 let listaLicencia = [];
-                let listaLicenciaLocal = JSON.parse(localStorage.getItem('licenciasLS'));
+                // let listaLicenciaLocal = JSON.parse(localStorage.getItem('licenciasLS'));
+                registroExitoso = dataStorageFactory.setUserData(pNuevoUsuario);
     
                 if(listaLicenciaLocal == null){
                    listaLicencia = [];
