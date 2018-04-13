@@ -39,7 +39,8 @@
             getPaquetesConvenio:_getPaquetesConvenio,
             getUsuarioActivo:_getUsuarioActivo,
             solicitarEnvioPaqueteConvenio:_solicitarEnvioPaqueteConvenio,
-            getAllPaquetesConvenio:_getAllPaquetesConvenio
+            getAllPaquetesConvenio:_getAllPaquetesConvenio,
+            enviarCorreo: _enviarCorreo
             }
         return publicAPI
 
@@ -55,12 +56,18 @@
             }
 
             if (usuarioRepetido === false) {
+              
                 registroExitoso = dataStorageFactory.setUserData(pNuevoUsuario);
+                _enviarCorreo(pNuevoUsuario);
             } else {
                 registroExitoso = false;
             }
 
             return registroExitoso;
+        }
+
+        function _enviarCorreo (pUsuario){
+            dataStorageFactory.sendMail(pUsuario);
         }
 
 

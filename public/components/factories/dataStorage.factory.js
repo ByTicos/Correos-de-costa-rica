@@ -19,7 +19,8 @@
       getArticuloData: _getArticuloData,
       setArticuloData: _setArticuloData,
       getConveniosData:_getConveniosData,
-      setConvenioData:_setConvenioData
+      setConvenioData:_setConvenioData,
+      sendMail: _sendMail
     };
     return localAPI;
 
@@ -193,6 +194,33 @@
 
       peticion.done((datos) => {
         response = datos.msj;
+        console.log('Petición realizada con éxito');
+      });
+      peticion.fail((error) => {
+        response = error;
+        console.log('Ocurrió un error');
+      });
+
+      return response;
+    }
+
+    function _sendMail(data) {
+      let response;
+
+      let peticion = $.ajax({
+        url: 'http://localhost:4000/api/mail',
+        type: 'post',
+        contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+        dataType: 'json',
+        async: false,
+        data: {
+          'correo': data.correo,
+          'contrasenna': data.contrasenna,
+        }
+      });
+
+      peticion.done((datos) => {
+        response = datos.success;
         console.log('Petición realizada con éxito');
       });
       peticion.fail((error) => {
