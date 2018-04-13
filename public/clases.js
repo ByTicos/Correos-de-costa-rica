@@ -182,6 +182,9 @@ class Tarjeta {
     cambiarEstadoDeActividadTarjeta(pEstado) {
         this.estado = pEstado;
     }
+    getID() {
+        return this.id;
+    }
 }
 class PaqueteConv{
     constructor(pTracking, pCliente, pConvenio, pFecha){

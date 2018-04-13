@@ -370,39 +370,48 @@
 
         function _addTarjeta (pNuevaTarjeta) {
             let listaUsuarios = _getUsuarios();
+            let listaTarjetas = _getTarjeta();
             let sesion = JSON.parse(sessionStorage.getItem('sesion'));
-            let respuesta = true;
-
-            for(let i = 0; i < listaUsuarios.length; i++){
-                if (sesion.nombre == listaUsuarios[i].primerNombre){
-                listaUsuarios[i].registrarTarjeta(pNuevaTarjeta);
-                }
-        
+            let tarjetaRepetida = false;
+            let registroValido;
+  
+        for(let i = 0; i < listaTarjetas.length; i++){
+          if(listaTarjetas[i].numero == pNuevaTarjeta.numero){
+            tarjetaRepetida = true;
+          }
+        }
+  
+        if (tarjetaRepetida == false) {
+          for(let i = 0; i < listaUsuarios.length; i++){
+            if(listaUsuarios[i].obtenerTarjeta() == pNuevaTarjeta.obtenerInfoTarjeta()){
+              listaUsuarios[i].registrarTarjeta(pNuevaTarjeta.id);
             }
-
-            actualizarLocal(listaUsuarios);
-            return respuesta;
-            
-        };
+          }
+          registroValido = dataStorageFactory.setTarjetasData(pNuevaTarjeta);
+        } else {
+          registroValido = false;
+        }
+  
+        return registroValido;
+      };
 
 
 
         function _getTarjeta(){
-            let listaUsuarios = _getUsuarios();
             let listaTarjetas = [];
-            let session = JSON.parse (sessionStorage.getItem ('sesion'));
-
-            for (let i = 0; i < listaUsuarios.length; i++) {
-                if (session.nombre == listaUsuarios[i].primerNombre ) {
-                    if (listaUsuarios[i].listaTarjetas != null) {
-                       listaTarjetas =  listaUsuarios[i].listaTarjetas;
-                    }
-                }
-                
-            }
-            
+            let listaTarjetasBD = dataStorageFactory.getTarjetasData();
+            listaTarjetasBD.forEach(objTarjetas => {
+              let objTarjetasTemp = new Tarjeta(objTarjetas.id, objTarjetas.nombre, objTarjetas.numero, objTarjetas.expiracion, objTarjetas.cvv, objTarjetas.estado);
+      
+              listaTarjetas.push(objTarjetasTemp);
+      
+            });
+      
             return listaTarjetas;
-        };
+      
+          };
+            
+           
 
         function _actualizarRepartidor(pObjRepartidor) {
             let listaUsuarios = _getUsuarios();
