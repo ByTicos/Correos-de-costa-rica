@@ -11,6 +11,7 @@
     const localAPI = {
       getUsersData: _getUsersData,
       setUserData: _setUserData,
+      updateUserData: _updateUserData,
       setEntidadData: _setEntidadData,
       getEntidadesData:_getEntidadesData,
       setSession: _setSession,
@@ -98,6 +99,55 @@
 
       return response;
     }
+
+    function _updateUserData(data) {
+      let response;
+
+      let peticion = $.ajax({
+        url: 'http://localhost:4000/api/update_user',
+        type: 'put',
+        contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+        dataType: 'json',
+        async: false,
+        data: {
+          'cedula': data.cedula,
+          'foto': data.foto,
+          'primerNombre': data.primerNombre,
+          'segundoNombre': data.segundoNombre,
+          'primerApellido': data.primerApellido,
+          'segundoApellido': data.segundoApellido,
+          'correo': data.correo,
+          'telefono':data.telefono,
+          'fechaNacimiento': data.fechaNacimiento,
+          'provincia': data.provincia,
+          'canton': data.canton,
+          'distrito': data.distrito,
+          'direccionExacta': data.direccionExacta,
+          'tipo': data.tipo,
+          'listaPaquetes': data.listaPaquetes,
+          'sucursalAsignada': data.sucursalAsignada,
+          'puesto': data.puesto,
+          'vehiculo': data.vehiculo,
+          'listaLicencias': data.listaLicencias,
+          'estado': data.estado,
+          'listaTarjetas': data.listaTarjetas,
+          'listaPaquetesConvenios': data.listaPaquetesConvenios,
+          'contrasenna': data.contrasenna,
+        }
+      });
+
+      peticion.done((datos) => {
+        response = datos.msj;
+        console.log('Petición realizada con éxito');
+      });
+      peticion.fail((error) => {
+        response = error;
+        console.log('Ocurrió un error');
+      });
+
+      return response;
+    }
+    
     function _getEntidadesData() {
       let listaEntidades = [];
 
