@@ -23,7 +23,9 @@
       setConvenioData:_setConvenioData,
       getTarjetasData: _getTarjetasData,
       setTarjetasData:_setTarjetasData,
-      sendMail: _sendMail
+      sendMail: _sendMail,
+      buscarEntidadPorId:_buscarEntidadPorId,
+      agregarConvenio:_agregarConvenio
     };
     return localAPI;
 
@@ -255,6 +257,52 @@
 
       return response;
     }
+
+    function _agregarConvenio(pId, pConvenio){
+      let peticion = $.ajax({
+          url: 'http://localhost:4000/api/agregar_convenio',
+          type: 'post',
+          contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+          dataType : 'json',
+          async:false,
+        data: {
+          '_id': pId,
+          'tipoTramite': pConvenio.tipoTramite,
+        }
+        });
+      
+        peticion.done(function(response){
+          
+        });
+      
+        peticion.fail(function(){
+         
+        });
+  }
+
+  function _buscarEntidadPorId(pid){
+    let entidad = [];
+    let peticion = $.ajax({
+        url: 'http://localhost:4000/api/buscar_entidad_id',
+        type: 'post',
+        contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+        dataType : 'json',
+        async:false,
+        data:{
+            'id' : pid
+        }
+      });
+    
+      peticion.done(function(response){
+        entidad = response;
+      });
+    
+      peticion.fail(function(){
+       
+      });
+
+    return entidad;
+}
 
     function _sendMail(data) {
       let response;

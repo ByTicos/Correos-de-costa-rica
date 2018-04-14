@@ -4,8 +4,12 @@ const mongoose = require('mongoose');
 //Esquema de usuarios
 var EntidadSchema = new mongoose.Schema({
   nombre : {type : String, required : true},
-  cedulaJuridica : {type : String, required : true},
-  convenios : {type : Array, required : true}
+  cedulaJuridica : {type : String, required : true, unique: true},
+  convenios: [
+    {
+      tipoTramite: {type: String}
+
+    }]
 });
 
 //nombre del modelo dentro del back end y el userSchema es el nombre dentro de mongoose
