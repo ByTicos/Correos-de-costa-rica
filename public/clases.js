@@ -25,6 +25,7 @@ class Usuario {
         this.listaPaquetesConvenios = [];
         this.contrasenna = pContrasenna;
     }
+
     cambiarEstado(pEstado) {
         this.estado = pEstado;
     }

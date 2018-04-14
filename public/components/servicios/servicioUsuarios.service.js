@@ -39,42 +39,21 @@
             getPaquetesConvenio:_getPaquetesConvenio,
             getUsuarioActivo:_getUsuarioActivo,
             solicitarEnvioPaqueteConvenio:_solicitarEnvioPaqueteConvenio,
-            getAllPaquetesConvenio:_getAllPaquetesConvenio,
-            enviarCorreo: _enviarCorreo
+            getAllPaquetesConvenio:_getAllPaquetesConvenio
             }
         return publicAPI
-
+        
         function _addUsuario(pNuevoUsuario) {
-            let listaUsuarios = _getUsuarios(),
-                registroExitoso,
-                usuarioRepetido = false;
+            let registroExitoso = false;
 
-            for (let i = 0; i < listaUsuarios.length; i++) {
-                if (listaUsuarios[i].correo == pNuevoUsuario.correo) {
-                    usuarioRepetido = true;
-                }
-            }
-
-            if (usuarioRepetido === false) {
-              
-                registroExitoso = dataStorageFactory.setUserData(pNuevoUsuario);
-                _enviarCorreo(pNuevoUsuario);
-            } else {
-                registroExitoso = false;
-            }
+            registroExitoso = dataStorageFactory.setUserData(pNuevoUsuario);
+            dataStorageFactory.sendMail(pNuevoUsuario);
 
             return registroExitoso;
         }
 
-        function _enviarCorreo (pUsuario){
-            dataStorageFactory.sendMail(pUsuario);
-        }
-
-
-
         function _getUsuarios() {
-            let admin = new Usuario('', '', 'Administrador', '', '', '', 'administrador@correos.cr', '', '', '', '', '', '', 'admin', '5', '', 'Administrador', '');
-            let listaUsuarios = [admin];
+            let listaUsuarios = [];
             let listaUsuariosBD = dataStorageFactory.getUsersData();
             listaUsuariosBD.forEach(objUsuario => {
                     let objUsuarioTemp = new Usuario(objUsuario.cedula, objUsuario.foto, objUsuario.primerNombre, objUsuario.segundoNombre, objUsuario.primerApellido, objUsuario.segundoApellido, objUsuario.correo, objUsuario.telefono, objUsuario.fechaNacimiento, objUsuario.provincia, objUsuario.canton, objUsuario.distrito, objUsuario.direccionExacta, objUsuario.contrasenna,objUsuario.tipo, objUsuario.sucursalAsignada, objUsuario.puesto, objUsuario.vehiculo, []);
