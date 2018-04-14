@@ -73,13 +73,13 @@
           swal("Registro exitoso", "El usuario ha sido registrado correctamente", "success", {
             button: "Aceptar",
           }); 
-          $location.path('/logIn');
+          
         }
         else{
           swal("Registro exitoso", "El usuario ha sido registrado correctamente", "success", {
             button: "Aceptar",
           });
-          
+          $location.path('/main/listarEncargadoSucursal');
         }
         
       }
