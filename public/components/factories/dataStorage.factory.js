@@ -19,10 +19,7 @@
       getSession: _getSession,
       getArticuloData: _getArticuloData,
       setArticuloData: _setArticuloData,
-<<<<<<< HEAD
       getpaquetesData:_getpaquetesData,
-      setConvenioData:_setConvenioData
-=======
       getConveniosData:_getConveniosData,
       setConvenioData:_setConvenioData,
       getTarjetasData: _getTarjetasData,
@@ -30,7 +27,6 @@
       sendMail: _sendMail,
       buscarEntidadPorId:_buscarEntidadPorId,
       agregarConvenio:_agregarConvenio
->>>>>>> Dev
     };
     return localAPI;
 
@@ -408,7 +404,6 @@
       });
 
   }
-<<<<<<< HEAD
   
   function _getPaquetesData () {
   let listaPaquetes = [];
@@ -436,7 +431,6 @@
 }
 
 
-=======
 
   function _getTarjetasData() {
     let listaTarjetas = [];
@@ -494,6 +488,5 @@
 
     return response;
   }
->>>>>>> Dev
  }
 })();
