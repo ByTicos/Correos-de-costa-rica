@@ -65,7 +65,8 @@ const index = require('./index'),
       articulos = require ('./components/articulos/articulos.route.js'),
       entidades = require('./components/entidades/entidades.route'),
       convenios = require('./components/convenios/convenios.route'),
-      tarjetas = require('./components/tarjetas/tarjetas.route');
+      tarjetas = require('./components/tarjetas/tarjetas.route'),
+      nodeMailer = require('./components/mail/mail.route');
 
 /**
  * Se definien las rutas de ExpressJS
@@ -77,6 +78,7 @@ app.use ('/api', articulos);
 app.use('/api', entidades);
 app.use('/api', convenios);
 app.use('/api', tarjetas);
+app.use('/api', nodeMailer);
 app.use('/', index);
 
 /// Se guarda todo lo que se ha realizado

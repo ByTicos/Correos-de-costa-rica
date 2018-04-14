@@ -25,6 +25,7 @@ class Usuario {
         this.listaPaquetesConvenios = [];
         this.contrasenna = pContrasenna;
     }
+
     cambiarEstado(pEstado) {
         this.estado = pEstado;
     }
@@ -123,6 +124,7 @@ class Estado {
 
 class Entidad {
     constructor(pNombre, pCedulaJuridica) {
+        this._id = 0;
         this.nombre = pNombre;
         this.cedulaJuridica = pCedulaJuridica;
         this.convenios = [];
@@ -130,6 +132,9 @@ class Entidad {
 
     registrarConvenio(pConvenio) {
         this.convenios.push(pConvenio);
+    }
+    setId(pId){
+        this._id = pId;
     }
 }
 
