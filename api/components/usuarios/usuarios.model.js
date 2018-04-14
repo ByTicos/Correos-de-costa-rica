@@ -4,12 +4,12 @@ const mongoose = require('mongoose');
 //Esquema de usuarios
 var UserSchema = new mongoose.Schema({
   cedula : {type : String, required : true},
-  foto : {type : String, required : true},
+  foto : {type : String},
   primerNombre : {type : String, required : true},
   segundoNombre : {type : String},
   primerApellido : {type : String, required : true},
   segundoApellido : {type : String},
-  correo : {type : String, required : true},
+  correo : {type : String, required : true, unique: true},
   telefono : {type : String, required : true},
   fechaNacimiento : {type : Date, required : true},
   provincia : {type : String, required : true},
