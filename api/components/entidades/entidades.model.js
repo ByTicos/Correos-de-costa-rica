@@ -9,5 +9,5 @@ var EntidadSchema = new mongoose.Schema({
 });
 
 //nombre del modelo dentro del back end y el userSchema es el nombre dentro de mongoose
-module.exports = mongoose.model('Entidade', EntidadSchema); 
+module.exports = mongoose.model('Entidades', EntidadSchema); 
 //User va en mayúscula y singular aunque en la bd todo se pone en minúscula y plural

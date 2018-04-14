@@ -19,7 +19,9 @@
       getArticuloData: _getArticuloData,
       setArticuloData: _setArticuloData,
       getConveniosData:_getConveniosData,
-      setConvenioData:_setConvenioData
+      setConvenioData:_setConvenioData,
+      getTarjetasData: _getTarjetasData,
+      setTarjetasData:_setTarjetasData,
     };
     return localAPI;
 
@@ -274,6 +276,63 @@
         }
       });
 
+  }
+
+  function _getTarjetasData() {
+    let listaTarjetas = [];
+
+    let peticion = $.ajax({
+      url: 'http://localhost:4000/api/get_all_tarjetas',
+      type: 'get',
+      contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+      dataType: 'json',
+      async: false,
+      data: {}
+    });
+
+    peticion.done((tarjetas) => {
+      console.log('Datos que vienen desde la base de datos')
+      console.log(tarjetas);
+      listaTarjetas = tarjetas;
+    });
+    peticion.fail(() => {
+      listaTarjetas = [];
+      console.log('Ocurrió un error');
+    });
+
+    return listaTarjetas;
+  }
+
+  function _setTarjetasData(data) {
+    let response;
+
+    let peticion = $.ajax({
+      url: 'http://localhost:4000/api/save_tarjetas',
+      type: 'post',
+      contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+      dataType: 'json',
+      async: false,
+      data: {
+        'id': data.id,
+        'nombre': data.nombre,
+        'numero': data.numero,
+        'expiracion': data.expiracion,
+        'xvv': data.xvv,
+        'estado': data.estado,
+
+      }
+    });
+
+    peticion.done((datos) => {
+      response = datos.msj;
+      console.log('Petición realizada con éxito');
+    });
+    peticion.fail((error) => {
+      response = error;
+      console.log('Ocurrió un error');
+    });
+
+    return response;
   }
  }
 })();
