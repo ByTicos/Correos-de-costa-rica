@@ -367,6 +367,7 @@
             }
             return usuarioActivo;
         }
+        
 
         function _addTarjeta (pNuevaTarjeta) {
             let listaUsuarios = _getUsuarios();
