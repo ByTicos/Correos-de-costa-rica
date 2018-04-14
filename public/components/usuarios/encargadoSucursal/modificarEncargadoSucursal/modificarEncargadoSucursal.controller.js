@@ -29,6 +29,7 @@
     vm.editarUsuarios.segundoNombre = objNuevoUsuario.segundoNombre;
     vm.editarUsuarios.primerApellido = objNuevoUsuario.primerApellido;
     vm.editarUsuarios.segundoApellido = objNuevoUsuario.segundoApellido;
+    vm.editarUsuarios.correo = objNuevoUsuario.correo;
     vm.editarUsuarios.telefono = objNuevoUsuario.telefono;
     vm.editarUsuarios.fechaNacimiento = new Date(objNuevoUsuario.fechaNacimiento);
     vm.editarUsuarios.provincia = objNuevoUsuario.provincia;
@@ -49,7 +50,7 @@
         }
         servicioUsuarios.actualizarUsuario(objUsuario);
       });
-      $state.go('main.listarEncargadoSucursal');
+      $state.go('mainlistarEncargadoSucursal');
     }
     
 

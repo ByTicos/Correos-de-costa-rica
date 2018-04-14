@@ -187,13 +187,12 @@
         
         function _actualizarUsuario(pUsuario) {
             let listaUsuarios = _getUsuarios();
-            let usuario = {}
+            let usuario;
 
             for (let i = 0; i < listaUsuarios.length; i++) {
                 if (pUsuario.correo == listaUsuarios[i].correo) {
                     listaUsuarios[i] = pUsuario;
                     usuario = listaUsuarios[i];
-
                 }
             }
             dataStorageFactory.updateUserData(usuario);
