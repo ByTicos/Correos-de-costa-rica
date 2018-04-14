@@ -9,7 +9,7 @@ var UserSchema = new mongoose.Schema({
   segundoNombre : {type : String},
   primerApellido : {type : String, required : true},
   segundoApellido : {type : String},
-  correo : {type : String, required : true},
+  correo : {type : String, required : true, unique: true},
   telefono : {type : String, required : true},
   fechaNacimiento : {type : Date, required : true},
   provincia : {type : String, required : true},
