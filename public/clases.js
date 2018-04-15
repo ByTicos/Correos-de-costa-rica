@@ -1,5 +1,6 @@
 class Usuario {
     constructor(pCedula, pFoto, pPrimerNombre, pSegundoNombre, pPrimerApellido, pSegundoApellido, pEmail, pTelefono, pfechaNacimiento, pProvincia, pCanton, pDistrito, pDireccionExacta, pContrasenna, pTipo, pSucursalAsignada, pPuesto, pVehiculo, pLicencia, pVencimientoLicencia, pTarjeta) {
+        this._id = 0;
         this.cedula = pCedula;
         this.foto = pFoto;
         this.primerNombre = pPrimerNombre;
@@ -24,6 +25,10 @@ class Usuario {
         this.listaTarjetas = pTarjeta || [];
         this.listaPaquetesConvenios = [];
         this.contrasenna = pContrasenna;
+    }
+
+    setId(pId){
+        this._id= pId;
     }
     cambiarEstado(pEstado) {
         this.estado = pEstado;
@@ -123,6 +128,7 @@ class Estado {
 
 class Entidad {
     constructor(pNombre, pCedulaJuridica) {
+        this._id = 0;
         this.nombre = pNombre;
         this.cedulaJuridica = pCedulaJuridica;
         this.convenios = [];
@@ -130,6 +136,9 @@ class Entidad {
 
     registrarConvenio(pConvenio) {
         this.convenios.push(pConvenio);
+    }
+    setId(pId){
+        this._id = pId;
     }
 }
 
@@ -181,6 +190,9 @@ class Tarjeta {
 
     cambiarEstadoDeActividadTarjeta(pEstado) {
         this.estado = pEstado;
+    }
+    getID() {
+        return this.id;
     }
 }
 class PaqueteConv{

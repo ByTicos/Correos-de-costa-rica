@@ -65,12 +65,6 @@ gulp.task('dependencies', () => {
     .pipe(gulp.dest('./public/lib/sweetalert'));
 
 
-  gulp.src([
-      './node_modules/font-awesome/css/font-awesome.min.css'
-    ])
-    .pipe(gulp.dest('./public/lib/font-awesome'));
-
-
     gulp.src([
       './node_modules/payform/dist/jquery.payform.min.js'
     ])

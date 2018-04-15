@@ -32,3 +32,26 @@ module.exports.actualizar = (req,res) => {
     }
   });
 };
+
+module.exports.buscar_entidad_por_id = function(req, res){
+  EntidadModel.findById({_id : req.body.id}).then(
+      function(entidad){
+          res.send(entidad);
+      });
+};
+
+module.exports.agregar_convenio = function (req, res) {
+  console.log('convenios  ' + req.body.convenios);
+
+  EntidadModel.update({ _id: req.body._id }, { $push: { 'convenios': { tipoTramite: req.body.tipoTramite } } },
+      function (error) {
+          if (error) {
+              res.json({ success: false, msg: 'No se ha actualizado el usuario debido al siguiente error: ' + handleError(error) });
+          } else {
+              res.json({ success: true, msg: 'El usuario ha sido modificado con éxito' });
+          }
+
+      });
+
+}
+

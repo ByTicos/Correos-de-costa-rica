@@ -4,6 +4,7 @@ main {
   width: 100%;
   position: relative;
   
+  
 }
 
 main:after {
@@ -16,9 +17,6 @@ width: 100%;
 height: 1200px;
 opacity : 1.3;
 z-index: -1;
-background-repeat: no-repeat;
-background-position: center center;
-background-size: cover;
 overflow: hidden;
 
 
@@ -36,3 +34,18 @@ hr {
   border-top: 1px solid #77b828;
 }
 
+.wrapper {
+  max-width: 900px;
+  background-color: transparet;
+  margin: 20px auto;
+  overflow: hidden;
+  padding: 25px;
+  color: #4c4e56;
+}
+
+.wrapperop {
+  background: rgba(84, 99, 117, 0.5);
+  border: 1 solid white;
+  border-style: dashed;
+  padding: 10px;
+}

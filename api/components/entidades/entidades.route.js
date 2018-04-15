@@ -34,4 +34,14 @@ router.route('/update_entidades')
     entidades.actualizar(req,res);
 });
 
+router.route('/buscar_entidad_id')
+    .post(function(req, res){
+        entidades.buscar_entidad_por_id(req, res);
+    });
+
+router.route('/agregar_convenio')
+.post(function(req, res){
+    entidades.agregar_convenio(req, res);
+});
+
 module.exports = router;
