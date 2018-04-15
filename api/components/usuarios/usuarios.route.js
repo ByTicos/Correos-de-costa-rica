@@ -34,4 +34,14 @@ router.route('/update_user')
     users.actualizar(req,res);
 });
 
+router.route('/buscar_user_id')
+  .post(function (req, res) {
+    users.buscar_usuario_por_id(req, res);
+  });
+
+router.route('/agregar_paquete_convenio')
+  .post(function (req, res) {
+    users.agregar_paquete_convenio(req, res);
+  });
+
 module.exports = router;
