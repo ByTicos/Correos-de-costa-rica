@@ -23,7 +23,10 @@ var UserSchema = new mongoose.Schema({
   vehiculo : {type : String},
   listaLicencias : {type : Array, required : true},
   estado : {type : String, required : true},
-  listaTarjetas : {type : Array, required : true},
+  listaTarjetas : [
+    {
+      tarjetaID: {type: String}
+    }],
   listaPaquetesConvenios : [
     {
       tracking: {type: String}

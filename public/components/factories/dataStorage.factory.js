@@ -29,7 +29,8 @@
       getPaquetesConvenioData: _getPaquetesConvenioData,
       setPaqueteConvenioData: _setPaqueteConvenioData,
       buscarUsuarioPorId:_buscarUsuarioPorId,
-      agregarPaqueteConvenio:_agregarPaqueteConvenio
+      agregarPaqueteConvenio:_agregarPaqueteConvenio,
+      agregarTarjetaUsuario: _agregarTarjetaUsuario
 
     };
     return localAPI;
@@ -433,6 +434,8 @@
 
     }
 
+    // Inicio de tarjetas
+
     function _getTarjetasData() {
       let listaTarjetas = [];
 
@@ -489,6 +492,34 @@
 
       return response;
     }
+
+    
+    function _agregarTarjetaUsuario(pId, pTarjeta) {
+      console.log('pid', pId);
+      console.log('pTarjeta', pTarjeta);
+      
+      let peticion = $.ajax({
+        url: 'http://localhost:4000/api/agregar_tarjeta_usuario',
+        type: 'post',
+        contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+        dataType: 'json',
+        async: false,
+        data: {
+          '_id': pId,
+          'tarjetaID': pTarjeta.id,
+        }
+      });
+
+      peticion.done(function (response) {
+
+      });
+
+      peticion.fail(function () {
+
+      });
+    }
+
+    // Fin Tarjetas
 
     //
     /*Paquetes de convenio*/

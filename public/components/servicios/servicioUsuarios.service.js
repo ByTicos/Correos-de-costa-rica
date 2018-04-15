@@ -56,6 +56,7 @@
             let listaUsuarios = [];
             let listaUsuariosBD = dataStorageFactory.getUsersData();
             listaUsuariosBD.forEach(objUsuario => {
+                console.log('objUsuario',objUsuario.listaPaquetes);
                     let objUsuarioTemp = new Usuario(objUsuario.cedula, objUsuario.foto, objUsuario.primerNombre, objUsuario.segundoNombre, objUsuario.primerApellido, objUsuario.segundoApellido, objUsuario.correo, objUsuario.telefono, objUsuario.fechaNacimiento, objUsuario.provincia, objUsuario.canton, objUsuario.distrito, objUsuario.direccionExacta, objUsuario.contrasenna,objUsuario.tipo, objUsuario.sucursalAsignada, objUsuario.puesto, objUsuario.vehiculo, []);
                     objUsuarioTemp.cambiarEstado(objUsuario.estado);
                     objUsuarioTemp.setId(objUsuario._id);
@@ -74,11 +75,14 @@
 
                         objUsuarioTemp.registrarTarjeta(objTarjetaTemp);
                     });
-
+                    console.log('objUsuario2',objUsuario.listaPaquetes);
+                    // objUsuario.listaPaquetes.forEach(testObjpaquete =>{
+                    //     console.log('test',testObjpaquete );
+                    // })
                     objUsuario.listaPaquetes.forEach(objPaquete => {
                         let objPaqueteTemp = new Paquete(objPaquete.usuario, objPaquete.tracking, objPaquete.distribuidor, objPaquete.precio,objPaquete.peso, objPaquete.Kilometro,objPaquete.tipoArticulo, objPaquete.descripcion, objPaquete.sucursal, objPaquete.repartidor);
 
-                        let listaEstados = objPaquete.listaEstados;
+                        let listaEstados = objPaquete.listaEstados || [];
 
                         // objTarjetaTemp.cambiarEstadoDeActividadTarjeta(objTarjeta.estado);
 
@@ -372,10 +376,11 @@
 
         function _addTarjeta(pNuevaTarjeta) {
             let listaUsuarios = _getUsuarios();
-            let listaTarjetas = _getTarjeta();
             let sesion = JSON.parse(sessionStorage.getItem('sesion'));
             let tarjetaRepetida = false;
-            let registroValido;
+            let registroValido = false;
+            let usuario = {};
+            let listaTarjetas = _getTarjeta();
 
             for (let i = 0; i < listaTarjetas.length; i++) {
                 if (listaTarjetas[i].numero == pNuevaTarjeta.numero) {
@@ -386,29 +391,17 @@
             if (tarjetaRepetida == false) {
                 for (let i = 0; i < listaUsuarios.length; i++) {
                     if (sesion.correo == listaUsuarios[i].correo) {
-                        listaUsuarios[i].registrarTarjeta(pNuevaTarjeta);
+                        usuario = dataStorageFactory.buscarUsuarioPorId(listaUsuarios[i]._id);
                     }
                 }
                 registroValido = dataStorageFactory.setTarjetasData(pNuevaTarjeta);
+
+                dataStorageFactory.agregarTarjetaUsuario(usuario._id, pNuevaTarjeta)
             } else {
                 registroValido = false;
             }
 
             return registroValido;
-
-//  function _getTarjeta(){
-//             let listaUsuarios = _getUsuarios();
-//             let listaTarjetas = [];
-//             let session = JSON.parse (sessionStorage.getItem ('sesion'));
-
-//             for (let i = 0; i < listaUsuarios.length; i++) {
-//                 if (session.nombre == listaUsuarios[i].primerNombre ) {
-//                     if (listaUsuarios[i].listaTarjetas != null) {
-//                        listaTarjetas =  listaUsuarios[i].listaTarjetas;
-//                     }
-//                 }
-                
-//             }
             
       };
 
