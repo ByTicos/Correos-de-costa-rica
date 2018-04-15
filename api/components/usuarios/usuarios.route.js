@@ -5,8 +5,8 @@ const express = require('express'),
 /**
  * 
  */
-router.param('correo', (req, res, next, correo) => {
-  req.body.correo = correo;
+router.param('id', (req, res, next, id) => {
+  req.body.correo = id;
   next();
 });
 

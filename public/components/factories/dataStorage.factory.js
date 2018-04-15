@@ -145,8 +145,8 @@
         }
       });
 
-      peticion.done((data) => {
-        response = data.msj;
+      peticion.done((datos) => {
+        response = datos.msj;
         console.log('Petición realizada con éxito');
       });
       peticion.fail((error) => {

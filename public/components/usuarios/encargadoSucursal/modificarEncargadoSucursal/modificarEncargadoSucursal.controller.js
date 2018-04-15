@@ -64,6 +64,7 @@
           objUsuario.segundoNombre = pUsuario.segundoNombre;
           objUsuario.primerApellido = pUsuario.primerApellido;
           objUsuario.segundoApellido = pUsuario.segundoApellido;
+          objUsuario.correo = pUsuario.correo;
           objUsuario.telefono = pUsuario.telefono;
           objUsuario.fechaNacimiento = pUsuario.fechaNacimiento;
           objUsuario.provincia = pUsuario.provincia;
