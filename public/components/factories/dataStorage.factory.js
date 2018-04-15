@@ -116,7 +116,6 @@
         async: false,
         data: {
           'cedula': data.cedula,
-          'foto': data.foto,
           'primerNombre': data.primerNombre,
           'segundoNombre': data.segundoNombre,
           'primerApellido': data.primerApellido,
@@ -141,8 +140,8 @@
         }
       });
 
-      peticion.done((datos) => {
-        response = datos.msj;
+      peticion.done((data) => {
+        response = data.msj;
         console.log('Petición realizada con éxito');
       });
       peticion.fail((error) => {
