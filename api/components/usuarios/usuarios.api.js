@@ -88,6 +88,13 @@ module.exports.agregar_tarjeta_usuario = function (req, res) {
         } 
       } 
     },
+  )},
+
+
+module.exports.agregar_paquete = function (req, res) {
+  console.log('listaPaquetes  ' + req.body.listaPaquetes);
+
+  UserModel.update({ _id: req.body._id }, { $push: { 'listaPaquetes': { tracking: req.body.tracking } } },
       function (error) {
           if (error) {
               res.json({ success: false, msg: 'No se ha actualizado el usuario debido al siguiente error: ' + handleError(error) });

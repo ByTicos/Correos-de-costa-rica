@@ -75,30 +75,27 @@
 
                         objUsuarioTemp.registrarTarjeta(objTarjetaTemp);
                     });
-                    console.log('objUsuario2',objUsuario.listaPaquetes);
-                    // objUsuario.listaPaquetes.forEach(testObjpaquete =>{
-                    //     console.log('test',testObjpaquete );
-                    // })
-                    objUsuario.listaPaquetes.forEach(objPaquete => {
-                        let objPaqueteTemp = new Paquete(objPaquete.usuario, objPaquete.tracking, objPaquete.distribuidor, objPaquete.precio,objPaquete.peso, objPaquete.Kilometro,objPaquete.tipoArticulo, objPaquete.descripcion, objPaquete.sucursal, objPaquete.repartidor);
 
-                        let listaEstados = objPaquete.listaEstados || [];
+                    // objUsuario.listaPaquetes.forEach(objPaquete => {
+                    //     let objPaqueteTemp = new Paquete(objPaquete.usuario, objPaquete.tracking, objPaquete.distribuidor, objPaquete.precio,objPaquete.peso, objPaquete.Kilometro,objPaquete.tipoArticulo, objPaquete.descripcion, objPaquete.sucursal, objPaquete.repartidor);
 
-                        // objTarjetaTemp.cambiarEstadoDeActividadTarjeta(objTarjeta.estado);
+                    //     let listaEstados = objPaquete.listaEstados;
 
-                        listaEstados.forEach(objEstado => {
-                            let fecha = new Date(objEstado.fecha);
-                            let hora = fecha;
-                            let estadoTemp = new Estado(objEstado.usuario, fecha, hora, objEstado.estado);
+                    //     // objTarjetaTemp.cambiarEstadoDeActividadTarjeta(objTarjeta.estado);
 
-                            objPaqueteTemp.addEstado(estadoTemp);
+                    //     listaEstados.forEach(objEstado => {
+                    //         let fecha = new Date(objEstado.fecha);
+                    //         let hora = fecha;
+                    //         let estadoTemp = new Estado(objEstado.usuario, fecha, hora, objEstado.estado);
+
+                    //         objPaqueteTemp.addEstado(estadoTemp);
                             
-                        });
-                        objPaqueteTemp.cambiarEstadoDeActividad(objPaquete.estado);
-                        objPaqueteTemp.mostrarEstadoTraslado(objPaquete.estadoTraslado);
+                    //     });
+                    //     objPaqueteTemp.cambiarEstadoDeActividad(objPaquete.estado);
+                    //     objPaqueteTemp.mostrarEstadoTraslado(objPaquete.estadoTraslado);
 
-                        objUsuarioTemp.agregarPaquete(objPaqueteTemp);
-                    });
+                    //     objUsuarioTemp.agregarPaquete(objPaqueteTemp);
+                    // });
                     
                     listaUsuarios.push(objUsuarioTemp);
                 });
@@ -217,37 +214,68 @@
         //    };
 
            function _addPaquete (pNuevoPaquete) {
+
                 let listaUsuarios = _getUsuarios();
-                let sesion = JSON.parse(sessionStorage.getItem('sesion'));
-                let respuesta = true;
-
-                for(let i = 0; i < listaUsuarios.length; i++){
-                    if (sesion.nombre == listaUsuarios[i].primerNombre){
-                    listaUsuarios[i].agregarPaquete(pNuevoPaquete);
-                    }
+                let registroExitoso = false;
+                let usuario = {};
+                for (let i = 0; i < listaUsuarios.length; i++) {
+                if (listaUsuarios[i].correo == pNuevoPaquete.usuario) {
+                    usuario = dataStorageFactory.buscarUsuarioPorId(listaUsuarios[i]._id);
                 }
-
-                actualizarLocal(listaUsuarios);
-                return respuesta;
+                }
+        
+                registroExitoso = dataStorageFactory.setPaqueteData (pNuevoPaquete);
                 
+                dataStorageFactory.agregarPaquete(usuario._id, pNuevoPaquete);
+            
+                
+                return registroExitoso;
             };
+                
+            //     let listaUsuarios = _getUsuarios();
+            //     let sesion = JSON.parse(sessionStorage.getItem('sesion'));
+            //     let respuesta = true;
+
+            //     for(let i = 0; i < listaUsuarios.length; i++){
+            //         if (sesion.nombre == listaUsuarios[i].primerNombre){
+            //         listaUsuarios[i].agregarPaquete(pNuevoPaquete);
+            //         }
+            //     }
+
+            //     actualizarLocal(listaUsuarios);
+            //     return respuesta;
+                
+            // };
 
 
         function _getPaquete() {
-            let ListaUsuarios = _getUsuarios();
-            let listaPaquetes = [];
-            let session = JSON.parse (sessionStorage.getItem ('sesion'));
 
-            for (let i = 0; i < ListaUsuarios.length; i++) {
-                if (session.nombre == ListaUsuarios[i].primerNombre ) {
-                    if (ListaUsuarios[i].listaPaquetes != null) {
-                       listaPaquetes =  ListaUsuarios[i].listaPaquetes;
-                    }
-                }
-                
-            }
-            
+           let listaPaquetes = [];
+            let listaPaquetesBD = dataStorageFactory.getPaquetesData();
+            listaPaquetesBD.forEach(objPaquete => {
+              let objPaqueteTemp = new Paquete(objPaquete.usuario, objPaquete.tracking, objPaquete.distribuidor, objPaquete.precio,objPaquete.peso, objPaquete.Kilometro,objPaquete.tipoArticulo, objPaquete.descripcion, objPaquete.sucursal, objPaquete.repartidor);
+      
+              listaPaquetes.push(objPaqueteTemp);
+      
+            });
+      
             return listaPaquetes;
+
+
+            // let ListaUsuarios = _getUsuarios();
+            // let listaPaquetes = [];
+            // let session = JSON.parse (sessionStorage.getItem ('sesion'));
+
+            // for (let i = 0; i < ListaUsuarios.length; i++) {
+            //     if (session.nombre == ListaUsuarios[i].primerNombre ) {
+            //         if (ListaUsuarios[i].listaPaquetes != null) {
+            //            listaPaquetes =  ListaUsuarios[i].listaPaquetes;
+            //         }
+            //     }
+                
+            // }
+            
+            // return listaPaquetes;
         };
     
         function _getAllPaquetes(){

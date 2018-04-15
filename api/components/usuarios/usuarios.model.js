@@ -17,7 +17,11 @@ var UserSchema = new mongoose.Schema({
   distrito : {type : String, required : true},
   direccionExacta : {type : String, required : true},
   tipo : {type : String},
-  listaPaquetes : {type : Array, required : true},
+  listaPaquetes :  [
+    {
+      tracking: {type: String}
+
+    }],
   sucursalAsignada : {type : String, required : true},
   puesto : {type : String},
   vehiculo : {type : String},

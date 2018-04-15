@@ -49,4 +49,8 @@ router.route('/agregar_paquete_convenio')
     users.agregar_tarjeta_usuario(req, res);
 });
 
+router.route('/agregar_paquete')
+  .post(function (req, res) {
+    users.agregar_paquete(req, res);
+  });
 module.exports = router;
