@@ -37,15 +37,17 @@
       if (registro) {
         swal("Registro exitoso", "Tarjeta registrada con exito", "success", {
 
-          button: "Aceptar",}).then((value) => {
-            vm.pnuevaTarjeta = null;
-        });
+          button: "Aceptar",});
+
+          vm.pnuevaTarjeta = null;
 
       } else {
         swal("Registro fallido", "Ha ocurrido un error, intente nuevamente", "error", {
           button: "Aceptar",
         });
+        
       }
+      vm.pnuevaTarjeta = null;
     };
 
 
