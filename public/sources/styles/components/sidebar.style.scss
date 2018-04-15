@@ -14,7 +14,7 @@ strong {
   font-family: 'Encode Sans Condensed', sans-serif;
   font-weight: 600;
   letter-spacing: .03em;
-  color: #4088ff;
+  color: #232f3e;
 }
 .button {
   position: fixed;
@@ -49,7 +49,7 @@ strong {
   position: fixed;
   width: 100%;
   height: 70px;
-  background: #4088ff;
+  background: #546375;
   color: white;
   -webkit-tap-highlight-color: rgba(0,0,0,0);
     -webkit-box-shadow: 0 10px 6px -6px #777;
@@ -155,11 +155,17 @@ strong {
   height: 100%;
   display: flex;
   flex-direction: column;
+  overflow: auto;
+  display: flex;
+
 }
 
-#nav-content li {
-  padding-left: 5px;
-  }
+#nav-content .btn {
+  margin: 5px 2px;
+  overflow-wrap: normal;
+
+
+}
   
 
 #nav-content li:hover {
@@ -176,7 +182,7 @@ background-color:rgba(32,90,185,0.3);
 }
 
 #nav-content li a:hover {
-  color: #a32f13;
+  color: #0a1726;
 }
 
 #nav-content li:not(.small) + .small {
@@ -259,4 +265,12 @@ video {
   position: relative;
   left: 25%;
 
+}
+
+.fixright {
+  margin-right: 5px;
+}
+
+.paddingbot {
+  padding-bottom: 2px;
 }

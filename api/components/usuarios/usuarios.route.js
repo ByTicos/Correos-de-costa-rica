@@ -5,8 +5,8 @@ const express = require('express'),
 /**
  * 
  */
-router.param('id', (req, res, next, id) => {
-  req.body.id = id;
+router.param('correo', (req, res, next, correo) => {
+  req.body.correo = correo;
   next();
 });
 
@@ -29,9 +29,22 @@ router.route('/get_all_users')
 /**
  * Función que actualiza los usuarios
  */
-router.route('/update_users')
+router.route('/update_user')
   .put((req, res) => {
     users.actualizar(req,res);
 });
 
+router.route('/buscar_user_id')
+  .post(function (req, res) {
+    users.buscar_usuario_por_id(req, res);
+  });
+
+router.route('/agregar_paquete_convenio')
+  .post(function (req, res) {
+    users.agregar_paquete_convenio(req, res);
+  });
+router.route('/agregar_paquete')
+  .post(function (req, res) {
+    users.agregar_paquete(req, res);
+  });
 module.exports = router;

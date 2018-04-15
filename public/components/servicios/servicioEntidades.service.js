@@ -51,6 +51,7 @@
       listaEntidadesBD.forEach(objEntidad => {
         let objEntidadTemp = new Entidad(objEntidad.nombre, objEntidad.cedulaJuridica);
         objEntidadTemp.convenios = objEntidad.convenios;
+        objEntidadTemp.setId(objEntidad._id);
         listaEntidades.push(objEntidadTemp);
 
       });
@@ -62,26 +63,19 @@
     function _addConvenio(pConvenio) {
       let listaConvenios = _getConvenios();
       let listaEntidades = _getEntidades();
-      let registroExitoso;
-      let convenioRepetido = false;
-
-      for (let i = 0; i < listaConvenios.length; i++) {
-        if (listaConvenios[i].tipoTramite == pConvenio.tipoTramite) {
-          convenioRepetido = true;
+      let registroExitoso = false;
+      let entidad = {};
+      for (let i = 0; i < listaEntidades.length; i++) {
+        if (listaEntidades[i].nombre == pConvenio.nombreEntidad) {
+          entidad = dataStorageFactory.buscarEntidadPorId(listaEntidades[i]._id);
         }
       }
-      if (convenioRepetido === false) {
-        for (let i = 0; i < listaEntidades.length; i++) {
-          if (listaEntidades[i].nombre == pConvenio.nombreEntidad) {
-            listaEntidades[i].registrarConvenio(pConvenio.tipoTramite);
-           
-          }
-        }
+
       registroExitoso = dataStorageFactory.setConvenioData(pConvenio);
-      } else {
-        registroExitoso = false;
-      }
-
+      
+      dataStorageFactory.agregarConvenio(entidad._id, pConvenio);
+  
+      
       return registroExitoso;
     };
 

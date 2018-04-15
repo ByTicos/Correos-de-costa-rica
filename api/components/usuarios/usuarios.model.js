@@ -4,12 +4,12 @@ const mongoose = require('mongoose');
 //Esquema de usuarios
 var UserSchema = new mongoose.Schema({
   cedula : {type : String, required : true},
-  foto : {type : String, required : true},
+  foto : {type : String},
   primerNombre : {type : String, required : true},
   segundoNombre : {type : String},
   primerApellido : {type : String, required : true},
   segundoApellido : {type : String},
-  correo : {type : String, required : true},
+  correo : {type : String, required : true, unique: true},
   telefono : {type : String, required : true},
   fechaNacimiento : {type : Date, required : true},
   provincia : {type : String, required : true},
@@ -17,14 +17,22 @@ var UserSchema = new mongoose.Schema({
   distrito : {type : String, required : true},
   direccionExacta : {type : String, required : true},
   tipo : {type : String},
-  listaPaquetes : {type : Array, required : true},
+  listaPaquetes :  [
+    {
+      tracking: {type: String}
+
+    }],
   sucursalAsignada : {type : String, required : true},
   puesto : {type : String},
   vehiculo : {type : String},
   listaLicencias : {type : Array, required : true},
   estado : {type : String, required : true},
   listaTarjetas : {type : Array, required : true},
-  listaPaquetesConvenios : {type : Array, required : true},
+  listaPaquetesConvenios : [
+    {
+      tracking: {type: String}
+
+    }],
   contrasenna : {type : String, required : true}
 });
 

@@ -11,21 +11,40 @@
     const localAPI = {
       getUsersData: _getUsersData,
       setUserData: _setUserData,
+      updateUserData: _updateUserData,
       setEntidadData: _setEntidadData,
-      getEntidadesData:_getEntidadesData,
+      getEntidadesData: _getEntidadesData,
       setSession: _setSession,
       closeSession: _closeSession,
       getSession: _getSession,
       getArticuloData: _getArticuloData,
       setArticuloData: _setArticuloData,
+      getPaquetesData:_getPaquetesData,
+      setPaqueteData:_setPaqueteData,
       getConveniosData:_getConveniosData,
-      setConvenioData:_setConvenioData
+      setConvenioData:_setConvenioData,
+      getTarjetasData: _getTarjetasData,
+      setTarjetasData: _setTarjetasData,
+      sendMail: _sendMail,
+      buscarEntidadPorId: _buscarEntidadPorId,
+      agregarConvenio: _agregarConvenio,
+      getPaquetesConvenioData: _getPaquetesConvenioData,
+      setPaqueteConvenioData: _setPaqueteConvenioData,
+      buscarUsuarioPorId:_buscarUsuarioPorId,
+      agregarPaqueteConvenio:_agregarPaqueteConvenio,
+      agregarPaquete:_agregarPaquete
+
     };
     return localAPI;
 
     /**
      * Funcion que obtiene los datos de los usuarios del back end y los retorna
      */
+
+    // 
+    //Inicio usuarios
+    //
+
     function _getUsersData() {
       let listaUsuarios = [];
 
@@ -68,7 +87,55 @@
           'primerApellido': data.primerApellido,
           'segundoApellido': data.segundoApellido,
           'correo': data.correo,
-          'telefono':data.telefono,
+          'telefono': data.telefono,
+          'fechaNacimiento': data.fechaNacimiento,
+          'provincia': data.provincia,
+          'canton': data.canton,
+          'distrito': data.distrito,
+          'direccionExacta': data.direccionExacta,
+          'tipo': data.tipo,
+          'listaPaquetes': data.listaPaquetes,
+          'sucursalAsignada': data.sucursalAsignada,
+          'puesto': data.puesto,
+          'vehiculo': data.vehiculo,
+          'listaLicencias': data.listaLicencias,
+          'estado': data.estado,
+          'listaTarjetas': data.listaTarjetas,
+          'listaPaquetespaquetes': data.listaPaquetespaquetes,
+          'contrasenna': data.contrasenna,
+        }
+      });
+
+      peticion.done((datos) => {
+        response = datos.msj;
+        console.log('Petición realizada con éxito');
+      });
+      peticion.fail((error) => {
+        response = error;
+        console.log('Ocurrió un error');
+      });
+
+      return response;
+    }
+
+    function _updateUserData(data) {
+      let response;
+
+      let peticion = $.ajax({
+        url: 'http://localhost:4000/api/update_user',
+        type: 'put',
+        contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+        dataType: 'json',
+        async: false,
+        data: {
+          'cedula': data.cedula,
+          'foto': data.foto,
+          'primerNombre': data.primerNombre,
+          'segundoNombre': data.segundoNombre,
+          'primerApellido': data.primerApellido,
+          'segundoApellido': data.segundoApellido,
+          'correo': data.correo,
+          'telefono': data.telefono,
           'fechaNacimiento': data.fechaNacimiento,
           'provincia': data.provincia,
           'canton': data.canton,
@@ -98,55 +165,38 @@
 
       return response;
     }
-    function _getEntidadesData() {
-      let listaEntidades = [];
 
+    function _buscarUsuarioPorId(pid) {
+      let usuario = [];
       let peticion = $.ajax({
-        url: 'http://localhost:4000/api/get_all_entidades',
-        type: 'get',
+        url: 'http://localhost:4000/api/buscar_user_id',
+        type: 'post',
         contentType: 'application/x-www-form-urlencoded; charset=utf-8',
         dataType: 'json',
         async: false,
-        data: {}
+        data: {
+          'id': pid
+        }
       });
 
-      peticion.done((entidades) => {
-        console.log('Datos que vienen desde la base de datos')
-        console.log(entidades);
-        listaEntidades = entidades;
-      });
-      peticion.fail(() => {
-        listaEntidades = [];
-        console.log('Ocurrió un error');
+      peticion.done(function (response) {
+        usuario = response;
       });
 
-      return listaEntidades;
+      peticion.fail(function () {
+
+      });
+
+      return usuario;
     }
 
-    function _getConveniosData() {
-      let listaConvenios = [];
+    // 
+    //Final usuarios
+    //
 
-      let peticion = $.ajax({
-        url: 'http://localhost:4000/api/get_all_convenios',
-        type: 'get',
-        contentType: 'application/x-www-form-urlencoded; charset=utf-8',
-        dataType: 'json',
-        async: false,
-        data: {}
-      });
-
-      peticion.done((convenios) => {
-        console.log('Datos que vienen desde la base de datos')
-        console.log(convenios);
-        listaConvenios = convenios;
-      });
-      peticion.fail(() => {
-        listaConvenios = [];
-        console.log('Ocurrió un error');
-      });
-
-      return listaConvenios;
-    }
+    //
+    //Inicio Entidades
+    //
 
     function _setEntidadData(data) {
       let response;
@@ -176,6 +226,112 @@
       return response;
     }
 
+    function _getEntidadesData() {
+      let listaEntidades = [];
+
+      let peticion = $.ajax({
+        url: 'http://localhost:4000/api/get_all_entidades',
+        type: 'get',
+        contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+        dataType: 'json',
+        async: false,
+        data: {}
+      });
+
+      peticion.done((entidades) => {
+        console.log('Datos que vienen desde la base de datos')
+        console.log(entidades);
+        listaEntidades = entidades;
+      });
+      peticion.fail(() => {
+        listaEntidades = [];
+        console.log('Ocurrió un error');
+      });
+
+      return listaEntidades;
+    }
+
+    function _buscarEntidadPorId(pid) {
+      let entidad = [];
+      let peticion = $.ajax({
+        url: 'http://localhost:4000/api/buscar_entidad_id',
+        type: 'post',
+        contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+        dataType: 'json',
+        async: false,
+        data: {
+          'id': pid
+        }
+      });
+
+      peticion.done(function (response) {
+        entidad = response;
+      });
+
+      peticion.fail(function () {
+
+      });
+
+      return entidad;
+    }
+    
+
+    function _agregarConvenio(pId, pConvenio) {
+      let peticion = $.ajax({
+        url: 'http://localhost:4000/api/agregar_convenio',
+        type: 'post',
+        contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+        dataType: 'json',
+        async: false,
+        data: {
+          '_id': pId,
+          'tipoTramite': pConvenio.tipoTramite,
+        }
+      });
+
+      peticion.done(function (response) {
+
+      });
+
+      peticion.fail(function () {
+
+      });
+    }
+
+    //
+    //Final Entidades
+    //
+
+
+    //
+    //Inicio Convenios
+    //
+
+    function _getConveniosData() {
+      let listaConvenios = [];
+
+      let peticion = $.ajax({
+        url: 'http://localhost:4000/api/get_all_convenios',
+        type: 'get',
+        contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+        dataType: 'json',
+        async: false,
+        data: {}
+      });
+
+      peticion.done((convenios) => {
+        console.log('Datos que vienen desde la base de datos')
+        console.log(convenios);
+        listaConvenios = convenios;
+      });
+      peticion.fail(() => {
+        listaConvenios = [];
+        console.log('Ocurrió un error');
+      });
+
+      return listaConvenios;
+    }
+
     function _setConvenioData(data) {
       let response;
 
@@ -202,6 +358,49 @@
 
       return response;
     }
+
+     //
+    //Final Convenios
+    //
+
+
+    //
+    //Inicio envio correo
+    //
+    function _sendMail(data) {
+      let response;
+
+      let peticion = $.ajax({
+        url: 'http://localhost:4000/api/mail',
+        type: 'post',
+        contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+        dataType: 'json',
+        async: false,
+        data: {
+          'correo': data.correo,
+          'contrasenna': data.contrasenna,
+        }
+      });
+
+      peticion.done((datos) => {
+        response = datos.success;
+        console.log('Petición realizada con éxito');
+      });
+      peticion.fail((error) => {
+        response = error;
+        console.log('Ocurrió un error');
+      });
+
+      return response;
+    }
+
+    //
+    //Final envio correo
+    //
+
+    //
+    //Inicio Autenticación
+    //
 
     /**
      * Función que almacena las credenciales dentro del session Storage
@@ -231,7 +430,11 @@
       return sessionActive;
     }
 
-     function _getArticuloData() {
+    //
+    //Final Autenticación
+    //
+
+    function _getArticuloData() {
       let listaArticulos = [];
 
       let peticion = $.ajax({
@@ -270,10 +473,243 @@
           'producto': data.producto,
           'impuesto': data.impuesto,
           'estado': data.estado
-          
+
         }
       });
 
+    }
+
+    function _getTarjetasData() {
+      let listaTarjetas = [];
+
+      let peticion = $.ajax({
+        url: 'http://localhost:4000/api/get_all_tarjetas',
+        type: 'get',
+        contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+        dataType: 'json',
+        async: false,
+        data: {}
+      });
+
+      peticion.done((tarjetas) => {
+        console.log('Datos que vienen desde la base de datos')
+        console.log(tarjetas);
+        listaTarjetas = tarjetas;
+      });
+      peticion.fail(() => {
+        listaTarjetas = [];
+        console.log('Ocurrió un error');
+      });
+
+      return listaTarjetas;
+    }
+
+    function _setTarjetasData(data) {
+      let response;
+
+      let peticion = $.ajax({
+        url: 'http://localhost:4000/api/save_tarjetas',
+        type: 'post',
+        contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+        dataType: 'json',
+        async: false,
+        data: {
+          'id': data.id,
+          'nombre': data.nombre,
+          'numero': data.numero,
+          'expiracion': data.expiracion,
+          'xvv': data.xvv,
+          'estado': data.estado,
+
+        }
+      });
+
+      peticion.done((datos) => {
+        response = datos.msj;
+        console.log('Petición realizada con éxito');
+      });
+      peticion.fail((error) => {
+        response = error;
+        console.log('Ocurrió un error');
+      });
+
+      return response;
+    }
+
+    //
+    /*Inicio paquetes de convenio*/
+    //
+
+    function _setPaqueteConvenioData(data) {
+      let response;
+
+      let peticion = $.ajax({
+        url: 'http://localhost:4000/api/save_paquete_convenio',
+        type: 'post',
+        contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+        dataType: 'json',
+        async: false,
+        data: {
+          'tracking': data.tracking,
+          'cliente': data.cliente,
+          'convenio': data.convenio,
+          'fecha': data.fecha,
+          'estadoTraslado': data.estadoTraslado,
+        }
+      });
+
+      peticion.done((datos) => {
+        response = datos.msj;
+        console.log('Petición realizada con éxito');
+      });
+      peticion.fail((error) => {
+        response = error;
+        console.log('Ocurrió un error');
+      });
+
+      return response;
+    }
+
+    function _getPaquetesConvenioData() {
+      let listaPaquetesConvenio = [];
+
+      let peticion = $.ajax({
+        url: 'http://localhost:4000/api/get_all_paquetes_convenio',
+        type: 'get',
+        contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+        dataType: 'json',
+        async: false,
+        data: {}
+      });
+
+      peticion.done((paquetesConvenio) => {
+        console.log('Datos que vienen desde la base de datos')
+        console.log(paquetesConvenio);
+        listaPaquetesConvenio = paquetesConvenio;
+      });
+      peticion.fail(() => {
+        listaPaquetesConvenio = [];
+        console.log('Ocurrió un error');
+      });
+
+      return listaPaquetesConvenio;
+    }
+
+    function _agregarPaqueteConvenio(pId, pPaqueteConvenio) {
+      let peticion = $.ajax({
+        url: 'http://localhost:4000/api/agregar_paquete_convenio',
+        type: 'post',
+        contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+        dataType: 'json',
+        async: false,
+        data: {
+          '_id': pId,
+          'tracking': pPaqueteConvenio.tracking,
+        }
+      });
+
+      peticion.done(function (response) {
+
+      });
+
+      peticion.fail(function () {
+
+      });
+    }
+
+    //
+    /*Final Paquetes de convenio*/
+    //
+
+    //
+/* inicio Paquetes*/
+//
+
+function _setPaqueteData (data) {
+  let response;
+
+  let peticion = $.ajax ({
+    url: 'http://localhost:4000/api/save_paquete',
+    type: 'post',
+    contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+    dataType: 'json',
+    async: false,
+    data: {
+      'usuario'     : data.usuario,
+      'tracking'    :  data.tracking,
+      'distribuidor'    :  data.distribuidor,
+      'precio'    :  data.precio,
+      'peso'    :  data.peso,
+      'kilometro'    :  data.kilometro,
+      'tipoArticulo'    :  data.tipoArticulo,
+      'descripcion'    :  data.descripcion,
+      'sucursal'    :  data.sucursal,
+      'repartidor'    :  data.repartidor,
+      'estado'    :  data.estado,
+      'estadoTraslado'    :  data.estadoTraslado,
+      'listaEstados'    :  data.listaEstados,
+    },
+  });
+
+  peticion.done (datos => {
+    response = datos.msj;
+    console.log ('Petición realizada con éxito');
+  });
+  peticion.fail (error => {
+    response = error;
+    console.log ('Ocurrió un error');
+  });
+
+  return response;
+}
+
+function _getPaquetesData () {
+  let listaPaquetes = [];
+
+  let peticion = $.ajax ({
+    url: 'http://localhost:4000/api/get_all_paquetes',
+    type: 'get',
+    contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+    dataType: 'json',
+    async: false,
+    data: {},
+  });
+
+  peticion.done (paquetes => {
+    console.log ('Datos que vienen desde la base de datos');
+    console.log (paquetes);
+    listaPaquetes = paquetes;
+  });
+  peticion.fail (() => {
+    listaPaquetes = [];
+    console.log ('Ocurrió un error');
+  });
+
+  return listaPaquetes;
+}
+
+function _agregarPaquete (pId, pPaquete) {
+  let peticion = $.ajax ({
+    url: 'http://localhost:4000/api/agregar_paquete',
+    type: 'post',
+    contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+    dataType: 'json',
+    async: false,
+    data: {
+      _id: pId,
+      tracking: pPaquete.tracking,
+    },
+  });
+
+  peticion.done (function (response) {});
+
+  peticion.fail (function () {});
+}
+
+//
+/*Final Paquetes*/
+//
+
+
   }
- }
 })();
