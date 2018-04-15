@@ -2,9 +2,9 @@
 
 
   body {
+    font-family: 'Titillium Web', 'Tajawal', sans-serif;
     background: #fff;
     color: #666666;
-    font-family: "Open Sans", sans-serif;
     overflow-x: hidden;
   }
   
@@ -25,8 +25,6 @@
   }
   
   h1, h2, h3, h4, h5, h6 {
-    font-family: "Montserrat", sans-serif;
-    font-weight: 400;
     margin: 0 0 20px 0;
     padding: 0;
   }
@@ -126,7 +124,7 @@
   --------------------------------------------------------------*/
   #intro {
     width: 100%;
-    height: 250vh;
+    height: 150vh;
     background: linear-gradient(45deg, #138392, rgba(8, 119, 86, 0.8)), url("../sources/images/intro-bg.jpg") center top no-repeat;
     position: relative;
   }
@@ -608,6 +606,8 @@
   
   #features .icon {
     margin-bottom: 10px;
+    margin-top: 40px;
+
   }
   
   #features .icon i {
@@ -697,17 +697,24 @@
     max-width: 100%;
     float: right;
     padding: 0 0 30px 30px;
+    width: 60%;
+
   }
   
   #advanced-features .advanced-feature-img-left {
     max-width: 100%;
     float: left;
     padding: 0 30px 30px 0;
+    width: 60%;
+    vertical-align: middle;
+
   }
   
   @media (max-width: 768px) {
     #advanced-features .advanced-feature-img-right, #advanced-features .advanced-feature-img-left {
-      max-width: 50%;
+      max-width: 70%;
+      vertical-align: middle;
+
     }
   }
   
@@ -716,6 +723,8 @@
       max-width: 100%;
       float: none;
       padding: 0 0 30px 0;
+      max-width: 70%;
+
     }
   }
   
@@ -783,6 +792,9 @@
   
   #more-features .icon {
     float: left;
+    margin-top: 10%;
+
+
   }
   
   #more-features .icon i {
@@ -826,6 +838,8 @@
       float: none;
       text-align: center;
       padding-bottom: 15px;
+      margin-top: 10%;
+
     }
     #more-features h4, #more-features p {
       margin-left: 0;
