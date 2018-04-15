@@ -27,6 +27,8 @@
   h1, h2, h3, h4, h5, h6 {
     margin: 0 0 20px 0;
     padding: 0;
+    font-family: 'Titillium Web', 'Tajawal', sans-serif;
+
   }
   
   /* Back to top button */
@@ -87,7 +89,7 @@
     padding: 0;
     line-height: 1;
     display: inline-block;
-    font-family: "Montserrat", sans-serif;
+    font-family: 'Titillium Web', 'Tajawal', sans-serif;
     font-weight: 300;
     letter-spacing: 3px;
     text-transform: uppercase;
@@ -138,7 +140,7 @@
   #intro .intro-text {
     position: absolute;
     left: 0;
-    top: -60px;
+    top: -30px;
     right: 0;
     height: calc(50% - 60px);
     display: flex;
@@ -146,6 +148,8 @@
     justify-content: center;
     text-align: center;
     flex-direction: column;
+    font-family: 'Titillium Web', 'Tajawal', sans-serif;
+
   }
   
   #intro h2 {
@@ -156,12 +160,16 @@
     line-height: 56px;
     color: #fff;
     margin-top: -90px;
+    font-family: 'Titillium Web', 'Tajawal', sans-serif;
+
   }
   
   @media (max-width: 768px) {
     #intro h2 {
       font-size: 28px;
       line-height: 36px;
+      font-family: 'Titillium Web', 'Tajawal', sans-serif;
+
     }
   }
   
@@ -181,7 +189,7 @@
   }
   
   #intro .btn-get-started {
-    font-family: "Montserrat", sans-serif;
+    font-family: 'Titillium Web', 'Tajawal', sans-serif;
     font-weight: 400;
     font-size: 16px;
     letter-spacing: 1px;
@@ -325,7 +333,7 @@
     text-decoration: none;
     display: inline-block;
     color: #fff;
-    font-family: "Montserrat", sans-serif;
+    font-family: 'Titillium Web', 'Tajawal', sans-serif;
     font-weight: 400;
     font-size: 20px;
     outline: none;
@@ -523,7 +531,6 @@
   }
   
   #about .about-img img {
-    margin-left: -15px;
     max-width: 100%;
   }
   
@@ -541,6 +548,22 @@
     color: #333;
     font-weight: 300;
     font-size: 24px;
+    font-family: 'Titillium Web', 'Tajawal', sans-serif;
+
+  }
+
+  .h2landind {
+    color: #333;
+    font-weight: 300;
+    font-size: 24px;
+    font-family: 'Titillium Web', 'Tajawal', sans-serif;
+  }
+
+  .h3landind {
+    color: #297463;
+    font-weight: 300;
+    font-size: 36px;
+    font-family: 'Titillium Web', 'Tajawal', sans-serif;
   }
   
   #about .content h3 {
@@ -570,10 +593,15 @@
     list-style: none;
     padding: 0;
     font-size: 22px;
+    color: #297463;
+    font-weight: 300;
+    font-family: 'Titillium Web', 'Tajawal', sans-serif;
   }
+
+  
   
   #about .content ul li {
-    padding-bottom: 10px;
+    padding-bottom: 16px;
   }
   
   /* Product Featuress Section
@@ -657,9 +685,11 @@
   }
   
   #advanced-features h2 {
-    font-size: 36px;
-    font-weight: 700;
-    color: #000;
+    font-size: 31px;
+    font-weight: 380;
+    color: rgb(8, 88, 64);
+    font-family: 'Titillium Web', 'Tajawal', sans-serif;
+
   }
   
   #advanced-features h3 {
@@ -671,7 +701,7 @@
   }
   
   #advanced-features p {
-    line-height: 34px;
+    line-height: 39px;
     color: #777;
     margin-bottom: 30px;
     font-size: 22px;
@@ -758,7 +788,7 @@
   }
   
   #call-to-action .cta-btn {
-    font-family: "Montserrat", sans-serif;
+    font-family: 'Titillium Web', 'Tajawal', sans-serif;
     font-weight: 500;
     font-size: 19px;
     letter-spacing: 1px;
@@ -827,7 +857,7 @@
   #more-features p {
     font-size: 22px;
     margin-left: 100px;
-    margin-bottom: 0;
+    margin-bottom: 25px;
     line-height: 24px;
   }
   
@@ -885,7 +915,7 @@
   #pricing h3 {
     font-weight: 400;
     margin-bottom: 15px;
-    font-size: 28px;
+    font-size: 34px;
   }
   
   #pricing h4 {
@@ -931,7 +961,7 @@
     transition: none;
     font-size: 14px;
     font-weight: 400;
-    font-family: "Montserrat", sans-serif;
+    font-family: 'Titillium Web', 'Tajawal', sans-serif;
   }
   
   #pricing .featured {
@@ -962,7 +992,7 @@
     padding: 18px 0;
     display: block;
     position: relative;
-    font-family: "Montserrat", sans-serif;
+    font-family: 'Titillium Web', 'Tajawal', sans-serif;
     font-size: 22px;
     line-height: 1;
     font-weight: 300;
@@ -1114,7 +1144,7 @@
     margin: 0 0 10px 0;
     padding: 0;
     line-height: 1;
-    font-family: "Montserrat", sans-serif;
+    font-family: 'Titillium Web', 'Tajawal', sans-serif;
     font-weight: 300;
     letter-spacing: 3px;
     text-transform: uppercase;
@@ -1124,7 +1154,7 @@
   #contact .contact-about p {
     font-size: 14px;
     line-height: 24px;
-    font-family: "Montserrat", sans-serif;
+    font-family: 'Titillium Web', 'Tajawal', sans-serif;
     color: #888;
   }
   
@@ -1237,7 +1267,7 @@
   }
   
   #footer .footer-links a {
-    color: #666;
+    color: rgb(255, 255, 255);
     padding-left: 15px;
   }
   
