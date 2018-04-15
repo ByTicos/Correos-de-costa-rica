@@ -13,7 +13,7 @@ router.param('id', (req, res, next, id) => {
 /**
  * Función que se encarga de registrar los usuarios dentro del local storage
  */
-router.route('/save_convenio')
+router.route('/save_paquete')
   .post((req, res) => {
     paquetes.registrar(req,res);
 });

@@ -9,13 +9,13 @@ var PaqueteSchema = new mongoose.Schema({
     precio    :  {type : String, required : true},
     peso    :  {type : String, required : true},
     kilometro    :  {type : String, required : true},
-    tipoArticulo    :  {type : String, required : true},
+    tipoArticulo    :  {type : String},
     descripcion    :  {type : String, required : true},
     sucursal    :  {type : String, required : true},
-    repartidor    :  {type : String, required : true},
+    repartidor    :  {type : String},
     estado    :  {type : String, required : true},
     estadoTraslado    :  {type : String, required : true},
-    listaEstados    :  {type : Array, required : true},
+    listaEstados    :  {type : Array, required : true}
 });
 
 //nombre del modelo dentro del back end y el userSchema es el nombre dentro de mongoose
