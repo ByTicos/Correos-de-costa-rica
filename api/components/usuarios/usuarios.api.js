@@ -74,3 +74,19 @@ module.exports.agregar_paquete_convenio = function (req, res) {
       });
 
 }
+
+
+module.exports.agregar_paquete = function (req, res) {
+  console.log('listaPaquetes  ' + req.body.listaPaquetes);
+
+  UserModel.update({ _id: req.body._id }, { $push: { 'listaPaquetes': { tracking: req.body.tracking } } },
+      function (error) {
+          if (error) {
+              res.json({ success: false, msg: 'No se ha actualizado el usuario debido al siguiente error: ' + handleError(error) });
+          } else {
+              res.json({ success: true, msg: 'El usuario ha sido modificado con éxito' });
+          }
+
+      });
+
+}

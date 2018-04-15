@@ -19,8 +19,10 @@
       getSession: _getSession,
       getArticuloData: _getArticuloData,
       setArticuloData: _setArticuloData,
-      getConveniosData: _getConveniosData,
-      setConvenioData: _setConvenioData,
+      getPaquetesData:_getPaquetesData,
+      setPaqueteData:_setPaqueteData,
+      getConveniosData:_getConveniosData,
+      setConvenioData:_setConvenioData,
       getTarjetasData: _getTarjetasData,
       setTarjetasData: _setTarjetasData,
       sendMail: _sendMail,
@@ -29,7 +31,8 @@
       getPaquetesConvenioData: _getPaquetesConvenioData,
       setPaqueteConvenioData: _setPaqueteConvenioData,
       buscarUsuarioPorId:_buscarUsuarioPorId,
-      agregarPaqueteConvenio:_agregarPaqueteConvenio
+      agregarPaqueteConvenio:_agregarPaqueteConvenio,
+      agregarPaquete:_agregarPaquete
 
     };
     return localAPI;
@@ -98,7 +101,7 @@
           'listaLicencias': data.listaLicencias,
           'estado': data.estado,
           'listaTarjetas': data.listaTarjetas,
-          'listaPaquetesConvenios': data.listaPaquetesConvenios,
+          'listaPaquetespaquetes': data.listaPaquetespaquetes,
           'contrasenna': data.contrasenna,
         }
       });
@@ -271,6 +274,7 @@
 
       return entidad;
     }
+    
 
     function _agregarConvenio(pId, pConvenio) {
       let peticion = $.ajax({
@@ -616,6 +620,96 @@
     //
     /*Final Paquetes de convenio*/
     //
+
+    //
+/* inicio Paquetes*/
+//
+
+function _setPaqueteData (data) {
+  let response;
+
+  let peticion = $.ajax ({
+    url: 'http://localhost:4000/api/save_paquete',
+    type: 'post',
+    contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+    dataType: 'json',
+    async: false,
+    data: {
+      'usuario'     : data.usuario,
+      'tracking'    :  data.tracking,
+      'distribuidor'    :  data.distribuidor,
+      'precio'    :  data.precio,
+      'peso'    :  data.peso,
+      'kilometro'    :  data.kilometro,
+      'tipoArticulo'    :  data.tipoArticulo,
+      'descripcion'    :  data.descripcion,
+      'sucursal'    :  data.sucursal,
+      'repartidor'    :  data.repartidor,
+      'estado'    :  data.estado,
+      'estadoTraslado'    :  data.estadoTraslado,
+      'listaEstados'    :  data.listaEstados,
+    },
+  });
+
+  peticion.done (datos => {
+    response = datos.msj;
+    console.log ('Petición realizada con éxito');
+  });
+  peticion.fail (error => {
+    response = error;
+    console.log ('Ocurrió un error');
+  });
+
+  return response;
+}
+
+function _getPaquetesData () {
+  let listaPaquetes = [];
+
+  let peticion = $.ajax ({
+    url: 'http://localhost:4000/api/get_all_paquetes',
+    type: 'get',
+    contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+    dataType: 'json',
+    async: false,
+    data: {},
+  });
+
+  peticion.done (paquetes => {
+    console.log ('Datos que vienen desde la base de datos');
+    console.log (paquetes);
+    listaPaquetes = paquetes;
+  });
+  peticion.fail (() => {
+    listaPaquetes = [];
+    console.log ('Ocurrió un error');
+  });
+
+  return listaPaquetes;
+}
+
+function _agregarPaquete (pId, pPaquete) {
+  let peticion = $.ajax ({
+    url: 'http://localhost:4000/api/agregar_paquete',
+    type: 'post',
+    contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+    dataType: 'json',
+    async: false,
+    data: {
+      _id: pId,
+      tracking: pPaquete.tracking,
+    },
+  });
+
+  peticion.done (function (response) {});
+
+  peticion.fail (function () {});
+}
+
+//
+/*Final Paquetes*/
+//
+
 
   }
 })();
