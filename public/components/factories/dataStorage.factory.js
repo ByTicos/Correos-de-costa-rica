@@ -37,6 +37,11 @@
     /**
      * Funcion que obtiene los datos de los usuarios del back end y los retorna
      */
+
+    // 
+    //Inicio usuarios
+    //
+
     function _getUsersData() {
       let listaUsuarios = [];
 
@@ -182,55 +187,13 @@
       return usuario;
     }
 
-    function _getEntidadesData() {
-      let listaEntidades = [];
+    // 
+    //Final usuarios
+    //
 
-      let peticion = $.ajax({
-        url: 'http://localhost:4000/api/get_all_entidades',
-        type: 'get',
-        contentType: 'application/x-www-form-urlencoded; charset=utf-8',
-        dataType: 'json',
-        async: false,
-        data: {}
-      });
-
-      peticion.done((entidades) => {
-        console.log('Datos que vienen desde la base de datos')
-        console.log(entidades);
-        listaEntidades = entidades;
-      });
-      peticion.fail(() => {
-        listaEntidades = [];
-        console.log('Ocurrió un error');
-      });
-
-      return listaEntidades;
-    }
-
-    function _getConveniosData() {
-      let listaConvenios = [];
-
-      let peticion = $.ajax({
-        url: 'http://localhost:4000/api/get_all_convenios',
-        type: 'get',
-        contentType: 'application/x-www-form-urlencoded; charset=utf-8',
-        dataType: 'json',
-        async: false,
-        data: {}
-      });
-
-      peticion.done((convenios) => {
-        console.log('Datos que vienen desde la base de datos')
-        console.log(convenios);
-        listaConvenios = convenios;
-      });
-      peticion.fail(() => {
-        listaConvenios = [];
-        console.log('Ocurrió un error');
-      });
-
-      return listaConvenios;
-    }
+    //
+    //Inicio Entidades
+    //
 
     function _setEntidadData(data) {
       let response;
@@ -260,6 +223,111 @@
       return response;
     }
 
+    function _getEntidadesData() {
+      let listaEntidades = [];
+
+      let peticion = $.ajax({
+        url: 'http://localhost:4000/api/get_all_entidades',
+        type: 'get',
+        contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+        dataType: 'json',
+        async: false,
+        data: {}
+      });
+
+      peticion.done((entidades) => {
+        console.log('Datos que vienen desde la base de datos')
+        console.log(entidades);
+        listaEntidades = entidades;
+      });
+      peticion.fail(() => {
+        listaEntidades = [];
+        console.log('Ocurrió un error');
+      });
+
+      return listaEntidades;
+    }
+
+    function _buscarEntidadPorId(pid) {
+      let entidad = [];
+      let peticion = $.ajax({
+        url: 'http://localhost:4000/api/buscar_entidad_id',
+        type: 'post',
+        contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+        dataType: 'json',
+        async: false,
+        data: {
+          'id': pid
+        }
+      });
+
+      peticion.done(function (response) {
+        entidad = response;
+      });
+
+      peticion.fail(function () {
+
+      });
+
+      return entidad;
+    }
+
+    function _agregarConvenio(pId, pConvenio) {
+      let peticion = $.ajax({
+        url: 'http://localhost:4000/api/agregar_convenio',
+        type: 'post',
+        contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+        dataType: 'json',
+        async: false,
+        data: {
+          '_id': pId,
+          'tipoTramite': pConvenio.tipoTramite,
+        }
+      });
+
+      peticion.done(function (response) {
+
+      });
+
+      peticion.fail(function () {
+
+      });
+    }
+
+    //
+    //Final Entidades
+    //
+
+
+    //
+    //Inicio Convenios
+    //
+
+    function _getConveniosData() {
+      let listaConvenios = [];
+
+      let peticion = $.ajax({
+        url: 'http://localhost:4000/api/get_all_convenios',
+        type: 'get',
+        contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+        dataType: 'json',
+        async: false,
+        data: {}
+      });
+
+      peticion.done((convenios) => {
+        console.log('Datos que vienen desde la base de datos')
+        console.log(convenios);
+        listaConvenios = convenios;
+      });
+      peticion.fail(() => {
+        listaConvenios = [];
+        console.log('Ocurrió un error');
+      });
+
+      return listaConvenios;
+    }
+
     function _setConvenioData(data) {
       let response;
 
@@ -287,52 +355,14 @@
       return response;
     }
 
-    function _agregarConvenio(pId, pConvenio) {
-      let peticion = $.ajax({
-        url: 'http://localhost:4000/api/agregar_convenio',
-        type: 'post',
-        contentType: 'application/x-www-form-urlencoded; charset=utf-8',
-        dataType: 'json',
-        async: false,
-        data: {
-          '_id': pId,
-          'tipoTramite': pConvenio.tipoTramite,
-        }
-      });
+     //
+    //Final Convenios
+    //
 
-      peticion.done(function (response) {
 
-      });
-
-      peticion.fail(function () {
-
-      });
-    }
-
-    function _buscarEntidadPorId(pid) {
-      let entidad = [];
-      let peticion = $.ajax({
-        url: 'http://localhost:4000/api/buscar_entidad_id',
-        type: 'post',
-        contentType: 'application/x-www-form-urlencoded; charset=utf-8',
-        dataType: 'json',
-        async: false,
-        data: {
-          'id': pid
-        }
-      });
-
-      peticion.done(function (response) {
-        entidad = response;
-      });
-
-      peticion.fail(function () {
-
-      });
-
-      return entidad;
-    }
-
+    //
+    //Inicio envio correo
+    //
     function _sendMail(data) {
       let response;
 
@@ -359,6 +389,14 @@
 
       return response;
     }
+
+    //
+    //Final envio correo
+    //
+
+    //
+    //Inicio Autenticación
+    //
 
     /**
      * Función que almacena las credenciales dentro del session Storage
@@ -387,6 +425,10 @@
 
       return sessionActive;
     }
+
+    //
+    //Final Autenticación
+    //
 
     function _getArticuloData() {
       let listaArticulos = [];
@@ -491,7 +533,7 @@
     }
 
     //
-    /*Paquetes de convenio*/
+    /*Inicio paquetes de convenio*/
     //
 
     function _setPaqueteConvenioData(data) {
