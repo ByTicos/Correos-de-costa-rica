@@ -1,5 +1,6 @@
 class Usuario {
     constructor(pCedula, pFoto, pPrimerNombre, pSegundoNombre, pPrimerApellido, pSegundoApellido, pEmail, pTelefono, pfechaNacimiento, pProvincia, pCanton, pDistrito, pDireccionExacta, pContrasenna, pTipo, pSucursalAsignada, pPuesto, pVehiculo, pLicencia, pVencimientoLicencia, pTarjeta) {
+        this._id = 0;
         this.cedula = pCedula;
         this.foto = pFoto;
         this.primerNombre = pPrimerNombre;
@@ -26,6 +27,9 @@ class Usuario {
         this.contrasenna = pContrasenna;
     }
 
+    setId(pId){
+        this._id= pId;
+    }
     cambiarEstado(pEstado) {
         this.estado = pEstado;
     }

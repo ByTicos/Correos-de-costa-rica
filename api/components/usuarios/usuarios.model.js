@@ -24,7 +24,11 @@ var UserSchema = new mongoose.Schema({
   listaLicencias : {type : Array, required : true},
   estado : {type : String, required : true},
   listaTarjetas : {type : Array, required : true},
-  listaPaquetesConvenios : {type : Array, required : true},
+  listaPaquetesConvenios : [
+    {
+      tracking: {type: String}
+
+    }],
   contrasenna : {type : String, required : true}
 });
 
