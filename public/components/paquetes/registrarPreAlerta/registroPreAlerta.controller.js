@@ -96,13 +96,13 @@
       let objEstado = new Estado(usuario, fecha, hora, 'En Aduanas');
 
       objNuevoPaquete.mostrarEstadoTraslado('En Aduanas');
-      objNuevoPaquete.addEstado(objEstado);
 
 
       //console.log(objNuevoPaquete);
 
       let registro = servicioUsuarios.addPaquete (objNuevoPaquete);
-
+      servicioUsuarios.addEstado (objEstado);
+       
       if (registro == true) {
         swal (
           'Registro exitoso',

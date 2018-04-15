@@ -43,6 +43,7 @@ router.route('/agregar_paquete_convenio')
   .post(function (req, res) {
     users.agregar_paquete_convenio(req, res);
   });
+  
 router.route('/agregar_paquete')
   .post(function (req, res) {
     users.agregar_paquete(req, res);
