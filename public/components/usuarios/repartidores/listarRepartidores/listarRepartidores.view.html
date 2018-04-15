@@ -1,6 +1,8 @@
 
 <div id="dashboard">
-<h1>Repartidores activos</h1>
+
+  <div class="container-fluid">
+<h3>Repartidores activos</h3>
   <table class="table table-responsive">
     <thead>
       <tr>
@@ -22,7 +24,7 @@
     </thead>
 
     <tbody>
-        <tr ng-repeat="repartidor in vm.listaRepartidores" ng-if="usuario.estado === 'activo' && usuario.tipo === '3'">
+        <tr ng-repeat="repartidor in vm.listaRepartidores" ng-if="repartidor.estado === 'activo'">
         <!-- <td>{{repartidor.foto}}</td> -->
         <td>{{repartidor.cedula}}</td>
         <td>{{repartidor.primerNombre}} {{repartidor.segundoNombre}}</td>
@@ -41,9 +43,10 @@
       </tr>
     </tbody>
   </table>
+</div>
 
-
-  <h1>Repartidores inactivos</h1>
+<div class="container-fluid">
+  <h3>Repartidores inactivos</h3>
   <table class="table table-responsive">
     <thead>
       <tr>
@@ -84,7 +87,7 @@
       </tr>
     </tbody>
   </table>
-
+</div>
 </div>
 
 
