@@ -58,6 +58,7 @@
             listaUsuariosBD.forEach(objUsuario => {
                     let objUsuarioTemp = new Usuario(objUsuario.cedula, objUsuario.foto, objUsuario.primerNombre, objUsuario.segundoNombre, objUsuario.primerApellido, objUsuario.segundoApellido, objUsuario.correo, objUsuario.telefono, objUsuario.fechaNacimiento, objUsuario.provincia, objUsuario.canton, objUsuario.distrito, objUsuario.direccionExacta, objUsuario.contrasenna,objUsuario.tipo, objUsuario.sucursalAsignada, objUsuario.puesto, objUsuario.vehiculo, []);
                     objUsuarioTemp.cambiarEstado(objUsuario.estado);
+                    objUsuarioTemp.setId(objUsuario._id);
 
 
                     objUsuario.listaLicencias.forEach(objLicencia => {
@@ -72,13 +73,6 @@
                         let objTarjetaTemp = new Tarjeta(objTarjeta.id, objTarjeta.nombre, objTarjeta.numero, objTarjeta.expiracion, objTarjeta.cvv, objTarjeta.estado);
 
                         objUsuarioTemp.registrarTarjeta(objTarjetaTemp);
-                    });
-
-                    objUsuario.listaPaquetesConvenios.forEach(objPaqueteConv => {
-                        let objPaqueteConvTemp = new PaqueteConv(objPaqueteConv.tracking, objPaqueteConv.cliente, objPaqueteConv.convenio, new Date(objPaqueteConv.fecha));
-                        objPaqueteConvTemp.cambiarEstadoTraslado(objPaqueteConv.estadoTraslado);
-
-                        objUsuarioTemp.agregarPaqueteConvenio(objPaqueteConvTemp);
                     });
 
                     objUsuario.listaPaquetes.forEach(objPaquete => {
@@ -110,33 +104,45 @@
             return listaUsuarios;
         };
 
-        function _addPaqueteConvenio(pNuevoPaquete){
-            let listaUsuarios = _getUsuarios();
-            let usuario = pNuevoPaquete.cliente;
-            let respuesta = true;
-            for (let i = 0; i < listaUsuarios.length; i++) {
-                if (usuario == listaUsuarios[i].correo) {
-                    listaUsuarios[i].agregarPaqueteConvenio(pNuevoPaquete);
-                }
-            }
-            console.log(listaUsuarios);
-            actualizarLocal(listaUsuarios);
-            return respuesta;
-        };
-        function _getPaquetesConvenio() {
-            let listaUsuarios = _getUsuarios();
-            let listaPaquetesConvenios = [];
-            let session = JSON.parse(sessionStorage.getItem('sesion'));
 
+
+        //
+        //Inicio paquetes convenio
+        //
+        function _addPaqueteConvenio(pNuevoPaquete) {
+            let listaUsuarios = _getUsuarios();
+            let registroExitoso = false;
+            let usuario = {};
             for (let i = 0; i < listaUsuarios.length; i++) {
-                if (session.correo == listaUsuarios[i].correo) {
-                    if (listaUsuarios[i].listaPaquetesConvenios != null) {
-                        listaPaquetesConvenios = listaUsuarios[i].listaPaquetesConvenios;
-                    }
-                }
+              if (listaUsuarios[i].correo == pNuevoPaquete.cliente) {
+                usuario = dataStorageFactory.buscarUsuarioPorId(listaUsuarios[i]._id);
+              }
             }
+      
+            registroExitoso = dataStorageFactory.setPaqueteConvenioData(pNuevoPaquete);
+            
+            dataStorageFactory.agregarPaqueteConvenio(usuario._id, pNuevoPaquete);
+        
+            
+            return registroExitoso;
+          };
+
+
+
+        function _getPaquetesConvenio() {
+            let listaPaquetesConvenios = [];
+            let listaPaquetesConveniosBD = dataStorageFactory.getPaquetesConvenioData();
+            listaPaquetesConveniosBD.forEach(objPaqueteConvenio => {
+              let objPaqueteConvenioTemp = new PaqueteConv(objPaqueteConvenio.tracking, objPaqueteConvenio.cliente, objPaqueteConvenio.convenio,objPaqueteConvenio.fecha, objPaqueteConvenio.estadoTraslado);
+      
+              listaPaquetesConvenios.push(objPaqueteConvenioTemp);
+      
+            });
+      
             return listaPaquetesConvenios;
-        };
+      
+          };
+
 
         function _getAllPaquetesConvenio() {
             let listaUsuarios = _getUsuarios();
@@ -169,6 +175,12 @@
             }
             _actualizarUsuario(usuario);
         }
+
+
+        //
+        //Final paquetes convenio
+        //
+
         
         
         function _actualizarUsuario(pUsuario) {
