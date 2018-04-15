@@ -32,12 +32,13 @@
       setPaqueteConvenioData: _setPaqueteConvenioData,
       buscarUsuarioPorId:_buscarUsuarioPorId,
       agregarPaqueteConvenio:_agregarPaqueteConvenio,
-      agregarPaquete:_agregarPaquete,
       setEstadoData:_setEstadoData,
       getEstadoData :_getEstadoData,
       agregarEstado:_agregarEstado,
       buscarPaquetePorId:_buscarPaquetePorId,
       
+      agregarTarjetaUsuario: _agregarTarjetaUsuario,
+      agregarPaquete:_agregarPaquete
 
     };
     return localAPI;
@@ -484,6 +485,8 @@
 
     }
 
+    // Inicio de tarjetas
+
     function _getTarjetasData() {
       let listaTarjetas = [];
 
@@ -523,7 +526,7 @@
           'nombre': data.nombre,
           'numero': data.numero,
           'expiracion': data.expiracion,
-          'xvv': data.xvv,
+          'cvv': data.cvv,
           'estado': data.estado,
 
         }
@@ -540,6 +543,34 @@
 
       return response;
     }
+
+    
+    function _agregarTarjetaUsuario(pId, pTarjeta) {
+      console.log('pid', pId);
+      console.log('pTarjeta', pTarjeta);
+      
+      let peticion = $.ajax({
+        url: 'http://localhost:4000/api/agregar_tarjeta_usuario',
+        type: 'post',
+        contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+        dataType: 'json',
+        async: false,
+        data: {
+          '_id': pId,
+          'tarjetaID': pTarjeta.id,
+        }
+      });
+
+      peticion.done(function (response) {
+
+      });
+
+      peticion.fail(function () {
+
+      });
+    }
+
+    // Fin Tarjetas
 
     //
     /*Inicio paquetes de convenio*/

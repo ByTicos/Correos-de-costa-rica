@@ -57,6 +57,37 @@
                         <input type="text" class="form-control" ng-model="vm.nuevoUsuario.contrasenna">
                     </div>
 
+                    <div class="form-group col-6">
+                        <label for="">Provincia</label>
+                        <input list="sltProvincia" name="sltProvincia" class="form-control" ng-change="vm.rellenarCantones(vm.nuevoUsuario.provincia)"
+                            ng-model="vm.nuevoUsuario.provincia" required>
+                        <datalist id="sltProvincia">
+                            <option ng-repeat="provincia in vm.provincias track by provincia._id" value="{{provincia.name}}" id="{{provincia._id}}">
+                        </datalist>
+                    </div>
+                    
+                    <div class="form-group col-6">
+                        <label for="">Cantón</label>
+                        <input list="sltCanton" name="sltCanton" class="form-control" ng-change="vm.rellenarDistrito(vm.nuevoUsuario.canton)" ng-model="vm.nuevoUsuario.canton"
+                            required>
+                        <datalist id="sltCanton">
+                            <option ng-repeat="canton in vm.cantones" value="{{canton.name}}">
+                        </datalist>
+                    </div>
+                    
+                    <div class="form-group col-6">
+                        <label for="">Distrito</label>
+                        <input list="sltDistrito" name="sltDistrito" class="form-control" ng-model="vm.nuevoUsuario.distrito" required>
+                        <datalist id="sltDistrito">
+                            <option ng-repeat="distrito in vm.distritos" value="{{distrito.name}}">
+                        </datalist>
+                    </div>
+                    
+                    <div class="form-group col-6">
+                        <label for="">Dirección Exacta</label>
+                        <input type="text" class="form-control" ng-model="vm.nuevoUsuario.direccionExacta" required>
+                    </div>
+
 
                     <button type="submit">Registrar</button>
                 </form>  

@@ -58,6 +58,7 @@
             let listaUsuarios = [];
             let listaUsuariosBD = dataStorageFactory.getUsersData();
             listaUsuariosBD.forEach(objUsuario => {
+                console.log('objUsuario',objUsuario.listaPaquetes);
                     let objUsuarioTemp = new Usuario(objUsuario.cedula, objUsuario.foto, objUsuario.primerNombre, objUsuario.segundoNombre, objUsuario.primerApellido, objUsuario.segundoApellido, objUsuario.correo, objUsuario.telefono, objUsuario.fechaNacimiento, objUsuario.provincia, objUsuario.canton, objUsuario.distrito, objUsuario.direccionExacta, objUsuario.contrasenna,objUsuario.tipo, objUsuario.sucursalAsignada, objUsuario.puesto, objUsuario.vehiculo, []);
                     objUsuarioTemp.cambiarEstado(objUsuario.estado);
                     objUsuarioTemp.setId(objUsuario._id);
@@ -404,32 +405,37 @@
             }
             return usuarioActivo;
         }
+        
 
-        function _addTarjeta (pNuevaTarjeta) {
+        function _addTarjeta(pNuevaTarjeta) {
             let listaUsuarios = _getUsuarios();
-            let listaTarjetas = _getTarjeta();
             let sesion = JSON.parse(sessionStorage.getItem('sesion'));
             let tarjetaRepetida = false;
-            let registroValido;
-  
-        for(let i = 0; i < listaTarjetas.length; i++){
-          if(listaTarjetas[i].numero == pNuevaTarjeta.numero){
-            tarjetaRepetida = true;
-          }
-        }
-  
-        if (tarjetaRepetida == false) {
-          for(let i = 0; i < listaUsuarios.length; i++){
-            if(listaUsuarios[i].obtenerTarjeta() == pNuevaTarjeta.obtenerInfoTarjeta()){
-              listaUsuarios[i].registrarTarjeta(pNuevaTarjeta.id);
+            let registroValido = false;
+            let usuario = {};
+            let listaTarjetas = _getTarjeta();
+
+            for (let i = 0; i < listaTarjetas.length; i++) {
+                if (listaTarjetas[i].numero == pNuevaTarjeta.numero) {
+                    tarjetaRepetida = true;
+                }
             }
-          }
-          registroValido = dataStorageFactory.setTarjetasData(pNuevaTarjeta);
-        } else {
-          registroValido = false;
-        }
-  
-        return registroValido;
+
+            if (tarjetaRepetida == false) {
+                for (let i = 0; i < listaUsuarios.length; i++) {
+                    if (sesion.correo == listaUsuarios[i].correo) {
+                        usuario = dataStorageFactory.buscarUsuarioPorId(listaUsuarios[i]._id);
+                    }
+                }
+                registroValido = dataStorageFactory.setTarjetasData(pNuevaTarjeta);
+
+                dataStorageFactory.agregarTarjetaUsuario(usuario._id, pNuevaTarjeta)
+            } else {
+                registroValido = false;
+            }
+
+            return registroValido;
+            
       };
 
 
