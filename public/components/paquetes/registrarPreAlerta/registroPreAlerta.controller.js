@@ -74,9 +74,9 @@
       vm.ocultarcalculo = true;
     };
 
-    vm.registrarPaquete = pnuevoPaquete => {
+    vm.registrarPaquete = (pnuevoPaquete) => {
       let session = JSON.parse (sessionStorage.getItem ('sesion'));
-      let usuario = session.nombre;
+      let usuario = session.correo;
       let sucursal = session.sucursalAsignada;
 
       let objNuevoPaquete = new Paquete (
@@ -88,7 +88,7 @@
         pnuevoPaquete.kilometro,
         pnuevoPaquete.tipoArticulo,
         pnuevoPaquete.descripcion,
-        sucursal
+        sucursal,''
       );
 
       let fecha = new Date ();
