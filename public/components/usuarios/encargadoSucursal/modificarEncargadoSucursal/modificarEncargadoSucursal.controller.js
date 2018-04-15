@@ -58,13 +58,13 @@
       let listaUsuarios = servicioUsuarios.getUsuarios();
 
       listaUsuarios.forEach(objUsuario => {
-        if (objUsuario.cedula == objNuevoUsuario.cedula) {
+        if (objUsuario.correo == objNuevoUsuario.correo) {
+          objUsuario.cedula = pUsuario.cedula;
           objUsuario.foto = pUsuario.foto;
           objUsuario.primerNombre = pUsuario.primerNombre;
           objUsuario.segundoNombre = pUsuario.segundoNombre;
           objUsuario.primerApellido = pUsuario.primerApellido;
           objUsuario.segundoApellido = pUsuario.segundoApellido;
-          objUsuario.correo = pUsuario.correo;
           objUsuario.telefono = pUsuario.telefono;
           objUsuario.fechaNacimiento = pUsuario.fechaNacimiento;
           objUsuario.provincia = pUsuario.provincia;
