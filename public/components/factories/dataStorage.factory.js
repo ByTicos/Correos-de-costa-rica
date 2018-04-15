@@ -443,7 +443,7 @@
         'nombre': data.nombre,
         'numero': data.numero,
         'expiracion': data.expiracion,
-        'xvv': data.xvv,
+        'cvv': data.cvv,
         'estado': data.estado,
 
       }

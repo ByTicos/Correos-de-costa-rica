@@ -358,31 +358,46 @@
         }
         
 
-        function _addTarjeta (pNuevaTarjeta) {
+        function _addTarjeta(pNuevaTarjeta) {
             let listaUsuarios = _getUsuarios();
             let listaTarjetas = _getTarjeta();
             let sesion = JSON.parse(sessionStorage.getItem('sesion'));
             let tarjetaRepetida = false;
             let registroValido;
-  
-        for(let i = 0; i < listaTarjetas.length; i++){
-          if(listaTarjetas[i].numero == pNuevaTarjeta.numero){
-            tarjetaRepetida = true;
-          }
-        }
-  
-        if (tarjetaRepetida == false) {
-          for(let i = 0; i < listaUsuarios.length; i++){
-            if(listaUsuarios[i].obtenerTarjeta() == pNuevaTarjeta.obtenerInfoTarjeta()){
-              listaUsuarios[i].registrarTarjeta(pNuevaTarjeta.id);
+
+            for (let i = 0; i < listaTarjetas.length; i++) {
+                if (listaTarjetas[i].numero == pNuevaTarjeta.numero) {
+                    tarjetaRepetida = true;
+                }
             }
-          }
-          registroValido = dataStorageFactory.setTarjetasData(pNuevaTarjeta);
-        } else {
-          registroValido = false;
-        }
-  
-        return registroValido;
+
+            if (tarjetaRepetida == false) {
+                for (let i = 0; i < listaUsuarios.length; i++) {
+                    if (sesion.correo == listaUsuarios[i].correo) {
+                        listaUsuarios[i].registrarTarjeta(pNuevaTarjeta);
+                    }
+                }
+                registroValido = dataStorageFactory.setTarjetasData(pNuevaTarjeta);
+            } else {
+                registroValido = false;
+            }
+
+            return registroValido;
+
+//  function _getTarjeta(){
+//             let listaUsuarios = _getUsuarios();
+//             let listaTarjetas = [];
+//             let session = JSON.parse (sessionStorage.getItem ('sesion'));
+
+//             for (let i = 0; i < listaUsuarios.length; i++) {
+//                 if (session.nombre == listaUsuarios[i].primerNombre ) {
+//                     if (listaUsuarios[i].listaTarjetas != null) {
+//                        listaTarjetas =  listaUsuarios[i].listaTarjetas;
+//                     }
+//                 }
+                
+//             }
+            
       };
 
 

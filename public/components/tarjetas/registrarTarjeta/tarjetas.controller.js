@@ -70,8 +70,6 @@
       var amex = $("#amex");
       var discover = $("#discover");
   
-      // Use the payform library to format and validate
-      // the payment fields.
   
       cardNumber.payform('formatCardNumber');
       CVV.payform('formatCardCVC');
