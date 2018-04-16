@@ -76,6 +76,7 @@
       vm.nuevaSucursal = null;
       listarSucursales();
     }
+    
 
     function listarSucursales() {
       vm.listaSucursales = servicioSucursales.getSucursal();
