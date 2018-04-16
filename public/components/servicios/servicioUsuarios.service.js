@@ -338,7 +338,8 @@
 
             function _getLicencia() {
                 let listaLicencia = [];
-                let listaLicenciaLocal = JSON.parse(localStorage.getItem('licenciasLS'));
+                // let listaLicenciaLocal = JSON.parse(localStorage.getItem('licenciasLS'));
+                registroExitoso = dataStorageFactory.setUserData(pNuevoUsuario);
     
                 if(listaLicenciaLocal == null){
                    listaLicencia = [];
