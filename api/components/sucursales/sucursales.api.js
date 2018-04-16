@@ -1,0 +1,49 @@
+const SucursalModel = require('./sucursales.model');
+
+module.exports.registrar = (req, res) => {
+  var newSucursal = new SucursalModel({
+    id              :  req.body.id,
+    nombre      :  req.body.nombre,
+    provincia           :  req.body.provincia,
+    canton           :  req.body.canton,
+    distrito           :  req.body.distrito,
+    telefono           :  req.body.telefono,
+    horario           :  req.body.horario,
+    estado           :  req.body.estado,
+  });
+
+  newSucursal.save((err) => {
+    if(err){
+      res.json({success:false, msj: 'Ha ocurrido un error en el registro de sucursales' + err});
+    }else{
+      res.json({success:true, msj:'Se registró la Sucursal correctamente'});
+    }
+  });
+};
+
+module.exports.listarTodos = (req,res) => {
+  SucursalModel.find().then((sucursales) => {
+    res.send(sucursales);
+  });
+};
+
+module.exports.actualizar = (req,res) => {
+  SucursalModel.findByIdAndUpdate(req.body._id, { $set: req.body}, (err, sucursal) => {
+    if (err){
+      res.json({success:false,msg:'No se ha actualizado.' + handleError(err)});
+
+    } else{
+      res.json({success:true,msg:'Se ha actualizado correctamente.' + res});
+    }
+  });
+};
+
+module.exports.buscar_sucursal_por_id = function(req, res){
+  SucursalModel.findById({_id : req.body.id}).then(
+      function(sucursal){
+          res.send(sucursal);
+      });
+};
+
+
+

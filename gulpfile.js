@@ -72,8 +72,8 @@ gulp.task('dependencies', () => {
 
 
   gulp.src([
-      './node_modules/ng-file-upload/dist/ng-file-upload.min.js',
-      './node_modules/ng-file-upload/dist/ng-file-upload-shim.min.js'
+    './node_modules/ng-file-upload/dist/ng-file-upload.min.js',
+    './node_modules/ng-file-upload/dist/ng-file-upload-shim.min.js'
     ])
     .pipe(gulp.dest('./public/lib/ng-file-upload'));
 });

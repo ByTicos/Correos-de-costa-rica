@@ -42,3 +42,25 @@ module.exports.actualizar = (req,res) => {
     }
   });
 };
+
+module.exports.agregar_estado = function (req, res) {
+  console.log('listaEstados  ' + req.body.listaEstados);
+
+  PaqueteModel.update({ _id: req.body._id }, { $push: { 'listaEstados': { estado: req.body.estado } } },
+      function (error) {
+          if (error) {
+              res.json({ success: false, msg: 'No se ha actualizado el usuario debido al siguiente error: ' + handleError(error) });
+          } else {
+              res.json({ success: true, msg: 'El usuario ha sido modificado con éxito' });
+          }
+
+      });
+
+}
+
+module.exports.buscar_paquete_por_id = function(req, res){
+  PaqueteModel.findById({_id : req.body.id}).then(
+      function(paquete){
+          res.send(paquete);
+      });
+};

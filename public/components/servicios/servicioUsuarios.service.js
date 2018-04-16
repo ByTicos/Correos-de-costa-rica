@@ -39,7 +39,9 @@
             getPaquetesConvenio:_getPaquetesConvenio,
             getUsuarioActivo:_getUsuarioActivo,
             solicitarEnvioPaqueteConvenio:_solicitarEnvioPaqueteConvenio,
-            getAllPaquetesConvenio:_getAllPaquetesConvenio
+            getAllPaquetesConvenio:_getAllPaquetesConvenio,
+            addEstado:_addEstado,
+            agregarEstado:_agregarEstado
             }
         return publicAPI
         
@@ -59,8 +61,8 @@
                 console.log('objUsuario',objUsuario.listaPaquetes);
                     let objUsuarioTemp = new Usuario(objUsuario.cedula, objUsuario.foto, objUsuario.primerNombre, objUsuario.segundoNombre, objUsuario.primerApellido, objUsuario.segundoApellido, objUsuario.correo, objUsuario.telefono, objUsuario.fechaNacimiento, objUsuario.provincia, objUsuario.canton, objUsuario.distrito, objUsuario.direccionExacta, objUsuario.contrasenna,objUsuario.tipo, objUsuario.sucursalAsignada, objUsuario.puesto, objUsuario.vehiculo, []);
                     objUsuarioTemp.cambiarEstado(objUsuario.estado);
-                    objUsuarioTemp.setId(objUsuario._id);
-
+                    objUsuarioTemp.setId(objUsuario._id),
+                    objUsuarioTemp.listaTarjetas = objUsuario.listaTarjetas;
 
                     objUsuario.listaLicencias.forEach(objLicencia => {
 
@@ -70,11 +72,6 @@
 
 
 
-                    objUsuario.listaTarjetas.forEach(objTarjeta => {
-                        let objTarjetaTemp = new Tarjeta(objTarjeta.id, objTarjeta.nombre, objTarjeta.numero, objTarjeta.expiracion, objTarjeta.cvv, objTarjeta.estado);
-
-                        objUsuarioTemp.registrarTarjeta(objTarjetaTemp);
-                    });
 
                     // objUsuario.listaPaquetes.forEach(objPaquete => {
                     //     let objPaqueteTemp = new Paquete(objPaquete.usuario, objPaquete.tracking, objPaquete.distribuidor, objPaquete.precio,objPaquete.peso, objPaquete.Kilometro,objPaquete.tipoArticulo, objPaquete.descripcion, objPaquete.sucursal, objPaquete.repartidor);
@@ -222,9 +219,12 @@
                 if (listaUsuarios[i].correo == pNuevoPaquete.usuario) {
                     usuario = dataStorageFactory.buscarUsuarioPorId(listaUsuarios[i]._id);
                 }
+
+                registroExitoso = true;
+
                 }
         
-                registroExitoso = dataStorageFactory.setPaqueteData (pNuevoPaquete);
+                dataStorageFactory.setPaqueteData (pNuevoPaquete);
                 
                 dataStorageFactory.agregarPaquete(usuario._id, pNuevoPaquete);
             
@@ -254,7 +254,10 @@
             let listaPaquetesBD = dataStorageFactory.getPaquetesData();
             listaPaquetesBD.forEach(objPaquete => {
               let objPaqueteTemp = new Paquete(objPaquete.usuario, objPaquete.tracking, objPaquete.distribuidor, objPaquete.precio,objPaquete.peso, objPaquete.Kilometro,objPaquete.tipoArticulo, objPaquete.descripcion, objPaquete.sucursal, objPaquete.repartidor);
-      
+            
+              objPaqueteTemp.setId(objPaquete._id);
+
+              
               listaPaquetes.push(objPaqueteTemp);
       
             });
@@ -484,6 +487,34 @@
                 }
                 actualizarLocal(listaUsuarios);
             };
+            
+             function _addEstado(pEstado) {
+            let registroExitoso = false;
+
+            registroExitoso = dataStorageFactory.setEstadoData(pEstado);
+
+            return registroExitoso;
+        }
+
+            function _agregarEstado(pEstado) {
+
+                let listaPaquetes = _getPaquete();
+                let registroExitoso = false;
+                let paquete = {};
+                for (let i = 0; i < listaPaquetes.length; i++) {
+                if (listaPaquetes[i]._id == pEstado.usuario) {
+                    paquete = dataStorageFactory.buscarPaquetePorId(listaPaquetes[i]._id);
+                }
+                }
+        
+                registroExitoso = dataStorageFactory.setEstadoData (pEstado);
+                
+                dataStorageFactory.agregarEstado(paquete._id, pEstado);
+            
+                
+                return registroExitoso;
+                
+            }
 
         };
         

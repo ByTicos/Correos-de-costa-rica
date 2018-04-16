@@ -4,9 +4,9 @@
     .module('correos')
     .controller('controladorRegistrarClientes', controladorRegistrarClientes);
 
-  controladorRegistrarClientes.$inject = ['$http','$state', '$stateParams', '$location', 'servicioUsuarios', 'imageService','Upload', 'servicioSucursales'];
+  controladorRegistrarClientes.$inject = ['$http','$state', '$stateParams', '$location', 'servicioUsuarios', 'imageService', 'servicioSucursales', 'Upload'];
 
-  function controladorRegistrarClientes($http ,$state, $stateParams, $location, servicioUsuarios, imageService, Upload, servicioSucursales) {
+  function controladorRegistrarClientes($http ,$state, $stateParams, $location, servicioUsuarios, imageService, servicioSucursales, Upload) {
     let vm = this;
 
     //da error y no llena los data list cuando no hay un rol seleccionado
@@ -14,25 +14,15 @@
     vm.listaClientes = listarClientes();
     vm.nuevoCliente = {};
     
-    
-    vm.cloudObj = imageService.getConfiguration();
   /*
-    vm.preSave = () =>{
-      vm.cloudObj.data.file = vm.nuevoCliente.foto;
-      Upload.upload(vm.cloudObj)
-        .success((data) => { 
-          vm.registrarCliente(data.url);
-        });
-    }
-
     var map;
     function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
         center: { lat: -34.397, lng: 150.644 },
         zoom: 8
       });
-    }*/
-    
+    }
+  */  
 
 
     vm.provincias = $http({
@@ -88,44 +78,45 @@
     servicioSucursales.listarSucursalesJson();
     vm.listaSucursales = servicioSucursales.getSucursal();
 
+    vm.cloudObj = imageService.getConfiguration();
 
-    /*vm.preRegistrarCliente = (pNuevoUsuario) => {
-      vm.cloudObj.data.file = pNuevoUsuario.foto[0];
+    vm.preRegistrarCliente = (pnuevoUsuario) => {
+      vm.cloudObj.data.file = pnuevoUsuario.foto[0];
       Upload.upload(vm.cloudObj).success((data) =>{
-        vm.registrarCliente(pNuevoUsuario, data.url);
+        vm.registrarCliente(pnuevoUsuario, data.url);
      });
-    };*/
+    }
 
-    vm.registrarCliente = (pNuevoUsuario/*, imgUrl*/) => {
-
-      let objNuevoCliente = new Usuario(pNuevoUsuario.cedula, 'imgUrl', pNuevoUsuario.primerNombre, pNuevoUsuario.segundoNombre, pNuevoUsuario.primerApellido, pNuevoUsuario.segundoApellido, pNuevoUsuario.correo, pNuevoUsuario.telefono, pNuevoUsuario.fechaNacimiento, pNuevoUsuario.provincia, pNuevoUsuario.canton, pNuevoUsuario.distrito, pNuevoUsuario.direccionExacta, pNuevoUsuario.contrasenna, '1', pNuevoUsuario.sucursalAsignada);
+    vm.registrarCliente = (pNuevoUsuario, urlImagen) => {
+      let objNuevoCliente = new Usuario(pNuevoUsuario.cedula, urlImagen, pNuevoUsuario.primerNombre, pNuevoUsuario.segundoNombre, pNuevoUsuario.primerApellido, pNuevoUsuario.segundoApellido, pNuevoUsuario.correo, pNuevoUsuario.telefono, pNuevoUsuario.fechaNacimiento, pNuevoUsuario.provincia, pNuevoUsuario.canton, pNuevoUsuario.distrito, pNuevoUsuario.direccionExacta, pNuevoUsuario.contrasenna, '1', pNuevoUsuario.sucursalAsignada);
 
       let registro = servicioUsuarios.addUsuario(objNuevoCliente);
 
       if (registro == 'Se registró el usuario correctamente') {
         let sesion = JSON.parse(sessionStorage.getItem('sesion'));
-        if(sesion == null || sesion.tipo != '5'){
-          
+        if (sesion == null || sesion.tipo != '5') {
+
           swal("Registro exitoso", "El cliente ha sido registrado correctamente", "success", {
             button: "Aceptar",
-          }); 
+          });
           $location.path('/logIn');
         }
-        else{
+        else {
           swal("Registro exitoso", "El cliente ha sido registrado correctamente", "success", {
             button: "Aceptar",
           });
           $location.path('/main/listarCliente');
         }
-        
+
       }
       else {
         swal("Registro fallido", "Ha ocurrido un error, intente nuevamente", "error", {
           button: "Aceptar",
         });
       }
-
     }
+
+
     function listarClientes() {
       let listaUsuarios = servicioUsuarios.getUsuarios();
       let listaClientes = [];

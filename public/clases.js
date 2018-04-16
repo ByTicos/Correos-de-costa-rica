@@ -70,6 +70,7 @@ class Usuario {
 
 class Paquete{
     constructor(pUsuario,pNumeroTracking, pDistribuidor, pPrecio, pPeso,pKilometro, pTipoArticulo, pDescripcion, pSucursal, pRepartidor){
+        this._id =0;
         this.usuario = pUsuario;
         this.tracking = pNumeroTracking;
         this.distribuidor = pDistribuidor;
@@ -85,7 +86,10 @@ class Paquete{
         this.listaEstados = [];
 
     }
-
+    
+    setId(pId){
+        this._id = pId;
+    }
     cambiarEstadoDeActividad(pEstado) {
         this.estado = pEstado;
     }
@@ -108,13 +112,16 @@ class Paquete{
 
 class Estado {
     constructor(pUsuario, pFecha, pHora, pEstado) {
+        this._id = 0;
         this.usuario = pUsuario;
         this.fecha = pFecha;
         this.hora = pHora;
         this.estado = pEstado;
     }
 
-
+  setId(pId){
+        this._id = pId;
+    }
 }
 
 // class Encargado extends Usuario{
