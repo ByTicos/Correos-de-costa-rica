@@ -22,7 +22,7 @@
     // listarSucursales();
             
     function _addSucursal (pnuevaSucursal){
-        let registroExitoso = false;
+        let registroExitoso;
         
         registroExitoso = dataStorageFactory.setSucursalesData(pnuevaSucursal);
 
@@ -210,7 +210,7 @@
         let sucursal = {};
 
         for (let i = 0; i < listaSucursales.length; i++) {
-            if (pSucursal.correo == listaSucursales[i].correo) {
+            if (pSucursal.id == listaSucursales[i].id) {
                 listaSucursales[i] = pSucursal;
                 sucursal = listaSucursales[i];
             }
