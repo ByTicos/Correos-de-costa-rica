@@ -43,7 +43,7 @@ module.exports.listarTodos = (req,res) => {
 };
 
 module.exports.actualizar = (req,res) => {
-  UserModel.findByIdAndUpdate(req.body.correo, { $set: req.body}, (err, user) => {
+  UserModel.update({correo: req.body.correo}, req.body, (err, user) => {
     if (err){
       res.json({success:false,msg:'No se ha actualizado.' + handleError(err)});
 
