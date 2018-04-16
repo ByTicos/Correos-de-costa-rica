@@ -16,7 +16,7 @@
       let inicioCorrecto = servicioLogin.inicioSesion(pCredenciales);
 
       if (inicioCorrecto == true) {
-        swal("Datos correctos", "Sesion iniciada correctamente", "success");
+        // swal("Datos correctos", "Sesion iniciada correctamente", "success");
           $location.path('main/dashboard');
       }
       else {

@@ -114,8 +114,9 @@
                 </div>
 
                 <button type="button" class="btn btn-info" ng-show='vm.rol == 4' ui-sref="main.modificarCliente">Paquetes</button>
-                <button type="button" class="btn btn-info" ng-show='vm.rol == 3' ui-sref="main.Repartidor">Editar Repartidor</button>
-                <button type="button" class="btn btn-info" ng-show='vm.rol == 3' ui-sref="main.Repartidor">Paquetes</button>
+                <button type="button" class="btn btn-info" ng-show='vm.rol == 3' ui-sref="main.editarRepartidor">Editar Repartidor</button>
+                <button type="button" class="btn btn-info" ng-show='vm.rol == 3' ui-sref="main.repartidor">Paquetes</button>
+                <!-- <button type="button" class="btn btn-info" ng-show='vm.rol == 3' ui-sref="main.Repartidor">Paquetes</button> -->
 
                 <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#encSucReg" ng-show='vm.rol == 2'> Registros</button>
                 <div id="encSucReg" class="collapse">
