@@ -224,9 +224,12 @@
                 if (listaUsuarios[i].correo == pNuevoPaquete.usuario) {
                     usuario = dataStorageFactory.buscarUsuarioPorId(listaUsuarios[i]._id);
                 }
+
+                registroExitoso = true;
+
                 }
         
-                registroExitoso = dataStorageFactory.setPaqueteData (pNuevoPaquete);
+                dataStorageFactory.setPaqueteData (pNuevoPaquete);
                 
                 dataStorageFactory.agregarPaquete(usuario._id, pNuevoPaquete);
             
