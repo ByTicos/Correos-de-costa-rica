@@ -4,9 +4,9 @@
       .module('correos')
       .service('servicioSucursales', servicioSucursales)
 
-  servicioSucursales.$inject = ['$log', '$http'];
+  servicioSucursales.$inject = ['$log', '$http','dataStorageFactory'];
 
-  function servicioSucursales($log, $http) {
+  function servicioSucursales($log, $http, dataStorageFactory) {
 
 
       let publicAPI = {
@@ -22,34 +22,26 @@
     // listarSucursales();
             
     function _addSucursal (pnuevaSucursal){
+        let registroExitoso = false;
         
-        let listaSucursal = _getSucursal();
-        console.log('pnuevaSucursal', pnuevaSucursal);
-        listaSucursal.push(pnuevaSucursal);
+        registroExitoso = dataStorageFactory.setSucursalesData(pnuevaSucursal);
 
-      localStorage.setItem('sucursalLS', JSON.stringify(listaSucursal));
-            console.log('push');
+        return registroExitoso;
          
         }
 
-    function _getSucursal(){
-        let listaSucursal = [];
-        let listaSucursalLocal = JSON.parse(localStorage.getItem("sucursalLS"));
-        console.log('listaactual', listaSucursalLocal);
+      function _getSucursal() {
+          let listaSucursal = [];
+          let listaSucursalDB = dataStorageFactory.getSucursalesData();
+          listaSucursalDB.forEach(objSucursal => {
 
-        if(listaSucursalLocal == null){
-            listaSucursal = [];
-        }else{
-            listaSucursalLocal.forEach(obj => {
-                let objSucursal = new Sucursal (obj.id, obj.nombre, obj.provincia, obj.canton, obj.distrito, obj.telefono, obj.horario, obj.estado);
+              let objSucursalTemp = new Sucursal(objSucursal.id, objSucursal.nombre, objSucursal.provincia, objSucursal.canton, objSucursal.distrito, objSucursal.telefono, objSucursal.horario, objSucursal.estado)
 
-                listaSucursal.push(objSucursal);
-            });
+            listaSucursal.push(objSucursalTemp);
 
-            
-        }
-        console.log(listaSucursal);
-        return listaSucursal;
+          });
+
+          return listaSucursal;
         
     };
     
@@ -215,13 +207,15 @@
 
     function _actualizarSucursal(pSucursal) {
         let listaSucursal = _getSucursal();
+        let sucursal = {};
 
-        for (let i = 0; i < listaSucursal.length; i++) {
-            if (pSucursal.id == listaSucursal[i].id) {
-                listaSucursal[i] = pSucursal;
+        for (let i = 0; i < listaSucursales.length; i++) {
+            if (pSucursal.correo == listaSucursales[i].correo) {
+                listaSucursales[i] = pSucursal;
+                sucursal = listaSucursales[i];
             }
         }
-        actualizarSucursalLocal(listaSucursal);
+        dataStorageFactory.updateSucursalesData(sucursal);
     };
 
     function actualizarSucursalLocal(plistaActualizadaSucursal) {
