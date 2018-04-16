@@ -155,7 +155,7 @@
       });
 
       peticion.done((datos) => {
-        response = datos.msj;
+        response = datos.success;
         console.log('Petición realizada con éxito');
       });
       peticion.fail((error) => {

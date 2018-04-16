@@ -182,13 +182,14 @@
         //Final paquetes convenio
         //
 
-        
-        
+
         function _actualizarUsuario(pUsuario) {
-            
-            
-            dataStorageFactory.updateUserData(pUsuario);
-        };
+            let modificacionExitosa = false;
+      
+            modificacionExitosa = dataStorageFactory.updateUserData(pUsuario);
+      
+            return modificacionExitosa;
+          }
 
         //    function encontrarTraking(pNuevoPaquete) {
         //        let listaUsuarios = _getUsuarios ();

@@ -5,10 +5,11 @@ const express = require('express'),
 /**
  * 
  */
-router.param('correo', (req, res, next, correo) => {
-  correo = req.body.correo;
+router.param('id', (req, res, next, id) => {
+  req.body.id = id;
   next();
 });
+
 
 /**
  * Función que se encarga de registrar los usuarios dentro del local storage

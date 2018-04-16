@@ -43,12 +43,12 @@ module.exports.listarTodos = (req,res) => {
 };
 
 module.exports.actualizar = (req,res) => {
-  UserModel.findByIdAndUpdate(req.body.correo, { $set: req.body}, (err, user) => {
+  UserModel.update({correo: req.body.correo}, req.body, (err, user) => {
     if (err){
-      res.json({success:false,msj:'No se ha actualizado.' + handleError(err)});
+      res.json({success:false,msg:'No se ha actualizado.' + handleError(err)});
 
     } else{
-      res.json({success:true,msj:'Se ha actualizado correctamente.' + res});
+      res.json({success:true,msg:'Se ha actualizado correctamente.' + res});
     }
   });
 };
@@ -73,22 +73,7 @@ module.exports.agregar_paquete_convenio = function (req, res) {
 
       });
 
-};
-
-module.exports.agregar_tarjeta_usuario = function (req, res) {
-  console.log('listaTarjetas  ' + req.body.listaTarjetas);
-
-  UserModel.update(
-    { _id: req.body._id }, 
-    { $push: 
-      { 'listaTarjetas': 
-        { 
-          id: req.body.id,
-          tarjetaID: req.body.tarjetaID
-        } 
-      } 
-    },
-  )},
+}
 
 
 module.exports.agregar_paquete = function (req, res) {
