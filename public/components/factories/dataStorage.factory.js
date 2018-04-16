@@ -134,35 +134,34 @@
         dataType: 'json',
         async: false,
         data: {
-          cedula: data.cedula,
-          foto: data.foto,
-          primerNombre: data.primerNombre,
-          segundoNombre: data.segundoNombre,
-          primerApellido: data.primerApellido,
-          segundoApellido: data.segundoApellido,
-          correo: data.correo,
-          telefono: data.telefono,
-          fechaNacimiento: data.fechaNacimiento,
-          provincia: data.provincia,
-          canton: data.canton,
-          distrito: data.distrito,
-          direccionExacta: data.direccionExacta,
-          tipo: data.tipo,
-          listaPaquetes: data.listaPaquetes,
-          sucursalAsignada: data.sucursalAsignada,
-          puesto: data.puesto,
-          vehiculo: data.vehiculo,
-          listaLicencias: data.listaLicencias,
-          estado: data.estado,
-          listaTarjetas: data.listaTarjetas,
-          listaPaquetesConvenios: data.listaPaquetesConvenios,
-          contrasenna: data.contrasenna,
-        },
+          'cedula': data.cedula,
+          'primerNombre': data.primerNombre,
+          'segundoNombre': data.segundoNombre,
+          'primerApellido': data.primerApellido,
+          'segundoApellido': data.segundoApellido,
+          'correo': data.correo,
+          'telefono': data.telefono,
+          'fechaNacimiento': data.fechaNacimiento,
+          'provincia': data.provincia,
+          'canton': data.canton,
+          'distrito': data.distrito,
+          'direccionExacta': data.direccionExacta,
+          'tipo': data.tipo,
+          'listaPaquetes': data.listaPaquetes,
+          'sucursalAsignada': data.sucursalAsignada,
+          'puesto': data.puesto,
+          'vehiculo': data.vehiculo,
+          'listaLicencias': data.listaLicencias,
+          'estado': data.estado,
+          'listaTarjetas': data.listaTarjetas,
+          'listaPaquetesConvenios': data.listaPaquetesConvenios,
+          'contrasenna': data.contrasenna,
+        }
       });
 
-      peticion.done (datos => {
-        response = datos.msj;
-        console.log ('Petición realizada con éxito');
+      peticion.done((datos) => {
+        response = datos.success;
+        console.log('Petición realizada con éxito');
       });
       peticion.fail (error => {
         response = error;
