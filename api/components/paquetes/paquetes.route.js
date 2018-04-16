@@ -26,6 +26,17 @@ router.route('/get_all_paquetes')
     paquetes.listarTodos(req,res);
 });
 
+router.route('/agregar_estado')
+  .post(function (req, res) {
+    paquetes.agregar_estado(req, res);
+  });
+
+  router.route('/buscar_paquete_id')
+  .post(function (req, res) {
+    users.buscar_paquete_por_id(req, res);
+  });
+
+
 /**
  * Función que actualiza los usuarios
  */

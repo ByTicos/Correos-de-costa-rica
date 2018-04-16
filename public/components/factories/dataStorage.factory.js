@@ -32,6 +32,11 @@
       setPaqueteConvenioData: _setPaqueteConvenioData,
       buscarUsuarioPorId:_buscarUsuarioPorId,
       agregarPaqueteConvenio:_agregarPaqueteConvenio,
+      setEstadoData:_setEstadoData,
+      getEstadoData :_getEstadoData,
+      agregarEstado:_agregarEstado,
+      buscarPaquetePorId:_buscarPaquetePorId,
+      
       agregarTarjetaUsuario: _agregarTarjetaUsuario,
       agregarPaquete:_agregarPaquete
 
@@ -740,6 +745,111 @@ function _agregarPaquete (pId, pPaquete) {
 //
 /*Final Paquetes*/
 //
+//
+/* inicio Estados*/
+//
+
+function _setEstadoData (data) {
+  let response;
+
+  let peticion = $.ajax ({
+    url: 'http://localhost:4000/api/save_estado',
+    type: 'post',
+    contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+    dataType: 'json',
+    async: false,
+    data: {
+      'usuario' : data.usuario,
+      'fecha' : data.fecha,
+      'hora' : data.hora,
+      'estado' : data.estado
+    
+    },
+  });
+
+  peticion.done (datos => {
+    response = datos.msj;
+    console.log ('Petición realizada con éxito');
+  });
+  peticion.fail (error => {
+    response = error;
+    console.log ('Ocurrió un error');
+  });
+
+  return response;
+}
+
+function _getEstadoData () {
+  let listaEstados = [];
+
+  let peticion = $.ajax ({
+    url: 'http://localhost:4000/api/get_all_estados',
+    type: 'get',
+    contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+    dataType: 'json',
+    async: false,
+    data: {},
+  });
+
+  peticion.done (estados => {
+    console.log ('Datos que vienen desde la base de datos');
+    console.log (estados);
+    listaEstados = estados;
+  });
+  peticion.fail (() => {
+    listaEstados = [];
+    console.log ('Ocurrió un error');
+  });
+
+  return listaEstados;
+}
+
+function _agregarEstado (pId, pEstado) {
+  let peticion = $.ajax ({
+    url: 'http://localhost:4000/api/agregar_estado',
+    type: 'post',
+    contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+    dataType: 'json',
+    async: false,
+    data: {
+      _id: pId,
+       estado: pEstado.estado,
+    },
+  });
+
+  peticion.done (function (response) {});
+
+  peticion.fail (function () {});
+}
+
+function _buscarPaquetePorId(pid) {
+      let paquete = [];
+      let peticion = $.ajax({
+        url: 'http://localhost:4000/api/buscar_paquete_id',
+        type: 'post',
+        contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+        dataType: 'json',
+        async: false,
+        data: {
+          'id': pid
+        }
+      });
+
+      peticion.done(function (response) {
+        paquete = response;
+      });
+
+      peticion.fail(function () {
+
+      });
+
+      return paquete;
+    }
+
+//
+/*Final Estados*/
+//
+
 
 
   }
