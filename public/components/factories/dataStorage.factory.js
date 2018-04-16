@@ -42,7 +42,7 @@
       getSucursalesData: _getSucursalesData,
       setSucursalesData: _setSucursalesData,
       updateSucursalesData: _updateSucursalesData,
-      buscarSucursalPorId: _buscarSucursalPorId,
+      buscarSucursalPorId: _buscarSucursalPorId
 
     };
     return localAPI;
