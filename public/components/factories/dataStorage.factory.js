@@ -33,18 +33,12 @@
       getEstadoData: _getEstadoData,
       agregarEstado: _agregarEstado,
       buscarPaquetePorId: _buscarPaquetePorId,
-
       agregarTarjetaUsuario: _agregarTarjetaUsuario,
-<<<<<<< HEAD
-      agregarPaquete:_agregarPaquete
-
-=======
       agregarPaquete: _agregarPaquete,
       getSucursalesData: _getSucursalesData,
       setSucursalesData: _setSucursalesData,
       updateSucursalesData: _updateSucursalesData,
       buscarSucursalPorId: _buscarSucursalPorId,
->>>>>>> Dev
     };
     return localAPI;
 
