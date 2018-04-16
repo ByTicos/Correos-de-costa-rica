@@ -86,7 +86,7 @@
 
       //console.log(objNuevoPaquete);
 
-      let registro = servicioUsuarios.addPaquete (objNuevoPaquete);
+      let registro = servicioUsuarios.addPaquete(objNuevoPaquete);
       servicioUsuarios.addEstado (objEstado);
        
       if (registro == true) {
