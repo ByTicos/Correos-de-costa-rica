@@ -61,8 +61,8 @@
                 console.log('objUsuario',objUsuario.listaPaquetes);
                     let objUsuarioTemp = new Usuario(objUsuario.cedula, objUsuario.foto, objUsuario.primerNombre, objUsuario.segundoNombre, objUsuario.primerApellido, objUsuario.segundoApellido, objUsuario.correo, objUsuario.telefono, objUsuario.fechaNacimiento, objUsuario.provincia, objUsuario.canton, objUsuario.distrito, objUsuario.direccionExacta, objUsuario.contrasenna,objUsuario.tipo, objUsuario.sucursalAsignada, objUsuario.puesto, objUsuario.vehiculo, []);
                     objUsuarioTemp.cambiarEstado(objUsuario.estado);
-                    objUsuarioTemp.setId(objUsuario._id);
-
+                    objUsuarioTemp.setId(objUsuario._id),
+                    objUsuarioTemp.listaTarjetas = objUsuario.listaTarjetas;
 
                     objUsuario.listaLicencias.forEach(objLicencia => {
 
@@ -72,11 +72,6 @@
 
 
 
-                    objUsuario.listaTarjetas.forEach(objTarjeta => {
-                        let objTarjetaTemp = new Tarjeta(objTarjeta.id, objTarjeta.nombre, objTarjeta.numero, objTarjeta.expiracion, objTarjeta.cvv, objTarjeta.estado);
-
-                        objUsuarioTemp.registrarTarjeta(objTarjetaTemp);
-                    });
 
                     // objUsuario.listaPaquetes.forEach(objPaquete => {
                     //     let objPaqueteTemp = new Paquete(objPaquete.usuario, objPaquete.tracking, objPaquete.distribuidor, objPaquete.precio,objPaquete.peso, objPaquete.Kilometro,objPaquete.tipoArticulo, objPaquete.descripcion, objPaquete.sucursal, objPaquete.repartidor);
@@ -224,9 +219,12 @@
                 if (listaUsuarios[i].correo == pNuevoPaquete.usuario) {
                     usuario = dataStorageFactory.buscarUsuarioPorId(listaUsuarios[i]._id);
                 }
+
+                registroExitoso = true;
+
                 }
         
-                registroExitoso = dataStorageFactory.setPaqueteData (pNuevoPaquete);
+                dataStorageFactory.setPaqueteData (pNuevoPaquete);
                 
                 dataStorageFactory.agregarPaquete(usuario._id, pNuevoPaquete);
             

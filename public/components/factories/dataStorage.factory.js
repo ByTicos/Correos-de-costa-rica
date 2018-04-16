@@ -38,7 +38,15 @@
       buscarPaquetePorId:_buscarPaquetePorId,
       
       agregarTarjetaUsuario: _agregarTarjetaUsuario,
+<<<<<<< HEAD
+      agregarPaquete: _agregarPaquete,
+      getSucursalesData: _getSucursalesData,
+      setSucursalesData: _setSucursalesData,
+      updateSucursalesData: _updateSucursalesData,
+      buscarSucursalPorId: _buscarSucursalPorId
+=======
       agregarPaquete:_agregarPaquete
+>>>>>>> Heiner
 
     };
     return localAPI;

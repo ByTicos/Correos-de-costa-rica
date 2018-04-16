@@ -19,21 +19,7 @@
     };
 
      vm.tipoArticulo = servicioArticulos.getArticulo();
-
     
-    
-    //$http ({
-    //   method: 'GET',
-    //   url: './sources/data/articulos.json',
-    // }).then (
-    //   success => {
-    //     vm.tipoArticulo = success.data;
-    //   },
-    //   error => {
-    //     console.log ('Ocurrió un error ' + error.data);
-    //   }
-    // );
-
     vm.calcular = pnuevoPaquete => {
       let calculo = 0;
       let transporte = 0;
