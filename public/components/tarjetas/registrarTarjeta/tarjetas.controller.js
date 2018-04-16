@@ -33,19 +33,18 @@
       let objnuevaTarjeta = new Tarjeta(idRandom, pnuevaTarjeta.nombre, pnuevaTarjeta.numero, expiracion, pnuevaTarjeta.cvv);
 
       let registro = servicioUsuarios.addTarjeta(objnuevaTarjeta);
-
-      if (registro == true) {
+      console.log ('registro', registro);
+      if (registro) {
         swal("Registro exitoso", "Tarjeta registrada con exito", "success", {
 
-          button: "Aceptar",
+          button: "Aceptar",}).then((value) => {
+            vm.pnuevaTarjeta = null;
         });
 
       } else {
         swal("Registro fallido", "Ha ocurrido un error, intente nuevamente", "error", {
           button: "Aceptar",
         });
-
-        vm.pnuevaTarjeta = null;
       }
     };
 
@@ -53,9 +52,10 @@
     function getRandom() {
       let randomID = (
         document.getElementById('field1').value = Math.floor(Math.random() * 100000));
-
-      return randomID;
-      console.log('randomID', randomID);
+      let randomToString = randomID.toString();
+        
+      return randomToString;
+      console.log('randomID', randomToString);
     }
 
     $(function() {
@@ -70,8 +70,6 @@
       var amex = $("#amex");
       var discover = $("#discover");
   
-      // Use the payform library to format and validate
-      // the payment fields.
   
       cardNumber.payform('formatCardNumber');
       CVV.payform('formatCardCVC');

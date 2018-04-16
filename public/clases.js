@@ -1,10 +1,6 @@
 class Usuario {
-<<<<<<< HEAD
     constructor(pCedula, pFoto, pPrimerNombre, pSegundoNombre, pPrimerApellido, pSegundoApellido, pEmail, pTelefono, pfechaNacimiento, pProvincia, pCanton, pDistrito, pDireccionExacta, pContrasenna, pTipo, pSucursalAsignada, pPuesto, pVehiculo, pLicencia, pTarjeta) {
-=======
-    constructor(pCedula, pFoto, pPrimerNombre, pSegundoNombre, pPrimerApellido, pSegundoApellido, pEmail, pTelefono, pfechaNacimiento, pProvincia, pCanton, pDistrito, pDireccionExacta, pContrasenna, pTipo, pSucursalAsignada, pPuesto, pVehiculo, pLicencia, pVencimientoLicencia, pTarjeta) {
         this._id = 0;
->>>>>>> origin/Dev
         this.cedula = pCedula;
         this.foto = pFoto;
         this.primerNombre = pPrimerNombre;

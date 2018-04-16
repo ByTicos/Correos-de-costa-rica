@@ -73,7 +73,22 @@ module.exports.agregar_paquete_convenio = function (req, res) {
 
       });
 
-}
+};
+
+module.exports.agregar_tarjeta_usuario = function (req, res) {
+  console.log('listaTarjetas  ' + req.body.listaTarjetas);
+
+  UserModel.update(
+    { _id: req.body._id }, 
+    { $push: 
+      { 'listaTarjetas': 
+        { 
+          id: req.body.id,
+          tarjetaID: req.body.tarjetaID
+        } 
+      } 
+    },
+  )},
 
 
 module.exports.agregar_paquete = function (req, res) {

@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 //Esquema de usuarios
 var UserSchema = new mongoose.Schema({
   cedula : {type : String, required : true},
-  foto : {type : String},
+  foto : {type : String, required : true},
   primerNombre : {type : String, required : true},
   segundoNombre : {type : String},
   primerApellido : {type : String, required : true},
@@ -27,7 +27,10 @@ var UserSchema = new mongoose.Schema({
   vehiculo : {type : String},
   listaLicencias : {type : Array, required : true},
   estado : {type : String, required : true},
-  listaTarjetas : {type : Array, required : true},
+  listaTarjetas : [
+    {
+      tarjetaID: {type: String}
+    }],
   listaPaquetesConvenios : [
     {
       tracking: {type: String}

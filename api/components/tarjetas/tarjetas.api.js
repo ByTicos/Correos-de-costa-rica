@@ -1,7 +1,7 @@
 const TarjetasModel = require('./tarjetas.model');
 
 module.exports.registrar = (req, res) => {
-  var newEntidad = new TarjetasModel({
+  var newTarjeta = new TarjetasModel({
     id              :  req.body.id,
     nombre      :  req.body.nombre,
     numero           :  req.body.numero,
@@ -10,11 +10,11 @@ module.exports.registrar = (req, res) => {
     estado           :  req.body.estado,
   });
 
-  newEntidad.save((err) => {
+  newTarjeta.save((err) => {
     if(err){
       res.json({success:false, msj: 'Ha ocurrido un error en el registro de tarjetas' + err});
     }else{
-      res.json({success:true, msj:'Se registró la entidad correctamente'});
+      res.json({success:true, msj:'Se registró la tarjeta correctamente'});
     }
   });
 };
