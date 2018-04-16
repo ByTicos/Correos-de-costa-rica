@@ -5,10 +5,11 @@ const express = require('express'),
 /**
  * 
  */
-router.param('correo', (req, res, next, correo) => {
-  req.body.correo = correo;
+router.param('id', (req, res, next, id) => {
+  req.body.id = id;
   next();
 });
+
 
 /**
  * Función que se encarga de registrar los usuarios dentro del local storage
@@ -21,6 +22,7 @@ router.route('/save_user')
 /**
  * Función que obtiene todos los usuarios
  */
+
 router.route('/get_all_users')
   .get((req, res) => {
     users.listarTodos(req,res);
@@ -29,6 +31,7 @@ router.route('/get_all_users')
 /**
  * Función que actualiza los usuarios
  */
+
 router.route('/update_user')
   .put((req, res) => {
     users.actualizar(req,res);

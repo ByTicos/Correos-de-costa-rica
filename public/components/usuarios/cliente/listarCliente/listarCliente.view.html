@@ -69,11 +69,12 @@
 </section>
 -->
 
-<section id="container-fluid">
-
-    <table class="table table-responsive table-striped text-centered col-12 offset-1">
-        <legend class="col-12 offset-1">Usuarios activos</legend>
-        <thead class="thead-dark">
+<section id="" class="">
+    <div class="wrapperusuarios">
+    <table class="table">
+        <h1 class="col-12">Usuarios activos</h1>
+        <hr/>
+        <thead class="table-primary">
             <tr>
                 <th>Cédula</th>
                 <th>Foto</th>
@@ -98,15 +99,17 @@
                 <td>{{usuario.obtenerDatosProvCantDist()}}</td>
                 <td>{{usuario.direccionExacta}}</td>
                 <td>
-                    <button class="btn " type="button" ng-click="vm.modificar(usuario)">Modificar</button>
+                    <button class="btn " type="button" ng-click="vm.modificar(usuario)"><i class="far fa-edit"></i></button>
                 </td>
-                <td><button type="button" class="btn" ng-click="vm.cambiarEstado('inactivo', usuario)">Desactivar</button></td>
+                <td><button type="button" class="btn" ng-click="vm.cambiarEstado('inactivo', usuario)"><i class="far fa-times-circle"></i></button></td>
             </tr>
         </tbody>
     </table>
-    <table class="table table-responsive table-striped text-centered col-12 offset-1">
-        <legend class="col-12 offset-1">Usuarios desactivados</legend>
-        <thead class="thead-dark">
+    
+    <table class="table">
+        <h1 class="col-12">Usuarios desactivados</h1>
+        <hr/>
+        <thead class="table-primary">
             <tr>
                 <th>Cédula</th>
                 <th>Foto</th>
@@ -131,10 +134,11 @@
                 <td>{{usuario.obtenerDatosProvCantDist()}}</td>
                 <td>{{usuario.direccionExacta}}</td>
                 <td>
-                    <button class="btn " type="button" ng-click="vm.modificar(usuario)">Modificar</button>
+                    <button class="btn " type="button" ng-click="vm.modificar(usuario)"><i class="far fa-edit"></button>
                 </td>
-                <td><button type="button" class="btn" ng-click="vm.cambiarEstado('activo', usuario)">Activar</button></td>
+                <td><button type="button" class="btn" ng-click="vm.cambiarEstado('activo', usuario)"><i class="far fa-check-circle"></i></button></td>
             </tr>
         </tbody>
     </table>
+</div>
 </section>

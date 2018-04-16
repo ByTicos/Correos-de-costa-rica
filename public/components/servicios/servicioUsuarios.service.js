@@ -184,21 +184,14 @@
         //Final paquetes convenio
         //
 
-        
-        
+
         function _actualizarUsuario(pUsuario) {
-            let listaUsuarios = _getUsuarios();
-            let usuario = {}
-
-            for (let i = 0; i < listaUsuarios.length; i++) {
-                if (pUsuario.correo == listaUsuarios[i].correo) {
-                    listaUsuarios[i] = pUsuario;
-                    usuario = listaUsuarios[i];
-
-                }
-            }
-            dataStorageFactory.updateUserData(usuario);
-        };
+            let modificacionExitosa = false;
+      
+            modificacionExitosa = dataStorageFactory.updateUserData(pUsuario);
+      
+            return modificacionExitosa;
+          }
 
         //    function encontrarTraking(pNuevoPaquete) {
         //        let listaUsuarios = _getUsuarios ();
@@ -224,9 +217,12 @@
                 if (listaUsuarios[i].correo == pNuevoPaquete.usuario) {
                     usuario = dataStorageFactory.buscarUsuarioPorId(listaUsuarios[i]._id);
                 }
+
+                registroExitoso = true;
+
                 }
         
-                registroExitoso = dataStorageFactory.setPaqueteData (pNuevoPaquete);
+                dataStorageFactory.setPaqueteData (pNuevoPaquete);
                 
                 dataStorageFactory.agregarPaquete(usuario._id, pNuevoPaquete);
             
@@ -347,7 +343,8 @@
 
             function _getLicencia() {
                 let listaLicencia = [];
-                let listaLicenciaLocal = JSON.parse(localStorage.getItem('licenciasLS'));
+                // let listaLicenciaLocal = JSON.parse(localStorage.getItem('licenciasLS'));
+                registroExitoso = dataStorageFactory.setUserData(pNuevoUsuario);
     
                 if(listaLicenciaLocal == null){
                    listaLicencia = [];

@@ -22,6 +22,7 @@
     // listarSucursales();
             
     function _addSucursal (pnuevaSucursal){
+        let registroExitoso;
         
         let listaSucursal = _getSucursal();
         console.log('pnuevaSucursal', pnuevaSucursal);
@@ -216,9 +217,10 @@
     function _actualizarSucursal(pSucursal) {
         let listaSucursal = _getSucursal();
 
-        for (let i = 0; i < listaSucursal.length; i++) {
-            if (pSucursal.id == listaSucursal[i].id) {
-                listaSucursal[i] = pSucursal;
+        for (let i = 0; i < listaSucursales.length; i++) {
+            if (pSucursal.id == listaSucursales[i].id) {
+                listaSucursales[i] = pSucursal;
+                sucursal = listaSucursales[i];
             }
         }
         actualizarSucursalLocal(listaSucursal);
