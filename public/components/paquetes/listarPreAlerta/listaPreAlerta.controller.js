@@ -3,9 +3,9 @@
   angular
   .module('correos')
   .controller('controladorListaPreAlerta', controladorListaPreAlerta);
-  controladorListaPreAlerta.$inject = ['$state','$stateParams','$location','servicioUsuarios'];
+  controladorListaPreAlerta.$inject = ['$state','$stateParams','$location','servicioUsuarios','servicioArticulos'];
 
-  function controladorListaPreAlerta($state,$stateParams,$location,servicioUsuarios) {
+  function controladorListaPreAlerta($state,$stateParams,$location,servicioUsuarios,servicioArticulos) {
     let vm = this;
    
    vm.listaPaquetes = servicioUsuarios.getPaquete();
