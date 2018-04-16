@@ -39,7 +39,9 @@
             getPaquetesConvenio:_getPaquetesConvenio,
             getUsuarioActivo:_getUsuarioActivo,
             solicitarEnvioPaqueteConvenio:_solicitarEnvioPaqueteConvenio,
-            getAllPaquetesConvenio:_getAllPaquetesConvenio
+            getAllPaquetesConvenio:_getAllPaquetesConvenio,
+            addEstado:_addEstado,
+            agregarEstado:_agregarEstado
             }
         return publicAPI
         
@@ -254,7 +256,10 @@
             let listaPaquetesBD = dataStorageFactory.getPaquetesData();
             listaPaquetesBD.forEach(objPaquete => {
               let objPaqueteTemp = new Paquete(objPaquete.usuario, objPaquete.tracking, objPaquete.distribuidor, objPaquete.precio,objPaquete.peso, objPaquete.Kilometro,objPaquete.tipoArticulo, objPaquete.descripcion, objPaquete.sucursal, objPaquete.repartidor);
-      
+            
+              objPaqueteTemp.setId(objPaquete._id);
+
+              
               listaPaquetes.push(objPaqueteTemp);
       
             });
@@ -483,6 +488,34 @@
                 }
                 actualizarLocal(listaUsuarios);
             };
+            
+             function _addEstado(pEstado) {
+            let registroExitoso = false;
+
+            registroExitoso = dataStorageFactory.setEstadoData(pEstado);
+
+            return registroExitoso;
+        }
+
+            function _agregarEstado(pEstado) {
+
+                let listaPaquetes = _getPaquete();
+                let registroExitoso = false;
+                let paquete = {};
+                for (let i = 0; i < listaPaquetes.length; i++) {
+                if (listaPaquetes[i]._id == pEstado.usuario) {
+                    paquete = dataStorageFactory.buscarPaquetePorId(listaPaquetes[i]._id);
+                }
+                }
+        
+                registroExitoso = dataStorageFactory.setEstadoData (pEstado);
+                
+                dataStorageFactory.agregarEstado(paquete._id, pEstado);
+            
+                
+                return registroExitoso;
+                
+            }
 
         };
         
