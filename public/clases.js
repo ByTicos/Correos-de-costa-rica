@@ -158,7 +158,9 @@ class Convenio {
 
 
 class Licencia {
-    constructor(pNumLicencia, pTipoLicencia, pVencimientoLicencia) {
+    constructor(pUsuario,pNumLicencia, pTipoLicencia, pVencimientoLicencia) {
+        this._id =0;
+        this.usuario = pUsuario;
         this.numLicencia = pNumLicencia;
         this.tipoLicencia = pTipoLicencia;
         this.vencimiento = pVencimientoLicencia;

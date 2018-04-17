@@ -40,7 +40,8 @@
       setSucursalesData: _setSucursalesData,
       updateSucursalesData: _updateSucursalesData,
       buscarSucursalPorId: _buscarSucursalPorId,
-      setLicencias: _setLicenciaData,
+      setLicenciasData: _setLicenciaData,
+      getLicenciasData: _getLicenciasData,
     };
     return localAPI;
 
@@ -968,4 +969,28 @@
     return response;
   }
   
+  function _getLicenciasData () {
+    let listaLicencias = [];
+
+    let peticion = $.ajax ({
+      url: 'http://localhost:4000/api/getLicencias',
+      type: 'get',
+      contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+      dataType: 'json',
+      async: false,
+      data: {},
+    });
+
+    peticion.done (licencias => {
+      console.log ('Datos que vienen desde la base de datos');
+      console.log (licencias);
+      listaLicencias = licencias;
+    });
+    peticion.fail (() => {
+      listaLicencias = [];
+      console.log ('Ocurrió un error');
+    });
+
+    return listaLicencias;
+  }
 }) ();
