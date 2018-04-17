@@ -4,9 +4,9 @@
     .module('correos')
     .controller('controladorRegistrarClientes', controladorRegistrarClientes);
 
-  controladorRegistrarClientes.$inject = ['$http','$state', '$stateParams', '$location', 'servicioUsuarios', 'imageService', 'servicioSucursales', 'Upload'];
+  controladorRegistrarClientes.$inject = ['$http','$state', '$stateParams', '$location', 'servicioUsuarios', 'imageService', 'servicioSucursales', 'Upload', 'NgMap'];
 
-  function controladorRegistrarClientes($http ,$state, $stateParams, $location, servicioUsuarios, imageService, servicioSucursales, Upload) {
+  function controladorRegistrarClientes($http ,$state, $stateParams, $location, servicioUsuarios, imageService, servicioSucursales, Upload, NgMap) {
     let vm = this;
 
     //da error y no llena los data list cuando no hay un rol seleccionado
@@ -14,15 +14,28 @@
     vm.listaClientes = listarClientes();
     vm.nuevoCliente = {};
     
-  /*
-    var map;
+
+/*
+        var map;
     function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
         center: { lat: -34.397, lng: 150.644 },
         zoom: 8
       });
     }
-  */  
+
+    
+    NgMap.getMap("map").then(function (map) {
+      vm.map = map;
+    });
+
+    vm.callbackFunc = function (param) {
+      vm.latitude = vm.map.getCenter().lat();
+      vm.longitude = vm.map.getCenter().lng();
+    };
+    });*/
+    
+
 
 
     vm.provincias = $http({
