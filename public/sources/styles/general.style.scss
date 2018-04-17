@@ -264,6 +264,19 @@ border-top-color: #F9C16D;
 text-align:center;
 }
 
+.wrapperusuarios {
+  max-width: 1600px;
+  background-color: rgba(255,255,255,0.9);
+  margin: 20px auto;
+  overflow: none;
+  padding: 25px;
+  color: #4c4e56;
+}
+.wrapperusuarios img {
+  width: 25px;
+  height: 25px;
+  margin: 0 20px;
+}
 
 .imagenfondo{
   background-image: url(../../sources/images/fondo2.jpg);

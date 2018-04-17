@@ -7,10 +7,10 @@
       <div class="row">
         <div class="col-md-2">
           <div class="text-center">
-            <img src="../../sources/images/100.png" class="avatar img-circle" alt="fotodeperfil">
+            <img src="{{usuario.foto}}" class="img-circle" alt="fotodeperfil">
             <h6>Cambiar mi foto...</h6>
 
-            <input type="text" class="form-control" ng-model="vm.modificarCliente.foto" required>
+            <input type="file" class="form-control" ng-model="vm.modificarCliente.foto" required>
           </div>
         </div>
         <div class="col-md-5">
