@@ -39,6 +39,7 @@
       setSucursalesData: _setSucursalesData,
       updateSucursalesData: _updateSucursalesData,
       buscarSucursalPorId: _buscarSucursalPorId,
+      setLicencias: _setLicenciaData,
     };
     return localAPI;
 
@@ -936,6 +937,34 @@
     });
 
     return sucursal;
+  }
+
+  function _setLicenciaData (data) {
+    let response;
+
+    let peticion = $.ajax ({
+      url: 'http://localhost:4000/api/save_licencias',
+      type: 'post',
+      contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+      dataType: 'json',
+      async: false,
+      data: {
+        numLicencia : data.numLicencia,
+        tipoLicencia: data.tipoLicencia,
+        vencimiento : data.vencimiento,
+      },
+    });
+
+    peticion.done (datos => {
+      response = datos.msj;
+      console.log ('Petición realizada con éxito');
+    });
+    peticion.fail (error => {
+      response = error;
+      console.log ('Ocurrió un error');
+    });
+
+    return response;
   }
   
 }) ();
