@@ -20,7 +20,7 @@
       
         </thead>
         <tbody>
-          <tr ng-repeat="paquete in vm.listaPaquetes" ng-if="paquete.estadoTraslado === 'En Aduanas'">
+          <tr ng-repeat="paquete in vm.listaPaquetes" ng-if="paquete.estadoTraslado === 'En Sucursal' && paquete.sucursal === vm.rolSucursal">
             <td>{{paquete.usuario}}</td>
             <td>{{paquete.tracking}}</td>
             <td>{{paquete.distribuidor}}</td>

@@ -18,6 +18,7 @@
       setArticuloData: _setArticuloData,
       getPaquetesData: _getPaquetesData,
       setPaqueteData: _setPaqueteData,
+      updatePaqueteData: _updatePaqueteData,
       getConveniosData: _getConveniosData,
       setConvenioData: _setConvenioData,
       getTarjetasData: _getTarjetasData,
@@ -675,6 +676,45 @@
 
       return response;
     }
+
+    function _updatePaqueteData (data) {
+      let response;
+
+      let peticion = $.ajax ({
+        url: 'http://localhost:4000/api/update_paquete',
+        type: 'put',
+        contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+        dataType: 'json',
+        async: false,
+        data: {
+          usuario: data.usuario,
+          tracking: data.tracking,
+          distribuidor: data.distribuidor,
+          precio: data.precio,
+          peso: data.peso,
+          kilometro: data.kilometro,
+          tipoArticulo: data.tipoArticulo,
+          descripcion: data.descripcion,
+          sucursal: data.sucursal,
+          repartidor: data.repartidor,
+          estado: data.estado,
+          estadoTraslado: data.estadoTraslado,
+          listaEstados: data.listaEstados,
+        },
+      });
+
+      peticion.done((datos) => {
+        response = datos.success;
+        console.log('Petición realizada con éxito');
+      });
+      peticion.fail (error => {
+        response = error;
+        console.log ('Ocurrió un error');
+      });
+
+      return response;
+    }
+
 
     function _getPaquetesData () {
       let listaPaquetes = [];
