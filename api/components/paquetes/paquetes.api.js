@@ -66,3 +66,18 @@ module.exports.buscar_paquete_por_id = function(req, res){
           res.send(paquete);
       });
 };
+
+module.exports.agregar_articulo = function (req, res) {
+  console.log('tipoArticulo  ' + req.body.tipoArticulo);
+
+  PaqueteModel.update({ _id: req.body._id }, { $push: { 'tipoArticulo': { id: req.body.id } } },
+      function (error) {
+          if (error) {
+              res.json({ success: false, msg: 'No se ha actualizado el usuario debido al siguiente error: ' + handleError(error) });
+          } else {
+              res.json({ success: true, msg: 'El usuario ha sido modificado con éxito' });
+          }
+
+      });
+
+}
