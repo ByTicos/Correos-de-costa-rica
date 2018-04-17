@@ -250,6 +250,7 @@
             
               objPaqueteTemp.setId(objPaquete._id);
 
+              objPaqueteTemp.mostrarEstadoTraslado(objPaquete.estadoTraslado);
               
               listaPaquetes.push(objPaqueteTemp);
       
