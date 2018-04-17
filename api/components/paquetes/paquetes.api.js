@@ -33,7 +33,7 @@ module.exports.listarTodos = (req,res) => {
 };
 
 module.exports.actualizar = (req,res) => {
-  PaqueteModel.findByIdAndUpdate(req.body._id, { $set: req.body}, (err, paquete) => {
+  PaqueteModel.update({tracking: req.body.tracking},req.body, (err, paquete) => {
     if (err){
       res.json({success:false,msg:'No se ha actualizado.' + handleError(err)});
 
@@ -42,6 +42,8 @@ module.exports.actualizar = (req,res) => {
     }
   });
 };
+
+
 
 module.exports.agregar_estado = function (req, res) {
   console.log('listaEstados  ' + req.body.listaEstados);

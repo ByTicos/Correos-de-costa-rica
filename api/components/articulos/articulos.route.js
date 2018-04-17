@@ -29,6 +29,12 @@ router.route('/get_all_articulos')
 /**
  * Función que actualiza los usuarios
  */
+router.route('/buscar_articulo_id')
+  .post(function (req, res) {
+    articulos.buscar_articulo_por_id(req, res);
+  });
+
+
 router.route('/update_articulos')
   .put((req, res) => {
     articulos.actualizar(req,res);

@@ -41,6 +41,9 @@
       updateSucursalesData: _updateSucursalesData,
       buscarSucursalPorId: _buscarSucursalPorId,
       setLicencias: _setLicenciaData,
+      updateArticuloData: _updateArticuloData,
+      updatePaqueteData:_updatePaqueteData
+
     };
     return localAPI;
 
@@ -470,6 +473,65 @@
           estado: data.estado,
         },
       });
+       peticion.done (datos => {
+        response = datos.msj;
+        console.log ('Petición realizada con éxito');
+      });
+      peticion.fail (error => {
+        response = error;
+        console.log ('Ocurrió un error');
+      });
+
+      return response;
+    }
+
+
+    
+      function _updateArticuloData(data) {
+      let response;
+
+      let peticion = $.ajax ({
+        url: 'http://localhost:4000/api/update_articulos',
+        type: 'put',
+        contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+        dataType: 'json',
+        async: false,
+        data: {
+          id: data.id,
+          producto: data.producto,
+          impuesto: data.impuesto,
+          estado: data.estado,
+        },
+      });
+
+       peticion.done (datos => {
+        response = datos.msj;
+        console.log ('Petición realizada con éxito');
+      });
+      peticion.fail (error => {
+        response = error;
+        console.log ('Ocurrió un error');
+      });
+
+      return response;
+    }
+
+     function _agregarArticulo (pId, pArticulo) {
+      let peticion = $.ajax ({
+        url: 'http://localhost:4000/api/agregar_articulo',
+        type: 'post',
+        contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+        dataType: 'json',
+        async: false,
+        data: {
+          _id: pId,
+          id: pPaquete.id,
+        },
+      });
+
+      peticion.done (function (response) {});
+
+      peticion.fail (function () {});
     }
 
     // Inicio de tarjetas
@@ -718,6 +780,45 @@
 
       peticion.fail (function () {});
     }
+
+    function _updatePaqueteData(data) {
+       let response;
+
+      let peticion = $.ajax ({
+        url: 'http://localhost:4000/api/update_paquetes',
+        type: 'put',
+        contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+        dataType: 'json',
+        async: false,
+        data: {
+          usuario: data.usuario,
+          tracking: data.tracking,
+          distribuidor: data.distribuidor,
+          precio: data.precio,
+          peso: data.peso,
+          kilometro: data.kilometro,
+          tipoArticulo: data.tipoArticulo,
+          descripcion: data.descripcion,
+          sucursal: data.sucursal,
+          repartidor: data.repartidor,
+          estado: data.estado,
+          estadoTraslado: data.estadoTraslado,
+          listaEstados: data.listaEstados,
+        },
+      });
+
+      peticion.done (datos => {
+        response = datos.msj;
+        console.log ('Petición realizada con éxito');
+      });
+      peticion.fail (error => {
+        response = error;
+        console.log ('Ocurrió un error');
+      });
+
+      return response;
+    }
+
 
     //
     /*Final Paquetes*/

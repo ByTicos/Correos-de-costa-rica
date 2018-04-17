@@ -24,7 +24,7 @@ module.exports.listarTodos = (req,res) => {
 };
 
 module.exports.actualizar = (req,res) => {
-  ArticuloModel.findByIdAndUpdate(req.body._id, { $set: req.body}, (err, articulo) => {
+  ArticuloModel.update({id: req.body.id},req.body, (err, user) => {
     if (err){
       res.json({success:false,msg:'No se ha actualizado.' + handleError(err)});
 
@@ -33,3 +33,12 @@ module.exports.actualizar = (req,res) => {
     }
   });
 };
+
+
+module.exports.buscar_articulo_por_id = function(req, res){
+  ArticuloModel.findById({_id : req.body.id}).then(
+      function(articulo){
+          res.send(articulo);
+      });
+}
+

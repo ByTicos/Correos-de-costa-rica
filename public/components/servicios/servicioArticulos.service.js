@@ -11,7 +11,8 @@
       addArticulo: _addArticulo,
       getArticulo: _getArticulo,
       listarArticulosJson: _listarArticulosJson,
-      actualizarArticulo: _actualizarArticulo
+      actualizarArticulos: _actualizarArticulos
+
 
     };
     return publicAPI;
@@ -66,6 +67,13 @@
       return listaArticulos;
     }
   
+      function _actualizarArticulos(pArticulo) {
+            let modificacionExitosa = false;
+      
+            modificacionExitosa = dataStorageFactory.updateArticuloData(pArticulo);
+      
+            return modificacionExitosa;
+          }
 
   function _listarArticulosJson() {
     let listaArticulosCompleta = [
