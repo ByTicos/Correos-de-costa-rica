@@ -25,6 +25,7 @@
   padding: 10px 25px;
   margin-top: 20px;
   position: relative;
+
 }
 
 .creditCardForm .payment .form-group {
@@ -36,6 +37,7 @@
   line-height: 40px;
   height: auto;
   padding: 0 16px;
+  background-color: #dffff3;
 }
 
 .creditCardForm .owner {
@@ -70,8 +72,8 @@
   width: 100%;
   margin-top: 3px;
   font-size: 24px;
-  background-color: #4088ff;
-  color: white;
+  background-color: #074747;
+  color: rgb(240, 226, 226);
 }
 
 .creditCardForm .payment select {
@@ -260,4 +262,25 @@ border-radius: 5px;
 border: solid 1px #F9C16D;
 border-top-color: #F9C16D;
 text-align:center;
+}
+
+.wrapperusuarios {
+  max-width: 1600px;
+  background-color: rgba(255,255,255,0.9);
+  margin: 20px auto;
+  overflow: none;
+  padding: 25px;
+  color: #4c4e56;
+}
+.wrapperusuarios img {
+  width: 25px;
+  height: 25px;
+  margin: 0 20px;
+}
+
+.imagenfondo{
+  background-image: url(../../sources/images/fondo2.jpg);
+  background-repeat: no-repeat;
+  width: auto;
+  height: 800px;
 }

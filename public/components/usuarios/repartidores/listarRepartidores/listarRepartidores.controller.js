@@ -13,9 +13,9 @@
   
       
 
-    vm.editRepartidor = (pUsuario) =>{
-      $state.go('main.editarRepartidor', {objRepartidorTemp : JSON.stringify(pUsuario)});
-    };
+    // vm.editRepartidor = (pUsuario) =>{
+    //   $state.go('main.editarRepartidor', {objRepartidorTemp : JSON.stringify(pUsuario)});
+    // };
 
 
     function listarRepartidores(){

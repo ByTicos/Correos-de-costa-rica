@@ -1,5 +1,5 @@
 class Usuario {
-    constructor(pCedula, pFoto, pPrimerNombre, pSegundoNombre, pPrimerApellido, pSegundoApellido, pEmail, pTelefono, pfechaNacimiento, pProvincia, pCanton, pDistrito, pDireccionExacta, pContrasenna, pTipo, pSucursalAsignada, pPuesto, pVehiculo, pLicencia, pVencimientoLicencia, pTarjeta) {
+    constructor(pCedula, pFoto, pPrimerNombre, pSegundoNombre, pPrimerApellido, pSegundoApellido, pEmail, pTelefono, pfechaNacimiento, pProvincia, pCanton, pDistrito, pDireccionExacta, pContrasenna, pTipo, pSucursalAsignada, pPuesto, pVehiculo, pLicencia, pTarjeta) {
         this._id = 0;
         this.cedula = pCedula;
         this.foto = pFoto;
