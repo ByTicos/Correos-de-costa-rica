@@ -38,7 +38,7 @@
       
       objNuevoPaquete.mostrarEstadoTraslado('Asignado');
       objNuevoPaquete.addEstado(objEstado);
-      servicioUsuarios.actualizarEstadoPaquete(objNuevoPaquete);
+      servicioUsuarios.actualizarPaquete(objNuevoPaquete);
       location.reload();
   
       
