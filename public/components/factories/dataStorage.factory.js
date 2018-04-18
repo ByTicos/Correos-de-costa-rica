@@ -40,7 +40,7 @@
       setSucursalesData: _setSucursalesData,
       updateSucursalesData: _updateSucursalesData,
       buscarSucursalPorId: _buscarSucursalPorId,
-      setLicencias: _setLicenciaData,
+      setLicencias: _setLicenciaData
     };
     return localAPI;
 
