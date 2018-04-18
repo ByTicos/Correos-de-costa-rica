@@ -343,8 +343,17 @@
         <label for="">Dirección Exacta</label>
         <input type="text" class="form-control" ng-model="vm.nuevoCliente.direccionExacta" required>
         
+        <!--<button ng-click="vm.getLocation()">Try It</button>-->
+        
 
-        <ng-map center="9.939360, -84.105131" zoom="10"></ng-map>
+
+
+        <ng-map id="map" center='current-position'
+    geo-fallback-center="[40.74, -74.18]"
+    geo-callback="vm.callbackFunc('you')"
+    ></ng-map>
+
+
 
         <!--<div id="map"></div>
         <div map-lazy-load="https://maps.google.com/maps/api/js" map-lazy-load-params="{{googleMapsUrl}}"></div>
