@@ -9,10 +9,10 @@
       </div>
     </form>
     
-    <table class="table table-responsive table-hover">
-      <legend>Paquetes activos</legend>
-    
-      <thead>
+    <table class="table">
+      <h1>Paquetes activos</h1>
+      <hr/>
+      <thead class="table-primary">
         <th> <a class="puntero"  ng-click="columna = 'tracking'; reverse = !reverse">Nº Tracking</a></th>
         <th><a class="puntero"  ng-click="columna = 'distribuidor'; reverse = !reverse">Distribuidor</a></th>
         <th><a class="puntero" ng-click="columna = 'precio'; reverse = !reverse">Precio</a></th>
@@ -21,6 +21,7 @@
         <th><a class="puntero" ng-click="columna = 'descripcion'; reverse = !reverse">Descripción</a></th>
         <th>Estado</th>
         <th>Sucursal</th>
+        <th>Editar</th>
     
       </thead>
       <tbody>
@@ -35,7 +36,7 @@
           <td>{{paquete.sucursal}}</td>
 
           <td>
-            <button type="button" class="login login-submit" ng-click="vm.editPrealerta(paquete)"> Editar</button>
+            <button type="button" class="login login-submit" ng-click="vm.editPrealerta(paquete)"> <i class="far fa-edit"></i></button>
           </td>
         </tr>
       </tbody>

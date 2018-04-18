@@ -26,7 +26,7 @@
           <td>{{paquete.descripcion}}</td>
           <td>{{paquete.estadoTraslado}}</td>
           <td>{{paquete.sucursal}}</td>
-          <td><button class="btn" type="button" ng-click="vm.cambiarEstadoTraslado(paquete)"><img src="../../sources/images/actualizar.png"><small>Enviar a Correos</small> </button></td>
+          <td><button class="btn" type="button" ng-click="vm.cambiarEstadoTraslado(paquete)"><small>Enviar a Correos</small></button></td>
         </tr>
       </tbody>
     
@@ -44,7 +44,7 @@
         <th>Tipo de articulo</th>
         <th>Descripción</th>
         <th>Estado</th>
-    
+        <th>Sucursal</th>
       </thead>
       <tbody>
         <tr ng-repeat="paquete in vm.listaPaquetes" ng-if="paquete.estadoTraslado === 'En Sucursal'">
@@ -55,7 +55,7 @@
           <td>{{paquete.tipoArticulo.name}}</td>
           <td>{{paquete.descripcion}}</td>
           <td>{{paquete.estadoTraslado}}</td>
-          
+          <td>{{paquete.sucursal}}</td>
         </tr>
       </tbody>
     

@@ -9,14 +9,13 @@
   function controladorpaquetesEncargadoAduana($state, $stateParams, $location, servicioUsuarios) {
     let vm = this;
   
-    vm.listaPaquetes = servicioUsuarios.getAllPaquetes();
+    vm.listaPaquetes = servicioUsuarios.getPaquete();
 
     vm.cambiarEstadoTraslado = (pnuevoPaquete) => {
       
       let articulo = pnuevoPaquete.tipoArticulo;
 
 
- 
       let objNuevoPaquete = new Paquete(pnuevoPaquete.usuario, pnuevoPaquete.tracking, pnuevoPaquete.distribuidor, pnuevoPaquete.precio, pnuevoPaquete.peso, pnuevoPaquete.kilometro, pnuevoPaquete.tipoArticulo, pnuevoPaquete.descripcion, pnuevoPaquete.sucursal, pnuevoPaquete.repartidor);
       
       new Paquete(pnuevoPaquete.usuario, pnuevoPaquete.tracking, pnuevoPaquete.distribuidor, pnuevoPaquete.precio, pnuevoPaquete.peso , pnuevoPaquete.kilometro, pnuevoPaquete.tipoArticulo, pnuevoPaquete.descripcion, pnuevoPaquete.sucursal, pnuevoPaquete.repartidor);
@@ -34,7 +33,7 @@
       
       objNuevoPaquete.mostrarEstadoTraslado('En Sucursal');
       objNuevoPaquete.addEstado(objEstado);
-      servicioUsuarios.actualizarEstadoPaquete(objNuevoPaquete);
+      servicioUsuarios.actualizarPaquete(objNuevoPaquete);
       location.reload();
   
       
