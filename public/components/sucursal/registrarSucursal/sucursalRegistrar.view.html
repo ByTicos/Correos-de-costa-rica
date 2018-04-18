@@ -9,7 +9,7 @@
 
           <div class="col-md-6">
             <label for="sucursalID">ID Sucursal</label>
-            <input ng-model="vm.nuevaSucursal.id" id="sucursalID" class="form-control" maxlength="5" minlength="5" type="text" required>
+            <input ng-model="vm.nuevaSucursal.id" id="sucursalID" class="form-control" maxlength="5" minlength="1" type="text" required>
             <small class="form-text text-muted">Este campo es requerido</small>
 
             <label for="txtNombre">Nombre de la Sucursal</label>
@@ -24,6 +24,7 @@
             </datalist>
             <small class="form-text text-muted">Este campo es requerido</small>
           </div>
+          
           <div class="col-md-6">
 
 
@@ -47,6 +48,7 @@
               minlength="8" required>
             <small class="form-text text-muted">Este campo es requerido</small>
 
+        
 
           </div>
           <div class="col-md-6">
@@ -56,6 +58,14 @@
             <small class="form-text text-muted">Este campo es requerido</small>
 
             <button type="submit" class="btn btn-success">Registrar Sucursal</button>
+          </div>
+          <div class="col-md-3">
+            <label for="latitud">Latitud en Mapa</label>
+            <input type="text" id="latitud" class="form-control" name="latitud" ng-model="vm.nuevaSucursal.latitud" required>
+          </div>
+          <div class="col-md-3">
+            <label for="longitud">Longitud en Mapa</label>
+            <input type="text" id="longitud" class="form-control" name="longitud" ng-model="vm.nuevaSucursal.longitud" required>
           </div>
         </form>
 </section>

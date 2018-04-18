@@ -34,4 +34,5 @@ router.route('/update_tarjetas')
     tarjetas.actualizar(req,res);
 });
 
+
 module.exports = router;

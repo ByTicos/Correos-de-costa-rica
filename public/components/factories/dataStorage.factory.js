@@ -40,6 +40,7 @@
       setSucursalesData: _setSucursalesData,
       updateSucursalesData: _updateSucursalesData,
       buscarSucursalPorId: _buscarSucursalPorId,
+      buscarTarjetaId :_buscarTarjetaId
     };
     return localAPI;
 
@@ -858,16 +859,18 @@
       dataType: 'json',
       async: false,
       data: {
-        'id': data.id,
-        'nombre': data.nombre,
-        'provincia': data.provincia,
-        'canton': data.canton,
-        'distrito': data.distrito,
-        'telefono': data.telefono,
-        'horario': data.horario,
-        'estado': data.estado,
+        id: data.id,
+        nombre: data.nombre,
+        provincia: data.provincia,
+        canton: data.canton,
+        distrito: data.distrito,
+        telefono: data.telefono,
+        horario: data.horario,
+        latitud: data.latitud,
+        longitud: data.longitud,
+        estado: data.estado,
         
-      }
+      },
     });
 
     peticion.done((datos) => {
@@ -899,6 +902,8 @@
         'distrito': data.distrito,
         'telefono': data.telefono,
         'horario': data.horario,
+        'latitud': data.latitud,
+        'longitud': data.longitud,
         'estado': data.estado,
       }
     });
@@ -937,6 +942,29 @@
     });
 
     return sucursal;
+  }
+
+  function _buscarTarjetaId(data) {
+    let tarjetaID = [];
+    let peticion = $.ajax ({
+      url: 'http://localhost:4000/api/buscar_tarjeta_id',
+      type: 'get',
+      contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+      dataType: 'json',
+      async: false,
+      data: {
+        'id': data.id,
+      },
+    });
+
+    peticion.done (function (response) {
+      console.log('tarjetaID', tarjetaID);
+      tarjetaID = response;
+    });
+
+    peticion.fail (function () {});
+
+    return tarjetaID;
   }
   
 }) ();

@@ -11,18 +11,31 @@
     
          vm.listaTarjeta = ListarTarjetas();
 
-        function ListarTarjetas(){
-          let usuarios = getUsuarios();
+        function ListarTarjetas() {
+          // let usuarios = servicioUsuarios.getUsuarios();
+          let usuariosDB = servicioUsuarios.getUsuarios();
+          let usuarioSession = JSON.parse(sessionStorage.getItem('sesion'));
+          let tarjetasDB = servicioUsuarios.getTarjeta();
+          let listaTarjeta = [];
           
-          
-        }
-           = servicioUsuarios.getTarjeta();
-         console.log('servicioUsuarios.getTarjeta()', servicioUsuarios.getTarjeta());
+          for (let i = 0; i < usuariosDB.length; i++) {
+            if (usuariosDB[i].correo == usuarioSession.correo) {
+              for (let j = 0; j < tarjetasDB.length; j++) {
+                if (tarjetasDB[j].id == usuariosDB[i].listaTarjetas.id){
+                  
+                  listaTarjeta.push(tarjetasDB[j]);
+                }
+              }
+            }
 
-         vm.editTarjeta = (pTarjeta) => {
-           $state.go('main.editarTarjetas', {objTarjetaTemp: JSON.stringify(pTarjeta)});
-         };
-         
+
+
+          }
+          return listaTarjeta;
+
+        }
+
+
 
         
       }

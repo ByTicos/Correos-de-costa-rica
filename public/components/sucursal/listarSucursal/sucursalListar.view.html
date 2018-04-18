@@ -32,6 +32,7 @@
           <th>Ubicacion</th>
           <th>Telefono</th>
           <th>Horario</th>
+          <th>Latitud / Longitud</th>
           <th>Editar</th>
         </tr>
       </thead>
@@ -42,6 +43,7 @@
           <td>{{sucursal.provincia}} <p> {{sucursal.canton}} {{sucursal.distrito}}</p></td>
           <td>{{sucursal.telefono}}</td>
           <td>{{sucursal.horario}}</td>
+          <td>{{sucursal.latitud}} / {{sucursal.longitud}}</td>
           <td><button type="button" ng-click="vm.editSucursal(sucursal)">Editar</button></td>
         </tr>
       </tbody>
