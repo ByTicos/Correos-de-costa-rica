@@ -9,7 +9,14 @@
         let vm = this;
 
     
-         vm.listaTarjeta = servicioUsuarios.getTarjeta();
+         vm.listaTarjeta = ListarTarjetas();
+
+        function ListarTarjetas(){
+          let usuarios = getUsuarios();
+          
+          
+        }
+           = servicioUsuarios.getTarjeta();
          console.log('servicioUsuarios.getTarjeta()', servicioUsuarios.getTarjeta());
 
          vm.editTarjeta = (pTarjeta) => {
