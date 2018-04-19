@@ -11,7 +11,6 @@
     let vm = this;
 
     vm.nuevoUsuario = {};
-    servicioSucursales.listarSucursalesJson();
     vm.listaSucursales = servicioSucursales.getSucursal();
     console.log('Prueba', servicioSucursales.getSucursal());
     vm.cloudObj = imageService.getConfiguration();
