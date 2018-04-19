@@ -165,7 +165,7 @@ class Licencia {
     }
 }
 class Sucursal {
-    constructor(pId, pNombre, pProvincia, pCanton, pDistrito, pTelefono, pHorario, pEstado){
+    constructor(pId, pNombre, pProvincia, pCanton, pDistrito, pTelefono, pHorario, pLat, pLong, pEstado){
        this.id = pId;
        this.nombre = pNombre;
        this.provincia = pProvincia;
@@ -173,7 +173,10 @@ class Sucursal {
        this.distrito = pDistrito;
        this.telefono = pTelefono;
        this.horario = pHorario;
+       this.latitud = pLat;
+       this.longitud = pLong;
        this.estado = pEstado || 'activo';
+  
     }
 
     cambiarEstadoDeActividadSucursal(pEstado){

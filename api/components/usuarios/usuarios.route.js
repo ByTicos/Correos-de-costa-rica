@@ -56,4 +56,9 @@ router.route('/agregar_paquete')
   .post(function (req, res) {
     users.agregar_paquete(req, res);
   });
+
+  router.route('/buscar_tarjeta_id')
+  .get(function(req, res){
+      users.buscar_tarjeta_por_id(req, res);
+  });
 module.exports = router;

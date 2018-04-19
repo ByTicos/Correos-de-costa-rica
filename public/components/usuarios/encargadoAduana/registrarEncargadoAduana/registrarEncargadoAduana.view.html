@@ -4,7 +4,7 @@
     <div class="creditCardForm">
 
                     <div class="heading">
-                            <h1>Registro de encargado de aduanas</h1>
+                            <h1>Registro de Encargado de Aduana</h1>
                     </div>  
                     <hr>
             <div class="payment">
@@ -16,7 +16,7 @@
                 
                     </div>
                     <div class="form-group col-12">
-                        <label for="">Foto</label>
+                        <label for="">Fotografía</label>
                         <input type="file" ng-model="vm.nuevoUsuario.foto" img-upload required>
                     </div>
                     <div class="form-group col-6">
@@ -43,24 +43,9 @@
                         <label for="">Teléfono</label>
                         <input type="text" class="form-control" ng-model="vm.nuevoUsuario.telefono">
                     </div>
-                    <div class="form-group col-6">
+                    <div class="form-group col-12">
                         <label for="">Fecha de nacimiento</label>
                         <input type="date" class="form-control" ng-model="vm.nuevoUsuario.fechaNacimiento">
-                    </div>
-
-                <div class="form-group col-6">
-                    <select class="form-control" ng-model="vm.nuevoUsuario.puesto">
-                        <option value="">Seleccione su puesto en aduana</option>
-                        <option value="Despachador">Despachador</option>
-                        <option value="Cajero">Cajero</option>
-                        <option value="Agente">Agente Aduanal</option>
-                        <option value="Supervisor">Supervisor Aduanal</option>
-                    </select>
-                </div>
-
-                    <div class="form-group col-6">
-                        <label for="">Contraseña</label>
-                        <input type="text" class="form-control" ng-model="vm.nuevoUsuario.contrasenna">
                     </div>
 
                     <div class="form-group col-6">
@@ -94,8 +79,21 @@
                         <input type="text" class="form-control" ng-model="vm.nuevoUsuario.direccionExacta" required>
                     </div>
 
+                    <select ng-model="vm.nuevoUsuario.puesto">
+                        <option value="">Seleccione su puesto en aduana</option>
+                        <option value="Despachador">Despachador</option>
+                        <option value="Cajero">Cajero</option>
+                        <option value="Agente">Agente Aduanal</option>
+                        <option value="Supervisor">Supervisor Aduanal</option>
+                    </select>
+
+                    <div class="form-group col-6">
+                        <label for="">Contraseña</label>
+                        <input type="text" class="form-control" ng-model="vm.nuevoUsuario.contrasenna">
+                    </div>
+
                     <div class="form-group" id="pay-now">
-                            <button type="submit" class="btn btn-default btnRegCliente" id="confirm-purchase">Registrar Encargado de aduana </button>
+                            <button type="submit" class="btn btn-default btnRegCliente" id="confirm-purchase">Registrar Encargado de Aduana </button>
                           </div>
 
 

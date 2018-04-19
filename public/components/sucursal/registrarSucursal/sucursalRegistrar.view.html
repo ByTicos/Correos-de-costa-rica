@@ -1,26 +1,15 @@
 <div navegacion-Principal></div>
 <div menu-Lateral></div>
-<div id="dashboard">
+<section id="dashboard">
 
-    <section class="container-fluid">
-        <div class="creditCardForm">
-
-            <div class="heading">
-                <h1>Registro de sucursales</h1>
-        </div>  
-        <hr class="hrCliente">
-        <div class="payment">
-
-        
-
-  <div id="viewonly" class="form-group container-fluid wrapper">
+  <div id="viewonly" class="container-fluid wrapper">
     <div class="formregistro-page">
       <div class="form">
         <form ng-submit="vm.registrarSucursal(vm.nuevaSucursal)" name="formRegistroSucursal" novalidate autocomplete="on" class="row">
 
-          <div class="form-group col-md-6">
+          <div class="col-md-6">
             <label for="sucursalID">ID Sucursal</label>
-            <input ng-model="vm.nuevaSucursal.id" id="sucursalID" class="form-control" maxlength="5" minlength="5" type="text" required>
+            <input ng-model="vm.nuevaSucursal.id" id="sucursalID" class="form-control" maxlength="5" minlength="1" type="text" required>
             <small class="form-text text-muted">Este campo es requerido</small>
 
             <label for="txtNombre">Nombre de la Sucursal</label>
@@ -31,13 +20,13 @@
             <input list="sltProvincia" class="form-control" name="sltProvincia" ng-change="vm.rellenarCantones(vm.nuevaSucursal.provincia)"
               ng-model="vm.nuevaSucursal.provincia" required>
             <datalist id="sltProvincia">
-              <option ng-repeat="provincia in vm.provincias track by provincia._id" value="{{provincia.name}}">
+              <option ng-repeat="provincia in vm.provincias" value="{{provincia.name}}">
             </datalist>
             <small class="form-text text-muted">Este campo es requerido</small>
           </div>
+          
+          <div class="col-md-6">
 
-
-          <div class="col-md-6 form-group">
 
             <label for="sltCanton">Cantón</label>
             <input list="sltCanton" class="form-control" name="sltCanton" ng-change="vm.rellenarDistrito(vm.nuevaSucursal.canton)" ng-model="vm.nuevaSucursal.canton"
@@ -59,9 +48,10 @@
               minlength="8" required>
             <small class="form-text text-muted">Este campo es requerido</small>
 
-          </div>
+        
 
-          <div class="col-md-6 form-group">
+          </div>
+          <div class="col-md-6">
             <label for="txtHorario">Horarios de Atencion</label>
             <textarea type="text" id="txtHorario" class="form-control" name="txtHorario" ng-model="vm.nuevaSucursal.horario" style="height:100px"
               required></textarea>
@@ -69,9 +59,13 @@
 
             <button type="submit" class="btn btn-success">Registrar Sucursal</button>
           </div>
+          <div class="col-md-3">
+            <label for="latitud">Latitud en Mapa</label>
+            <input type="text" id="latitud" class="form-control" name="latitud" ng-model="vm.nuevaSucursal.latitud" required>
+          </div>
+          <div class="col-md-3">
+            <label for="longitud">Longitud en Mapa</label>
+            <input type="text" id="longitud" class="form-control" name="longitud" ng-model="vm.nuevaSucursal.longitud" required>
+          </div>
         </form>
-
-      </div>
-
-   </section>
-  </div>
+</section>

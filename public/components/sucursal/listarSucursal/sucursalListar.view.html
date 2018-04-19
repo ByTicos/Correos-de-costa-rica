@@ -32,20 +32,48 @@
           <th>Ubicacion</th>
           <th>Telefono</th>
           <th>Horario</th>
+          <th>Latitud / Longitud</th>
           <th>Editar</th>
         </tr>
       </thead>
       <tbody>
-        <tr ng-repeat="sucursal in vm.listaSucursales | filter:buscarSucursal">
+        <tr ng-repeat="sucursal in vm.listaSucursales | filter:buscarSucursal" ng-if="sucursal.estado === 'activo'">
           <td>{{sucursal.id}}</td>
           <td>{{sucursal.nombre}}</td>
           <td>{{sucursal.provincia}} <p> {{sucursal.canton}} {{sucursal.distrito}}</p></td>
           <td>{{sucursal.telefono}}</td>
           <td>{{sucursal.horario}}</td>
-          <td><button type="button" ng-click="vm.editSucursal(sucursal)">Editar</button></td>
+          <td>{{sucursal.latitud}} / {{sucursal.longitud}}</td>
+          <td><button type="button" ng-click="vm.editSucursal(sucursal)"><i class="far fa-edit"></i></button></td>
+  
+        </tr>
+      </tbody>
+    </table>
+    <h1>Sucursales Desactivadas</h1>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nombre</th>
+          <th>Ubicacion</th>
+          <th>Telefono</th>
+          <th>Horario</th>
+          <th>Latitud / Longitud</th>
+          <th>Editar</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="sucursal in vm.listaSucursales | filter:buscarSucursal" ng-if="sucursal.estado === 'inactivo'">
+          <td>{{sucursal.id}}</td>
+          <td>{{sucursal.nombre}}</td>
+          <td>{{sucursal.provincia}} <p> {{sucursal.canton}} {{sucursal.distrito}}</p></td>
+          <td>{{sucursal.telefono}}</td>
+          <td>{{sucursal.horario}}</td>
+          <td>{{sucursal.latitud}} / {{sucursal.longitud}}</td>
+          <td><button type="button" ng-click="vm.editSucursal(sucursal)"><i class="far fa-edit"></i>Editar</button></td>
+          
         </tr>
       </tbody>
     </table>
   </div>
 </section>   
-

@@ -144,7 +144,6 @@
 
     };
 
-    servicioSucursales.listarSucursalesJson();
     vm.listaSucursales = servicioSucursales.getSucursal();
 
     vm.cloudObj = imageService.getConfiguration();

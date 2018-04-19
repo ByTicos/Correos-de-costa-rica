@@ -41,7 +41,9 @@
             solicitarEnvioPaqueteConvenio:_solicitarEnvioPaqueteConvenio,
             getAllPaquetesConvenio:_getAllPaquetesConvenio,
             addEstado:_addEstado,
-            agregarEstado:_agregarEstado
+            agregarEstado:_agregarEstado,
+            getTarjetaID: _getTarjetaID
+           
             }
         return publicAPI
         
@@ -61,8 +63,8 @@
                 console.log('objUsuario',objUsuario.listaPaquetes);
                     let objUsuarioTemp = new Usuario(objUsuario.cedula, objUsuario.foto, objUsuario.primerNombre, objUsuario.segundoNombre, objUsuario.primerApellido, objUsuario.segundoApellido, objUsuario.correo, objUsuario.telefono, objUsuario.fechaNacimiento, objUsuario.provincia, objUsuario.canton, objUsuario.distrito, objUsuario.direccionExacta, objUsuario.contrasenna,objUsuario.tipo, objUsuario.sucursalAsignada, objUsuario.puesto, objUsuario.vehiculo, []);
                     objUsuarioTemp.cambiarEstado(objUsuario.estado);
-                    objUsuarioTemp.setId(objUsuario._id);
-
+                    objUsuarioTemp.setId(objUsuario._id),
+                    objUsuarioTemp.listaTarjetas = objUsuario.listaTarjetas;
 
                     objUsuario.listaLicencias.forEach(objLicencia => {
 
@@ -72,11 +74,6 @@
 
 
 
-                    objUsuario.listaTarjetas.forEach(objTarjeta => {
-                        let objTarjetaTemp = new Tarjeta(objTarjeta.id, objTarjeta.nombre, objTarjeta.numero, objTarjeta.expiracion, objTarjeta.cvv, objTarjeta.estado);
-
-                        objUsuarioTemp.registrarTarjeta(objTarjetaTemp);
-                    });
 
                     // objUsuario.listaPaquetes.forEach(objPaquete => {
                     //     let objPaqueteTemp = new Paquete(objPaquete.usuario, objPaquete.tracking, objPaquete.distribuidor, objPaquete.precio,objPaquete.peso, objPaquete.Kilometro,objPaquete.tipoArticulo, objPaquete.descripcion, objPaquete.sucursal, objPaquete.repartidor);
@@ -193,14 +190,6 @@
             return modificacionExitosa;
           }
 
-          function _actualizarPaquete(pPaquete) {
-            let modificacionExitosa = false;
-      
-            modificacionExitosa = dataStorageFactory.updatePaqueteData(pPaquete);
-      
-            return modificacionExitosa;
-          }
-
         //    function encontrarTraking(pNuevoPaquete) {
         //        let listaUsuarios = _getUsuarios ();
         //        let trackingEncontrado;
@@ -263,7 +252,6 @@
             
               objPaqueteTemp.setId(objPaquete._id);
 
-              objPaqueteTemp.mostrarEstadoTraslado(objPaquete.estadoTraslado);
               
               listaPaquetes.push(objPaqueteTemp);
       
@@ -305,21 +293,21 @@
         }
 
 
-        // function _actualizarPaquete(pObjpaquete) {
-        //     let listaUsuarios = _getUsuarios();
-        //     let sesion = JSON.parse(sessionStorage.getItem('sesion'));
-        //     for (let i = 0; i < listaUsuarios.length; i++) {
-        //         if(listaUsuarios[i].correo == sesion.correo){
-        //             for (let j = 0; j < listaUsuarios[i].listaPaquetes.length; j++) {
-        //                 if (listaUsuarios[i].listaPaquetes[j].tracking == pObjpaquete.tracking) {
-        //                     listaUsuarios[i].listaPaquetes[j] = pObjpaquete;
-        //                 }
-        //             }
-        //         }
-        //     }
-        //     actualizarLocal(listaUsuarios);
+        function _actualizarPaquete(pObjpaquete) {
+            let listaUsuarios = _getUsuarios();
+            let sesion = JSON.parse(sessionStorage.getItem('sesion'));
+            for (let i = 0; i < listaUsuarios.length; i++) {
+                if(listaUsuarios[i].correo == sesion.correo){
+                    for (let j = 0; j < listaUsuarios[i].listaPaquetes.length; j++) {
+                        if (listaUsuarios[i].listaPaquetes[j].tracking == pObjpaquete.tracking) {
+                            listaUsuarios[i].listaPaquetes[j] = pObjpaquete;
+                        }
+                    }
+                }
+            }
+            actualizarLocal(listaUsuarios);
 
-        // };
+        };
 
 
         function _actualizarEstadoPaquete(pObjpaquete) {
@@ -413,6 +401,14 @@
         }
         
 
+        function _getTarjetaID(pId) {
+
+
+            let tarjetaID = dataStorageFactory.buscarTarjetaId(pId);
+
+            return tarjetaID;
+        };
+        
         function _addTarjeta(pNuevaTarjeta) {
             let listaUsuarios = _getUsuarios();
             let sesion = JSON.parse(sessionStorage.getItem('sesion'));
@@ -479,20 +475,11 @@
         }; 
 
         function _actualizarTarjeta(pObjTarjeta) {
-            let listaUsuarios = _getUsuarios();
-            let sesion = JSON.parse(sessionStorage.getItem('sesion'));
+            let modificacionExitosa = false;
 
-            for (let i = 0; i < listaUsuarios.length; i++) {
-                if(listaUsuarios[i].correo == sesion.correo){
-                    for (let j = 0; j < listaUsuarios[i].listaTarjetas.length; j++) {
-                        if (listaUsuarios[i].listaTarjetas[j].id == pObjTarjeta.id) {
-                        listaUsuarios[i].listaTarjetas[j] = pObjTarjeta;
-                            }
-                        }   
-                    }
+            modificacionExitosa = dataStorageFactory.updateTarjetasData(pObjTarjeta)
 
-                }
-                actualizarLocal(listaUsuarios);
+            return modificacionExitosa;
             };
             
              function _addEstado(pEstado) {
@@ -524,5 +511,8 @@
             }
 
         };
+
+
+    
         
 })();

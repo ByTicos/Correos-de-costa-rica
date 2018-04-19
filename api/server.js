@@ -67,6 +67,7 @@ const index = require('./index'),
       convenios = require('./components/convenios/convenios.route'),
       paquetes = require ('./components/paquetes/paquetes.route'),
       tarjetas = require('./components/tarjetas/tarjetas.route'),
+      sucursales = require('./components/sucursales/sucursales.route'),
       nodeMailer = require('./components/mail/mail.route'),
       paquetesConvenio = require('./components/paquetesConvenio/paquetesConvenio.route');
       
@@ -82,6 +83,7 @@ app.use('/api', entidades);
 app.use('/api', convenios);
 app.use ('/api', paquetes);
 app.use('/api', tarjetas);
+app.use('/api', sucursales);
 app.use('/api', nodeMailer);
 app.use('/api', paquetesConvenio);
 app.use('/', index);
