@@ -40,7 +40,9 @@
             solicitarEnvioPaqueteConvenio:_solicitarEnvioPaqueteConvenio,
             getAllPaquetesConvenio:_getAllPaquetesConvenio,
             addEstado:_addEstado,
-            agregarEstado:_agregarEstado
+            agregarEstado:_agregarEstado,
+            getTarjetaID: _getTarjetaID
+           
             }
         return publicAPI
         
@@ -399,6 +401,14 @@
         }
         
 
+        function _getTarjetaID(pId) {
+
+
+            let tarjetaID = dataStorageFactory.buscarTarjetaId(pId);
+
+            return tarjetaID;
+        };
+        
         function _addTarjeta(pNuevaTarjeta) {
             let listaUsuarios = _getUsuarios();
             let sesion = JSON.parse(sessionStorage.getItem('sesion'));
@@ -510,5 +520,8 @@
             }
 
         };
+
+
+    
         
 })();

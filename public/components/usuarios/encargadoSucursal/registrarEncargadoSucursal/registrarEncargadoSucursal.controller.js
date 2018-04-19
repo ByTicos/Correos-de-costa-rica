@@ -10,7 +10,7 @@
     let vm = this;
 
     vm.nuevoUsuario = {};
-    servicioSucursales.listarSucursalesJson();
+    servicioSucursales.getSucursal();
     vm.listaSucursales = servicioSucursales.getSucursal();
     console.log('Prueba', servicioSucursales.getSucursal());
 

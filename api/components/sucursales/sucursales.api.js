@@ -9,6 +9,8 @@ module.exports.registrar = (req, res) => {
     distrito           :  req.body.distrito,
     telefono           :  req.body.telefono,
     horario           :  req.body.horario,
+    latitud           : req.body.latitud,
+    longitud          : req.body.longitud,
     estado           :  req.body.estado,
   });
 
@@ -21,13 +23,13 @@ module.exports.registrar = (req, res) => {
   });
 };
 
-module.exports.listarTodos = (req,res) => {
+module.exports.get_all_sucursales = (req,res) => {
   SucursalModel.find().then((sucursales) => {
     res.send(sucursales);
   });
 };
 
-module.exports.actualizar = (req,res) => {
+module.exports.actualizarSucursal = (req,res) => {
   SucursalModel.findByIdAndUpdate(req.body._id, { $set: req.body}, (err, sucursal) => {
     if (err){
       res.json({success:false,msg:'No se ha actualizado.' + handleError(err)});
@@ -38,7 +40,7 @@ module.exports.actualizar = (req,res) => {
   });
 };
 
-module.exports.buscar_sucursal_por_id = function(req, res){
+module.exports.buscar_sucursal_id = function(req, res){
   SucursalModel.findById({_id : req.body.id}).then(
       function(sucursal){
           res.send(sucursal);
