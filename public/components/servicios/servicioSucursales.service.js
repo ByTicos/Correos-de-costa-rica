@@ -40,19 +40,11 @@
 
               let objSucursalTemp = new Sucursal(objSucursal.id, objSucursal.nombre, objSucursal.provincia, objSucursal.canton, objSucursal.distrito, objSucursal.telefono, objSucursal.horario, objSucursal.latitud, objSucursal.longitud, objSucursal.estado)
 
-        if(listaSucursalLocal == null){
-            listaSucursal = [];
-        }else{
-            listaSucursalLocal.forEach(obj => {
-                let objSucursal = new Sucursal (obj.id, obj.nombre, obj.provincia, obj.canton, obj.distrito, obj.telefono, obj.horario, obj.estado);
+            listaSucursal.push(objSucursalTemp);
 
-                listaSucursal.push(objSucursal);
-            });
+          });
 
-            
-        }
-        console.log(listaSucursal);
-        return listaSucursal;
+          return listaSucursal;
         
     };
     
@@ -234,7 +226,7 @@
     // function actualizarSucursalLocal(plistaActualizadaSucursal) {
         
     //     localStorage.setItem('sucursalLS', JSON.stringify(plistaActualizadaSucursal));
-    // }
+    }
 
-  }
+  
 })();
