@@ -4,10 +4,13 @@
     .module('correos')
     .controller('controladorModificarEncargadoAduana', controladorModificarEncargadoAduana);
 
-    controladorModificarEncargadoAduana.$inject = ['$stateParams', '$state', '$location', 'servicioUsuarios'];
+    controladorModificarEncargadoAduana.$inject = [['$stateParams', '$state', '$location', 'servicioUsuarios', 'servicioSucursales'];
 
-  function controladorModificarEncargadoAduana($stateParams, $state, $location, servicioUsuarios) {
+  function controladorModificarEncargadoAduana($stateParams, $state, $location, servicioUsuarios, servicioSucursales) {
     let vm = this;
+
+    servicioSucursales.listarSucursalesJson();
+    vm.listaSucursales = servicioSucursales.getSucursal();
 
     vm.regresar = () => {
       $state.go('main.listarEncargadoAduana');

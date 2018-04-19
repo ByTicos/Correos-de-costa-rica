@@ -4,7 +4,7 @@
     .module('correos')
     .controller('controladorListarEncargadoAduana', controladorListarEncargadoAduana);
     
-    controladorListarEncargadoAduana.$inject = ['$state', '$stateParams', '$location', 'servicioUsuarios'];
+    controladorListarEncargadoAduana.$inject = ['$state', '$stateParams', '$location', 'servicioUsuarios', 'servicioSucursales'];
 
   function controladorListarEncargadoAduana($state, $stateParams, $location, servicioUsuarios) {
     let vm = this;

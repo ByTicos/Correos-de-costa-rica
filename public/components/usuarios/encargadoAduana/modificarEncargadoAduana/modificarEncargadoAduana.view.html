@@ -1,50 +1,58 @@
 
+<section id="dashboard">
 
-<div id="dashboard">
+<section id="container-fluid">
+
+        <div class="creditCardForm">
+
+                <div class="heading">
+                        <h1>Modificar Encargado de Aduana</h1>
+                    </div>
+                    <hr>
     
 
-        <section class="container">
+        <div class="payment">
                 <form action="" class="form-horizontal" ng-submit="vm.editUsuarios(vm.editarUsuarios)">
             
-                    <div class="form-group">
+                    <div class="form-group col-6">
                         <label for="">Cédula</label>
                         <input type="text" class="form-control" ng-model="vm.editarUsuarios.cedula" required>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group col-6">
                         <label for="">Foto</label>
                         <input type="text" class="form-control" ng-model="vm.editarUsuarios.foto">
                     </div>
-                    <div class="form-group">
+                    <div class="form-group col-6">
                         <label for="">Primer nombre</label>
                         <input type="text" class="form-control" ng-model="vm.editarUsuarios.primerNombre" required>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group col-6">
                         <label for="">Segundo nombre</label>
                         <input type="text" class="form-control" ng-model="vm.editarUsuarios.segundoNombre">
                     </div>
-                    <div class="form-group">
+                    <div class="form-group col-6">
                         <label for="">Primer apellido</label>
                         <input type="text" class="form-control" ng-model="vm.editarUsuarios.primerApellido" required>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group col-6">
                         <label for="">Segundo apellido</label>
                         <input type="text" class="form-control" ng-model="vm.editarUsuarios.segundoApellido">
                     </div>
-                    <div class="form-group">
+                    <div class="form-group col-6">
                         <label for="">Correo electrónico</label>
                         <input type="text" class="form-control" ng-model="vm.editarUsuarios.correo" disabled>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group col-6">
                         <label for="">Teléfono</label>
                         <input type="text" class="form-control" ng-model="vm.editarUsuarios.telefono">
                     </div>
                     
-                    <div class="form-group">
+                    <div class="form-group col-6">
                         <label for="">Fecha de nacimiento</label>
                         <input type="date" class="form-control" ng-model="vm.editarUsuarios.fechaNacimiento">
                     </div>
 
-                    <select ng-model="vm.editarUsuarios.puesto">
+                    <select class="col-6" ng-model="vm.editarUsuarios.puesto">
                         <option value="">Seleccione su puesto en aduana</option>
                         <option value="Despachador">Despachador</option>
                         <option value="Cajero">Cajero</option>
@@ -52,29 +60,33 @@
                         <option value="Supervisor">Supervisor Aduanal</option>
                     </select>
                     
-                    <div class="form-group">
+                    <div class="form-group col-6">
                         <label for="">Contraseña</label>
                         <input type="text" class="form-control" ng-model="vm.editarUsuarios.contrasenna">
                     </div>
     
+                    <div class="row col-12">
+                        <div class="col-6">
+                            <button class="btn btn-default" type="submit">Finalizar Edición</button>
+                        </div>
+                        <div class="col-6">
+                            <button class="btn btn-default" type="button" ng-click="vm.regresar()">Regresar</button>
+                        </div>
+                    </div>
 
-                    <div class="row">
-                        <div class="col-md-6">
-                            <button class="btn buttonall" type="submit">Finalizar Edición</button>
-                        </div>
-                        <div class="col-md-6">
-                            <button class="btn buttonall" type="button" ng-click="vm.regresar()">Regresar</button>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <button type="button" ng-click="vm.eliminarUsuario('inactivo')">Desactivar</button>
-                    </div>
-                    <div class="col-md-6">
-                        <button type="button" ng-click="vm.eliminarUsuario('activo')">Activar</button>
-                    </div>
+ 
                 </form>
-            </section>
-</div>
+                <div class="row col-12">
+                        <div class="col-6">
+                            <button class="btn btn-danger offset-4" type="button" ng-click="vm.eliminarUsuario('inactivo')">Desactivar</button>
+                        </div>
+                        <div class="col-6">
+                            <button class="btn btn-danger offset-4" type="button" ng-click="vm.eliminarUsuario('activo')">Activar</button>
+                        </div>
+                    </div>
+          </div>
+    </div>
 
+ </section>
 
-
+</section>
