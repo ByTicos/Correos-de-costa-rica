@@ -16,7 +16,7 @@
         $state.go('main.editarArticulo', {objArticuloTemp : JSON.stringify(pArticulo)});
         };
         
-        //servicioArticulos.listarArticulosJson();
+        servicioArticulos.listarArticulosJson();
         listarArticulo();
         
         
