@@ -40,7 +40,7 @@ router.route('/agregar_estado')
 /**
  * Función que actualiza los usuarios
  */
-router.route('/update_paquete')
+router.route('/update_paquetes')
   .put((req, res) => {
     paquetes.actualizar(req,res);
 });
