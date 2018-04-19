@@ -19,7 +19,7 @@
       </datalist>
       <small class="form-text text-muted">Este campo es requerido</small>
     </div>
-    
+
     <div class="col-md-6">
 
 
@@ -43,7 +43,7 @@
         minlength="8" required>
       <small class="form-text text-muted">Este campo es requerido</small>
 
-  
+
 
     </div>
     <div class="col-md-6">
@@ -59,12 +59,17 @@
         <label for="longitud">Longitud en Mapa</label>
         <input type="text" id="longitud" class="form-control" name="longitud" ng-model="vm.editarSucursal.longitud" required>
       </div>
-      
+
       <button type="submit" class="btn btn-success">Editar Sucursal</button>
     </div>
-
+    <button type="button" class="" ng-click="vm.cambiarEstadoSucursal('inactivo')">
+      <i class="far fa-times-circle"></i>Desactivar</button>
+    <td>
+      <button type="button" class="" ng-click="vm.cambiarEstadoSucursal('activo')">
+        <i class="far fa-check-circle"></i>Activar</button>
+    </td>
 
 
   </form>
 
-  </div>
+</div>

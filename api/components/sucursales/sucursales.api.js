@@ -30,7 +30,7 @@ module.exports.get_all_sucursales = (req,res) => {
 };
 
 module.exports.actualizar_sucursal = (req,res) => {
-  SucursalModel.update({correo: req.body.correo}, req.body, (err, user) => {
+  SucursalModel.update({id: req.body.id}, req.body, (err, user) => {
     if (err){
       res.json({success:false,msg:'No se ha actualizado.' + handleError(err)});
 

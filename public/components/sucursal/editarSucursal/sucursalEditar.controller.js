@@ -75,7 +75,19 @@
     vm.editarSucursal.latitud = objNuevaSucursal.latitud;
     vm.editarSucursal.longitud = objNuevaSucursal.longitud;
 
-  
+    vm.cambiarEstadoSucursal = (pEstado) => {
+      let listaSucursal = servicioSucursales.getSucursal();
+
+      listaSucursal.forEach(objSucursal => {
+        if (objSucursal.id == objNuevaSucursal.id) {
+          objSucursal.cambiarEstadoDeActividadSucursal(pEstado);
+        }
+        servicioSucursales.actualizarSucursal(objSucursal);
+        $state.go('main.listarsucursales');
+      });
+     
+    };
+
 
 
     vm.editSucursal = (pSucursal) => {
