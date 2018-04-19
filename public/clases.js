@@ -226,6 +226,7 @@ class PaqueteConv{
 
 class Articulo{
     constructor(pId, pProducto, pImpuesto){
+        this._id = 0;
         this.id = pId;
         this.producto = pProducto;
         this.impuesto = pImpuesto;
@@ -233,6 +234,9 @@ class Articulo{
         
     }
 
+    setId(pId){
+        this._id = pId;
+    }
      cambiarEstadoDeActividadArticulo(pEstado) {
         this.estado = pEstado;
     }

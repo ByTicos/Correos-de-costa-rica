@@ -34,7 +34,6 @@
       getEstadoData: _getEstadoData,
       agregarEstado: _agregarEstado,
       buscarPaquetePorId: _buscarPaquetePorId,
-
       agregarTarjetaUsuario: _agregarTarjetaUsuario,
       agregarPaquete: _agregarPaquete,
       getSucursalesData: _getSucursalesData,
@@ -43,7 +42,7 @@
       buscarSucursalPorId: _buscarSucursalPorId,
       setLicencias: _setLicenciaData,
       updateArticuloData: _updateArticuloData,
-      updatePaqueteData:_updatePaqueteData
+      buscarArticuloPorId:_buscarArticuloPorId
 
     };
     return localAPI;
@@ -821,43 +820,7 @@
       peticion.fail (function () {});
     }
 
-    function _updatePaqueteData(data) {
-       let response;
-
-      let peticion = $.ajax ({
-        url: 'http://localhost:4000/api/update_paquetes',
-        type: 'put',
-        contentType: 'application/x-www-form-urlencoded; charset=utf-8',
-        dataType: 'json',
-        async: false,
-        data: {
-          usuario: data.usuario,
-          tracking: data.tracking,
-          distribuidor: data.distribuidor,
-          precio: data.precio,
-          peso: data.peso,
-          kilometro: data.kilometro,
-          tipoArticulo: data.tipoArticulo,
-          descripcion: data.descripcion,
-          sucursal: data.sucursal,
-          repartidor: data.repartidor,
-          estado: data.estado,
-          estadoTraslado: data.estadoTraslado,
-          listaEstados: data.listaEstados,
-        },
-      });
-
-      peticion.done (datos => {
-        response = datos.msj;
-        console.log ('Petición realizada con éxito');
-      });
-      peticion.fail (error => {
-        response = error;
-        console.log ('Ocurrió un error');
-      });
-
-      return response;
-    }
+   
 
 
     //
@@ -1079,6 +1042,30 @@
     });
 
     return sucursal;
+  }
+
+  function _buscarArticuloPorId(pid) {
+    let articulo = [];
+    let peticion = $.ajax({
+      url: 'http://localhost:4000/api/buscar_articulo_id',
+      type: 'post',
+      contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+      dataType: 'json',
+      async: false,
+      data: {
+        '_id': pid
+      }
+    });
+
+    peticion.done(function (response) {
+      articulo = response;
+    });
+
+    peticion.fail(function () {
+      console.log('nepe');
+    });
+
+    return articulo;
   }
 
   function _setLicenciaData (data) {

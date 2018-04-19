@@ -33,7 +33,6 @@
             getRol: _getRol,
             getRolSucursal: _getRolSucursal,
             getRolNombre: _getRolNombre,
-            getAllPaquetes: _getAllPaquetes,
             actualizarTarjeta: _actualizarTarjeta,
             addPaqueteConvenio:_addPaqueteConvenio,
             getPaquetesConvenio:_getPaquetesConvenio,
@@ -283,22 +282,7 @@
             // return listaPaquetes;
         };
     
-        function _getAllPaquetes(){
-        let listaUsuarios = _getUsuarios();
-        let listaPaquetes = [];
-        for (let i = 0; i < listaUsuarios.length; i++){
-            let listaPaquetesTemp = listaUsuarios[i].listaPaquetes;
-            if(listaPaquetesTemp != []){
-            let paqueteTemp = {};
-            for(let j = 0; j < listaPaquetesTemp.length; j++){
-                paqueteTemp = listaPaquetesTemp[j];
-                listaPaquetes.push(paqueteTemp);
-            }
-            }
-        }
-        return listaPaquetes;
-        }
-
+    
        function _actualizarPaquete(pObjpaquete) {
             let modificacionExitosa = false;
       

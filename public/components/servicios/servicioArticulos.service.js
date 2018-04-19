@@ -11,7 +11,7 @@
       addArticulo: _addArticulo,
       getArticulo: _getArticulo,
       listarArticulosJson: _listarArticulosJson,
-      actualizarArticulos: _actualizarArticulos
+      actualizarArticulo: _actualizarArticulos
 
 
     };
@@ -51,12 +51,9 @@
         listaArticulos = [];
       } else {
         listaArticulosBD.forEach (objArticulo => {
-          let objArticuloTemp = new Articulo (
-            objArticulo.id,
-            objArticulo.producto,
-            objArticulo.impuesto
-            
-          );
+          let objArticuloTemp = new Articulo (objArticulo.id, objArticulo.producto, objArticulo.impuesto);
+         
+          objArticuloTemp.setId(objArticulo._id);
 
           objArticuloTemp.cambiarEstadoDeActividadArticulo (objArticulo.estado);
 

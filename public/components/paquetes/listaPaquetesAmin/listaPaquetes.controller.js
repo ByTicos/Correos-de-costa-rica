@@ -9,7 +9,7 @@ controladorListaPaquetesAdmin.$inject = ['$state', '$stateParams', '$location', 
 function controladorListaPaquetesAdmin($state, $stateParams, $location, servicioUsuarios) {
   let vm = this;
 
-  vm.listaPaquetes = servicioUsuarios.getAllPaquetes();
+  vm.listaPaquetes = servicioUsuarios.getPaquete();
  
   vm.reporteEstados = ()=>{
     $state.go("main.listaEstados");

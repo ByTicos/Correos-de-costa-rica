@@ -13,7 +13,7 @@ function controladorEditarPreAlerta($http,$state, $stateParams, $location, servi
 
   vm.editarPaquete = {};
 
-  vm.tipoArticulo = vm.tipoArticulo = servicioArticulos.getArticulo();
+  vm.tipoArticulo = servicioArticulos.getArticulo();
   let objPaqueteAEditar = JSON.parse($stateParams.objPaqueteTemp);
   
 
