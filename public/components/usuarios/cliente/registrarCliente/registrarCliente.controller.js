@@ -4,9 +4,9 @@
     .module('correos')
     .controller('controladorRegistrarClientes', controladorRegistrarClientes);
 
-  controladorRegistrarClientes.$inject = ['$http','$state', '$stateParams', '$location', 'servicioUsuarios', 'imageService', 'servicioSucursales', 'Upload', 'NgMap'];
+  controladorRegistrarClientes.$inject = ['$http','$state', '$stateParams', '$location', 'servicioUsuarios', 'imageService', 'servicioSucursales', 'Upload'];
 
-  function controladorRegistrarClientes($http ,$state, $stateParams, $location, servicioUsuarios, imageService, servicioSucursales, Upload, NgMap) {
+  function controladorRegistrarClientes($http ,$state, $stateParams, $location, servicioUsuarios, imageService, servicioSucursales, Upload) {
     let vm = this;
 
     //da error y no llena los data list cuando no hay un rol seleccionado
@@ -14,84 +14,15 @@
     vm.listaClientes = listarClientes();
     vm.nuevoCliente = {};
     
-
-/*
-        var map;
+  /*
+    var map;
     function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
         center: { lat: -34.397, lng: 150.644 },
         zoom: 8
       });
     }
-
-    
-    NgMap.getMap("map").then(function (map) {
-      vm.map = map;
-    });
-
-    vm.callbackFunc = function (param) {
-      vm.latitude = vm.map.getCenter().lat();
-      vm.longitude = vm.map.getCenter().lng();
-    };
-    });*/
-/*
-    vm.x = document.getElementById("demo");
-    vm.getLocation = () => {
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(vm.showPosition);
-      } else {
-        vm.x.innerHTML = "Geolocation is not supported by this browser.";
-      }
-    }
-    vm.showPosition = (position) => {
-      vm.x.innerHTML = "Latitude: " + position.coords.latitude + 
-      "<br>Longitude: " + position.coords.longitude;
-    }*/
-  
-    /*initMap();
-    function initMap() {
-      var map = new google.maps.Map(document.getElementById('map'), {
-        center: { lat: -34.397, lng: 150.644 },
-        zoom: 6
-      });
-      var infoWindow = new google.maps.InfoWindow({ map: map });
-
-      // Try HTML5 geolocation.
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(function (position) {
-          var pos = {
-            lat: position.coords.latitude,
-            lng: position.coords.longitude
-          };
-
-          infoWindow.setPosition(pos);
-          infoWindow.setContent('Location found.');
-          map.setCenter(pos);
-        }, function () {
-          handleLocationError(true, infoWindow, map.getCenter());
-        });
-      } else {
-        // Browser doesn't support Geolocation
-        handleLocationError(false, infoWindow, map.getCenter());
-      }
-    }*/
-
-    NgMap.getMap("map").then(function(map) {
-      vm.map = map;
-    });
-
-
-    vm.callbackFunc = function(param) {
-      console.log('I know where '+ param +' are. ' + vm.message);
-      console.log('You are at' + vm.map.getCenter());
-    };
-
-    function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-      infoWindow.setPosition(pos);
-      infoWindow.setContent(browserHasGeolocation ?
-        'Error: The Geolocation service failed.' :
-        'Error: Your browser doesn\'t support geolocation.');
-    }
+  */  
 
 
     vm.provincias = $http({
