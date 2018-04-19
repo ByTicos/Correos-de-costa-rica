@@ -9,9 +9,10 @@
   function controladorPaquetesEncargadoSucursal($state, $stateParams, $location, servicioUsuarios) {
     let vm = this;
 
+    vm.listaPaquetes = servicioUsuarios.getPaquete(); 
     vm.listaRepartidores = listarRepartidores();  
     vm.rolSucursal = servicioUsuarios.getRolSucursal();  
-    vm.listaPaquetes = servicioUsuarios.getAllPaquetes(); 
+    
 
 
     vm.asignarRepartidor = (pnuevoPaquete, pnombre) => {
@@ -37,7 +38,7 @@
       
       objNuevoPaquete.mostrarEstadoTraslado('Asignado');
       objNuevoPaquete.addEstado(objEstado);
-      servicioUsuarios.actualizarEstadoPaquete(objNuevoPaquete);
+      servicioUsuarios.actualizarPaquete(objNuevoPaquete);
       location.reload();
   
       

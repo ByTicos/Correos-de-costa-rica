@@ -22,7 +22,7 @@ module.exports.registrar = (req, res) => {
     vehiculo            :  req.body.vehiculo,
     listaLicencias      :  req.body.listaLicencias,
     estado              :  req.body.estado,
-    listaTarjetas       :  req.body.listaTarjetas.id,
+    listaTarjetas       :  req.body.listaTarjetas,
     listaPaquetesConvenios    :  req.body.listaPaquetesConvenios,
     contrasenna         :  req.body.contrasenna,
   });
@@ -101,7 +101,7 @@ module.exports.agregar_tarjeta_usuario = function (req, res) {
 
     });
 
-};
+},
 
 
 module.exports.agregar_paquete = function (req, res) {
@@ -115,13 +115,6 @@ module.exports.agregar_paquete = function (req, res) {
               res.json({ success: true, msg: 'El usuario ha sido modificado con éxito' });
           }
 
-      })
-    };  
-
-  module.exports.buscar_tarjeta_por_id = function (req, res) {
-    UserModel.findOne({id: req.body.tarjetaID}).then(
-      function (usuario) {
-        res.send(usuario);
       });
-  };
 
+}

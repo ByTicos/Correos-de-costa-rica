@@ -11,7 +11,7 @@
 
     // vm.listaRepartidores = listarRepartidores();
     vm.nuevoRepartidor = {};
-    servicioSucursales.getSucursal();
+    servicioSucursales.listarSucursalesJson();
     vm.listaSucursales = servicioSucursales.getSucursal();
     
     vm.cloudObj = imageService.getConfiguration();

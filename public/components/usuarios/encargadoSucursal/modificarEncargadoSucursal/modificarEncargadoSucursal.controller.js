@@ -9,7 +9,7 @@
   function controladorModificarEncargadoSucursal($stateParams, $state, $location, servicioUsuarios, servicioSucursales) {
     let vm = this;
 
-    servicioSucursales.getSucursal();
+    servicioSucursales.listarSucursalesJson();
     vm.listaSucursales = servicioSucursales.getSucursal();
 
     vm.regresar = () => {
@@ -50,7 +50,7 @@
         }
         servicioUsuarios.actualizarUsuario(objUsuario);
       });
-      $state.go('mainlistarEncargadoSucursal');
+      $state.go('main.listarEncargadoSucursal');
     }
     
 

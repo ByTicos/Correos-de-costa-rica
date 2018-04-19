@@ -5,10 +5,10 @@ const mongoose = require('mongoose');
 var TarjetaSchema = new mongoose.Schema({
   id : {type : String, required : true},
   nombre : {type : String, required : true},
-  numero : {type : String, required : true},
-  expiracion : {type : String, required : true},
-  cvv : {type : String, required : true},
-  estado : {type : String, required : true}
+  numero : {type : Array, required : true},
+  expiracion : {type : Array, required : true},
+  cvv : {type : Array, required : true},
+  estado : {type : Array, required : true}
 });
 
 //nombre del modelo dentro del back end y el userSchema es el nombre dentro de mongoose

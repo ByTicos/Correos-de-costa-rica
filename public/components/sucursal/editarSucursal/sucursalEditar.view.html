@@ -2,26 +2,33 @@
   <form ng-submit="vm.editSucursal(vm.editarSucursal)" name="formEditarSucursal" novalidate autocomplete="off">
 
 
-    <div class="col-md-6">
-      <label for="sucursalID">ID Sucursal</label>
-      <input ng-model="vm.editarSucursal.id" id="sucursalID" class="form-control" maxlength="5" minlength="1" type="text" disabled>
-      <small class="form-text text-muted">Este campo es requerido</small>
+    <div class="form-group">
 
-      <label for="txtNombre">Nombre de la Sucursal</label>
-      <input type="text" id="txtNombre" class="form-control" name="txtNombre" ng-model="vm.editarSucursal.nombre" required>
-      <small class="form-text text-muted">Este campo es requerido</small>
+      <label for="sucursalIDeditar"> ID Sucursal</label>
+      <input ng-model="vm.editarSucursal.id" id="sucursalIDeditar" class="form-control" maxlength="5" minlength="5" type="text"
+        disabled>
+      <div ng-message="required">
+        <small class="form-text text-muted">Este campo es requerido</small>
+      </div>
+
+      <label for="txtNombreeditar">Nombre de la Sucursal</label>
+      <input type="text" id="txtNombreeditar" class="form-control" name="txtNombreeditar" ng-model="vm.editarSucursal.nombre" required>
+      <div ng-message="required">
+        <small class="form-text text-muted">Este campo es requerido</small>
+      </div>
 
       <label for="sltProvincia">Provincia</label>
       <input list="sltProvincia" class="form-control" name="sltProvincia" ng-change="vm.rellenarCantones(vm.editarSucursal.provincia)"
         ng-model="vm.editarSucursal.provincia" required>
       <datalist id="sltProvincia">
-        <option ng-repeat="provincia in vm.provincias" value="{{provincia.name}}">
+        <option ng-repeat="provincia in vm.provincias track by provincia._id" value="{{provincia.name}}" id="{{provincia._id}}">
       </datalist>
-      <small class="form-text text-muted">Este campo es requerido</small>
-    </div>
 
-    <div class="col-md-6">
 
+
+      <div ng-message="required">
+        <small class="form-text text-muted">Este campo es requerido</small>
+      </div>
 
       <label for="sltCanton">Cantón</label>
       <input list="sltCanton" class="form-control" name="sltCanton" ng-change="vm.rellenarDistrito(vm.editarSucursal.canton)" ng-model="vm.editarSucursal.canton"
@@ -29,47 +36,51 @@
       <datalist id="sltCanton">
         <option ng-repeat="canton in vm.cantones" value="{{canton.name}}">
       </datalist>
-      <small class="form-text text-muted">Este campo es requerido</small>
+      <div ng-message="required">
+        <small class="form-text text-muted">Este campo es requerido</small>
+      </div>
 
       <label for="sltDistrito">Distrito</label>
       <input list="sltDistrito" class="form-control" name="sltDistrito" ng-model="vm.editarSucursal.distrito" required>
       <datalist id="sltDistrito">
         <option ng-repeat="distrito in vm.distritos" value="{{distrito.name}}">
       </datalist>
-      <small class="form-text text-muted">Este campo es requerido</small>
+      <div ng-message="required">
+        <small class="form-text text-muted">Este campo es requerido</small>
+      </div>
 
-      <label for="nTelefono">Numero de Telefono</label>
-      <input type="tel" id="nTelefono" class="form-control" name="nTelefono" ng-model="vm.editarSucursal.telefono" maxlength="11"
+      <label for="nTelefonoeditar">Número de Teléfono</label>
+      <input type="tel" id="nTelefonoeditar" class="form-control" name="nTelefono" ng-model="vm.editarSucursal.telefono" maxlength="11"
         minlength="8" required>
-      <small class="form-text text-muted">Este campo es requerido</small>
+      <div ng-message="required">
+        <small class="form-text text-muted">Este campo es requerido</small>
+      </div>
 
-
-
-    </div>
-    <div class="col-md-6">
-      <label for="txtHorario">Horarios de Atencion</label>
-      <textarea type="text" id="txtHorario" class="form-control" name="txtHorario" ng-model="vm.editarSucursal.horario" style="height:100px"
+      <label for="txtHorarioeditar">Horarios de Atención</label>
+      <textarea type="text" id="txtHorarioeditar" class="form-control" name="txtHorario" ng-model="vm.editarSucursal.horario" style="height:100px"
         required></textarea>
-      <small class="form-text text-muted">Este campo es requerido</small>
-      <div class="col-md-6">
-        <label for="latitud">Latitud en Mapa</label>
-        <input type="text" id="latitud" class="form-control" name="latitud" ng-model="vm.editarSucursal.latitud" required>
-      </div>
-      <div class="col-md-6">
-        <label for="longitud">Longitud en Mapa</label>
-        <input type="text" id="longitud" class="form-control" name="longitud" ng-model="vm.editarSucursal.longitud" required>
+
+      <div ng-message="required">
+        <small class="form-text text-muted">Este campo es requerido</small>
       </div>
 
-      <button type="submit" class="btn btn-success">Editar Sucursal</button>
-    </div>
-    <button type="button" class="" ng-click="vm.cambiarEstadoSucursal('inactivo')">
-      <i class="far fa-times-circle"></i>Desactivar</button>
-    <td>
-      <button type="button" class="" ng-click="vm.cambiarEstadoSucursal('activo')">
-        <i class="far fa-check-circle"></i>Activar</button>
-    </td>
+
+
+      <button type="submit" class="login login-submit">
+        <img src="../../sources/images/edit.png">
+      </button>
+
 
 
   </form>
-
-</div>
+  <div class="col-md-6">
+    <button type="button" ng-click="vm.cambiarEstadoSucursal('inactivo')">
+      <img src="../../sources/images/desactivar.png">
+    </button>
+  </div>
+  <div class="col-md-6">
+    <button type="button" ng-click="vm.cambiarEstadoSucursal('activo')">
+      <img src="../../sources/images/activar.png">
+    </button>
+  </div>
+  </div>

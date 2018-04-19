@@ -3,16 +3,13 @@ const mongoose = require('mongoose');
 
 //Esquema de usuarios
 var SucursalSchema = new mongoose.Schema({
-  id : {type : String, unique: true},
-  nombre : {type : String},
-  provincia : {type : String},
-  canton : {type : String},
-  distrito : {type : String},
-  telefono : {type : String},
-  horario: {type : String},
-  latitud : {type: String},
-  longitud: {type: String},
-  estado : {type : String},
+  id : {type : String, required : true, unique: true},
+  nombre : {type : String, required : true},
+  provincia : {type : String, required : true},
+  canton : {type : String, required : true},
+  distrito : {type : String, required : true},
+  telefono : {type : String, required : true},
+  estado : {type : String,}
   
 });
 

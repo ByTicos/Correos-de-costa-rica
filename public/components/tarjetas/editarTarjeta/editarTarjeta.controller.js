@@ -49,6 +49,7 @@
 
     vm.editTarjeta = (pTarjeta) => {
       let listaTarjeta = servicioUsuarios.getTarjeta();
+      console.log(' servicioUsuarios.getTarjeta()',  servicioUsuarios.getTarjeta());
       let mes = $("#month option:selected").val();
       let year = $("#year option:selected").val();
       let expiracion = mes + '/' + year;

@@ -18,6 +18,7 @@
       setArticuloData: _setArticuloData,
       getPaquetesData: _getPaquetesData,
       setPaqueteData: _setPaqueteData,
+      updatePaqueteData: _updatePaqueteData,
       getConveniosData: _getConveniosData,
       setConvenioData: _setConvenioData,
       getTarjetasData: _getTarjetasData,
@@ -40,8 +41,7 @@
       setSucursalesData: _setSucursalesData,
       updateSucursalesData: _updateSucursalesData,
       buscarSucursalPorId: _buscarSucursalPorId,
-      buscarTarjetaId :_buscarTarjetaId,
-      updateTarjetasData: _updateTarjetasData
+      setLicencias: _setLicenciaData,
     };
     return localAPI;
 
@@ -677,6 +677,45 @@
       return response;
     }
 
+    function _updatePaqueteData (data) {
+      let response;
+
+      let peticion = $.ajax ({
+        url: 'http://localhost:4000/api/update_paquete',
+        type: 'put',
+        contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+        dataType: 'json',
+        async: false,
+        data: {
+          usuario: data.usuario,
+          tracking: data.tracking,
+          distribuidor: data.distribuidor,
+          precio: data.precio,
+          peso: data.peso,
+          kilometro: data.kilometro,
+          tipoArticulo: data.tipoArticulo,
+          descripcion: data.descripcion,
+          sucursal: data.sucursal,
+          repartidor: data.repartidor,
+          estado: data.estado,
+          estadoTraslado: data.estadoTraslado,
+          listaEstados: data.listaEstados,
+        },
+      });
+
+      peticion.done((datos) => {
+        response = datos.success;
+        console.log('Petición realizada con éxito');
+      });
+      peticion.fail (error => {
+        response = error;
+        console.log ('Ocurrió un error');
+      });
+
+      return response;
+    }
+
+
     function _getPaquetesData () {
       let listaPaquetes = [];
 
@@ -860,18 +899,16 @@
       dataType: 'json',
       async: false,
       data: {
-        id: data.id,
-        nombre: data.nombre,
-        provincia: data.provincia,
-        canton: data.canton,
-        distrito: data.distrito,
-        telefono: data.telefono,
-        horario: data.horario,
-        latitud: data.latitud,
-        longitud: data.longitud,
-        estado: data.estado,
+        'id': data.id,
+        'nombre': data.nombre,
+        'provincia': data.provincia,
+        'canton': data.canton,
+        'distrito': data.distrito,
+        'telefono': data.telefono,
+        'horario': data.horario,
+        'estado': data.estado,
         
-      },
+      }
     });
 
     peticion.done((datos) => {
@@ -890,22 +927,20 @@
     let response;
 
     let peticion = $.ajax({
-      url: 'http://localhost:4000/api/update_sucursales',
+      url: 'http://localhost:4000/api/update_user',
       type: 'put',
       contentType: 'application/x-www-form-urlencoded; charset=utf-8',
       dataType: 'json',
       async: false,
       data: {
-        id: data.id,
-        nombre: data.nombre,
-        provincia: data.provincia,
-        canton: data.canton,
-        distrito: data.distrito,
-        telefono: data.telefono,
-        horario: data.horario,
-        latitud: data.latitud,
-        longitud: data.longitud,
-        estado: data.estado,
+        'id': data.id,
+        'nombre': data.nombre,
+        'provincia': data.provincia,
+        'canton': data.canton,
+        'distrito': data.distrito,
+        'telefono': data.telefono,
+        'horario': data.horario,
+        'estado': data.estado,
       }
     });
 
@@ -945,59 +980,32 @@
     return sucursal;
   }
 
-  function _buscarTarjetaId(data) {
-    let tarjetaID = [];
+  function _setLicenciaData (data) {
+    let response;
+
     let peticion = $.ajax ({
-      url: 'http://localhost:4000/api/buscar_tarjeta_id',
-      type: 'get',
+      url: 'http://localhost:4000/api/save_licencias',
+      type: 'post',
       contentType: 'application/x-www-form-urlencoded; charset=utf-8',
       dataType: 'json',
       async: false,
       data: {
-        'id': data.id,
+        numLicencia : data.numLicencia,
+        tipoLicencia: data.tipoLicencia,
+        vencimiento : data.vencimiento,
       },
     });
 
-    peticion.done (function (response) {
-      console.log('tarjetaID', tarjetaID);
-      tarjetaID = response;
-    });
-
-    peticion.fail (function () {});
-
-    return tarjetaID;
-  }
-
-  function _updateTarjetasData(data) {
-    let response;
-
-    let peticion = $.ajax({
-      url: 'http://localhost:4000/api/update_tarjetas',
-      type: 'put',
-      contentType: 'application/x-www-form-urlencoded; charset=utf-8',
-      dataType: 'json',
-      async: false,
-      data: {
-        id: data.id,
-        nombre: data.nombre,
-        numero: data.numero,
-        expiracion: data.expiracion,
-        cvv: data.cvv,
-        estado: data.estado,
-      }
-    });
-
-    peticion.done((datos) => {
+    peticion.done (datos => {
       response = datos.msj;
-      console.log('Petición realizada con éxito');
+      console.log ('Petición realizada con éxito');
     });
-    peticion.fail((error) => {
+    peticion.fail (error => {
       response = error;
-      console.log('Ocurrió un error');
+      console.log ('Ocurrió un error');
     });
 
     return response;
   }
-
   
 }) ();

@@ -51,13 +51,8 @@ class Usuario {
     getLicencias() {
         return this.listaLicencias
     }
-    obtenerTarjetasID() {
-        let listaTarjetasTemp = [];
-
-        for (let i = 0; this.listaTarjetas.lenght; i++){
-            listaTarjetasTemp.push(this.listaTarjetas[i].id);
-        }
-        return listaTarjetasTemp;
+    obtenerTarjeta() {
+        return this.tarjeta;
     }
     agregarPaqueteConvenio(pPaqueteConvenio){
         this.listaPaquetesConvenios.push(pPaqueteConvenio);
@@ -170,7 +165,7 @@ class Licencia {
     }
 }
 class Sucursal {
-    constructor(pId, pNombre, pProvincia, pCanton, pDistrito, pTelefono, pHorario, pLat, pLong, pEstado){
+    constructor(pId, pNombre, pProvincia, pCanton, pDistrito, pTelefono, pHorario, pEstado){
        this.id = pId;
        this.nombre = pNombre;
        this.provincia = pProvincia;
@@ -178,10 +173,7 @@ class Sucursal {
        this.distrito = pDistrito;
        this.telefono = pTelefono;
        this.horario = pHorario;
-       this.latitud = pLat;
-       this.longitud = pLong;
        this.estado = pEstado || 'activo';
-  
     }
 
     cambiarEstadoDeActividadSucursal(pEstado){
@@ -199,8 +191,8 @@ class Tarjeta {
        this.estado = pEstado || 'activo';
     }
 
-    obtenerID() {
-        return this.id;
+    obtenerInfoTarjeta() {
+        return this;
     }
 
     cambiarEstadoDeActividadTarjeta(pEstado) {
