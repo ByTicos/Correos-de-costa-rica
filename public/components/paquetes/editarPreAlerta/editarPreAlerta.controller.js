@@ -5,24 +5,15 @@ angular
 .module('correos')
 .controller('controladorEditarPreAlerta', controladorEditarPreAlerta);
 
-controladorEditarPreAlerta.$inject = ['$http','$state', '$stateParams', '$location', 'servicioUsuarios'];
+controladorEditarPreAlerta.$inject = ['$http','$state', '$stateParams', '$location', 'servicioUsuarios',
+'servicioArticulos'];
 
-function controladorEditarPreAlerta($http,$state, $stateParams, $location, servicioUsuarios) {
+function controladorEditarPreAlerta($http,$state, $stateParams, $location, servicioUsuarios,servicioArticulos) {
   let vm = this;
 
   vm.editarPaquete = {};
 
-  vm.tipoArticulo = $http({
-      method: 'GET',
-      url: './sources/data/articulos.json',
-    }).then(
-      success => {
-        vm.tipoArticulo = success.data;
-      },
-      error => {
-        console.log('Ocurrió un error ' + error.data);
-      }
-    );
+  vm.tipoArticulo = servicioArticulos.getArticulo();
   let objPaqueteAEditar = JSON.parse($stateParams.objPaqueteTemp);
   
 

@@ -33,7 +33,6 @@
             getRol: _getRol,
             getRolSucursal: _getRolSucursal,
             getRolNombre: _getRolNombre,
-            getAllPaquetes: _getAllPaquetes,
             actualizarTarjeta: _actualizarTarjeta,
             addPaqueteConvenio:_addPaqueteConvenio,
             getPaquetesConvenio:_getPaquetesConvenio,
@@ -283,38 +282,30 @@
             // return listaPaquetes;
         };
     
-        function _getAllPaquetes(){
-        let listaUsuarios = _getUsuarios();
-        let listaPaquetes = [];
-        for (let i = 0; i < listaUsuarios.length; i++){
-            let listaPaquetesTemp = listaUsuarios[i].listaPaquetes;
-            if(listaPaquetesTemp != []){
-            let paqueteTemp = {};
-            for(let j = 0; j < listaPaquetesTemp.length; j++){
-                paqueteTemp = listaPaquetesTemp[j];
-                listaPaquetes.push(paqueteTemp);
-            }
-            }
-        }
-        return listaPaquetes;
-        }
+    
+       function _actualizarPaquete(pObjpaquete) {
+            let modificacionExitosa = false;
+      
+            modificacionExitosa = dataStorageFactory.updatePaqueteData(pObjpaquete);
+      
+            return modificacionExitosa;
 
 
-        // function _actualizarPaquete(pObjpaquete) {
-        //     let listaUsuarios = _getUsuarios();
-        //     let sesion = JSON.parse(sessionStorage.getItem('sesion'));
-        //     for (let i = 0; i < listaUsuarios.length; i++) {
-        //         if(listaUsuarios[i].correo == sesion.correo){
-        //             for (let j = 0; j < listaUsuarios[i].listaPaquetes.length; j++) {
-        //                 if (listaUsuarios[i].listaPaquetes[j].tracking == pObjpaquete.tracking) {
-        //                     listaUsuarios[i].listaPaquetes[j] = pObjpaquete;
-        //                 }
-        //             }
-        //         }
-        //     }
-        //     actualizarLocal(listaUsuarios);
+            // let listaUsuarios = _getUsuarios();
+            // let sesion = JSON.parse(sessionStorage.getItem('sesion'));
+            // for (let i = 0; i < listaUsuarios.length; i++) {
+            //     if(listaUsuarios[i].correo == sesion.correo){
+            //         for (let j = 0; j < listaUsuarios[i].listaPaquetes.length; j++) {
+            //             if (listaUsuarios[i].listaPaquetes[j].tracking == pObjpaquete.tracking) {
+            //                 listaUsuarios[i].listaPaquetes[j] = pObjpaquete;
+            //             }
+            //         }
+            //     }
+            // }
+            // actualizarLocal(listaUsuarios);
 
-        // };
+        };
+        
 
 
         function _actualizarEstadoPaquete(pObjpaquete) {
