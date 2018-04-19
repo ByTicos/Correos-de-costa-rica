@@ -12,7 +12,6 @@
     
     vm.nuevaSucursal = {};
     vm.listaSucursales = listarSucursales();
-    servicioSucursales.listarSucursalesJson();
     
     vm.provincias = $http({
       method: 'GET',

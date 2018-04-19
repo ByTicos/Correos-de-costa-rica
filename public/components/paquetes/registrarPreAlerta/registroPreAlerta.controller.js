@@ -19,8 +19,6 @@
     };
 
      vm.tipoArticulo = servicioArticulos.getArticulo();
-
-     
     
     vm.calcular = pnuevoPaquete => {
       let calculo = 0;
@@ -74,12 +72,11 @@
         pnuevoPaquete.precio,
         pnuevoPaquete.peso,
         pnuevoPaquete.kilometro,
-        pnuevoPaquete.tipoArticulo._id,
+        pnuevoPaquete.tipoArticulo,
         pnuevoPaquete.descripcion,
         sucursal,''
       );
-       
-      console.log(pnuevoPaquete.tipoArticulo);
+
       let fecha = new Date ();
       let hora = fecha;
       let objEstado = new Estado(usuario, fecha, hora, 'En Aduanas');
@@ -91,8 +88,6 @@
 
       let registro = servicioUsuarios.addPaquete(objNuevoPaquete);
       servicioUsuarios.addEstado (objEstado);
-      console.log (objNuevoPaquete);
-      
        
       if (registro == true) {
         swal (

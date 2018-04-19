@@ -8,7 +8,7 @@
         <input type="text" class="form-control" ng-model="buscarPaquete" placeholder="ingrese metodo de busqueda">
       </div>
     </form>
-    <div class="wrapperusuarios" >
+    
     <table class="table">
       <h1>Paquetes activos</h1>
       <hr/>
@@ -30,20 +30,18 @@
           <td>{{paquete.distribuidor}}</td>
           <td>{{paquete.precio}}</td>
           <td>{{paquete.peso}}</td>
-          <td>{{paquete.tipoArticulo}}</td>
+          <td>{{paquete.tipoArticulo.producto}}</td>
           <td>{{paquete.descripcion}}</td>
           <td>{{paquete.estadoTraslado}}</td>
           <td>{{paquete.sucursal}}</td>
 
           <td>
-            <button type="button" class="login login-submit" ng-click="vm.editPrealerta(paquete)"><i class="far fa-edit"></button>
+            <button type="button" class="login login-submit" ng-click="vm.editPrealerta(paquete)"> <i class="far fa-edit"></i></button>
           </td>
         </tr>
       </tbody>
     
     </table>
-
-    </div>
     <!-- <table class="table table-responsive">
       <legend>Paquetes inactivos</legend>
     
