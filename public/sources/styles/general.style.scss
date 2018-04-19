@@ -425,3 +425,8 @@ text-align:center;
   background-color: #074747;
     color: #f0e2e2;
 }
+
+.table-primary, .table-primary>td, .table-primary>th, .thead-dark {
+  background-color: #074747;
+  color: white;
+}
