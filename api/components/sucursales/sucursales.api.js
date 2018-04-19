@@ -29,8 +29,8 @@ module.exports.get_all_sucursales = (req,res) => {
   });
 };
 
-module.exports.actualizarSucursal = (req,res) => {
-  SucursalModel.findByIdAndUpdate(req.body._id, { $set: req.body}, (err, sucursal) => {
+module.exports.actualizar_sucursal = (req,res) => {
+  SucursalModel.update({id: req.body.id}, req.body, (err, user) => {
     if (err){
       res.json({success:false,msg:'No se ha actualizado.' + handleError(err)});
 

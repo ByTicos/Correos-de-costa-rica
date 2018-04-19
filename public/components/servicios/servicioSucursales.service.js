@@ -93,7 +93,7 @@
     //             canton : 'Aserrí',
     //             distrito : 'Aserrí',
     //             telefono : '2230-6242',
-    //             horario : 'Lunes a Viernesde8:00am-5:00pm'
+    //             horario : '  '
     
     //         },
     //         {
@@ -212,15 +212,11 @@
     // );
 
     function _actualizarSucursal(pSucursal) {
-        let listaSucursal = _getSucursal();
+        let modificarExitosamente = false;
+            
+        modificarExitosamente = dataStorageFactory.updateSucursalesData(pSucursal);
 
-        for (let i = 0; i < listaSucursales.length; i++) {
-            if (pSucursal.id == listaSucursales[i].id) {
-                listaSucursales[i] = pSucursal;
-                sucursal = listaSucursales[i];
-            }
-        }
-        actualizarSucursalLocal(listaSucursal);
+        return modificarExitosamente;
     };
 
     // function actualizarSucursalLocal(plistaActualizadaSucursal) {

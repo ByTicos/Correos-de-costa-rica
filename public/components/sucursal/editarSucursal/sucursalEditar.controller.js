@@ -62,7 +62,7 @@
 
     let objSucursalEditar = JSON.parse($stateParams.objSucursalTemp);
 
-    let objNuevaSucursal = new Sucursal(objSucursalEditar.id, objSucursalEditar.nombre, objSucursalEditar.provincia, objSucursalEditar.canton, objSucursalEditar.distrito, objSucursalEditar.telefono, objSucursalEditar.horario);
+    let objNuevaSucursal = new Sucursal(objSucursalEditar.id, objSucursalEditar.nombre, objSucursalEditar.provincia, objSucursalEditar.canton, objSucursalEditar.distrito, objSucursalEditar.telefono, objSucursalEditar.horario, objSucursalEditar.latitud, objSucursalEditar.longitud);
 
 
     vm.editarSucursal.id = objNuevaSucursal.id;
@@ -72,20 +72,22 @@
     vm.editarSucursal.distrito = objNuevaSucursal.distrito;
     vm.editarSucursal.telefono = objNuevaSucursal.telefono;
     vm.editarSucursal.horario = objNuevaSucursal.horario;
+    vm.editarSucursal.latitud = objNuevaSucursal.latitud;
+    vm.editarSucursal.longitud = objNuevaSucursal.longitud;
 
-    vm.cambiarEstadoSucursal = (pSucursal) => {
+    vm.cambiarEstadoSucursal = (pEstado) => {
       let listaSucursal = servicioSucursales.getSucursal();
 
-      listaSucursal.forEach(objSucursal =>{
+      listaSucursal.forEach(objSucursal => {
         if (objSucursal.id == objNuevaSucursal.id) {
-          objSucursal.cambiarEstadoDeActividadSucursal(pSucursal);
+          objSucursal.cambiarEstadoDeActividadSucursal(pEstado);
         }
         servicioSucursales.actualizarSucursal(objSucursal);
+        $state.go('main.listarsucursales');
       });
-      $state.go('main.sucursales');
+     
+    };
 
-    }
-  
 
 
     vm.editSucursal = (pSucursal) => {
@@ -93,13 +95,16 @@
 
       listaSucursal.forEach(objSucursal => {
         if (objSucursal.id == objNuevaSucursal.id) {
-          
+
+          objSucursal.id = pSucursal.id;
           objSucursal.nombre = pSucursal.nombre;
           objSucursal.provincia = pSucursal.provincia;
           objSucursal.canton = pSucursal.canton;
           objSucursal.distrito = pSucursal.distrito;
           objSucursal.telefono = pSucursal.telefono;
           objSucursal.horario = pSucursal.horario;
+          objSucursal.latitud = pSucursal.latitud;
+          objSucursal.longitud = pSucursal.longitud;
 
           servicioSucursales.actualizarSucursal(objSucursal);
         }

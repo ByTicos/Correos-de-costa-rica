@@ -19,6 +19,7 @@
     
          vm.listaSucursales = listarSucursales();
 
+ 
         function listarSucursales(){
         let listaSucursales = servicioSucursales.getSucursal();
 
