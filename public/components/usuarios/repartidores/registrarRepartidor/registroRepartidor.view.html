@@ -14,15 +14,16 @@
 
 
                 <form action="" class=" form-row" ng-submit="vm.preRegistrarRepartidor(vm.nuevoRepartidor)">
-
+                    
+                 <div class="form-group col-sm-2 center">
                     <label for="">Fotografía</label>
                     <input type="file" class="form-control" ng-model="vm.nuevoRepartidor.foto" img-upload required>
-
-                    <!-- <div class="form-group col-sm-6">
+                </div>
+                 <div class="form-group col-sm-6">
                 <div class="form-group">
                     <label for="">Cédula</label>
                     <input type="text" class="form-control col-xs-4" ng-model="vm.nuevoRepartidor.cedula" required>
-                </div> -->
+                </div> 
 
                     <div class="form-group">
                         <label for="">Primer nombre</label>
@@ -73,8 +74,6 @@
                         </datalist>
                     </div>
 
-
-
                     <div class="form-group col-sm-6">
                         <label for="">Distrito</label>
                         <input list="sltDistrito" name="sltDistrito" class="form-control" ng-model="vm.nuevoRepartidor.distrito" required>
@@ -83,8 +82,6 @@
                         </datalist>
                         <label for="">Dirección Exacta</label>
                         <input type="text" class="form-control" ng-model="vm.nuevoRepartidor.direccionExacta" required>
-
-
 
 
                         <div class="form-group">
@@ -117,7 +114,7 @@
 
                         <div class="form-group">
                             <label for="">Vencimiento de la licencia</label>
-                            <input type="date" class="form-control" ng-model="vm.nuevoRepartidor.vencimientoLicencia" required>
+                            <input type="date" class="form-control" ng-model="vm.nuevoRepartidor.vencimiento" required>
                         </div>
 
                         <div class="form-group">

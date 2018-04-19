@@ -4,63 +4,16 @@
     .module('correos')
     .controller('controladorEditarRepartidor', controladorEditarRepartidor);
 
-    controladorEditarRepartidor.$inject = ['$http', '$stateParams', '$state', '$location', 'servicioUsuarios'];
+    controladorEditarRepartidor.$inject = ['$stateParams', '$state', '$location', 'servicioUsuarios'];
 
-
-  function controladorEditarRepartidor($http, $stateParams, $state, $location, servicioUsuarios) {
+  function controladorEditarRepartidor($stateParams, $state, $location, servicioUsuarios) {
     let vm = this;
-
-    vm.provincias = $http({
-      method: 'GET',
-      url: './sources/data/provincias.json'
-    }).then((success) => {
-      vm.provincias = success.data;
-    }, (error) => {
-      console.log("Ocurrió un error " + error.data);
-    });
-
-    vm.rellenarCantones = (pidProvincia) => {
-      vm.cantones = $http({
-        method: 'GET',
-        url: './sources/data/cantones.json'
-      }).then((success) => {
-        let cantones = [];
-        for (let i = 0; i < success.data.length; i++) {
-          if (pidProvincia == success.data[i].idProvincia) {
-            cantones.push(success.data[i]);
-          }
-        }
-        vm.cantones = cantones;
-      }, (error) => {
-        console.log("Ocurrió un error " + error.data)
-      });
-    }
-
-    vm.rellenarDistrito = (pidCanton) => {
-      console.log(pidCanton);
-      vm.distritos = $http({
-        method: 'GET',
-        url: './sources/data/distritos.json'
-      }).then((success) => {
-        let distritos = [];
-        for (let i = 0; i < success.data.length; i++) {
-          if (pidCanton == success.data[i].idCanton) {
-            distritos.push(success.data[i]);
-          }
-        }
-        vm.distritos = distritos;
-      }, (error) => {
-        console.log("Ocurrió un error " + error.data)
-      });
-    }
-
 
     vm.regresar = () => {
       $state.go('main.repartidor');
     }
 
     vm.editarRepartidor = {};
-    vm.objNuevoRepartidor = {};
 
     if(servicioUsuarios.getRol() == '3') {
       let sesion = JSON.parse(sessionStorage.getItem('sesion'));
@@ -76,20 +29,20 @@
       vm.objNuevoRepartidor = new Usuario(objRepartidorEditar.cedula, objRepartidorEditar.foto, objRepartidorEditar.primerNombre, objRepartidorEditar.segundoNombre, objRepartidorEditar.primerApellido, objRepartidorEditar.segundoApellido, objRepartidorEditar.correo, objRepartidorEditar.telefono, objRepartidorEditar.fechaNacimiento, objRepartidorEditar.provincia, objRepartidorEditar.canton,objRepartidorEditar.distrito.direccionExacta, objRepartidorEditar.contrasenna, '3',objRepartidorEditar.sucursalAsignada, objRepartidorEditar.vehiculo,);
     }
 
-    vm.editarRepartidor.cedula = objNuevoRepartidor.cedula;
-    vm.editarRepartidor.foto = objNuevoRepartidor.foto;
-    vm.editarRepartidor.primerNombre = objNuevoRepartidor.primerNombre;
-    vm.editarRepartidor.segundoNombre = objNuevoRepartidor.segundoNombre;
-    vm.editarRepartidor.primerApellido = objNuevoRepartidor.primerApellido;
-    vm.editarRepartidor.segundoApellido = objNuevoRepartidor.segundoApellido;
-    vm.editarRepartidor.correo = objNuevoRepartidor.correo;
-    vm.editarRepartidor.telefono = objNuevoRepartidor.telefono;
-    vm.editarRepartidor.fechaNacimiento = new Date(objNuevoRepartidor.fechaNacimiento);
-    vm.editarRepartidor.provincia = objNuevoRepartidor.provincia;
-    vm.editarRepartidor.canton = objNuevoRepartidor.canton;
-    vm.editarRepartidor.distrito = objNuevoRepartidor.distrito;
-    vm.editarRepartidor.direccionExacta = objNuevoRepartidor.direccionExacta;
-    vm.editarRepartidor.contrasenna = objNuevoRepartidor.contrasenna;
+    vm.editarRepartidor.cedula = objRepartidor.cedula;
+    vm.editarRepartidor.foto = objRepartidor.foto;
+    vm.editarRepartidor.primerNombre = objRepartidor.primerNombre;
+    vm.editarRepartidor.segundoNombre = objRepartidor.segundoNombre;
+    vm.editarRepartidor.primerApellido = objRepartidor.primerApellido;
+    vm.editarRepartidor.segundoApellido = objRepartidor.segundoApellido;
+    vm.editarRepartidor.correo = objRepartidor.correo;
+    vm.editarRepartidor.telefono = objRepartidor.telefono;
+    vm.editarRepartidor.fechaNacimiento = new Date(objRepartidor.fechaNacimiento);
+    vm.editarRepartidor.provincia = objRepartidor.provincia;
+    vm.editarRepartidor.canton = objRepartidor.canton;
+    vm.editarRepartidor.distrito = objRepartidor.distrito;
+    vm.editarRepartidor.direccionExacta = objRepartidor.direccionExacta;
+    vm.editarRepartidor.contrasenna = objRepartidor.contrasenna;
     vm.editarRepartidor.tipo = '';
     vm.editarRepartidor.sucursalAsignada = objNuevoRepartidor.sucursalAsignada;
     vm.editarRepartidor.vehiculo = objNuevoRepartidor.vehiculo;

@@ -101,7 +101,7 @@ module.exports.agregar_tarjeta_usuario = function (req, res) {
 
     });
 
-},
+};
 
 
 module.exports.agregar_paquete = function (req, res) {

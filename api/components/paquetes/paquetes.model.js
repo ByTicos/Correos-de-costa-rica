@@ -9,11 +9,7 @@ var PaqueteSchema = new mongoose.Schema({
     precio    :  {type : String, required : true},
     peso    :  {type : String, required : true},
     kilometro    :  {type : String, required : true},
-    tipoArticulo    :  [
-    {
-      id: {type: String}
-
-    }],
+    tipoArticulo    :  {type : String},
     descripcion    :  {type : String, required : true},
     sucursal    :  {type : String, required : true},
     repartidor    :  {type : String},
