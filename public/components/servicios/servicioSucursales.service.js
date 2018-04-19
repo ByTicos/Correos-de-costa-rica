@@ -4,9 +4,9 @@
       .module('correos')
       .service('servicioSucursales', servicioSucursales)
 
-  servicioSucursales.$inject = ['$log', '$http'];
+  servicioSucursales.$inject = ['$log', '$http','dataStorageFactory'];
 
-  function servicioSucursales($log, $http) {
+  function servicioSucursales($log, $http,dataStorageFactory) {
 
 
       let publicAPI = {
