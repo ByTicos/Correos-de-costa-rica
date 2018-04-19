@@ -4,7 +4,7 @@
   <table class="table table-responsive">
     <thead>
       <tr>
-        <th>Foto</th>
+        
         <th>Cédula</th>
         <th>Nombre completo </th>
         <th>apellidos</th>
@@ -23,7 +23,7 @@
 
     <tbody>
       <tr ng-repeat="repartidor in vm.listaRepartidores" ng-if="repartidor.sucursalAsignada === vm.rolSucursal" >
-        <td>{{repartidor.foto}}</td>
+        
         <td>{{repartidor.cedula}}</td>
         <td>{{repartidor.primerNombre}} {{repartidor.segundoNombre}}</td>
         <td>{{repartidor.primerApellido}} {{repartidor.segundoApellido}}</td>

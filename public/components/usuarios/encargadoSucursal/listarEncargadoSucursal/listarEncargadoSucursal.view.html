@@ -8,7 +8,6 @@
         <thead class="table-primary">
             <tr>
                 <th>Cédula</th>
-                <th>Foto</th>
                 <th>Primer nombre</th>
                 <th>Primer apellido</th>
                 <th>Segundo apellido</th>
@@ -21,7 +20,6 @@
         <tbody>
             <tr ng-repeat="usuario in vm.listaUsuarios" ng-if="usuario.estado === 'activo' && usuario.tipo === '2'">
                 <td>{{usuario.cedula}}</td>
-                <td>{{usuario.foto}}</td>
                 <td>{{usuario.primerNombre}}</td>
                 <td>{{usuario.primerApellido}}</td>
                 <td>{{usuario.segundoApellido}}</td>
@@ -39,7 +37,6 @@
         <thead class="table-primary">
             <tr>
                 <th>Cédula</th>
-                <th>Foto</th>
                 <th>Primer nombre</th>
                 <th>Primer apellido</th>
                 <th>Segundo apellido</th>
@@ -52,7 +49,6 @@
         <tbody>
             <tr ng-repeat="usuario in vm.listaUsuarios" ng-if="usuario.estado === 'inactivo' && usuario.tipo === '2'">
                 <td>{{usuario.cedula}}</td>
-                <td>{{usuario.foto}}</td>
                 <td>{{usuario.primerNombre}}</td>
                 <td>{{usuario.primerApellido}}</td>
                 <td>{{usuario.segundoApellido}}</td>
