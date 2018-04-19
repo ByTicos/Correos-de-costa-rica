@@ -13,6 +13,7 @@
     
         };
     
+        
          vm.listaTarjeta = ListarTarjetas();
 
         function ListarTarjetas() {
