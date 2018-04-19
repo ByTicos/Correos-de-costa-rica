@@ -38,8 +38,7 @@
     "popper.js": "^1.12.9",
     "remove": "^0.1.5",
     "sweetalert": "^2.1.0",
-    "ui-router-page-title": "^1.0.4",
-    "wow": "0.0.6"
+    "ui-router-page-title": "^1.0.4"
   },
   "repository": {
     "type": "git",
