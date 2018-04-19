@@ -56,4 +56,9 @@ router.route('/agregar_paquete')
   .post(function (req, res) {
     users.agregar_paquete(req, res);
   });
+
+  router.route('/agregar_licencia')
+  .post(function (req, res) {
+    users.agregar_licencia(req, res);
+  });
 module.exports = router;

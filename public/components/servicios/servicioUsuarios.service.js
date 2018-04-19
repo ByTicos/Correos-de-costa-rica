@@ -40,6 +40,8 @@
             solicitarEnvioPaqueteConvenio: _solicitarEnvioPaqueteConvenio,
             getAllPaquetesConvenio: _getAllPaquetesConvenio,
             getLicencia: _getLicencia,
+            addLicencia: _addLicencia,
+            agregarLicencia: _agregarLicencia
         }
         return publicAPI
 
@@ -198,14 +200,6 @@
             dataStorageFactory.updateUserData(usuario);
         };
 
-          function _actualizarPaquete(pPaquete) {
-            let modificacionExitosa = false;
-      
-            modificacionExitosa = dataStorageFactory.updatePaqueteData(pPaquete);
-      
-            return modificacionExitosa;
-          }
-
         //    function encontrarTraking(pNuevoPaquete) {
         //        let listaUsuarios = _getUsuarios ();
         //        let trackingEncontrado;
@@ -265,13 +259,6 @@
 
                 listaPaquetes.push(objPaqueteTemp);
 
-<<<<<<< HEAD
-=======
-              objPaqueteTemp.mostrarEstadoTraslado(objPaquete.estadoTraslado);
-              
-              listaPaquetes.push(objPaqueteTemp);
-      
->>>>>>> origin/Dev
             });
 
             return listaPaquetes;
@@ -310,7 +297,6 @@
         }
 
 
-<<<<<<< HEAD
         function _actualizarPaquete(pObjpaquete) {
             let listaUsuarios = _getUsuarios();
             let sesion = JSON.parse(sessionStorage.getItem('sesion'));
@@ -326,23 +312,6 @@
             actualizarLocal(listaUsuarios);
 
         };
-=======
-        // function _actualizarPaquete(pObjpaquete) {
-        //     let listaUsuarios = _getUsuarios();
-        //     let sesion = JSON.parse(sessionStorage.getItem('sesion'));
-        //     for (let i = 0; i < listaUsuarios.length; i++) {
-        //         if(listaUsuarios[i].correo == sesion.correo){
-        //             for (let j = 0; j < listaUsuarios[i].listaPaquetes.length; j++) {
-        //                 if (listaUsuarios[i].listaPaquetes[j].tracking == pObjpaquete.tracking) {
-        //                     listaUsuarios[i].listaPaquetes[j] = pObjpaquete;
-        //                 }
-        //             }
-        //         }
-        //     }
-        //     actualizarLocal(listaUsuarios);
-
-        // };
->>>>>>> origin/Dev
 
 
         function _actualizarEstadoPaquete(pObjpaquete) {
@@ -380,18 +349,20 @@
                let objLicenciaTemp = new Licencia(
             objLicencia.numLicencia, objLicencia.tipoLicencia,
             objLicencia.vencimiento, objLicencia);
+
+            listaLicencia.push(objLicenciaTemp);
            })
 
-            let listaPaquetes = [];
-            let listaPaquetesBD = dataStorageFactory.getPaquetesData();
-            listaPaquetesBD.forEach(objPaquete => {
-                let objPaqueteTemp = new Paquete(objPaquete.usuario, objPaquete.tracking, objPaquete.distribuidor, objPaquete.precio, objPaquete.peso, objPaquete.Kilometro, objPaquete.tipoArticulo, objPaquete.descripcion, objPaquete.sucursal, objPaquete.repartidor);
+            // let listaPaquetes = [];
+            // let listaPaquetesBD = dataStorageFactory.getPaquetesData();
+            // listaPaquetesBD.forEach(objPaquete => {
+            //     let objPaqueteTemp = new Paquete(objPaquete.usuario, objPaquete.tracking, objPaquete.distribuidor, objPaquete.precio, objPaquete.peso, objPaquete.Kilometro, objPaquete.tipoArticulo, objPaquete.descripcion, objPaquete.sucursal, objPaquete.repartidor);
 
-                listaPaquetes.push(objPaqueteTemp);
+            //     listaPaquetes.push(objPaqueteTemp);
 
-            });
+            // });
 
-            return listaPaquetes;
+            return listaLicencia;
 
         };
 
@@ -529,7 +500,7 @@
             // let registroExitoso = false;
             let usuario = {};
             for (let i = 0; i < listaUsuarios.length; i++) {
-                if (listaUsuarios[i].correo == pNuevaLicencia.repartidor) {
+                if (listaUsuarios[i].cedula == pNuevaLicencia.numLicencia) {
                     usuario = dataStorageFactory.buscarUsuarioPorId(listaUsuarios[i]._id);
                 }
             }
@@ -541,6 +512,16 @@
 
             return registroExitoso;
         };
+
+        function _addLicencia(pNuevaLicencia,pNuevoRepartidor) {
+            let registroExitoso = false;
+
+
+            registroExitoso = dataStorageFactory.setLicenciaData(pNuevaLicencia);
+            dataStorageFactory.setUserData(pNuevoRepartidor)
+
+            return registroExitoso;
+        }
 
     };
 

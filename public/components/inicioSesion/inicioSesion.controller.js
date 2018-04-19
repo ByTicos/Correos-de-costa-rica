@@ -11,6 +11,10 @@
     vm.listaUsuarios = servicioUsuarios.getUsuarios();
     vm.usuario = {};
 
+    // var md5 = require('md5');
+ 
+// console.log(md5('message'));
+
 
     vm.inicarSesion = (pCredenciales) => {
       let inicioCorrecto = servicioLogin.inicioSesion(pCredenciales);

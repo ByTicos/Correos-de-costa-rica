@@ -519,21 +519,21 @@
         controllerAs: 'vm',
       })
 
-      .state('main.perfilRepartidor', {
-        url:'/perfilRepartidor',
-        templateUrl: './components/usuarios/repartidores/perfilRepartidores/perfilRepartidores.view.html',
+      .state('main.licencias', {
+        url:'/licencias',
+        templateUrl: './components/usuarios/repartidores/licencias/licencias.view.html',
         data:{
-          pageTitle: 'Perfil de Repartidor'
+          pageTitle: 'Mis Licencias'
         },
         params: {
           objRepartidorTemp:''
         },
         resolve: {
           load: [ '$ocLazyLoad', ($ocLazyLoad) => {
-            return $ocLazyLoad.load('./components/usuarios/repartidores/perfilRepartidores/perfilRepartidores.controller.html')
+            return $ocLazyLoad.load('./components/usuarios/repartidores/licencias/licencias.controller.html')
           }]
         },
-        controller: 'controladorPerfilRepartidor',
+        controller: 'controladorLicencias',
         controllerAs: 'vm'
       })
       

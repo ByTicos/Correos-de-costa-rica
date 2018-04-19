@@ -68,12 +68,12 @@
       for (let i = 0; i < listaUsuarios.length; i++) {
         if(listaUsuarios[i].correo == sesion.correo){
           
-         vm.objNuevoRepartidor = new Usuario(listaUsuarios[i].cedula, listaUsuarios[i].foto, listaUsuarios[i].primerNombre, listaUsuarios[i].segundoNombre, listaUsuarios[i].primerApellido, listaUsuarios[i].segundoApellido, listaUsuarios[i].correo, listaUsuarios[i].telefono, listaUsuarios[i].fechaNacimiento, listaUsuarios[i].provincia, listaUsuarios[i].canton, listaUsuarios[i].distrito, listaUsuarios[i].direccionExacta,listaUsuarios[i].contrasenna, '3',listaUsuarios[i].sucursalAsignada,listaUsuarios[i].vehiculo, listaUsuarios[i].licencias);
+         vm.objNuevoRepartidor = new Usuario(listaUsuarios[i].cedula, listaUsuarios[i].foto, listaUsuarios[i].primerNombre, listaUsuarios[i].segundoNombre, listaUsuarios[i].primerApellido, listaUsuarios[i].segundoApellido, listaUsuarios[i].correo, listaUsuarios[i].telefono, listaUsuarios[i].fechaNacimiento, listaUsuarios[i].provincia, listaUsuarios[i].canton, listaUsuarios[i].distrito, listaUsuarios[i].direccionExacta,listaUsuarios[i].contrasenna, '3',listaUsuarios[i].sucursalAsignada,listaUsuarios[i].vehiculo);
         }
       }
     }else{
       let objRepartidorEditar = JSON.parse($stateParams.objRepartidorTemp);
-      vm.objNuevoRepartidor = new Usuario(objRepartidorEditar.cedula, objRepartidorEditar.foto, objRepartidorEditar.primerNombre, objRepartidorEditar.segundoNombre, objRepartidorEditar.primerApellido, objRepartidorEditar.segundoApellido, objRepartidorEditar.correo, objRepartidorEditar.telefono, objRepartidorEditar.fechaNacimiento, objRepartidorEditar.provincia, objRepartidorEditar.canton,objRepartidorEditar.distrito.direccionExacta, objRepartidorEditar.contrasenna, '3',objRepartidorEditar.sucursalAsignada, objRepartidorEditar.vehiculo, objRepartidorEditar.licencias);
+      vm.objNuevoRepartidor = new Usuario(objRepartidorEditar.cedula, objRepartidorEditar.foto, objRepartidorEditar.primerNombre, objRepartidorEditar.segundoNombre, objRepartidorEditar.primerApellido, objRepartidorEditar.segundoApellido, objRepartidorEditar.correo, objRepartidorEditar.telefono, objRepartidorEditar.fechaNacimiento, objRepartidorEditar.provincia, objRepartidorEditar.canton,objRepartidorEditar.distrito.direccionExacta, objRepartidorEditar.contrasenna, '3',objRepartidorEditar.sucursalAsignada, objRepartidorEditar.vehiculo,);
     }
 
     vm.editarRepartidor.cedula = objNuevoRepartidor.cedula;
@@ -93,7 +93,7 @@
     vm.editarRepartidor.tipo = '';
     vm.editarRepartidor.sucursalAsignada = objNuevoRepartidor.sucursalAsignada;
     vm.editarRepartidor.vehiculo = objNuevoRepartidor.vehiculo;
-    vm.editarRepartidor.licencias = objNuevoRepartidor.licencias;
+    // vm.editarRepartidor.licencias = objNuevoRepartidor.licencias;
 
     // vm.eliminarUsuario = (pEstado) =>{
     //   let listaUsuarios = servicioUsuarios.getUsuarios();
@@ -126,7 +126,7 @@
           objUsuario.contrasenna = pUsuario.contrasenna;
           objUsuario.sucursalAsignada = pUsuario.sucursalAsignada;
           objUsuario.vehiculo = pUsuario.vehiculo;
-          objUsuario.licencias = pUsuario.licencias;
+          
 
     
 

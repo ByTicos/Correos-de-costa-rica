@@ -3,17 +3,17 @@
   angular
     .module('correos')
     .controller('controladorRepartidores', controladorRepartidores);
-    
-    controladorRepartidores.$inject = ['$http','$state', '$stateParams', '$location', 'servicioUsuarios', 'imageService','Upload', 'servicioSucursales'];
 
-  function controladorRepartidores($http ,$state, $stateParams, $location, servicioUsuarios, imageService, Upload, servicioSucursales) {
+  controladorRepartidores.$inject = ['$http', '$state', '$stateParams', '$location', 'servicioUsuarios', 'imageService', 'Upload', 'servicioSucursales'];
+
+  function controladorRepartidores($http, $state, $stateParams, $location, servicioUsuarios, imageService, Upload, servicioSucursales) {
     let vm = this;
 
     // vm.listaRepartidores = listarRepartidores();
     vm.nuevoRepartidor = {};
     servicioSucursales.listarSucursalesJson();
     vm.listaSucursales = servicioSucursales.getSucursal();
-    
+
     vm.cloudObj = imageService.getConfiguration();
 
     vm.provincias = $http({
@@ -61,50 +61,62 @@
     }
 
 
-    // vm.editRepartidor = (pUsuario) =>{
-    //   $state.go('main.editarRepartidor', {objRepartidorTemp : JSON.stringify(pUsuario)});
-    // };
+    vm.editRepartidor = (pUsuario) => {
+      $state.go('main.editarRepartidor', { objRepartidorTemp: JSON.stringify(pUsuario) });
+    };
 
-    vm.listaRepartidor=() => {
+    vm.listaRepartidor = () => {
       $state.go('main.listarRepartidores')
     }
-    
-    
-    vm.registrarRepartidor = (pNuevoUsuario) => {
-      
+
+    vm.cloudObj = imageService.getConfiguration();
+
+    vm.preRegistrarRepartidor = (pnuevoUsuario) => {
+      console.log(pnuevoUsuario);
+      vm.cloudObj.data.file = pnuevoUsuario.foto[0];
+      Upload.upload(vm.cloudObj).success((data) => {
+        vm.registrarRepartidor(pnuevoUsuario, data.url);
+
+      });
+    }
+
+    vm.registrarRepartidor = (pNuevoUsuario, urlImagen) => {
+
+
+      let licencias = [];
+      // licencias.push(pNuevoUsuario.numLicencia);
 
       let objLicencia = new Licencia(pNuevoUsuario.numLicencia,
-        pNuevoUsuario.tipoLicencia, pNuevoUsuario.vencimientoLicencia)
+        pNuevoUsuario.tipoLicencia, pNuevoUsuario.vencimientoLicencia);
 
-         let licencias = [];
-         licencias.push(objLicencia);
-        
+      licencia.push(objLicencia);
 
 
-      
-
-      let objNuevoRepartidor = new Usuario(pNuevoUsuario.cedula, 'imgUrl', pNuevoUsuario.primerNombre, pNuevoUsuario.segundoNombre, pNuevoUsuario.primerApellido, pNuevoUsuario.segundoApellido, pNuevoUsuario.correo, pNuevoUsuario.telefono, pNuevoUsuario.fechaNacimiento, pNuevoUsuario.provincia, pNuevoUsuario.canton, pNuevoUsuario.distrito, pNuevoUsuario.direccionExacta,pNuevoUsuario.contrasenna, '3', pNuevoUsuario.sucursalAsignada, ' ',pNuevoUsuario.vehiculo, licencias);
+      let objNuevoRepartidor = new Usuario(pNuevoUsuario.cedula, urlImagen, pNuevoUsuario.primerNombre, pNuevoUsuario.segundoNombre, pNuevoUsuario.primerApellido, pNuevoUsuario.segundoApellido, pNuevoUsuario.correo, pNuevoUsuario.telefono, pNuevoUsuario.fechaNacimiento, pNuevoUsuario.provincia, pNuevoUsuario.canton, pNuevoUsuario.distrito, pNuevoUsuario.direccionExacta, pNuevoUsuario.contrasenna, '3', pNuevoUsuario.sucursalAsignada, ' ', pNuevoUsuario.vehiculo, '', licencia);
 
 
       let registro = servicioUsuarios.addUsuario(objNuevoRepartidor);
 
 
+      // let contrasennaEncrypt = md5(contrasenna)
+      // console.log (contrasennaEncrypt);
+
       if (registro == 'Se registró el usuario correctamente') {
         let sesion = JSON.parse(sessionStorage.getItem('sesion'));
-        if(sesion == null || sesion.tipo != '3'){
-          
+        if (sesion == null || sesion.tipo != '3') {
+
           swal("Registro exitoso", "El repartidor ha sido registrado correctamente", "success", {
             button: "Aceptar",
-          }); 
+          });
           $location.path('/logIn');
         }
-        else{
+        else {
           swal("Registro exitoso", "El repartidor ha sido registrado correctamente", "success", {
             button: "Aceptar",
           });
           $location.path('/main/listarRepartidor');
         }
-        
+
       }
       else {
         swal("Registro fallido", "Ha ocurrido un error, intente nuevamente", "error", {
@@ -114,8 +126,8 @@
 
 
 
-    }
-    
+    };
+
 
   }
 })();

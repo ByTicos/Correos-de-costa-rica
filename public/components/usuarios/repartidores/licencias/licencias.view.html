@@ -1,0 +1,25 @@
+<section ng-repeat="usuario in vm.listaUsuarios" ng-if="usuario.estado === 'inactivo'">
+  <h2>{{repartidor.primerNombre}} {{repartidor.primerApellido}}</h2>
+
+
+
+  
+  <h4>Mis licencias</h4>
+
+    <table>
+      <thead>
+      <th>Numero de Licencia</th>
+      <th>
+        Tipo de licencias
+      </th>
+      <th>Vencimiento de licencia</th>
+    </thead>
+    <tbody>
+      <tr >
+       <td> {{listaLicencias[0].numLicencia}}</td>
+        <td>{{listaLicencias[0].tipoLicencia}}</td>
+        <td>{{listaLicencias[0].vencimiento}}</td>
+      </tr>s
+    </tbody>
+  </table>
+</section>

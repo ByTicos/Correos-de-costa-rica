@@ -69,7 +69,8 @@ const index = require('./index'),
       tarjetas = require('./components/tarjetas/tarjetas.route'),
       nodeMailer = require('./components/mail/mail.route'),
       paquetesConvenio = require('./components/paquetesConvenio/paquetesConvenio.route'),
-      sucursales = require('./components/sucursales/sucursales.route');
+      sucursales = require('./components/sucursales/sucursales.route'),
+      licencias = require('./components/licencias/licencias.route');
       
 
 /**
@@ -86,6 +87,7 @@ app.use('/api', tarjetas);
 app.use('/api', nodeMailer);
 app.use('/api', paquetesConvenio);
 app.use('/api', sucursales);
+app.use('/api', licencias);
 app.use('/', index);
 
 /// Se guarda todo lo que se ha realizado

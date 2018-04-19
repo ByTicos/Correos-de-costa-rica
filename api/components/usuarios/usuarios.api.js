@@ -20,7 +20,7 @@ module.exports.registrar = (req, res) => {
     sucursalAsignada    :  req.body.sucursalAsignada,
     puesto              :  req.body.puesto,
     vehiculo            :  req.body.vehiculo,
-    listaLicencias      :  req.body.listaLicencias,
+    // listaLicencias      :  req.body.listaLicencias,
     estado              :  req.body.estado,
     listaTarjetas       :  req.body.listaTarjetas,
     listaPaquetesConvenios    :  req.body.listaPaquetesConvenios,
@@ -108,6 +108,20 @@ module.exports.agregar_paquete = function (req, res) {
   console.log('listaPaquetes  ' + req.body.listaPaquetes);
 
   UserModel.update({ _id: req.body._id }, { $push: { 'listaPaquetes': { tracking: req.body.tracking } } },
+      function (error) {
+          if (error) {
+              res.json({ success: false, msg: 'No se ha actualizado el usuario debido al siguiente error: ' + handleError(error) });
+          } else {
+              res.json({ success: true, msg: 'El usuario ha sido modificado con éxito' });
+          }
+
+      });
+
+},
+module.exports.agregar_licencia = function (req, res) {
+  console.log('listaLicencias  ' + req.body.listaLicencias);
+
+  UserModel.update({ _id: req.body._id }, { $push: { 'listaLicencias': { numLicencia: req.body.numLicencia } } },
       function (error) {
           if (error) {
               res.json({ success: false, msg: 'No se ha actualizado el usuario debido al siguiente error: ' + handleError(error) });

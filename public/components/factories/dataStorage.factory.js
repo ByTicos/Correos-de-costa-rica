@@ -41,7 +41,7 @@
       setSucursalesData: _setSucursalesData,
       updateSucursalesData: _updateSucursalesData,
       buscarSucursalPorId: _buscarSucursalPorId,
-      setLicenciasData: _setLicenciaData,
+      setLicenciaData: _setLicenciaData,
       getLicenciasData: _getLicenciasData,
     };
     return localAPI;
@@ -991,9 +991,9 @@
       dataType: 'json',
       async: false,
       data: {
-        numLicencia : data.numLicencia,
-        tipoLicencia: data.tipoLicencia,
-        vencimiento : data.vencimiento,
+        'numLicencia' : data.numLicencia,
+        'tipoLicencia': data.tipoLicencia,
+        'vencimiento' : data.vencimiento,
       },
     });
 
@@ -1013,7 +1013,7 @@
     let listaLicencias = [];
 
     let peticion = $.ajax ({
-      url: 'http://localhost:4000/api/getLicencias',
+      url: 'http://localhost:4000/api/getLicenciasData',
       type: 'get',
       contentType: 'application/x-www-form-urlencoded; charset=utf-8',
       dataType: 'json',
