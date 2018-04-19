@@ -4,9 +4,9 @@
       .module('correos')
       .service('servicioSucursales', servicioSucursales)
 
-  servicioSucursales.$inject = ['$log', '$http','dataStorageFactory'];
+  servicioSucursales.$inject = ['$log', '$http'];
 
-  function servicioSucursales($log, $http, dataStorageFactory) {
+  function servicioSucursales($log, $http) {
 
 
       let publicAPI = {
@@ -24,9 +24,12 @@
     function _addSucursal (pnuevaSucursal){
         let registroExitoso = false;
         
-        registroExitoso = dataStorageFactory.setSucursalesData(pnuevaSucursal);
+        let listaSucursal = _getSucursal();
+        console.log('pnuevaSucursal', pnuevaSucursal);
+        listaSucursal.push(pnuevaSucursal);
 
-        return registroExitoso;
+      localStorage.setItem('sucursalLS', JSON.stringify(listaSucursal));
+            console.log('push');
          
         }
 
@@ -37,11 +40,19 @@
 
               let objSucursalTemp = new Sucursal(objSucursal.id, objSucursal.nombre, objSucursal.provincia, objSucursal.canton, objSucursal.distrito, objSucursal.telefono, objSucursal.horario, objSucursal.latitud, objSucursal.longitud, objSucursal.estado)
 
-            listaSucursal.push(objSucursalTemp);
+        if(listaSucursalLocal == null){
+            listaSucursal = [];
+        }else{
+            listaSucursalLocal.forEach(obj => {
+                let objSucursal = new Sucursal (obj.id, obj.nombre, obj.provincia, obj.canton, obj.distrito, obj.telefono, obj.horario, obj.estado);
 
-          });
+                listaSucursal.push(objSucursal);
+            });
 
-          return listaSucursal;
+            
+        }
+        console.log(listaSucursal);
+        return listaSucursal;
         
     };
     
@@ -210,7 +221,6 @@
 
     function _actualizarSucursal(pSucursal) {
         let listaSucursal = _getSucursal();
-        let sucursal = {};
 
         for (let i = 0; i < listaSucursales.length; i++) {
             if (pSucursal.id == listaSucursales[i].id) {
@@ -218,7 +228,7 @@
                 sucursal = listaSucursales[i];
             }
         }
-        dataStorageFactory.updateSucursalesData(sucursal);
+        actualizarSucursalLocal(listaSucursal);
     };
 
     // function actualizarSucursalLocal(plistaActualizadaSucursal) {
