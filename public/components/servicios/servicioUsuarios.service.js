@@ -38,8 +38,8 @@
             getUsuarioActivo:_getUsuarioActivo,
             solicitarEnvioPaqueteConvenio:_solicitarEnvioPaqueteConvenio,
             getAllPaquetesConvenio:_getAllPaquetesConvenio,
-            addEstado:_addEstado,
-            agregarEstado:_agregarEstado,
+           // addEstado:_addEstado,
+           // agregarEstado:_agregarEstado,
             getLicencia: _getLicencia,
             getTarjetaID: _getTarjetaID
            
