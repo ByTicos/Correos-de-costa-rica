@@ -33,7 +33,6 @@
             getRol: _getRol,
             getRolSucursal: _getRolSucursal,
             getRolNombre: _getRolNombre,
-            getAllPaquetes: _getAllPaquetes,
             actualizarTarjeta: _actualizarTarjeta,
             addPaqueteConvenio:_addPaqueteConvenio,
             getPaquetesConvenio:_getPaquetesConvenio,
@@ -61,8 +60,8 @@
                 console.log('objUsuario',objUsuario.listaPaquetes);
                     let objUsuarioTemp = new Usuario(objUsuario.cedula, objUsuario.foto, objUsuario.primerNombre, objUsuario.segundoNombre, objUsuario.primerApellido, objUsuario.segundoApellido, objUsuario.correo, objUsuario.telefono, objUsuario.fechaNacimiento, objUsuario.provincia, objUsuario.canton, objUsuario.distrito, objUsuario.direccionExacta, objUsuario.contrasenna,objUsuario.tipo, objUsuario.sucursalAsignada, objUsuario.puesto, objUsuario.vehiculo, []);
                     objUsuarioTemp.cambiarEstado(objUsuario.estado);
-                    objUsuarioTemp.setId(objUsuario._id),
-                    objUsuarioTemp.listaTarjetas = objUsuario.listaTarjetas;
+                    objUsuarioTemp.setId(objUsuario._id);
+
 
                     objUsuario.listaLicencias.forEach(objLicencia => {
 
@@ -72,6 +71,11 @@
 
 
 
+                    objUsuario.listaTarjetas.forEach(objTarjeta => {
+                        let objTarjetaTemp = new Tarjeta(objTarjeta.id, objTarjeta.nombre, objTarjeta.numero, objTarjeta.expiracion, objTarjeta.cvv, objTarjeta.estado);
+
+                        objUsuarioTemp.registrarTarjeta(objTarjetaTemp);
+                    });
 
                     // objUsuario.listaPaquetes.forEach(objPaquete => {
                     //     let objPaqueteTemp = new Paquete(objPaquete.usuario, objPaquete.tracking, objPaquete.distribuidor, objPaquete.precio,objPaquete.peso, objPaquete.Kilometro,objPaquete.tipoArticulo, objPaquete.descripcion, objPaquete.sucursal, objPaquete.repartidor);
@@ -283,38 +287,30 @@
             // return listaPaquetes;
         };
     
-        function _getAllPaquetes(){
-        let listaUsuarios = _getUsuarios();
-        let listaPaquetes = [];
-        for (let i = 0; i < listaUsuarios.length; i++){
-            let listaPaquetesTemp = listaUsuarios[i].listaPaquetes;
-            if(listaPaquetesTemp != []){
-            let paqueteTemp = {};
-            for(let j = 0; j < listaPaquetesTemp.length; j++){
-                paqueteTemp = listaPaquetesTemp[j];
-                listaPaquetes.push(paqueteTemp);
-            }
-            }
-        }
-        return listaPaquetes;
-        }
+    
+       function _actualizarPaquete(pObjpaquete) {
+            let modificacionExitosa = false;
+      
+            modificacionExitosa = dataStorageFactory.updatePaqueteData(pObjpaquete);
+      
+            return modificacionExitosa;
 
 
-        // function _actualizarPaquete(pObjpaquete) {
-        //     let listaUsuarios = _getUsuarios();
-        //     let sesion = JSON.parse(sessionStorage.getItem('sesion'));
-        //     for (let i = 0; i < listaUsuarios.length; i++) {
-        //         if(listaUsuarios[i].correo == sesion.correo){
-        //             for (let j = 0; j < listaUsuarios[i].listaPaquetes.length; j++) {
-        //                 if (listaUsuarios[i].listaPaquetes[j].tracking == pObjpaquete.tracking) {
-        //                     listaUsuarios[i].listaPaquetes[j] = pObjpaquete;
-        //                 }
-        //             }
-        //         }
-        //     }
-        //     actualizarLocal(listaUsuarios);
+            // let listaUsuarios = _getUsuarios();
+            // let sesion = JSON.parse(sessionStorage.getItem('sesion'));
+            // for (let i = 0; i < listaUsuarios.length; i++) {
+            //     if(listaUsuarios[i].correo == sesion.correo){
+            //         for (let j = 0; j < listaUsuarios[i].listaPaquetes.length; j++) {
+            //             if (listaUsuarios[i].listaPaquetes[j].tracking == pObjpaquete.tracking) {
+            //                 listaUsuarios[i].listaPaquetes[j] = pObjpaquete;
+            //             }
+            //         }
+            //     }
+            // }
+            // actualizarLocal(listaUsuarios);
 
-        // };
+        };
+        
 
 
         function _actualizarEstadoPaquete(pObjpaquete) {

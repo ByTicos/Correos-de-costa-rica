@@ -50,7 +50,7 @@
         }
         servicioUsuarios.actualizarUsuario(objUsuario);
       });
-      $state.go('mainlistarEncargadoSucursal');
+      $state.go('main.listarEncargadoSucursal');
     }
     
 

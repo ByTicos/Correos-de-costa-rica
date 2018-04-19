@@ -11,7 +11,8 @@
       addArticulo: _addArticulo,
       getArticulo: _getArticulo,
       listarArticulosJson: _listarArticulosJson,
-      actualizarArticulo: _actualizarArticulo
+      actualizarArticulo: _actualizarArticulos
+
 
     };
     return publicAPI;
@@ -50,12 +51,9 @@
         listaArticulos = [];
       } else {
         listaArticulosBD.forEach (objArticulo => {
-          let objArticuloTemp = new Articulo (
-            objArticulo.id,
-            objArticulo.producto,
-            objArticulo.impuesto
-            
-          );
+          let objArticuloTemp = new Articulo (objArticulo.id, objArticulo.producto, objArticulo.impuesto);
+         
+          objArticuloTemp.setId(objArticulo._id);
 
           objArticuloTemp.cambiarEstadoDeActividadArticulo (objArticulo.estado);
 
@@ -66,6 +64,13 @@
       return listaArticulos;
     }
   
+      function _actualizarArticulos(pArticulo) {
+            let modificacionExitosa = false;
+      
+            modificacionExitosa = dataStorageFactory.updateArticuloData(pArticulo);
+      
+            return modificacionExitosa;
+          }
 
   function _listarArticulosJson() {
     let listaArticulosCompleta = [

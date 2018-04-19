@@ -31,7 +31,7 @@
             <input list="sltProvincia" class="form-control" name="sltProvincia" ng-change="vm.rellenarCantones(vm.nuevaSucursal.provincia)"
               ng-model="vm.nuevaSucursal.provincia" required>
             <datalist id="sltProvincia">
-              <option ng-repeat="provincia in vm.provincias" value="{{provincia.name}}">
+              <option ng-repeat="provincia in vm.provincias track by provincia._id" value="{{provincia.name}}">
             </datalist>
             <small class="form-text text-muted">Este campo es requerido</small>
           </div>
@@ -54,7 +54,7 @@
             </datalist>
             <small class="form-text text-muted">Este campo es requerido</small>
 
-            <label for="nTelefono">Numero de Telefono</label>
+            <label for="nTelefono">Número de Teléfono</label>
             <input type="tel" id="nTelefono" class="form-control" name="nTelefono" ng-model="vm.nuevaSucursal.telefono" maxlength="11"
               minlength="8" required>
             <small class="form-text text-muted">Este campo es requerido</small>
@@ -62,7 +62,7 @@
           </div>
 
           <div class="col-md-6 form-group">
-            <label for="txtHorario">Horarios de Atencion</label>
+            <label for="txtHorario">Horarios de Atención</label>
             <textarea type="text" id="txtHorario" class="form-control" name="txtHorario" ng-model="vm.nuevaSucursal.horario" style="height:100px"
               required></textarea>
             <small class="form-text text-muted">Este campo es requerido</small>
