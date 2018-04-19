@@ -29,7 +29,7 @@
         </div>
       
         <div class="form-group">
-          <label for="">Artículo</label>
+          <label for="">Articulo</label>
           <select class="form-control" ng-model="vm.nuevoPaquete.tipoArticulo" ng-options="tipo as tipo.producto for tipo in vm.tipoArticulo track by tipo.id" required>
 
           <!-- <label for="">Articulo</label>
@@ -60,22 +60,22 @@
             <table class="table table-bordered">
               <thead>
                 <tr>
-                  <th>Operación</th>
+                  <th>Operacion</th>
                   <th>Costo</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td>Courier</td>
+                  <td>courier</td>
                   <td>{{vm.calculo | currency}}</td>
                 </tr>
           
                 <tr>
-                  <td>Transporte</td>
+                  <td>transporte</td>
                   <td>{{vm.transporte | currency}}</td>
                 </tr>
                 <tr>
-                  <td>Total</td>
+                  <td>total</td>
                   <td>{{vm.total | currency}}</td>
                 </tr>
               </tbody>

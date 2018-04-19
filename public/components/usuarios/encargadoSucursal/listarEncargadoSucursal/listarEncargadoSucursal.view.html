@@ -1,11 +1,10 @@
 
 
-<div id="wrapperusuarios">
+<div id="container-fluid">
 
-    <table class="table">
-        <h1 class="col-12">Usuarios activos</h1>
-        <hr/>
-        <thead class="table-primary">
+    <table class="table table-responsive table-striped text-centered col-12 offset-1">
+        <legend class="col-12 offset-1">Usuarios activos</legend>
+        <thead class="thead-dark">
             <tr>
                 <th>Cédula</th>
                 <th>Primer nombre</th>
@@ -27,14 +26,14 @@
                 <td>{{usuario.telefono}}</td>
                 <td>{{usuario.tipo}}</td>
                 <td>
-                    <button type="button" class="btn" ng-click="vm.editUsuarios(usuario)"><i class="far fa-check-circle"></i></button>
+                    <button class="btn btn-success" type="button" ng-click="vm.editUsuarios(usuario)">Editar</button>
                 </td>
             </tr>
         </tbody>
     </table>
-    <table class="table">
-        <h1 class="col-12">Usuarios desactivados</h1>
-        <thead class="table-primary">
+    <table class="table table-responsive table-striped text-centered col-12 offset-1">
+        <legend class="col-12 offset-1">Usuarios desactivados</legend>
+        <thead class="thead-dark">
             <tr>
                 <th>Cédula</th>
                 <th>Primer nombre</th>
@@ -56,7 +55,7 @@
                 <td>{{usuario.telefono}}</td>
                 <td>{{usuario.tipo}}</td>
                 <td>
-                    <button type="button" class="btn" ng-click="vm.editUsuarios(usuario)"><i class="far fa-check-circle"></i></button>
+                    <button class="btn btn-success" type="button" ng-click="vm.editUsuarios(usuario)">Editar</button>
                 </td>
             </tr>
         </tbody>

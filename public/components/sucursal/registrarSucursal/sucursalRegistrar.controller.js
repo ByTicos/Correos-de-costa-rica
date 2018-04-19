@@ -12,7 +12,6 @@
     
     vm.nuevaSucursal = {};
     vm.listaSucursales = listarSucursales();
-    servicioSucursales.listarSucursalesJson();
     
     vm.provincias = $http({
       method: 'GET',
@@ -65,17 +64,24 @@
 
     vm.registrarSucursal = (pnuevaSucursal) => {
 
-      let objnuevaSucursal = new Sucursal(pnuevaSucursal.id, pnuevaSucursal.nombre, pnuevaSucursal.provincia, pnuevaSucursal.canton, pnuevaSucursal.distrito, pnuevaSucursal.telefono, pnuevaSucursal.horario);
+      let objnuevaSucursal = new Sucursal(pnuevaSucursal.id, pnuevaSucursal.nombre, pnuevaSucursal.provincia, pnuevaSucursal.canton, pnuevaSucursal.distrito, pnuevaSucursal.telefono, pnuevaSucursal.horario, pnuevaSucursal.latitud, pnuevaSucursal.longitud);
 
-      servicioSucursales.addSucursal(objnuevaSucursal);
+      let registro = servicioSucursales.addSucursal(objnuevaSucursal);
 
-      swal("Registro exitoso", "La sucursal ha sido registrada correctamente", "success", {
-        button: "Aceptar",
-      });
+      if (registro) {
+        swal("Registro exitoso", "La sucursal ha sido registrada correctamente", "success", {
+          button: "Aceptar",
+        });
+      } else {
+        swal("Registro fallido", "Ha ocurrido un error, intente nuevamente", "error", {
+          button: "Aceptar",
 
+        });
+
+      }
       vm.nuevaSucursal = null;
-      listarSucursales();
-    }
+    
+    };
     
 
     function listarSucursales() {

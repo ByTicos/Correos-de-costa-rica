@@ -22,7 +22,7 @@
                     <input type="text" class="form-control" id="cardNumber" ng-model="vm.editarTarjeta.numero" 	readonly>
                 </div>
                 <div class="form-group" id="expiration-date">
-                    <label>Fecha de Expiración</label>
+                    <label>Fecha de Expiracion</label>
                     <select id="month">
                         <option value="01">Enero</option>
                         <option value="02">Febrero </option>
@@ -62,16 +62,16 @@
 
 
                 <div class="form-group" id="pay-now">
-                    <button type="submit" class="btn btn-default" id="confirm-purchase">Completar Edición</button>
+                    <button type="submit" class="btn btn-default" id="confirm-purchase">Completar Edicion</button>
                 </div>
                 <div class="form-group">
                     <button type="button" ng-click="vm.cambiarEstadoTarjeta('inactivo')" class="btn btn-secondary">
-                        Desactivar Tarjeta
+                        <i class="far fa-times-circle"></i>
                     </button>
                 </div>
                 <div class="form-group">
                     <button type="button" ng-click="vm.cambiarEstadoTarjeta('activo')"  class="btn btn-secondary">
-                        Activar Tarjeta
+                        <i class="far fa-check-circle"></i>
                     </button>
                 </div>
             </form>

@@ -11,7 +11,7 @@
     let vm = this;
 
     vm.nuevoUsuario = {};
-    servicioSucursales.listarSucursalesJson();
+    servicioSucursales.getSucursal();
     vm.listaSucursales = servicioSucursales.getSucursal();
     console.log('Prueba', servicioSucursales.getSucursal());
     vm.cloudObj = imageService.getConfiguration();
@@ -63,7 +63,7 @@
 
     vm.registrarUsuario = (pNuevoUsuario/*, imgUrl*/) => {
 
-      let objNuevoUsuario = new Usuario(pNuevoUsuario.cedula, 'imgUrl', pNuevoUsuario.primerNombre, pNuevoUsuario.segundoNombre, pNuevoUsuario.primerApellido, pNuevoUsuario.segundoApellido, pNuevoUsuario.correo, pNuevoUsuario.telefono, pNuevoUsuario.fechaNacimiento, pNuevoUsuario.provincia, pNuevoUsuario.canton, pNuevoUsuario.distrito, pNuevoUsuario.direccionExacta, pNuevoUsuario.contrasenna, '4', pNuevoUsuario.puesto);
+      let objNuevoUsuario = new Usuario(pNuevoUsuario.cedula, 'imgUrl', pNuevoUsuario.primerNombre, pNuevoUsuario.segundoNombre, pNuevoUsuario.primerApellido, pNuevoUsuario.segundoApellido, pNuevoUsuario.correo, pNuevoUsuario.telefono, pNuevoUsuario.fechaNacimiento, pNuevoUsuario.provincia, pNuevoUsuario.canton, pNuevoUsuario.distrito, pNuevoUsuario.direccionExacta, pNuevoUsuario.contrasenna, '2', pNuevoUsuario.sucursalAsignada);
 
       let registro = servicioUsuarios.addUsuario(objNuevoUsuario);
 
@@ -74,7 +74,7 @@
           swal("Registro exitoso", "El usuario ha sido registrado correctamente", "success", {
             button: "Aceptar",
           }); 
-          $location.path('/mainlistarEncargadoAduana');
+          $location.path('/logIn');
         }
         else{
           swal("Registro exitoso", "El usuario ha sido registrado correctamente", "success", {

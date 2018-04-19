@@ -23,7 +23,7 @@ router.route('/save_sucursal')
  */
 router.route('/get_all_sucursales')
   .get((req, res) => {
-    sucursales.listarTodos(req,res);
+    sucursales.get_all_sucursales(req,res);
 });
 
 /**
@@ -31,7 +31,7 @@ router.route('/get_all_sucursales')
  */
 router.route('/update_sucursales')
   .put((req, res) => {
-    sucursales.actualizar(req,res);
+    sucursales.actualizar_sucursal(req,res);
 });
 
 router.route('/buscar_sucursal_id')
