@@ -16,10 +16,11 @@
       let objNuevoConvenio = new Convenio(pNuevoConvenio.nombre, pNuevoConvenio.tipoTramite);
       let registro = servicioEntidades.addConvenio(objNuevoConvenio);
 
-      if (registro == true) {
+      if (registro == 'Se registró el convenio correctamente') {
         swal("Registro exitoso", "El convenio ha sido registrado correctamente", "success", {
-          button: "Aceptar",
-        });
+          button: "Aceptar",}).then((value) => {
+            vm.nuevoConvenio = null;
+          });
         /*$location.path('/logIn');*/
       }
       else {

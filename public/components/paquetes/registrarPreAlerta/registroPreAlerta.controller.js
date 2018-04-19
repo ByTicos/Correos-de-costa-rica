@@ -20,25 +20,13 @@
 
      vm.tipoArticulo = servicioArticulos.getArticulo();
 
+     
     
-    
-    //$http ({
-    //   method: 'GET',
-    //   url: './sources/data/articulos.json',
-    // }).then (
-    //   success => {
-    //     vm.tipoArticulo = success.data;
-    //   },
-    //   error => {
-    //     console.log ('Ocurrió un error ' + error.data);
-    //   }
-    // );
-
     vm.calcular = pnuevoPaquete => {
       let calculo = 0;
       let transporte = 0;
       let total = 0;
-      let impuesto = Number (pnuevoPaquete.tipoArticulo._id);
+      let impuesto = Number (pnuevoPaquete.tipoArticulo.impuesto);
       let peso = Number (pnuevoPaquete.peso);
       let precioxKilo = 0;
       let precio = Number (pnuevoPaquete.precio);
@@ -74,9 +62,10 @@
       vm.ocultarcalculo = true;
     };
 
-    vm.registrarPaquete = pnuevoPaquete => {
+    vm.registrarPaquete = (pnuevoPaquete) => {
       let session = JSON.parse (sessionStorage.getItem ('sesion'));
-      let usuario = session.nombre;
+      let usuario = session.correo;
+      let sucursal = session.sucursalAsignada;
 
       let objNuevoPaquete = new Paquete (
         usuario,
@@ -85,21 +74,26 @@
         pnuevoPaquete.precio,
         pnuevoPaquete.peso,
         pnuevoPaquete.kilometro,
-        pnuevoPaquete.tipoArticulo,
-        pnuevoPaquete.descripcion
+        pnuevoPaquete.tipoArticulo._id,
+        pnuevoPaquete.descripcion,
+        sucursal,''
       );
-
+       
+      console.log(pnuevoPaquete.tipoArticulo);
       let fecha = new Date ();
       let hora = fecha;
-      let objEstado = new Estado (usuario, fecha, hora, 'En tránsito a aduana');
+      let objEstado = new Estado(usuario, fecha, hora, 'En Aduanas');
 
-      objNuevoPaquete.mostrarEstadoTraslado ('En tránsito a aduana');
-      objNuevoPaquete.addEstado (objEstado);
+      objNuevoPaquete.mostrarEstadoTraslado('En Aduanas');
+
 
       //console.log(objNuevoPaquete);
 
-      let registro = servicioUsuarios.addPaquete (objNuevoPaquete);
-
+      let registro = servicioUsuarios.addPaquete(objNuevoPaquete);
+      servicioUsuarios.addEstado (objEstado);
+      console.log (objNuevoPaquete);
+      
+       
       if (registro == true) {
         swal (
           'Registro exitoso',

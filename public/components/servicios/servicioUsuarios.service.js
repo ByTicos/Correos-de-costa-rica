@@ -4,9 +4,9 @@
         .module('correos')
         .service('servicioUsuarios', servicioUsuarios)
 
-    servicioUsuarios.$inject = ['$log', '$http'];
+    servicioUsuarios.$inject = ['$log', '$http', 'dataStorageFactory'];
 
-    function servicioUsuarios($log, $http) {
+    function servicioUsuarios($log, $http, dataStorageFactory) {
 
         const asyncLocalStorage = {
             setItem: function (key, value) {
@@ -32,42 +32,36 @@
             getTarjeta: _getTarjeta,
             getRol: _getRol,
             getRolSucursal: _getRolSucursal,
-            getAllPaquetes: _getAllPaquetes,
+            getRolNombre: _getRolNombre,
             actualizarTarjeta: _actualizarTarjeta,
             addPaqueteConvenio:_addPaqueteConvenio,
             getPaquetesConvenio:_getPaquetesConvenio,
             getUsuarioActivo:_getUsuarioActivo,
-            solicitarEnvioPaqueteConvenio:_solicitarEnvioPaqueteConvenio
+            solicitarEnvioPaqueteConvenio:_solicitarEnvioPaqueteConvenio,
+            getAllPaquetesConvenio:_getAllPaquetesConvenio,
+            addEstado:_addEstado,
+            agregarEstado:_agregarEstado
             }
         return publicAPI
-
-        function _addUsuario(pNuevoUsuario) {
-            let listaUsuarios = _getUsuarios();
-            let respuesta = true;
-            listaUsuarios.push(pNuevoUsuario);
-
-            localStorage.setItem('usuariosLS', JSON.stringify(listaUsuarios));/*.tshen((response) => {
-                respuesta = response;
-            })*/
-
-            return respuesta;
-        };
-
         
+        function _addUsuario(pNuevoUsuario) {
+            let registroExitoso = false;
+
+            registroExitoso = dataStorageFactory.setUserData(pNuevoUsuario);
+            dataStorageFactory.sendMail(pNuevoUsuario);
+
+            return registroExitoso;
+        }
 
         function _getUsuarios() {
             let listaUsuarios = [];
-            let admin = new Usuario('', '', 'Administrador', '', '', '', 'administrador@correos.cr', '', '', '', '', '', '', 'admin', '5', '', 'Administrador', '');
-            let listaUsuariosLocal = JSON.parse(localStorage.getItem("usuariosLS"));
-            if (listaUsuariosLocal == null) {
-                listaUsuarios = [admin];
-                actualizarLocal(listaUsuarios);
-            }
-            else {
-                listaUsuariosLocal.forEach(objUsuario => {
+            let listaUsuariosBD = dataStorageFactory.getUsersData();
+            listaUsuariosBD.forEach(objUsuario => {
+                console.log('objUsuario',objUsuario.listaPaquetes);
                     let objUsuarioTemp = new Usuario(objUsuario.cedula, objUsuario.foto, objUsuario.primerNombre, objUsuario.segundoNombre, objUsuario.primerApellido, objUsuario.segundoApellido, objUsuario.correo, objUsuario.telefono, objUsuario.fechaNacimiento, objUsuario.provincia, objUsuario.canton, objUsuario.distrito, objUsuario.direccionExacta, objUsuario.contrasenna,objUsuario.tipo, objUsuario.sucursalAsignada, objUsuario.puesto, objUsuario.vehiculo, []);
                     objUsuarioTemp.cambiarEstado(objUsuario.estado);
-
+                    objUsuarioTemp.setId(objUsuario._id),
+                    objUsuarioTemp.listaTarjetas = objUsuario.listaTarjetas;
 
                     objUsuario.listaLicencias.forEach(objLicencia => {
 
@@ -77,70 +71,84 @@
 
 
 
-                    objUsuario.listaTarjetas.forEach(objTarjeta => {
-                        let objTarjetaTemp = new Tarjeta(objTarjeta.id, objTarjeta.nombre, objTarjeta.numero, objTarjeta.expiracion, objTarjeta.cvv, objTarjeta.estado);
 
-                        objUsuarioTemp.registrarTarjeta(objTarjetaTemp);
-                    });
+                    // objUsuario.listaPaquetes.forEach(objPaquete => {
+                    //     let objPaqueteTemp = new Paquete(objPaquete.usuario, objPaquete.tracking, objPaquete.distribuidor, objPaquete.precio,objPaquete.peso, objPaquete.Kilometro,objPaquete.tipoArticulo, objPaquete.descripcion, objPaquete.sucursal, objPaquete.repartidor);
 
-                    objUsuario.listaPaquetesConvenios.forEach(objPaqueteConv => {
-                        let objPaqueteConvTemp = new PaqueteConv(objPaqueteConv.cliente, objPaqueteConv.convenio, new Date(objPaqueteConv.fecha));
-                        objPaqueteConvTemp.cambiarEstadoTraslado(objPaqueteConv.estadoTraslado);
+                    //     let listaEstados = objPaquete.listaEstados;
 
-                        objUsuarioTemp.agregarPaqueteConvenio(objPaqueteConvTemp);
-                    });
+                    //     // objTarjetaTemp.cambiarEstadoDeActividadTarjeta(objTarjeta.estado);
 
-                    objUsuario.listaPaquetes.forEach(objPaquete => {
-                        let objPaqueteTemp = new Paquete(objPaquete.usuario, objPaquete.tracking, objPaquete.distribuidor, objPaquete.precio,objPaquete.peso, objPaquete.Kilometro,objPaquete.tipoArticulo, objPaquete.descripcion);
+                    //     listaEstados.forEach(objEstado => {
+                    //         let fecha = new Date(objEstado.fecha);
+                    //         let hora = fecha;
+                    //         let estadoTemp = new Estado(objEstado.usuario, fecha, hora, objEstado.estado);
 
-                        let listaEstados = objPaquete.listaEstados;
-
-                        // objTarjetaTemp.cambiarEstadoDeActividadTarjeta(objTarjeta.estado);
-
-                        listaEstados.forEach(objEstado => {
-                            let fecha = new Date(objEstado.fecha);
-                            let hora = fecha;
-                            let estadoTemp = new Estado(objEstado.usuario, fecha, hora, objEstado.estado);
-
-                            objPaqueteTemp.addEstado(estadoTemp);
+                    //         objPaqueteTemp.addEstado(estadoTemp);
                             
-                        });
-                        objPaqueteTemp.cambiarEstadoDeActividad(objPaquete.estado);
-                        objPaqueteTemp.mostrarEstadoTraslado(objPaquete.estadoTraslado);
+                    //     });
+                    //     objPaqueteTemp.cambiarEstadoDeActividad(objPaquete.estado);
+                    //     objPaqueteTemp.mostrarEstadoTraslado(objPaquete.estadoTraslado);
 
-                        objUsuarioTemp.agregarPaquete(objPaqueteTemp);
-                    });
+                    //     objUsuarioTemp.agregarPaquete(objPaqueteTemp);
+                    // });
                     
                     listaUsuarios.push(objUsuarioTemp);
                 });
 
-            };
-            console.log('listaUsuarios',listaUsuarios);
+                console.log('Datos de la BD convertidos en clases');
+                console.log('Lista de usuarios ', listaUsuarios);
             return listaUsuarios;
         };
 
-        function _addPaqueteConvenio(pNuevoPaquete){
+
+
+        //
+        //Inicio paquetes convenio
+        //
+        function _addPaqueteConvenio(pNuevoPaquete) {
             let listaUsuarios = _getUsuarios();
-            let usuario = pNuevoPaquete.cliente;
-            let respuesta = true;
+            let registroExitoso = false;
+            let usuario = {};
             for (let i = 0; i < listaUsuarios.length; i++) {
-                if (usuario == listaUsuarios[i].correo) {
-                    listaUsuarios[i].agregarPaqueteConvenio(pNuevoPaquete);
-                }
+              if (listaUsuarios[i].correo == pNuevoPaquete.cliente) {
+                usuario = dataStorageFactory.buscarUsuarioPorId(listaUsuarios[i]._id);
+              }
             }
-            console.log(listaUsuarios);
-            actualizarLocal(listaUsuarios);
-            return respuesta;
-        };
+      
+            registroExitoso = dataStorageFactory.setPaqueteConvenioData(pNuevoPaquete);
+            
+            dataStorageFactory.agregarPaqueteConvenio(usuario._id, pNuevoPaquete);
+        
+            
+            return registroExitoso;
+          };
+
+
+
         function _getPaquetesConvenio() {
+            let listaPaquetesConvenios = [];
+            let listaPaquetesConveniosBD = dataStorageFactory.getPaquetesConvenioData();
+            listaPaquetesConveniosBD.forEach(objPaqueteConvenio => {
+              let objPaqueteConvenioTemp = new PaqueteConv(objPaqueteConvenio.tracking, objPaqueteConvenio.cliente, objPaqueteConvenio.convenio,objPaqueteConvenio.fecha, objPaqueteConvenio.estadoTraslado);
+      
+              listaPaquetesConvenios.push(objPaqueteConvenioTemp);
+      
+            });
+      
+            return listaPaquetesConvenios;
+      
+          };
+
+
+        function _getAllPaquetesConvenio() {
             let listaUsuarios = _getUsuarios();
             let listaPaquetesConvenios = [];
-            let session = JSON.parse(sessionStorage.getItem('sesion'));
-
             for (let i = 0; i < listaUsuarios.length; i++) {
-                if (session.correo == listaUsuarios[i].correo) {
-                    if (listaUsuarios[i].listaPaquetesConvenios != null) {
-                        listaPaquetesConvenios = listaUsuarios[i].listaPaquetesConvenios;
+                if (listaUsuarios[i].listaPaquetesConvenios != null) {
+                    for (let j = 0; j < listaUsuarios[i].listaPaquetesConvenios.length; j++) {
+                        listaPaquetesConvenios.push(listaUsuarios[i].listaPaquetesConvenios[j]);
+                        
                     }
                 }
             }
@@ -154,8 +162,8 @@
             for (let i = 0; i < listaUsuarios.length; i++) {
                 if (listaUsuarios[i].correo = sesion.correo) {
                     for (let j = 0; j < listaUsuarios[i].listaPaquetesConvenios.length; j++) {
-                        if (listaUsuarios[i].listaPaquetesConvenios[j].cliente == pPaquete.cliente && listaUsuarios[i].listaPaquetesConvenios[j].convenio == pPaquete.convenio) {
-                            listaUsuarios[i].listaPaquetesConvenios[j].cambiarEstadoTraslado('En proceso de envio');
+                        if (listaUsuarios[i].listaPaquetesConvenios[j].tracking == pPaquete.tracking) {
+                            listaUsuarios[i].listaPaquetesConvenios[j].cambiarEstadoTraslado('En proceso de envío');
                             usuario = listaUsuarios[i];
                         }
                     }
@@ -164,18 +172,28 @@
             }
             _actualizarUsuario(usuario);
         }
-        
-        
-        function _actualizarUsuario(pUsuario) {
-            let listaUsuarios = _getUsuarios();
 
-            for (let i = 0; i < listaUsuarios.length; i++) {
-                if (pUsuario.correo == listaUsuarios[i].correo) {
-                    listaUsuarios[i] = pUsuario;
-                }
-            }
-            actualizarLocal(listaUsuarios);
-        };
+
+        //
+        //Final paquetes convenio
+        //
+
+
+        function _actualizarUsuario(pUsuario) {
+            let modificacionExitosa = false;
+      
+            modificacionExitosa = dataStorageFactory.updateUserData(pUsuario);
+      
+            return modificacionExitosa;
+          }
+
+          function _actualizarPaquete(pPaquete) {
+            let modificacionExitosa = false;
+      
+            modificacionExitosa = dataStorageFactory.updatePaqueteData(pPaquete);
+      
+            return modificacionExitosa;
+          }
 
         //    function encontrarTraking(pNuevoPaquete) {
         //        let listaUsuarios = _getUsuarios ();
@@ -193,71 +211,101 @@
         //    };
 
            function _addPaquete (pNuevoPaquete) {
-                let listaUsuarios = _getUsuarios();
-                let sesion = JSON.parse(sessionStorage.getItem('sesion'));
-                let respuesta = true;
 
-                for(let i = 0; i < listaUsuarios.length; i++){
-                    if (sesion.nombre == listaUsuarios[i].primerNombre){
-                    listaUsuarios[i].agregarPaquete(pNuevoPaquete);
-                    }
+                let listaUsuarios = _getUsuarios();
+                let registroExitoso = false;
+                let usuario = {};
+                for (let i = 0; i < listaUsuarios.length; i++) {
+                if (listaUsuarios[i].correo == pNuevoPaquete.usuario) {
+                    usuario = dataStorageFactory.buscarUsuarioPorId(listaUsuarios[i]._id);
                 }
 
-                actualizarLocal(listaUsuarios);
-                return respuesta;
+                registroExitoso = true;
+
+                }
+        
+                dataStorageFactory.setPaqueteData (pNuevoPaquete);
                 
+                dataStorageFactory.agregarPaquete(usuario._id, pNuevoPaquete);
+            
+                
+                return registroExitoso;
             };
+                
+            //     let listaUsuarios = _getUsuarios();
+            //     let sesion = JSON.parse(sessionStorage.getItem('sesion'));
+            //     let respuesta = true;
+
+            //     for(let i = 0; i < listaUsuarios.length; i++){
+            //         if (sesion.nombre == listaUsuarios[i].primerNombre){
+            //         listaUsuarios[i].agregarPaquete(pNuevoPaquete);
+            //         }
+            //     }
+
+            //     actualizarLocal(listaUsuarios);
+            //     return respuesta;
+                
+            // };
 
 
         function _getPaquete() {
-            let ListaUsuarios = _getUsuarios();
-            let listaPaquetes = [];
-            let session = JSON.parse (sessionStorage.getItem ('sesion'));
 
-            for (let i = 0; i < ListaUsuarios.length; i++) {
-                if (session.nombre == ListaUsuarios[i].primerNombre ) {
-                    if (ListaUsuarios[i].listaPaquetes != null) {
-                       listaPaquetes =  ListaUsuarios[i].listaPaquetes;
-                    }
-                }
-                
-            }
+           let listaPaquetes = [];
+            let listaPaquetesBD = dataStorageFactory.getPaquetesData();
+            listaPaquetesBD.forEach(objPaquete => {
+              let objPaqueteTemp = new Paquete(objPaquete.usuario, objPaquete.tracking, objPaquete.distribuidor, objPaquete.precio,objPaquete.peso, objPaquete.Kilometro,objPaquete.tipoArticulo, objPaquete.descripcion, objPaquete.sucursal, objPaquete.repartidor);
             
+              objPaqueteTemp.setId(objPaquete._id);
+
+              objPaqueteTemp.mostrarEstadoTraslado(objPaquete.estadoTraslado);
+              
+              listaPaquetes.push(objPaqueteTemp);
+      
+            });
+      
             return listaPaquetes;
+
+
+            // let ListaUsuarios = _getUsuarios();
+            // let listaPaquetes = [];
+            // let session = JSON.parse (sessionStorage.getItem ('sesion'));
+
+            // for (let i = 0; i < ListaUsuarios.length; i++) {
+            //     if (session.nombre == ListaUsuarios[i].primerNombre ) {
+            //         if (ListaUsuarios[i].listaPaquetes != null) {
+            //            listaPaquetes =  ListaUsuarios[i].listaPaquetes;
+            //         }
+            //     }
+                
+            // }
+            
+            // return listaPaquetes;
         };
     
-        function _getAllPaquetes(){
-        let listaUsuarios = _getUsuarios();
-        let listaPaquetes = [];
-        for (let i = 0; i < listaUsuarios.length; i++){
-            let listaPaquetesTemp = listaUsuarios[i].listaPaquetes;
-            if(listaPaquetesTemp != []){
-            let paqueteTemp = {};
-            for(let j = 0; j < listaPaquetesTemp.length; j++){
-                paqueteTemp = listaPaquetesTemp[j];
-                listaPaquetes.push(paqueteTemp);
-            }
-            }
-        }
-        return listaPaquetes;
-        }
+    
+       function _actualizarPaquete(pObjpaquete) {
+            let modificacionExitosa = false;
+      
+            modificacionExitosa = dataStorageFactory.updatePaqueteData(pObjpaquete);
+      
+            return modificacionExitosa;
 
 
-        function _actualizarPaquete(pObjpaquete) {
-            let listaUsuarios = _getUsuarios();
-            let sesion = JSON.parse(sessionStorage.getItem('sesion'));
-            for (let i = 0; i < listaUsuarios.length; i++) {
-                if(listaUsuarios[i].correo == sesion.correo){
-                    for (let j = 0; j < listaUsuarios[i].listaPaquetes.length; j++) {
-                        if (listaUsuarios[i].listaPaquetes[j].tracking == pObjpaquete.tracking) {
-                            listaUsuarios[i].listaPaquetes[j] = pObjpaquete;
-                        }
-                    }
-                }
-            }
-            actualizarLocal(listaUsuarios);
+            // let listaUsuarios = _getUsuarios();
+            // let sesion = JSON.parse(sessionStorage.getItem('sesion'));
+            // for (let i = 0; i < listaUsuarios.length; i++) {
+            //     if(listaUsuarios[i].correo == sesion.correo){
+            //         for (let j = 0; j < listaUsuarios[i].listaPaquetes.length; j++) {
+            //             if (listaUsuarios[i].listaPaquetes[j].tracking == pObjpaquete.tracking) {
+            //                 listaUsuarios[i].listaPaquetes[j] = pObjpaquete;
+            //             }
+            //         }
+            //     }
+            // }
+            // actualizarLocal(listaUsuarios);
 
         };
+        
 
 
         function _actualizarEstadoPaquete(pObjpaquete) {
@@ -290,7 +338,8 @@
 
             function _getLicencia() {
                 let listaLicencia = [];
-                let listaLicenciaLocal = JSON.parse(localStorage.getItem('licenciasLS'));
+                // let listaLicenciaLocal = JSON.parse(localStorage.getItem('licenciasLS'));
+                registroExitoso = dataStorageFactory.setUserData(pNuevoUsuario);
     
                 if(listaLicenciaLocal == null){
                    listaLicencia = [];
@@ -329,6 +378,12 @@
             return rol;
         }
         
+        function _getRolNombre() {
+            let session = JSON.parse(sessionStorage.getItem ('sesion'));
+            let rol = session.nombre;
+            return rol;
+        }
+        
 
         function _getUsuarioActivo(){
             let listaUsuarios= _getUsuarios();
@@ -342,42 +397,56 @@
             }
             return usuarioActivo;
         }
+        
 
-        function _addTarjeta (pNuevaTarjeta) {
+        function _addTarjeta(pNuevaTarjeta) {
             let listaUsuarios = _getUsuarios();
             let sesion = JSON.parse(sessionStorage.getItem('sesion'));
-            let respuesta = true;
+            let tarjetaRepetida = false;
+            let registroValido = false;
+            let usuario = {};
+            let listaTarjetas = _getTarjeta();
 
-            for(let i = 0; i < listaUsuarios.length; i++){
-                if (sesion.nombre == listaUsuarios[i].primerNombre){
-                listaUsuarios[i].registrarTarjeta(pNuevaTarjeta);
+            for (let i = 0; i < listaTarjetas.length; i++) {
+                if (listaTarjetas[i].numero == pNuevaTarjeta.numero) {
+                    tarjetaRepetida = true;
                 }
-        
             }
 
-            actualizarLocal(listaUsuarios);
-            return respuesta;
+            if (tarjetaRepetida == false) {
+                for (let i = 0; i < listaUsuarios.length; i++) {
+                    if (sesion.correo == listaUsuarios[i].correo) {
+                        usuario = dataStorageFactory.buscarUsuarioPorId(listaUsuarios[i]._id);
+                    }
+                }
+                registroValido = dataStorageFactory.setTarjetasData(pNuevaTarjeta);
+
+                dataStorageFactory.agregarTarjetaUsuario(usuario._id, pNuevaTarjeta)
+            } else {
+                registroValido = false;
+            }
+
+            return registroValido;
             
-        };
+      };
 
 
 
         function _getTarjeta(){
-            let listaUsuarios = _getUsuarios();
             let listaTarjetas = [];
-            let session = JSON.parse (sessionStorage.getItem ('sesion'));
-
-            for (let i = 0; i < listaUsuarios.length; i++) {
-                if (session.nombre == listaUsuarios[i].primerNombre ) {
-                    if (listaUsuarios[i].listaTarjetas != null) {
-                       listaTarjetas =  listaUsuarios[i].listaTarjetas;
-                    }
-                }
-                
-            }
-            
+            let listaTarjetasBD = dataStorageFactory.getTarjetasData();
+            listaTarjetasBD.forEach(objTarjetas => {
+              let objTarjetasTemp = new Tarjeta(objTarjetas.id, objTarjetas.nombre, objTarjetas.numero, objTarjetas.expiracion, objTarjetas.cvv, objTarjetas.estado);
+      
+              listaTarjetas.push(objTarjetasTemp);
+      
+            });
+      
             return listaTarjetas;
-        };
+      
+          };
+            
+           
 
         function _actualizarRepartidor(pObjRepartidor) {
             let listaUsuarios = _getUsuarios();
@@ -411,6 +480,34 @@
                 }
                 actualizarLocal(listaUsuarios);
             };
+            
+             function _addEstado(pEstado) {
+            let registroExitoso = false;
+
+            registroExitoso = dataStorageFactory.setEstadoData(pEstado);
+
+            return registroExitoso;
+        }
+
+            function _agregarEstado(pEstado) {
+
+                let listaPaquetes = _getPaquete();
+                let registroExitoso = false;
+                let paquete = {};
+                for (let i = 0; i < listaPaquetes.length; i++) {
+                if (listaPaquetes[i]._id == pEstado.usuario) {
+                    paquete = dataStorageFactory.buscarPaquetePorId(listaPaquetes[i]._id);
+                }
+                }
+        
+                registroExitoso = dataStorageFactory.setEstadoData (pEstado);
+                
+                dataStorageFactory.agregarEstado(paquete._id, pEstado);
+            
+                
+                return registroExitoso;
+                
+            }
 
         };
         

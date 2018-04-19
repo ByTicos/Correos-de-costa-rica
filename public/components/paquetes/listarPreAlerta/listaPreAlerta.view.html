@@ -8,11 +8,11 @@
         <input type="text" class="form-control" ng-model="buscarPaquete" placeholder="ingrese metodo de busqueda">
       </div>
     </form>
-    
-    <table class="table table-responsive table-hover">
-      <legend>Paquetes activos</legend>
-    
-      <thead>
+    <div class="wrapperusuarios" >
+    <table class="table">
+      <h1>Paquetes activos</h1>
+      <hr/>
+      <thead class="table-primary">
         <th> <a class="puntero"  ng-click="columna = 'tracking'; reverse = !reverse">Nº Tracking</a></th>
         <th><a class="puntero"  ng-click="columna = 'distribuidor'; reverse = !reverse">Distribuidor</a></th>
         <th><a class="puntero" ng-click="columna = 'precio'; reverse = !reverse">Precio</a></th>
@@ -20,6 +20,8 @@
         <th><a class="puntero" ng-click="columna = 'tipoArticulo'; reverse = !reverse">Tipo de articulo</a></th>
         <th><a class="puntero" ng-click="columna = 'descripcion'; reverse = !reverse">Descripción</a></th>
         <th>Estado</th>
+        <th>Sucursal</th>
+        <th>Editar</th>
     
       </thead>
       <tbody>
@@ -28,17 +30,20 @@
           <td>{{paquete.distribuidor}}</td>
           <td>{{paquete.precio}}</td>
           <td>{{paquete.peso}}</td>
-          <td>{{paquete.tipoArticulo.name}}</td>
+          <td>{{paquete.tipoArticulo}}</td>
           <td>{{paquete.descripcion}}</td>
           <td>{{paquete.estadoTraslado}}</td>
-    
+          <td>{{paquete.sucursal}}</td>
+
           <td>
-            <button type="button" class="login login-submit" ng-click="vm.editPrealerta(paquete)"> Editar</button>
+            <button type="button" class="login login-submit" ng-click="vm.editPrealerta(paquete)"><i class="far fa-edit"></button>
           </td>
         </tr>
       </tbody>
     
     </table>
+
+    </div>
     <!-- <table class="table table-responsive">
       <legend>Paquetes inactivos</legend>
     

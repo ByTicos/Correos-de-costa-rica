@@ -13,6 +13,7 @@ const gulp = require('gulp'),
     styles: './public/sources/styles/**/*.scss',
     impSass: './public/sources/styles/style.scss',
     js: './public/components/**/**/*.js',
+    jsBackEnd: './api/**/**/**/*.js',
     excss: './public/*.css'
   };
 
@@ -25,6 +26,7 @@ gulp.task('connect', () => {
   browserSync.init({
     server: './public'
   })
+  nodemon();
 });
 
 gulp.task('to-do', () => {
@@ -63,12 +65,6 @@ gulp.task('dependencies', () => {
     .pipe(gulp.dest('./public/lib/sweetalert'));
 
 
-  gulp.src([
-      './node_modules/font-awesome/css/font-awesome.min.css'
-    ])
-    .pipe(gulp.dest('./public/lib/font-awesome'));
-
-
     gulp.src([
       './node_modules/payform/dist/jquery.payform.min.js'
     ])
@@ -76,14 +72,14 @@ gulp.task('dependencies', () => {
 
 
   gulp.src([
-      './node_modules/ng-file-upload/dist/ng-file-upload.min.js',
-      './node_modules/ng-file-upload/dist/ng-file-upload-shim.min.js'
+    './node_modules/ng-file-upload/dist/ng-file-upload.min.js',
+    './node_modules/ng-file-upload/dist/ng-file-upload-shim.min.js'
     ])
     .pipe(gulp.dest('./public/lib/ng-file-upload'));
 });
 
 gulp.task('reload', () => {
-  gulp.src([paths.views, paths.styles, paths.js])
+  gulp.src([paths.views, paths.styles, paths.js, paths.jsBackEnd])
     .pipe(connect.reload())
     .pipe(browserSync.stream());
 });

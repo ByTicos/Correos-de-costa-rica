@@ -20,11 +20,22 @@
 
       let registro = servicioUsuarios.addUsuario(objNuevoUsuario);
 
-      if (registro == true) {
-        swal("Registro exitoso", "El usuario ha sido registrado correctamente", "success", {
-          button: "Aceptar",
-        });
-        /*$location.path('/logIn');*/
+      if (registro == 'Se registró el usuario correctamente') {
+        let sesion = JSON.parse(sessionStorage.getItem('sesion'));
+        if(sesion == null || sesion.tipo != '5'){
+          
+          swal("Registro exitoso", "El usuario ha sido registrado correctamente", "success", {
+            button: "Aceptar",
+          }); 
+          
+        }
+        else{
+          swal("Registro exitoso", "El usuario ha sido registrado correctamente", "success", {
+            button: "Aceptar",
+          });
+          $location.path('/mainlistarEncargadoSucursal');
+        }
+        
       }
       else {
         swal("Registro fallido", "Ha ocurrido un error, intente nuevamente", "error", {

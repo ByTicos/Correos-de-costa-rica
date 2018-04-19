@@ -1,5 +1,6 @@
 class Usuario {
-    constructor(pCedula, pFoto, pPrimerNombre, pSegundoNombre, pPrimerApellido, pSegundoApellido, pEmail, pTelefono, pfechaNacimiento, pProvincia, pCanton, pDistrito, pDireccionExacta, pContrasenna, pTipo, pSucursalAsignada, pPuesto, pVehiculo, pLicencia, pVencimientoLicencia, pTarjeta) {
+    constructor(pCedula, pFoto, pPrimerNombre, pSegundoNombre, pPrimerApellido, pSegundoApellido, pEmail, pTelefono, pfechaNacimiento, pProvincia, pCanton, pDistrito, pDireccionExacta, pContrasenna, pTipo, pSucursalAsignada, pPuesto, pVehiculo, pLicencia, pTarjeta) {
+        this._id = 0;
         this.cedula = pCedula;
         this.foto = pFoto;
         this.primerNombre = pPrimerNombre;
@@ -24,6 +25,10 @@ class Usuario {
         this.listaTarjetas = pTarjeta || [];
         this.listaPaquetesConvenios = [];
         this.contrasenna = pContrasenna;
+    }
+
+    setId(pId){
+        this._id= pId;
     }
     cambiarEstado(pEstado) {
         this.estado = pEstado;
@@ -64,7 +69,8 @@ class Usuario {
 
 
 class Paquete{
-    constructor(pUsuario,pNumeroTracking, pDistribuidor, pPrecio, pPeso,pKilometro, pTipoArticulo, pDescripcion){
+    constructor(pUsuario,pNumeroTracking, pDistribuidor, pPrecio, pPeso,pKilometro, pTipoArticulo, pDescripcion, pSucursal, pRepartidor){
+        this._id =0;
         this.usuario = pUsuario;
         this.tracking = pNumeroTracking;
         this.distribuidor = pDistribuidor;
@@ -73,12 +79,17 @@ class Paquete{
         this.kilometro = pKilometro;
         this.tipoArticulo = pTipoArticulo;
         this.descripcion = pDescripcion;
+        this.sucursal = pSucursal;
+        this.repartidor = pRepartidor;
         this.estado = 'activo';
         this.estadoTraslado = '';
         this.listaEstados = [];
 
     }
-
+    
+    setId(pId){
+        this._id = pId;
+    }
     cambiarEstadoDeActividad(pEstado) {
         this.estado = pEstado;
     }
@@ -101,13 +112,16 @@ class Paquete{
 
 class Estado {
     constructor(pUsuario, pFecha, pHora, pEstado) {
+        this._id = 0;
         this.usuario = pUsuario;
         this.fecha = pFecha;
         this.hora = pHora;
         this.estado = pEstado;
     }
 
-
+  setId(pId){
+        this._id = pId;
+    }
 }
 
 // class Encargado extends Usuario{
@@ -121,6 +135,7 @@ class Estado {
 
 class Entidad {
     constructor(pNombre, pCedulaJuridica) {
+        this._id = 0;
         this.nombre = pNombre;
         this.cedulaJuridica = pCedulaJuridica;
         this.convenios = [];
@@ -128,6 +143,9 @@ class Entidad {
 
     registrarConvenio(pConvenio) {
         this.convenios.push(pConvenio);
+    }
+    setId(pId){
+        this._id = pId;
     }
 }
 
@@ -180,9 +198,13 @@ class Tarjeta {
     cambiarEstadoDeActividadTarjeta(pEstado) {
         this.estado = pEstado;
     }
+    getID() {
+        return this.id;
+    }
 }
 class PaqueteConv{
-    constructor(pCliente, pConvenio, pFecha){
+    constructor(pTracking, pCliente, pConvenio, pFecha){
+        this.tracking = pTracking;
         this.cliente = pCliente;
         this.convenio = pConvenio;
         this.fecha = pFecha;
@@ -204,6 +226,7 @@ class PaqueteConv{
 
 class Articulo{
     constructor(pId, pProducto, pImpuesto){
+        this._id = 0;
         this.id = pId;
         this.producto = pProducto;
         this.impuesto = pImpuesto;
@@ -211,6 +234,9 @@ class Articulo{
         
     }
 
+    setId(pId){
+        this._id = pId;
+    }
      cambiarEstadoDeActividadArticulo(pEstado) {
         this.estado = pEstado;
     }

@@ -10,12 +10,19 @@ strong {
 
 .page {
   width: 100%;
-    background: #fdfdfd;
+    background: #011600;
   font-family: 'Encode Sans Condensed', sans-serif;
   font-weight: 600;
   letter-spacing: .03em;
-  color: #1c924c;
+  color: white;
 }
+
+.page li{
+ margin-left: 15px;
+ text-transform: capitalize;
+}
+
+
 .button {
   position: fixed;
   display: flex;
@@ -40,7 +47,7 @@ strong {
   display: block;
   width: 100%;
   height: 3px;
-  background: #b6e977;
+  background: white;
   transition: .3s;
 }
 .headerclass {
@@ -49,8 +56,8 @@ strong {
   position: fixed;
   width: 100%;
   height: 70px;
-  background: linear-gradient(to right, #005825 0%, #005825 0%, #005825 65%, #77b924 100%);
-  color: #b6e977;
+  background: #00383f;
+  color: white;
   -webkit-tap-highlight-color: rgba(0,0,0,0);
     -webkit-box-shadow: 0 10px 6px -6px #777;
        -moz-box-shadow: 0 10px 6px -6px #777;
@@ -67,7 +74,7 @@ strong {
             
             }
             a:hover {
-              color: #3d6f00;
+              color: #205ab9;
              
             
             }
@@ -142,7 +149,7 @@ strong {
   top: 0;
   left: 0;
   height: calc(100% - 70px);
-  background: white;
+  background:black;
   pointer-events: auto;
   -webkit-tap-highlight-color: rgba(0,0,0,0);
   transform: translateX(-100%);
@@ -155,16 +162,25 @@ strong {
   height: 100%;
   display: flex;
   flex-direction: column;
+
 }
 
-#nav-content li {
-  padding-left: 5px;
-  }
+#nav-content .btn {
+  margin: 5px 10px;
+  overflow-wrap: normal; 
+  background: rgba(0,0,0,0.7);
+  color: white;
+}
+
+#nav-content .btn:hover {
+  background: #01a3d4;
+
+}
   
 
 #nav-content li:hover {
 padding-left: 10px;
-background-color:rgba(182,233,119,0.3);
+background-color:rgba(1,163,212,0.3);
 }
 
 
@@ -176,7 +192,7 @@ background-color:rgba(182,233,119,0.3);
 }
 
 #nav-content li a:hover {
-  color: #a32f13;
+  color: white;
 }
 
 #nav-content li:not(.small) + .small {
@@ -259,4 +275,12 @@ video {
   position: relative;
   left: 25%;
 
+}
+
+.fixright {
+  margin-right: 5px;
+}
+
+.paddingbot {
+  padding-bottom: 2px;
 }

@@ -1,58 +1,69 @@
-<section id="dashboard">
 
-        <div class="col-8" id="viewonly">
+<section id="container-fluid">
+    
+        <div class="creditCardForm">
 
-            <h1>Registro de Encargado de Sucursal</h1>
-                <form action="" class="form-horizontal" ng-submit="vm.registrarUsuario(vm.nuevoUsuario)">
-            
-                    <div class="form-group">
-                        <label for="">Cédula</label>
-                        <input type="text" class="form-control" ng-model="vm.nuevoUsuario.cedula" required>
-                
-                    </div>
-                    <div class="form-group">
-                        <label for="">Foto</label>
-                        <input type="text" class="form-control" ng-model="vm.nuevoUsuario.foto">
-                    </div>
-                    <div class="form-group">
-                        <label for="">Primer nombre</label>
-                        <input type="text" class="form-control" ng-model="vm.nuevoUsuario.primerNombre" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="">Segundo nombre</label>
-                        <input type="text" class="form-control" ng-model="vm.nuevoUsuario.segundoNombre">
-                    </div>
-                    <div class="form-group">
-                        <label for="">Primer apellido</label>
-                        <input type="text" class="form-control" ng-model="vm.nuevoUsuario.primerApellido" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="">Segundo apellido</label>
-                        <input type="text" class="form-control" ng-model="vm.nuevoUsuario.segundoApellido">
-                    </div>
-                    <div class="form-group">
-                        <label for="">Correo electrónico</label>
-                        <input type="text" class="form-control" ng-model="vm.nuevoUsuario.correo" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="">Teléfono</label>
-                        <input type="text" class="form-control" ng-model="vm.nuevoUsuario.telefono">
-                    </div>
-                    <div class="form-group">
-                        <label for="">Fecha de nacimiento</label>
-                        <input type="date" class="form-control" ng-model="vm.nuevoUsuario.fechaNacimiento">
-                    </div>
-                    <div class="form-group">
-                        <label for="">Contraseña</label>
-                        <input type="text" class="form-control" ng-model="vm.nuevoUsuario.contrasenna">
-                    </div>
-
-                    <select ng-model="vm.nuevoUsuario.sucursalAsignada">
-                        <option value="">Seleccione la Sucursal del usuario</option>
-                        <option ng-repeat="sucursal in vm.listaSucursales" value="{{sucursal.nombre}}">{{sucursal.nombre}}</option>
-                    </select>
-
-                    <button type="submit">Registrar</button>
-                </form>  
+            <div class="heading">
+                <h1>Registro de Encargado de Sucursal</h1>
             </div>
+            <hr>
+            <div class="payment">
+                    <form action="" class="form-horizontal" ng-submit="vm.registrarUsuario(vm.nuevoUsuario)">
+            
+                            <div class="form-group col-12" >
+                                <label for="">Cédula</label>
+                                <input type="text" class="form-control" ng-model="vm.nuevoUsuario.cedula" required>
+                        
+                            </div>
+                            <div class="form-group col-12">
+                                <label for="">Foto</label>
+                                <input type="file" ng-model="vm.nuevoUsuario.foto" img-upload required>
+                            </div>
+                            <div class="form-group col-6">
+                                <label for="">Primer nombre</label>
+                                <input type="text" class="form-control" ng-model="vm.nuevoUsuario.primerNombre" required>
+                            </div>
+                            <div class="form-group col-6">
+                                <label for="">Segundo nombre</label>
+                                <input type="text" class="form-control" ng-model="vm.nuevoUsuario.segundoNombre">
+                            </div>
+                            <div class="form-group col-6">
+                                <label for="">Primer apellido</label>
+                                <input type="text" class="form-control" ng-model="vm.nuevoUsuario.primerApellido" required>
+                            </div>
+                            <div class="form-group col-6">
+                                <label for="">Segundo apellido</label>
+                                <input type="text" class="form-control" ng-model="vm.nuevoUsuario.segundoApellido">
+                            </div>
+                            <div class="form-group col-6">
+                                <label for="">Correo electrónico</label>
+                                <input type="email" class="form-control" ng-model="vm.nuevoUsuario.correo" required>
+                            </div>
+                            <div class="form-group col-6">
+                                <label for="">Teléfono</label>
+                                <input type="text" class="form-control" ng-model="vm.nuevoUsuario.telefono">
+                            </div>
+                            <div class="form-group col-6">
+                                <label for="">Fecha de nacimiento</label>
+                                <input type="date" class="form-control" ng-model="vm.nuevoUsuario.fechaNacimiento">
+                            </div>
+                            <div class="form-group col-6">
+                                <label for="">Contraseña</label>
+                                <input type="text" class="form-control" ng-model="vm.nuevoUsuario.contrasenna">
+                            </div>
+        
+                            <select class="col-12" ng-model="vm.nuevoUsuario.sucursalAsignada">
+                                <option value="">Seleccione la Sucursal del usuario</option>
+                                <option ng-repeat="sucursal in vm.listaSucursales" value="{{sucursal.nombre}}">{{sucursal.nombre}}</option>
+                            </select>
+        
+                            <div class="form-group" id="pay-now">
+                                <button type="submit" class="btn btn-default" id="confirm-purchase">Registrar Encargado de Sucursal</button>
+                            </div>
+                        </form>  
+
+            </div>
+
+                
+         </div>
 </section>
