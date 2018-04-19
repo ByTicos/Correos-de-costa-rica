@@ -40,7 +40,8 @@
       setSucursalesData: _setSucursalesData,
       updateSucursalesData: _updateSucursalesData,
       buscarSucursalPorId: _buscarSucursalPorId,
-      buscarTarjetaId :_buscarTarjetaId
+      buscarTarjetaId :_buscarTarjetaId,
+      updateTarjetasData: _updateTarjetasData
     };
     return localAPI;
 
@@ -889,22 +890,22 @@
     let response;
 
     let peticion = $.ajax({
-      url: 'http://localhost:4000/api/update_user',
+      url: 'http://localhost:4000/api/update_sucursales',
       type: 'put',
       contentType: 'application/x-www-form-urlencoded; charset=utf-8',
       dataType: 'json',
       async: false,
       data: {
-        'id': data.id,
-        'nombre': data.nombre,
-        'provincia': data.provincia,
-        'canton': data.canton,
-        'distrito': data.distrito,
-        'telefono': data.telefono,
-        'horario': data.horario,
-        'latitud': data.latitud,
-        'longitud': data.longitud,
-        'estado': data.estado,
+        id: data.id,
+        nombre: data.nombre,
+        provincia: data.provincia,
+        canton: data.canton,
+        distrito: data.distrito,
+        telefono: data.telefono,
+        horario: data.horario,
+        latitud: data.latitud,
+        longitud: data.longitud,
+        estado: data.estado,
       }
     });
 
@@ -966,5 +967,37 @@
 
     return tarjetaID;
   }
+
+  function _updateTarjetasData(data) {
+    let response;
+
+    let peticion = $.ajax({
+      url: 'http://localhost:4000/api/update_tarjetas',
+      type: 'put',
+      contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+      dataType: 'json',
+      async: false,
+      data: {
+        id: data.id,
+        nombre: data.nombre,
+        numero: data.numero,
+        expiracion: data.expiracion,
+        cvv: data.cvv,
+        estado: data.estado,
+      }
+    });
+
+    peticion.done((datos) => {
+      response = datos.msj;
+      console.log('Petición realizada con éxito');
+    });
+    peticion.fail((error) => {
+      response = error;
+      console.log('Ocurrió un error');
+    });
+
+    return response;
+  }
+
   
 }) ();

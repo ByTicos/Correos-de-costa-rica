@@ -475,20 +475,11 @@
         }; 
 
         function _actualizarTarjeta(pObjTarjeta) {
-            let listaUsuarios = _getUsuarios();
-            let sesion = JSON.parse(sessionStorage.getItem('sesion'));
+            let modificacionExitosa = false;
 
-            for (let i = 0; i < listaUsuarios.length; i++) {
-                if(listaUsuarios[i].correo == sesion.correo){
-                    for (let j = 0; j < listaUsuarios[i].listaTarjetas.length; j++) {
-                        if (listaUsuarios[i].listaTarjetas[j].id == pObjTarjeta.id) {
-                        listaUsuarios[i].listaTarjetas[j] = pObjTarjeta;
-                            }
-                        }   
-                    }
+            modificacionExitosa = dataStorageFactory.updateTarjetasData(pObjTarjeta)
 
-                }
-                actualizarLocal(listaUsuarios);
+            return modificacionExitosa;
             };
             
              function _addEstado(pEstado) {

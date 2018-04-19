@@ -19,6 +19,22 @@
     
          vm.listaSucursales = listarSucursales();
 
+         vm.cambiarEstadoSucursal = (pEstado, pSucursal) => {
+          let listaSucursal = servicioSucursales.getSucursal();
+          let sucursal = {};
+    
+          for (let i = 0; i < listaSucursal.length; i++) {
+            if (listaSucursal[i].id == pSucursal.id){
+              listaSucursal[i].cambiarEstadoDeActividadSucursal(pEstado);
+              sucursal = listaSucursal[i];
+            }
+          }
+            servicioSucursales.actualizarSucursal(sucursal);
+            $state.go('main.listarSucursales');
+            vm.listaSucursales = listarSucursales();
+            
+          };
+
         function listarSucursales(){
         let listaSucursales = servicioSucursales.getSucursal();
 
