@@ -11,7 +11,7 @@
 
     // vm.listaRepartidores = listarRepartidores();
     vm.nuevoRepartidor = {};
-    servicioSucursales.listarSucursalesJson();
+   // servicioSucursales.listarSucursalesJson();
     vm.listaSucursales = servicioSucursales.getSucursal();
     
     vm.cloudObj = imageService.getConfiguration();
@@ -19,7 +19,7 @@
     vm.provincias = $http({
       method: 'GET',
       url: './sources/data/provincias.json'
-    }).then((success) => {
+    }).then((success)  => {
       vm.provincias = success.data;
     }, (error) => {
       console.log("Ocurrió un error " + error.data);
@@ -29,7 +29,7 @@
       vm.cantones = $http({
         method: 'GET',
         url: './sources/data/cantones.json'
-      }).then((success) => {
+      }).then((success)  => {
         let cantones = [];
         for (let i = 0; i < success.data.length; i++) {
           if (pidProvincia == success.data[i].idProvincia) {
@@ -47,7 +47,7 @@
       vm.distritos = $http({
         method: 'GET',
         url: './sources/data/distritos.json'
-      }).then((success) => {
+      }).then((success)  => {
         let distritos = [];
         for (let i = 0; i < success.data.length; i++) {
           if (pidCanton == success.data[i].idCanton) {

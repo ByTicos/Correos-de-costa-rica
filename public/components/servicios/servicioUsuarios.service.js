@@ -134,6 +134,7 @@
             let listaPaquetesConveniosBD = dataStorageFactory.getPaquetesConvenioData();
             listaPaquetesConveniosBD.forEach(objPaqueteConvenio => {
               let objPaqueteConvenioTemp = new PaqueteConv(objPaqueteConvenio.tracking, objPaqueteConvenio.cliente, objPaqueteConvenio.convenio,objPaqueteConvenio.fecha, objPaqueteConvenio.estadoTraslado);
+
       
               listaPaquetesConvenios.push(objPaqueteConvenioTemp);
       
@@ -249,6 +250,7 @@
             let listaPaquetesBD = dataStorageFactory.getPaquetesData();
             listaPaquetesBD.forEach(objPaquete => {
               let objPaqueteTemp = new Paquete(objPaquete.usuario, objPaquete.tracking, objPaquete.distribuidor, objPaquete.precio,objPaquete.peso, objPaquete.Kilometro,objPaquete.tipoArticulo, objPaquete.descripcion, objPaquete.sucursal, objPaquete.repartidor);
+              objPaqueteTemp.mostrarEstadoTraslado(objPaquete.estadoTraslado);
             
               objPaqueteTemp.setId(objPaquete._id);
 
